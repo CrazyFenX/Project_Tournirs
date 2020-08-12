@@ -18,6 +18,8 @@ namespace DataViewer_D_v._001
 
         Sportsman sportsman = new Sportsman();
 
+        public string folderName;
+
         public registrFormSolo()
         {
             InitializeComponent();
@@ -101,6 +103,7 @@ namespace DataViewer_D_v._001
 
                 Controller.insertInSportDB(sportsman);
                 Controller.insertTrainer(sportsman.OlderTrainer, sportsman.BookNumber);
+                SecretaryController.insertInParticipants(sportsman,Path_textBox.Text);
             }
             else
                 MessageBox.Show("Не все необходимые поля заполнены!");
@@ -320,5 +323,15 @@ namespace DataViewer_D_v._001
             PatronymicOfOldTrainer_textBox.Text = sportsman.OlderTrainer.Patronymic;
         }
 
+        private void Browse_button_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialog1.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                folderName = openFileDialog1.FileName;
+                Path_textBox.Text = folderName;
+            }
+        }
     }
 }

@@ -88,6 +88,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.SecondTrainer_checkBox = new System.Windows.Forms.CheckBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Path_textBox = new System.Windows.Forms.TextBox();
+            this.Browse_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bD1DataSetBindingSource)).BeginInit();
             this.Sportsman_groupBox.SuspendLayout();
             this.Group_n_Number_groupBox.SuspendLayout();
@@ -617,7 +620,7 @@
             this.backButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.backButton.Location = new System.Drawing.Point(749, 359);
+            this.backButton.Location = new System.Drawing.Point(749, 397);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(183, 47);
             this.backButton.TabIndex = 20;
@@ -791,12 +794,36 @@
             this.SecondTrainer_checkBox.UseVisualStyleBackColor = true;
             this.SecondTrainer_checkBox.CheckedChanged += new System.EventHandler(this.SecondTrainer_checkBox_CheckedChanged);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Path_textBox
+            // 
+            this.Path_textBox.Location = new System.Drawing.Point(12, 416);
+            this.Path_textBox.Name = "Path_textBox";
+            this.Path_textBox.Size = new System.Drawing.Size(608, 22);
+            this.Path_textBox.TabIndex = 23;
+            // 
+            // Browse_button
+            // 
+            this.Browse_button.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Browse_button.Location = new System.Drawing.Point(626, 412);
+            this.Browse_button.Name = "Browse_button";
+            this.Browse_button.Size = new System.Drawing.Size(109, 32);
+            this.Browse_button.TabIndex = 24;
+            this.Browse_button.Text = "Browse";
+            this.Browse_button.UseVisualStyleBackColor = false;
+            this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
+            // 
             // registrFormSolo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(936, 418);
+            this.ClientSize = new System.Drawing.Size(934, 448);
+            this.Controls.Add(this.Browse_button);
+            this.Controls.Add(this.Path_textBox);
             this.Controls.Add(this.SecondTrainer_groupBox);
             this.Controls.Add(this.FirstTrainer_groupBox);
             this.Controls.Add(this.openDataBasaButton);
@@ -824,6 +851,7 @@
             this.SecondTrainer_groupBox.ResumeLayout(false);
             this.SecondTrainer_groupBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -888,5 +916,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.TextBox Path_textBox;
+        private System.Windows.Forms.Button Browse_button;
     }
 }

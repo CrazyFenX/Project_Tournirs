@@ -94,6 +94,7 @@
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
     </Compile>
     <Compile Include="Duet.cs" />
+    <Compile Include="Judge.cs" />
     <Compile Include="MyDate.cs" />
     <Compile Include="PeopleDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

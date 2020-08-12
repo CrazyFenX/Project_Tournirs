@@ -88,9 +88,9 @@ namespace DataViewer_D_v._001
 
         private void secretaryButton_Click(object sender, EventArgs e)
         {
-            secretaryForm secretaryForm = new secretaryForm();
+            secretaryMainForm secretaryMainForm = new secretaryMainForm();
             this.Hide();
-            secretaryForm.Show();
+            secretaryMainForm.Show();
             //Открытие коннекта
         }
     }

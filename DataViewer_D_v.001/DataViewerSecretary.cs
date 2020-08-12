@@ -30,6 +30,16 @@ namespace DataViewer_D_v._001
             this.secretaryForm.Enabled = false;
         }
 
+        public DataViewerSecretary(secretaryForm secretaryForm, string path)
+        {
+            InitializeComponent();
+
+            openFileDialog1.InitialDirectory = @"C:\Users\Кирилл\source\repos\DataViewer_D_v.001\DataViewer_D_v.001\bin\x86\Debug\Tournirs";
+
+            this.secretaryForm = secretaryForm;
+            this.Path_textBox.Text = path;
+            this.secretaryForm.Enabled = false;
+        }
         private void Path_textBox_TextChanged(object sender, EventArgs e)
         {
             this.secretaryForm.Path_textBox.Text = Path_textBox.Text;

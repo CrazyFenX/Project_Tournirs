@@ -35,75 +35,193 @@
             this.Delete_button = new System.Windows.Forms.Button();
             this.Browse_button = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CreateNewTournirButton
             // 
+            this.CreateNewTournirButton.BackColor = System.Drawing.Color.Tomato;
+            this.CreateNewTournirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateNewTournirButton.ForeColor = System.Drawing.Color.White;
             this.CreateNewTournirButton.Location = new System.Drawing.Point(623, 17);
             this.CreateNewTournirButton.Name = "CreateNewTournirButton";
             this.CreateNewTournirButton.Size = new System.Drawing.Size(165, 60);
             this.CreateNewTournirButton.TabIndex = 0;
             this.CreateNewTournirButton.Text = "Создать Турнир";
-            this.CreateNewTournirButton.UseVisualStyleBackColor = true;
+            this.CreateNewTournirButton.UseVisualStyleBackColor = false;
             this.CreateNewTournirButton.Click += new System.EventHandler(this.CreateNewTournirButton_Click);
             // 
             // backbutton
             // 
-            this.backbutton.Location = new System.Drawing.Point(623, 358);
+            this.backbutton.BackColor = System.Drawing.Color.Tomato;
+            this.backbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backbutton.ForeColor = System.Drawing.Color.White;
+            this.backbutton.Location = new System.Drawing.Point(623, 311);
             this.backbutton.Name = "backbutton";
-            this.backbutton.Size = new System.Drawing.Size(165, 60);
+            this.backbutton.Size = new System.Drawing.Size(165, 64);
             this.backbutton.TabIndex = 1;
             this.backbutton.Text = "Назад";
-            this.backbutton.UseVisualStyleBackColor = true;
+            this.backbutton.UseVisualStyleBackColor = false;
             this.backbutton.Click += new System.EventHandler(this.backbutton_Click);
             // 
             // Path_textBox
             // 
-            this.Path_textBox.Location = new System.Drawing.Point(25, 324);
+            this.Path_textBox.Location = new System.Drawing.Point(13, 277);
             this.Path_textBox.Name = "Path_textBox";
-            this.Path_textBox.Size = new System.Drawing.Size(592, 22);
+            this.Path_textBox.Size = new System.Drawing.Size(604, 22);
             this.Path_textBox.TabIndex = 2;
             // 
             // OpenBase_button
             // 
+            this.OpenBase_button.BackColor = System.Drawing.Color.Tomato;
+            this.OpenBase_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpenBase_button.ForeColor = System.Drawing.Color.White;
             this.OpenBase_button.Location = new System.Drawing.Point(623, 83);
             this.OpenBase_button.Name = "OpenBase_button";
             this.OpenBase_button.Size = new System.Drawing.Size(165, 60);
             this.OpenBase_button.TabIndex = 3;
             this.OpenBase_button.Text = "Открыть базу";
-            this.OpenBase_button.UseVisualStyleBackColor = true;
+            this.OpenBase_button.UseVisualStyleBackColor = false;
             this.OpenBase_button.Click += new System.EventHandler(this.OpenBase_button_Click);
             // 
             // Delete_button
             // 
+            this.Delete_button.BackColor = System.Drawing.Color.Tomato;
+            this.Delete_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Delete_button.ForeColor = System.Drawing.Color.White;
             this.Delete_button.Location = new System.Drawing.Point(623, 149);
             this.Delete_button.Name = "Delete_button";
             this.Delete_button.Size = new System.Drawing.Size(165, 60);
             this.Delete_button.TabIndex = 4;
             this.Delete_button.Text = "Удалить Турнир";
-            this.Delete_button.UseVisualStyleBackColor = true;
+            this.Delete_button.UseVisualStyleBackColor = false;
             this.Delete_button.Click += new System.EventHandler(this.Delete_button_Click);
             // 
             // Browse_button
             // 
-            this.Browse_button.Location = new System.Drawing.Point(623, 319);
+            this.Browse_button.BackColor = System.Drawing.Color.Tomato;
+            this.Browse_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Browse_button.ForeColor = System.Drawing.Color.White;
+            this.Browse_button.Location = new System.Drawing.Point(623, 272);
             this.Browse_button.Name = "Browse_button";
             this.Browse_button.Size = new System.Drawing.Size(165, 33);
             this.Browse_button.TabIndex = 5;
             this.Browse_button.Text = "Browse";
-            this.Browse_button.UseVisualStyleBackColor = true;
+            this.Browse_button.UseVisualStyleBackColor = false;
             this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.Tomato;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(153, 311);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(132, 64);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Список судей";
+            this.button5.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Tomato;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(13, 311);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(132, 64);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Судейская шахматка";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Location = new System.Drawing.Point(13, 13);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Size = new System.Drawing.Size(284, 252);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Регистрация судей";
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.Tomato;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(19, 185);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(245, 53);
+            this.button6.TabIndex = 5;
+            this.button6.Text = "Зарегистрировать";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(61, 155);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(165, 22);
+            this.textBox4.TabIndex = 3;
+            this.textBox4.Text = "Класс судейства";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(61, 55);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(165, 22);
+            this.textBox3.TabIndex = 2;
+            this.textBox3.Text = "Фамилия";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(61, 87);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(165, 22);
+            this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "Отчество";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(61, 23);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(165, 22);
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Имя";
+            // 
             // secretaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 430);
+            this.ClientSize = new System.Drawing.Size(803, 385);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Browse_button);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.Delete_button);
             this.Controls.Add(this.OpenBase_button);
             this.Controls.Add(this.Path_textBox);
@@ -114,6 +232,8 @@
             this.Text = "secretaryForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.secretaryForm_FormClosing);
             this.Load += new System.EventHandler(this.secretaryForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +248,13 @@
         private System.Windows.Forms.Button Delete_button;
         private System.Windows.Forms.Button Browse_button;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

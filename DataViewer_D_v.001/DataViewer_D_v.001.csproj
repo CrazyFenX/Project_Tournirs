@@ -129,6 +129,12 @@
     <Compile Include="secretaryForm.Designer.cs">
       <DependentUpon>secretaryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="secretaryMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="secretaryMainForm.Designer.cs">
+      <DependentUpon>secretaryMainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sportsman.cs" />
     <Compile Include="startForm.cs">
       <SubType>Form</SubType>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="secretaryForm.resx">
       <DependentUpon>secretaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="secretaryMainForm.resx">
+      <DependentUpon>secretaryMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="startForm.resx">
       <DependentUpon>startForm.cs</DependentUpon>

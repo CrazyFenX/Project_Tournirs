@@ -78,22 +78,19 @@ namespace DataViewer_D_v._001
                 OleDbCommand com = new OleDbCommand();
 
                 //Создание Таблицы Категорий
-                ///com = new OleDbCommand("CREATE TABLE categories(Категория CHAR(5), CONSTRAINT categories_pk PRIMARY KEY (Категория), CONSTRAINT fk_categories FOREIGN KEY (Категория) REFERENCES groups(Категория), CONSTRAINT fk_categories FOREIGN KEY (Категория) REFERENCES participants(Категория))", cn);
                 com = new OleDbCommand("CREATE TABLE categories(Категория CHAR(5), CONSTRAINT categories_pk PRIMARY KEY (Категория))", cn);
                 com.ExecuteNonQuery();
 
                 //Создание Таблицы Судей
-                com = new OleDbCommand("CREATE TABLE judges(Номер COUNTER, ФИО CHAR(100), Категория CHAR(5), CONSTRAINT judges_pk PRIMARY KEY (Номер))", cn);
+                com = new OleDbCommand("CREATE TABLE judges(Номер COUNTER, ФИО CHAR(100), Категория CHAR(20), CONSTRAINT judges_pk PRIMARY KEY (Номер))", cn);
                 com.ExecuteNonQuery();
 
                 //Создание Таблицы Участников
                 com = new OleDbCommand("CREATE TABLE participants(Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), CONSTRAINT participants_pk PRIMARY KEY (Номер_Книжки), CONSTRAINT fk_participants FOREIGN KEY (Категория) REFERENCES categories(Категория))", cn);
-                /////com = new OleDbCommand("CREATE TABLE participants(Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), CONSTRAINT participants_pk PRIMARY KEY (Номер_Книжки), CONSTRAINT fk_participants FOREIGN KEY(Номер_Книжки) REFERENCES duets(Участник1))", cn);
                 com.ExecuteNonQuery();
 
                 //Создание Таблицы Пар
                 com = new OleDbCommand("CREATE TABLE duets(Номер COUNTER, Участник1 INT, Участник2 INT, CONSTRAINT duets_pk PRIMARY KEY (Номер), CONSTRAINT fk_duets FOREIGN KEY (Участник1) REFERENCES participants(Номер_Книжки), CONSTRAINT fk_duets2 FOREIGN KEY (Участник2) REFERENCES participants(Номер_Книжки))", cn);
-                ////com = new OleDbCommand("CREATE TABLE duets(Номер COUNTER, Участник1 INT, Участник2 INT, CONSTRAINT duets_pk PRIMARY KEY (Номер))", cn);
                 com.ExecuteNonQuery();
 
                 //Создание Таблицы Заходов
@@ -105,7 +102,7 @@ namespace DataViewer_D_v._001
                 com.ExecuteNonQuery();
 
                 //Создание Таблицы Турнира
-                com = new OleDbCommand("CREATE TABLE tournir(Название CHAR(50), Дата_Проведения CHAR(10),  Время_Проведения CHAR(10),  Место_Проведения CHAR(5), Организация CHAR(50), Группа INT, ФИО_Секретаря CHAR(100), ФИО_Регистратора CHAR(100), Судья INT, CONSTRAINT tournir_pk PRIMARY KEY (Название), CONSTRAINT fk_tournir FOREIGN KEY (Судья) REFERENCES judges(Номер), CONSTRAINT fk_tournir1 FOREIGN KEY (Группа) REFERENCES groups(Номер))", cn);
+                com = new OleDbCommand("CREATE TABLE tournir(Название CHAR(50), Дата_Проведения CHAR(20),  Время_Проведения CHAR(10),  Место_Проведения CHAR(50), Организация CHAR(50), Группа INT, ФИО_Секретаря CHAR(100), ФИО_Регистратора CHAR(100), Судья INT, CONSTRAINT tournir_pk PRIMARY KEY (Название), CONSTRAINT fk_tournir FOREIGN KEY (Судья) REFERENCES judges(Номер), CONSTRAINT fk_tournir1 FOREIGN KEY (Группа) REFERENCES groups(Номер))", cn);
                 com.ExecuteNonQuery();
 
                 //Заполнение Категорий
@@ -113,9 +110,9 @@ namespace DataViewer_D_v._001
                 string[] categories = {"Д-0", "Д-1", "Д-2", "Ю-1", "Ю-2", "М", "М-2", "Вз"};
                 foreach (string item in categories)
                 {
-                    MessageBox.Show(item);
+                    //MessageBox.Show(item);
                     com = new OleDbCommand("INSERT INTO categories(Категория)" + "VALUES (@category)", cn);
-                    com.Parameters.AddWithValue("category",item);
+                    com.Parameters.AddWithValue("category", item);
 
                     try
                     {
@@ -126,6 +123,37 @@ namespace DataViewer_D_v._001
                         MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+
+                TournirClass NewTournir = new TournirClass();
+
+                NewTournir.name = Name_textBox.Text;
+                NewTournir.date = new MyDate(DayOfTournir_comboBox.SelectedIndex, MounthOfTournir_comboBox.SelectedIndex, YearOfTournir_comboBox.SelectedIndex);
+                NewTournir.time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, MinutesOfTournir_comboBox.SelectedIndex * 5);
+                MessageBox.Show(NewTournir.time.ToString());
+                NewTournir.place = CityOfTournir_textBox.Text;
+                NewTournir.organisation = OrganisationOfTournir_textBox.Text;
+                NewTournir.registrator = "SNP_registrator";
+                NewTournir.secretary = "SNP_secretary";
+
+                com = new OleDbCommand("INSERT INTO tournir(Название, Дата_Проведения,  Время_Проведения,  Место_Проведения, Организация, ФИО_Секретаря, ФИО_Регистратора)" + "VALUES (@name,@date,@time,@plase,@organisation,@secretary,@registrator)", cn);
+                com.Parameters.AddWithValue("name", NewTournir.name);
+                com.Parameters.AddWithValue("date", NewTournir.date.ToString());
+                com.Parameters.AddWithValue("time", NewTournir.time.ToString());
+                com.Parameters.AddWithValue("place", NewTournir.place);
+                com.Parameters.AddWithValue("organisation", NewTournir.organisation);
+                com.Parameters.AddWithValue("secretary", NewTournir.secretary);
+                com.Parameters.AddWithValue("registrator", NewTournir.registrator);
+
+                try
+                {
+                        com.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
                 cn.Close();
             }
             catch(Exception ex) 

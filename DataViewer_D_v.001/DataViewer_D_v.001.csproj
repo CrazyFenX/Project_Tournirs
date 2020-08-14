@@ -94,6 +94,7 @@
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
     </Compile>
     <Compile Include="Duet.cs" />
+    <Compile Include="GroupClass.cs" />
     <Compile Include="Judge.cs" />
     <Compile Include="MyDate.cs" />
     <Compile Include="PeopleDataSet.Designer.cs">
@@ -136,6 +137,7 @@
     <Compile Include="secretaryMainForm.Designer.cs">
       <DependentUpon>secretaryMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SetClass.cs" />
     <Compile Include="Sportsman.cs" />
     <Compile Include="startForm.cs">
       <SubType>Form</SubType>
@@ -151,6 +153,8 @@
     <Compile Include="registrFormSolo.Designer.cs">
       <DependentUpon>registrFormSolo.cs</DependentUpon>
     </Compile>
+    <Compile Include="TimeClass.cs" />
+    <Compile Include="TournirClass.cs" />
     <Compile Include="Trainer.cs" />
     <EmbeddedResource Include="CreatingTournirDBForm.resx">
       <DependentUpon>CreatingTournirDBForm.cs</DependentUpon>

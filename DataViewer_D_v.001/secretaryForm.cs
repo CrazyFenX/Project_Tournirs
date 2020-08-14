@@ -187,6 +187,7 @@ namespace DataViewer_D_v._001
             judge.Surname = JudgeSurname_textBox.Text;
             judge.Name = JudgeName_textBox.Text;
             judge.Patronymic = JudgePatronymic_textBox.Text;
+            judge.JudgeClass = JudgeClass_textBox.Text;
 
             if (Path_textBox.Text != "")
                 SecretaryController.insertInJudges(judge, Path_textBox.Text);

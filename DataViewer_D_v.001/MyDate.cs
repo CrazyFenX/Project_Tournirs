@@ -15,7 +15,6 @@ namespace DataViewer_D_v._001
 
         public MyDate()
         {
-
         }
 
         public MyDate(int day, int mounth, int year)
@@ -53,8 +52,6 @@ namespace DataViewer_D_v._001
             while (DateStr[i] != 46 && i != DateStr.Length)
             {
                 this.Day = this.Day * 10 + (Convert.ToInt32(DateStr[i]) - 48);
-
-                //MessageBox.Show(DateStr + $"\n{i}\n{this.Day}");
                 i++;
             }
 
@@ -63,8 +60,6 @@ namespace DataViewer_D_v._001
             while (DateStr[i] != 46 && i != DateStr.Length)
             {
                 this.Mounth = this.Mounth * 10 + (Convert.ToInt32(DateStr[i]) - 48);
-
-                //MessageBox.Show(DateStr + $"\n{i}\n{this.Mounth}");
                 i++;
             }
 
@@ -73,7 +68,6 @@ namespace DataViewer_D_v._001
             while (i != DateStr.Length)
             {
                 this.Year = this.Year * 10 + (Convert.ToInt32(DateStr[i]) - 48);
-                //MessageBox.Show(DateStr + $"\n{i}\n{this.Year}");
                 i++;
             }
             MessageBox.Show(this.ToString());

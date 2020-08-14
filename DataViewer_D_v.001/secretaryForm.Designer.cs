@@ -189,7 +189,7 @@
             // 
             // JudgeSurname_textBox
             // 
-            this.JudgeSurname_textBox.Location = new System.Drawing.Point(61, 70);
+            this.JudgeSurname_textBox.Location = new System.Drawing.Point(61, 42);
             this.JudgeSurname_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeSurname_textBox.Name = "JudgeSurname_textBox";
             this.JudgeSurname_textBox.Size = new System.Drawing.Size(165, 22);
@@ -207,7 +207,7 @@
             // 
             // JudgeName_textBox
             // 
-            this.JudgeName_textBox.Location = new System.Drawing.Point(61, 38);
+            this.JudgeName_textBox.Location = new System.Drawing.Point(61, 72);
             this.JudgeName_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeName_textBox.Name = "JudgeName_textBox";
             this.JudgeName_textBox.Size = new System.Drawing.Size(165, 22);

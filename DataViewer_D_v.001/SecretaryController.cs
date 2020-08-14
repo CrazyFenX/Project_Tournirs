@@ -24,9 +24,10 @@ namespace DataViewer_D_v._001
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO judges(ФИО)" + "VALUES (@SNP)";
+                command.CommandText = "INSERT INTO judges(ФИО, Категория)" + "VALUES (@SNP, @Category)";
 
                 command.Parameters.AddWithValue("SNP", judje.Surname + judje.Name + judje.Patronymic);
+                command.Parameters.AddWithValue("Category", judje.JudgeClass);
 
                 command.ExecuteNonQuery();
             }

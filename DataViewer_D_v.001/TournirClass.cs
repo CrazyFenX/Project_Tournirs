@@ -13,9 +13,9 @@ namespace DataViewer_D_v._001
         public TimeClass time;
         public string place;
         public string organisation;
-        public List<int> groups = new List<int>();
+        public List<int> groups = new List<int>();//Продумать
         public string registrator;
         public string secretary;
-        public List<int> judges = new List<int>();
+        public List<int> judges = new List<int>();//Продумать
     }
 }

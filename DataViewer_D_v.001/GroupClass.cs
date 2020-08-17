@@ -7,7 +7,8 @@ namespace DataViewer_D_v._001
 {
     class GroupClass
     {
-        List<SetClass> SetList = new List<SetClass>();
-        List<string> CategoryList = new List<string>();
+        public int number;
+        public List<SetClass> SetList = new List<SetClass>();
+        public List<string> CategoryList = new List<string>();
     }
 }

@@ -75,6 +75,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Controller.cs" />
+    <Compile Include="CreatingGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatingGroup.Designer.cs">
+      <DependentUpon>CreatingGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreatingTournirDBForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     <Compile Include="TimeClass.cs" />
     <Compile Include="TournirClass.cs" />
     <Compile Include="Trainer.cs" />
+    <EmbeddedResource Include="CreatingGroup.resx">
+      <DependentUpon>CreatingGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreatingTournirDBForm.resx">
       <DependentUpon>CreatingTournirDBForm.cs</DependentUpon>
     </EmbeddedResource>

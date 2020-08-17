@@ -43,7 +43,25 @@
             this.JudgeSurname_textBox = new System.Windows.Forms.TextBox();
             this.JudgePatronymic_textBox = new System.Windows.Forms.TextBox();
             this.JudgeName_textBox = new System.Windows.Forms.TextBox();
+            this.CreateGroup_button = new System.Windows.Forms.Button();
+            this.CreateSet_button = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.BackSecond_button = new System.Windows.Forms.Button();
+            this.CreateGroupSecond_button = new System.Windows.Forms.Button();
+            this.Categoriess_groupBox = new System.Windows.Forms.GroupBox();
+            this.D0_checkBox = new System.Windows.Forms.CheckBox();
+            this.U1_checkBox = new System.Windows.Forms.CheckBox();
+            this.M_checkBox = new System.Windows.Forms.CheckBox();
+            this.U2_checkBox = new System.Windows.Forms.CheckBox();
+            this.D2_checkBox = new System.Windows.Forms.CheckBox();
+            this.Vz_checkBox = new System.Windows.Forms.CheckBox();
+            this.D1_checkBox = new System.Windows.Forms.CheckBox();
+            this.M2_checkBox = new System.Windows.Forms.CheckBox();
+            this.NumberOfGroup_textBox = new System.Windows.Forms.TextBox();
+            this.label_NumberOfGroup = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.Categoriess_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // CreateNewTournirButton
@@ -51,9 +69,9 @@
             this.CreateNewTournirButton.BackColor = System.Drawing.Color.Tomato;
             this.CreateNewTournirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateNewTournirButton.ForeColor = System.Drawing.Color.White;
-            this.CreateNewTournirButton.Location = new System.Drawing.Point(592, 17);
+            this.CreateNewTournirButton.Location = new System.Drawing.Point(591, 34);
             this.CreateNewTournirButton.Name = "CreateNewTournirButton";
-            this.CreateNewTournirButton.Size = new System.Drawing.Size(196, 60);
+            this.CreateNewTournirButton.Size = new System.Drawing.Size(200, 60);
             this.CreateNewTournirButton.TabIndex = 0;
             this.CreateNewTournirButton.Text = "Создать Турнир";
             this.CreateNewTournirButton.UseVisualStyleBackColor = false;
@@ -64,9 +82,9 @@
             this.backbutton.BackColor = System.Drawing.Color.Tomato;
             this.backbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backbutton.ForeColor = System.Drawing.Color.White;
-            this.backbutton.Location = new System.Drawing.Point(592, 311);
+            this.backbutton.Location = new System.Drawing.Point(588, 311);
             this.backbutton.Name = "backbutton";
-            this.backbutton.Size = new System.Drawing.Size(196, 64);
+            this.backbutton.Size = new System.Drawing.Size(200, 64);
             this.backbutton.TabIndex = 1;
             this.backbutton.Text = "Назад";
             this.backbutton.UseVisualStyleBackColor = false;
@@ -76,7 +94,7 @@
             // 
             this.Path_textBox.Location = new System.Drawing.Point(13, 277);
             this.Path_textBox.Name = "Path_textBox";
-            this.Path_textBox.Size = new System.Drawing.Size(573, 22);
+            this.Path_textBox.Size = new System.Drawing.Size(569, 22);
             this.Path_textBox.TabIndex = 2;
             // 
             // OpenBase_button
@@ -84,9 +102,9 @@
             this.OpenBase_button.BackColor = System.Drawing.Color.Tomato;
             this.OpenBase_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OpenBase_button.ForeColor = System.Drawing.Color.White;
-            this.OpenBase_button.Location = new System.Drawing.Point(592, 83);
+            this.OpenBase_button.Location = new System.Drawing.Point(591, 100);
             this.OpenBase_button.Name = "OpenBase_button";
-            this.OpenBase_button.Size = new System.Drawing.Size(196, 60);
+            this.OpenBase_button.Size = new System.Drawing.Size(200, 60);
             this.OpenBase_button.TabIndex = 3;
             this.OpenBase_button.Text = "Открыть базу";
             this.OpenBase_button.UseVisualStyleBackColor = false;
@@ -97,9 +115,9 @@
             this.Delete_button.BackColor = System.Drawing.Color.Tomato;
             this.Delete_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Delete_button.ForeColor = System.Drawing.Color.White;
-            this.Delete_button.Location = new System.Drawing.Point(592, 149);
+            this.Delete_button.Location = new System.Drawing.Point(591, 166);
             this.Delete_button.Name = "Delete_button";
-            this.Delete_button.Size = new System.Drawing.Size(196, 60);
+            this.Delete_button.Size = new System.Drawing.Size(200, 60);
             this.Delete_button.TabIndex = 4;
             this.Delete_button.Text = "Удалить Турнир";
             this.Delete_button.UseVisualStyleBackColor = false;
@@ -110,9 +128,9 @@
             this.Browse_button.BackColor = System.Drawing.Color.Tomato;
             this.Browse_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Browse_button.ForeColor = System.Drawing.Color.White;
-            this.Browse_button.Location = new System.Drawing.Point(592, 272);
+            this.Browse_button.Location = new System.Drawing.Point(588, 272);
             this.Browse_button.Name = "Browse_button";
-            this.Browse_button.Size = new System.Drawing.Size(196, 33);
+            this.Browse_button.Size = new System.Drawing.Size(200, 33);
             this.Browse_button.TabIndex = 5;
             this.Browse_button.Text = "Browse";
             this.Browse_button.UseVisualStyleBackColor = false;
@@ -159,7 +177,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(284, 252);
+            this.groupBox1.Size = new System.Drawing.Size(244, 252);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Регистрация судей";
@@ -172,7 +190,7 @@
             this.Registr_button.Location = new System.Drawing.Point(19, 191);
             this.Registr_button.Margin = new System.Windows.Forms.Padding(4);
             this.Registr_button.Name = "Registr_button";
-            this.Registr_button.Size = new System.Drawing.Size(245, 53);
+            this.Registr_button.Size = new System.Drawing.Size(207, 53);
             this.Registr_button.TabIndex = 5;
             this.Registr_button.Text = "Зарегистрировать";
             this.Registr_button.UseVisualStyleBackColor = false;
@@ -180,7 +198,7 @@
             // 
             // JudgeClass_textBox
             // 
-            this.JudgeClass_textBox.Location = new System.Drawing.Point(61, 146);
+            this.JudgeClass_textBox.Location = new System.Drawing.Point(39, 146);
             this.JudgeClass_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeClass_textBox.Name = "JudgeClass_textBox";
             this.JudgeClass_textBox.Size = new System.Drawing.Size(165, 22);
@@ -189,7 +207,7 @@
             // 
             // JudgeSurname_textBox
             // 
-            this.JudgeSurname_textBox.Location = new System.Drawing.Point(61, 42);
+            this.JudgeSurname_textBox.Location = new System.Drawing.Point(39, 42);
             this.JudgeSurname_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeSurname_textBox.Name = "JudgeSurname_textBox";
             this.JudgeSurname_textBox.Size = new System.Drawing.Size(165, 22);
@@ -198,7 +216,7 @@
             // 
             // JudgePatronymic_textBox
             // 
-            this.JudgePatronymic_textBox.Location = new System.Drawing.Point(61, 102);
+            this.JudgePatronymic_textBox.Location = new System.Drawing.Point(39, 102);
             this.JudgePatronymic_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgePatronymic_textBox.Name = "JudgePatronymic_textBox";
             this.JudgePatronymic_textBox.Size = new System.Drawing.Size(165, 22);
@@ -207,12 +225,192 @@
             // 
             // JudgeName_textBox
             // 
-            this.JudgeName_textBox.Location = new System.Drawing.Point(61, 72);
+            this.JudgeName_textBox.Location = new System.Drawing.Point(39, 72);
             this.JudgeName_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeName_textBox.Name = "JudgeName_textBox";
             this.JudgeName_textBox.Size = new System.Drawing.Size(165, 22);
             this.JudgeName_textBox.TabIndex = 0;
             this.JudgeName_textBox.Text = "Имя";
+            // 
+            // CreateGroup_button
+            // 
+            this.CreateGroup_button.BackColor = System.Drawing.Color.Tomato;
+            this.CreateGroup_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateGroup_button.ForeColor = System.Drawing.Color.White;
+            this.CreateGroup_button.Location = new System.Drawing.Point(23, 34);
+            this.CreateGroup_button.Name = "CreateGroup_button";
+            this.CreateGroup_button.Size = new System.Drawing.Size(123, 60);
+            this.CreateGroup_button.TabIndex = 8;
+            this.CreateGroup_button.Text = "Новая группа";
+            this.CreateGroup_button.UseVisualStyleBackColor = false;
+            this.CreateGroup_button.Click += new System.EventHandler(this.CreateGroup_button_Click);
+            // 
+            // CreateSet_button
+            // 
+            this.CreateSet_button.BackColor = System.Drawing.Color.Tomato;
+            this.CreateSet_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateSet_button.ForeColor = System.Drawing.Color.White;
+            this.CreateSet_button.Location = new System.Drawing.Point(163, 34);
+            this.CreateSet_button.Name = "CreateSet_button";
+            this.CreateSet_button.Size = new System.Drawing.Size(123, 60);
+            this.CreateSet_button.TabIndex = 9;
+            this.CreateSet_button.Text = "Новый Заход";
+            this.CreateSet_button.UseVisualStyleBackColor = false;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.BackSecond_button);
+            this.groupBox2.Controls.Add(this.CreateGroupSecond_button);
+            this.groupBox2.Controls.Add(this.Categoriess_groupBox);
+            this.groupBox2.Controls.Add(this.NumberOfGroup_textBox);
+            this.groupBox2.Controls.Add(this.label_NumberOfGroup);
+            this.groupBox2.Controls.Add(this.CreateSet_button);
+            this.groupBox2.Controls.Add(this.CreateGroup_button);
+            this.groupBox2.Location = new System.Drawing.Point(273, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(311, 252);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Формирование";
+            // 
+            // BackSecond_button
+            // 
+            this.BackSecond_button.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.BackSecond_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BackSecond_button.Location = new System.Drawing.Point(194, 199);
+            this.BackSecond_button.Name = "BackSecond_button";
+            this.BackSecond_button.Size = new System.Drawing.Size(104, 35);
+            this.BackSecond_button.TabIndex = 20;
+            this.BackSecond_button.Text = "Back";
+            this.BackSecond_button.UseVisualStyleBackColor = false;
+            this.BackSecond_button.Click += new System.EventHandler(this.BackSecond_button_Click);
+            // 
+            // CreateGroupSecond_button
+            // 
+            this.CreateGroupSecond_button.BackColor = System.Drawing.SystemColors.Highlight;
+            this.CreateGroupSecond_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateGroupSecond_button.Location = new System.Drawing.Point(194, 62);
+            this.CreateGroupSecond_button.Name = "CreateGroupSecond_button";
+            this.CreateGroupSecond_button.Size = new System.Drawing.Size(104, 131);
+            this.CreateGroupSecond_button.TabIndex = 19;
+            this.CreateGroupSecond_button.Text = "Create!";
+            this.CreateGroupSecond_button.UseVisualStyleBackColor = false;
+            this.CreateGroupSecond_button.Click += new System.EventHandler(this.CreateGroupSecond_button_Click);
+            // 
+            // Categoriess_groupBox
+            // 
+            this.Categoriess_groupBox.Controls.Add(this.D0_checkBox);
+            this.Categoriess_groupBox.Controls.Add(this.U1_checkBox);
+            this.Categoriess_groupBox.Controls.Add(this.M_checkBox);
+            this.Categoriess_groupBox.Controls.Add(this.U2_checkBox);
+            this.Categoriess_groupBox.Controls.Add(this.D2_checkBox);
+            this.Categoriess_groupBox.Controls.Add(this.Vz_checkBox);
+            this.Categoriess_groupBox.Controls.Add(this.D1_checkBox);
+            this.Categoriess_groupBox.Controls.Add(this.M2_checkBox);
+            this.Categoriess_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Categoriess_groupBox.Location = new System.Drawing.Point(9, 62);
+            this.Categoriess_groupBox.Name = "Categoriess_groupBox";
+            this.Categoriess_groupBox.Size = new System.Drawing.Size(179, 174);
+            this.Categoriess_groupBox.TabIndex = 18;
+            this.Categoriess_groupBox.TabStop = false;
+            this.Categoriess_groupBox.Text = "Категории";
+            // 
+            // D0_checkBox
+            // 
+            this.D0_checkBox.AutoSize = true;
+            this.D0_checkBox.Location = new System.Drawing.Point(23, 38);
+            this.D0_checkBox.Name = "D0_checkBox";
+            this.D0_checkBox.Size = new System.Drawing.Size(55, 22);
+            this.D0_checkBox.TabIndex = 3;
+            this.D0_checkBox.Text = "Д-0";
+            this.D0_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // U1_checkBox
+            // 
+            this.U1_checkBox.AutoSize = true;
+            this.U1_checkBox.Location = new System.Drawing.Point(104, 66);
+            this.U1_checkBox.Name = "U1_checkBox";
+            this.U1_checkBox.Size = new System.Drawing.Size(58, 22);
+            this.U1_checkBox.TabIndex = 12;
+            this.U1_checkBox.Text = "Ю-1";
+            this.U1_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // M_checkBox
+            // 
+            this.M_checkBox.AutoSize = true;
+            this.M_checkBox.Location = new System.Drawing.Point(23, 124);
+            this.M_checkBox.Name = "M_checkBox";
+            this.M_checkBox.Size = new System.Drawing.Size(43, 22);
+            this.M_checkBox.TabIndex = 6;
+            this.M_checkBox.Text = "М";
+            this.M_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // U2_checkBox
+            // 
+            this.U2_checkBox.AutoSize = true;
+            this.U2_checkBox.Location = new System.Drawing.Point(104, 96);
+            this.U2_checkBox.Name = "U2_checkBox";
+            this.U2_checkBox.Size = new System.Drawing.Size(58, 22);
+            this.U2_checkBox.TabIndex = 11;
+            this.U2_checkBox.Text = "Ю-2";
+            this.U2_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // D2_checkBox
+            // 
+            this.D2_checkBox.AutoSize = true;
+            this.D2_checkBox.Location = new System.Drawing.Point(23, 96);
+            this.D2_checkBox.Name = "D2_checkBox";
+            this.D2_checkBox.Size = new System.Drawing.Size(55, 22);
+            this.D2_checkBox.TabIndex = 7;
+            this.D2_checkBox.Text = "Д-2";
+            this.D2_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // Vz_checkBox
+            // 
+            this.Vz_checkBox.AutoSize = true;
+            this.Vz_checkBox.Location = new System.Drawing.Point(104, 124);
+            this.Vz_checkBox.Name = "Vz_checkBox";
+            this.Vz_checkBox.Size = new System.Drawing.Size(48, 22);
+            this.Vz_checkBox.TabIndex = 10;
+            this.Vz_checkBox.Text = "Вз";
+            this.Vz_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // D1_checkBox
+            // 
+            this.D1_checkBox.AutoSize = true;
+            this.D1_checkBox.Location = new System.Drawing.Point(23, 66);
+            this.D1_checkBox.Name = "D1_checkBox";
+            this.D1_checkBox.Size = new System.Drawing.Size(55, 22);
+            this.D1_checkBox.TabIndex = 8;
+            this.D1_checkBox.Text = "Д-1";
+            this.D1_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // M2_checkBox
+            // 
+            this.M2_checkBox.AutoSize = true;
+            this.M2_checkBox.Location = new System.Drawing.Point(104, 38);
+            this.M2_checkBox.Name = "M2_checkBox";
+            this.M2_checkBox.Size = new System.Drawing.Size(56, 22);
+            this.M2_checkBox.TabIndex = 9;
+            this.M2_checkBox.Text = "М-2";
+            this.M2_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // NumberOfGroup_textBox
+            // 
+            this.NumberOfGroup_textBox.Location = new System.Drawing.Point(133, 34);
+            this.NumberOfGroup_textBox.Name = "NumberOfGroup_textBox";
+            this.NumberOfGroup_textBox.Size = new System.Drawing.Size(165, 22);
+            this.NumberOfGroup_textBox.TabIndex = 17;
+            // 
+            // label_NumberOfGroup
+            // 
+            this.label_NumberOfGroup.AutoSize = true;
+            this.label_NumberOfGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_NumberOfGroup.Location = new System.Drawing.Point(6, 34);
+            this.label_NumberOfGroup.Name = "label_NumberOfGroup";
+            this.label_NumberOfGroup.Size = new System.Drawing.Size(107, 18);
+            this.label_NumberOfGroup.TabIndex = 16;
+            this.label_NumberOfGroup.Text = "Номер группы";
             // 
             // secretaryForm
             // 
@@ -220,6 +418,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(803, 385);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Browse_button);
@@ -236,6 +435,10 @@
             this.Load += new System.EventHandler(this.secretaryForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.Categoriess_groupBox.ResumeLayout(false);
+            this.Categoriess_groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,5 +461,21 @@
         private System.Windows.Forms.TextBox JudgeSurname_textBox;
         private System.Windows.Forms.TextBox JudgePatronymic_textBox;
         private System.Windows.Forms.TextBox JudgeName_textBox;
+        private System.Windows.Forms.Button CreateGroup_button;
+        private System.Windows.Forms.Button CreateSet_button;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button BackSecond_button;
+        private System.Windows.Forms.Button CreateGroupSecond_button;
+        private System.Windows.Forms.GroupBox Categoriess_groupBox;
+        private System.Windows.Forms.CheckBox D0_checkBox;
+        private System.Windows.Forms.CheckBox U1_checkBox;
+        private System.Windows.Forms.CheckBox M_checkBox;
+        private System.Windows.Forms.CheckBox U2_checkBox;
+        private System.Windows.Forms.CheckBox D2_checkBox;
+        private System.Windows.Forms.CheckBox Vz_checkBox;
+        private System.Windows.Forms.CheckBox D1_checkBox;
+        private System.Windows.Forms.CheckBox M2_checkBox;
+        private System.Windows.Forms.TextBox NumberOfGroup_textBox;
+        private System.Windows.Forms.Label label_NumberOfGroup;
     }
 }

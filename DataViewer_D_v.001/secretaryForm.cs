@@ -19,17 +19,34 @@ namespace DataViewer_D_v._001
 
         secretaryMainForm secretaryMainForm;
 
+
         public string folderName;
 
         public secretaryForm(secretaryMainForm secretaryMainForm)
         {
             InitializeComponent();
             this.secretaryMainForm = secretaryMainForm;
+            CreateGroup_button.Visible = true;
+            CreateSet_button.Visible = true;
+
+            CreateGroupSecond_button.Visible = false;
+            Categoriess_groupBox.Visible = false;
+            label_NumberOfGroup.Visible = false;
+            NumberOfGroup_textBox.Visible = false;
+            BackSecond_button.Visible = false;
         }
 
         public secretaryForm()
         {
             InitializeComponent();
+            CreateGroup_button.Visible = true;
+            CreateSet_button.Visible = true;
+
+            CreateGroupSecond_button.Visible = false;
+            Categoriess_groupBox.Visible = false;
+            label_NumberOfGroup.Visible = false;
+            NumberOfGroup_textBox.Visible = false;
+            BackSecond_button.Visible = false;
         }
         private void CreateNewTournirButton_Click(object sender, EventArgs e)
         {
@@ -193,6 +210,101 @@ namespace DataViewer_D_v._001
                 SecretaryController.insertInJudges(judge, Path_textBox.Text);
             else
                 MessageBox.Show("Необходимо выбрать базу Турнира!");
+        }
+
+        private void CreateGroup_button_Click(object sender, EventArgs e)
+        {
+            //CreatingGroup creatingGroup = new CreatingGroup(this);
+            //this.Enabled = false;
+            CreateGroup_button.Visible = false;
+            CreateSet_button.Visible = false;
+
+            CreateGroupSecond_button.Visible = true;
+            Categoriess_groupBox.Visible = true;
+            label_NumberOfGroup.Visible = true;
+            NumberOfGroup_textBox.Visible = true;
+            BackSecond_button.Visible = true;
+        }
+
+        private void BackSecond_button_Click(object sender, EventArgs e)
+        {
+            CreateGroup_button.Visible = true;
+            CreateSet_button.Visible = true;
+
+            CreateGroupSecond_button.Visible = false;
+            Categoriess_groupBox.Visible = false;
+            label_NumberOfGroup.Visible = false;
+            NumberOfGroup_textBox.Visible = false;
+            BackSecond_button.Visible = false;
+        }
+
+        private void CreateGroupSecond_button_Click(object sender, EventArgs e)
+        {
+            if (Path_textBox.Text != "")
+            {
+                try
+                {
+                    OleDbConnection cn = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}.mdb");
+                    cn.Open();
+                    OleDbCommand com = new OleDbCommand();
+
+
+                    string[] categories = { "Д-0", "Д-1", "Д-2", "Ю-1", "Ю-2", "М", "М-2", "Вз" };
+                    foreach (string item in categories)
+                    {
+                        //MessageBox.Show(item);
+                        com = new OleDbCommand("INSERT INTO categories(Категория)" + "VALUES (@category)", cn);
+                        com.Parameters.AddWithValue("category", item);
+
+                        try
+                        {
+                            com.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+
+                    TournirClass NewTournir = new TournirClass();
+
+                    //NewTournir.name = Name_textBox.Text;
+                    //NewTournir.date = new MyDate(DayOfTournir_comboBox.SelectedIndex, MounthOfTournir_comboBox.SelectedIndex, YearOfTournir_comboBox.SelectedIndex);
+                    // NewTournir.time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, MinutesOfTournir_comboBox.SelectedIndex * 5);
+                    // MessageBox.Show(NewTournir.time.ToString());
+                    // NewTournir.place = CityOfTournir_textBox.Text;
+                    // NewTournir.organisation = OrganisationOfTournir_textBox.Text;
+                    // NewTournir.registrator = "SNP_registrator";
+                    // NewTournir.secretary = "SNP_secretary";
+
+                    com = new OleDbCommand("INSERT INTO tournir(Название, Дата_Проведения,  Время_Проведения,  Место_Проведения, Организация, ФИО_Секретаря, ФИО_Регистратора)" + "VALUES (@name,@date,@time,@plase,@organisation,@secretary,@registrator)", cn);
+                    com.Parameters.AddWithValue("name", NewTournir.name);
+                    com.Parameters.AddWithValue("date", NewTournir.date.ToString());
+                    com.Parameters.AddWithValue("time", NewTournir.time.ToString());
+                    com.Parameters.AddWithValue("place", NewTournir.place);
+                    com.Parameters.AddWithValue("organisation", NewTournir.organisation);
+                    com.Parameters.AddWithValue("secretary", NewTournir.secretary);
+                    com.Parameters.AddWithValue("registrator", NewTournir.registrator);
+
+                    try
+                    {
+                        com.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+
+                    cn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+                MessageBox.Show("Необходимо выбрать базу турнира!");
         }
     }
 }

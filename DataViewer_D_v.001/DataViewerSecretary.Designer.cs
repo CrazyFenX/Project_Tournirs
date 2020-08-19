@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataViewerSecretary));
-            this.dataGridView_Tournir = new System.Windows.Forms.DataGridView();
+            this.mainDataGridView = new System.Windows.Forms.DataGridView();
             this.showJudge_button = new System.Windows.Forms.Button();
             this.showTournir_button = new System.Windows.Forms.Button();
             this.Update_button = new System.Windows.Forms.Button();
@@ -50,25 +50,24 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.Path_textBox = new System.Windows.Forms.TextBox();
             this.Browse_button = new System.Windows.Forms.Button();
-            this.dataGridView_Judge = new System.Windows.Forms.DataGridView();
-            this.dataGridView_Participant = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tournir)).BeginInit();
+            this.showGroup_button = new System.Windows.Forms.Button();
+            this.showCategories_button = new System.Windows.Forms.Button();
+            this.showSets_button = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataView_bindingNavigator)).BeginInit();
             this.DataView_bindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Judge)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Participant)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView_Tournir
+            // mainDataGridView
             // 
-            this.dataGridView_Tournir.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Tournir.Location = new System.Drawing.Point(13, 43);
-            this.dataGridView_Tournir.Name = "dataGridView_Tournir";
-            this.dataGridView_Tournir.RowHeadersWidth = 51;
-            this.dataGridView_Tournir.RowTemplate.Height = 24;
-            this.dataGridView_Tournir.Size = new System.Drawing.Size(789, 203);
-            this.dataGridView_Tournir.TabIndex = 5;
+            this.mainDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.mainDataGridView.Location = new System.Drawing.Point(13, 30);
+            this.mainDataGridView.Name = "mainDataGridView";
+            this.mainDataGridView.RowHeadersWidth = 51;
+            this.mainDataGridView.RowTemplate.Height = 24;
+            this.mainDataGridView.Size = new System.Drawing.Size(789, 216);
+            this.mainDataGridView.TabIndex = 5;
             // 
             // showJudge_button
             // 
@@ -247,38 +246,52 @@
             this.Browse_button.UseVisualStyleBackColor = true;
             this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
             // 
-            // dataGridView_Judge
-            // 
-            this.dataGridView_Judge.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Judge.Location = new System.Drawing.Point(13, 43);
-            this.dataGridView_Judge.Name = "dataGridView_Judge";
-            this.dataGridView_Judge.RowHeadersWidth = 51;
-            this.dataGridView_Judge.RowTemplate.Height = 24;
-            this.dataGridView_Judge.Size = new System.Drawing.Size(791, 203);
-            this.dataGridView_Judge.TabIndex = 13;
-            // 
-            // dataGridView_Participant
-            // 
-            this.dataGridView_Participant.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_Participant.Location = new System.Drawing.Point(14, 43);
-            this.dataGridView_Participant.Name = "dataGridView_Participant";
-            this.dataGridView_Participant.RowHeadersWidth = 51;
-            this.dataGridView_Participant.RowTemplate.Height = 24;
-            this.dataGridView_Participant.Size = new System.Drawing.Size(790, 203);
-            this.dataGridView_Participant.TabIndex = 14;
-            // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // showGroup_button
+            // 
+            this.showGroup_button.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.showGroup_button.Location = new System.Drawing.Point(291, 252);
+            this.showGroup_button.Name = "showGroup_button";
+            this.showGroup_button.Size = new System.Drawing.Size(95, 26);
+            this.showGroup_button.TabIndex = 15;
+            this.showGroup_button.Text = "Groups";
+            this.showGroup_button.UseVisualStyleBackColor = false;
+            this.showGroup_button.Click += new System.EventHandler(this.showGroup_button_Click);
+            // 
+            // showCategories_button
+            // 
+            this.showCategories_button.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.showCategories_button.Location = new System.Drawing.Point(383, 252);
+            this.showCategories_button.Name = "showCategories_button";
+            this.showCategories_button.Size = new System.Drawing.Size(95, 26);
+            this.showCategories_button.TabIndex = 16;
+            this.showCategories_button.Text = "Categories";
+            this.showCategories_button.UseVisualStyleBackColor = false;
+            this.showCategories_button.Click += new System.EventHandler(this.showCategories_button_Click);
+            // 
+            // showSets_button
+            // 
+            this.showSets_button.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.showSets_button.Location = new System.Drawing.Point(475, 252);
+            this.showSets_button.Name = "showSets_button";
+            this.showSets_button.Size = new System.Drawing.Size(95, 26);
+            this.showSets_button.TabIndex = 17;
+            this.showSets_button.Text = "Sets";
+            this.showSets_button.UseVisualStyleBackColor = false;
+            this.showSets_button.Click += new System.EventHandler(this.showSets_button_Click);
             // 
             // DataViewerSecretary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 358);
-            this.Controls.Add(this.dataGridView_Tournir);
-            this.Controls.Add(this.dataGridView_Participant);
-            this.Controls.Add(this.dataGridView_Judge);
+            this.Controls.Add(this.showSets_button);
+            this.Controls.Add(this.showCategories_button);
+            this.Controls.Add(this.showGroup_button);
+            this.Controls.Add(this.mainDataGridView);
             this.Controls.Add(this.Browse_button);
             this.Controls.Add(this.Path_textBox);
             this.Controls.Add(this.showParticipant_button);
@@ -291,12 +304,10 @@
             this.Text = "DataViewerSecretary";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DataViewerSecretary_FormClosing);
             this.Load += new System.EventHandler(this.DataViewerSecretary_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Tournir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mainDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataView_bindingNavigator)).EndInit();
             this.DataView_bindingNavigator.ResumeLayout(false);
             this.DataView_bindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Judge)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Participant)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,7 +315,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView_Tournir;
+        private System.Windows.Forms.DataGridView mainDataGridView;
         private System.Windows.Forms.Button showJudge_button;
         private System.Windows.Forms.Button showTournir_button;
         private System.Windows.Forms.Button Update_button;
@@ -324,8 +335,9 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.TextBox Path_textBox;
         private System.Windows.Forms.Button Browse_button;
-        private System.Windows.Forms.DataGridView dataGridView_Judge;
-        private System.Windows.Forms.DataGridView dataGridView_Participant;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button showGroup_button;
+        private System.Windows.Forms.Button showCategories_button;
+        private System.Windows.Forms.Button showSets_button;
     }
 }

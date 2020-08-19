@@ -13,6 +13,13 @@ namespace DataViewer_D_v._001
     public partial class DataViewerSecretary : Form
     {
         public string folderName;
+
+        public OleDbDataAdapter dbAdapter;
+
+        public DataTable dataTable;
+
+        public OleDbConnection aConn1;
+
         private secretaryForm secretaryForm = new secretaryForm();
 
         public DataViewerSecretary()
@@ -40,9 +47,21 @@ namespace DataViewer_D_v._001
             this.Path_textBox.Text = path;
             this.secretaryForm.Enabled = false;
         }
+
         private void Path_textBox_TextChanged(object sender, EventArgs e)
         {
             this.secretaryForm.Path_textBox.Text = Path_textBox.Text;
+            try
+            {
+                aConn1 = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0; Data Source ={Path_textBox.Text}");
+                aConn1.Open();
+                aConn1.Close();
+                MessageBox.Show("База успешно открыта!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс...Кажется, при открытии базы произошла ошибка\n" + ex.Message);
+            }
         }
 
         private void Browse_button_Click(object sender, EventArgs e)
@@ -52,8 +71,8 @@ namespace DataViewer_D_v._001
             if (result == DialogResult.OK)
             {
                 folderName = openFileDialog1.FileName;
+                Path_textBox.Text = openFileDialog1.FileName;
             }
-            Path_textBox.Text = openFileDialog1.FileName;
         }
 
         private void DataViewerSecretary_FormClosing(object sender, FormClosingEventArgs e)
@@ -72,33 +91,29 @@ namespace DataViewer_D_v._001
             {
                 try
                 {
-                    OleDbConnection aConn1 = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0; Data Source ={Path_textBox.Text}");
-                    MessageBox.Show(Path_textBox.Text);
-                    aConn1.Open();
-                    OleDbDataAdapter dbAdapter1 = new OleDbDataAdapter("SELECT * FROM [tournir]", aConn1);
-                    DataTable dataTable1 = new DataTable();
-                    dbAdapter1.Fill(dataTable1);
-                    dataGridView_Tournir.DataSource = dataTable1;
-                    //aConn1.Close();
+                    //dbAdapter = new OleDbDataAdapter("SELECT * FROM [tournir]", aConn1);
+                    //dataTable = new DataTable();
+                    //dbAdapter.Fill(dataTable);
+                    //mainDataGridView.DataSource = dataTable;
 
-                    //OleDbConnection aConn2 = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0; Data Source ={Path_textBox.Text}");
-                    //MessageBox.Show(Path_textBox.Text);
-                    //aConn2.Open();
+                    /*
                     OleDbDataAdapter dbAdapter2 = new OleDbDataAdapter("SELECT * FROM [judges]", aConn1);
                     DataTable dataTable2 = new DataTable();
                     dbAdapter2.Fill(dataTable2);
                     dataGridView_Judge.DataSource = dataTable2;
-                    //aConn2.Close();
 
-                    //OleDbConnection aConn3 = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0; Data Source ={Path_textBox.Text}");
-                    //MessageBox.Show(Path_textBox.Text);
-                    //aConn3.Open();
                     OleDbDataAdapter dbAdapter3 = new OleDbDataAdapter("SELECT * FROM [participants]", aConn1);
                     DataTable dataTable3 = new DataTable();
                     dbAdapter3.Fill(dataTable3);
                     dataGridView_Participant.DataSource = dataTable3;
-                   
-                    aConn1.Close();
+
+                    OleDbDataAdapter dbAdapter4 = new OleDbDataAdapter("SELECT * FROM [participants]", aConn1);
+                    DataTable dataTable4 = new DataTable();
+                    dbAdapter3.Fill(dataTable3);
+                    dataGridView_Participant.DataSource = dataTable3;
+                    */
+
+                    //aConn1.Close();
                 }
                 catch (Exception ex)
                 {
@@ -111,37 +126,104 @@ namespace DataViewer_D_v._001
 
         private void showTournir_button_Click(object sender, EventArgs e)
         {
-            dataGridView_Participant.Visible = false;
-            dataGridView_Judge.Visible = false;
-            dataGridView_Tournir.Visible = true;
+            aConn1.Open();
+            dbAdapter = new OleDbDataAdapter("SELECT * FROM [tournir]", aConn1);
+            dataTable = new DataTable();
+            dbAdapter.Fill(dataTable);
+            mainDataGridView.DataSource = dataTable;
 
             showTournir_button.BackColor = Color.Empty;
             showJudge_button.BackColor = Color.Gray;
             showParticipant_button.BackColor = Color.Gray;
-
-           // this.sportsmansTableAdapter1.Fill(this.peopleDataSetLastLast.Sportsmans);
+            showCategories_button.BackColor = Color.Gray;
+            showGroup_button.BackColor = Color.Gray;
+            showSets_button.BackColor = Color.Gray;
+            aConn1.Close();
         }
 
         private void showJudge_button_Click(object sender, EventArgs e)
         {
-            dataGridView_Participant.Visible = false;
-            dataGridView_Judge.Visible = true;
-            dataGridView_Tournir.Visible = false;
+            aConn1.Open();
+            dbAdapter = new OleDbDataAdapter("SELECT * FROM [judges]", aConn1);
+            dataTable = new DataTable();
+            dbAdapter.Fill(dataTable);
+            mainDataGridView.DataSource = dataTable;
 
             showTournir_button.BackColor = Color.Gray;
             showJudge_button.BackColor = Color.Empty;
             showParticipant_button.BackColor = Color.Gray;
+            showCategories_button.BackColor = Color.Gray;
+            showGroup_button.BackColor = Color.Gray;
+            showSets_button.BackColor = Color.Gray;
+            aConn1.Close();
         }
 
         private void showParticipant_button_Click(object sender, EventArgs e)
         {
-            dataGridView_Participant.Visible = true;
-            dataGridView_Judge.Visible = false;
-            dataGridView_Tournir.Visible = false;
+            aConn1.Open();
+            dbAdapter = new OleDbDataAdapter("SELECT * FROM [participants]", aConn1);
+            dataTable = new DataTable();
+            dbAdapter.Fill(dataTable);
+            mainDataGridView.DataSource = dataTable;
 
             showTournir_button.BackColor = Color.Gray;
             showJudge_button.BackColor = Color.Gray;
             showParticipant_button.BackColor = Color.Empty;
+            showCategories_button.BackColor = Color.Gray;
+            showGroup_button.BackColor = Color.Gray;
+            showSets_button.BackColor = Color.Gray;
+            aConn1.Close();
+        }
+
+        private void showGroup_button_Click(object sender, EventArgs e)
+        {
+            aConn1.Open();
+            dbAdapter = new OleDbDataAdapter("SELECT * FROM [groups]", aConn1);
+            dataTable = new DataTable();
+            dbAdapter.Fill(dataTable);
+            mainDataGridView.DataSource = dataTable;
+
+            showTournir_button.BackColor = Color.Gray;
+            showJudge_button.BackColor = Color.Gray;
+            showParticipant_button.BackColor = Color.Gray;
+            showCategories_button.BackColor = Color.Gray;
+            showGroup_button.BackColor = Color.Empty;
+            showSets_button.BackColor = Color.Gray;
+            aConn1.Close();
+        }
+
+        private void showCategories_button_Click(object sender, EventArgs e)
+        {
+            aConn1.Open();
+            dbAdapter = new OleDbDataAdapter("SELECT * FROM [categories]", aConn1);
+            dataTable = new DataTable();
+            dbAdapter.Fill(dataTable);
+            mainDataGridView.DataSource = dataTable;
+
+            showTournir_button.BackColor = Color.Gray;
+            showJudge_button.BackColor = Color.Gray;
+            showParticipant_button.BackColor = Color.Gray;
+            showCategories_button.BackColor = Color.Empty;
+            showGroup_button.BackColor = Color.Gray;
+            showSets_button.BackColor = Color.Gray;
+            aConn1.Close();
+        }
+
+        private void showSets_button_Click(object sender, EventArgs e)
+        {
+            aConn1.Open();
+            dbAdapter = new OleDbDataAdapter("SELECT * FROM [sets]", aConn1);
+            dataTable = new DataTable();
+            dbAdapter.Fill(dataTable);
+            mainDataGridView.DataSource = dataTable;
+
+            showTournir_button.BackColor = Color.Gray;
+            showJudge_button.BackColor = Color.Gray;
+            showParticipant_button.BackColor = Color.Gray;
+            showCategories_button.BackColor = Color.Gray;
+            showGroup_button.BackColor = Color.Gray;
+            showSets_button.BackColor = Color.Empty;
+            aConn1.Close();
         }
     }
 }

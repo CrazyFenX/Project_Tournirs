@@ -8,6 +8,7 @@ namespace DataViewer_D_v._001
     class GroupClass
     {
         public int number;
+        public TimeClass time;
         public List<SetClass> SetList = new List<SetClass>();
         public List<string> CategoryList = new List<string>();
     }

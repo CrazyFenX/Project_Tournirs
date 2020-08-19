@@ -70,7 +70,7 @@ namespace DataViewer_D_v._001
                 this.Year = this.Year * 10 + (Convert.ToInt32(DateStr[i]) - 48);
                 i++;
             }
-            MessageBox.Show(this.ToString());
+            //MessageBox.Show(this.ToString());
         }
 
         public MyDate Substract(MyDate lastDate)

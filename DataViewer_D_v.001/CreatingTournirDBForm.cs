@@ -61,7 +61,6 @@ namespace DataViewer_D_v._001
                 dbName = Name_textBox.Text;
                 folderName += '\\';
                 folderName += dbName;
-                MessageBox.Show(folderName);
             }
             else
             {
@@ -77,37 +76,42 @@ namespace DataViewer_D_v._001
                 cn.Open();
                 OleDbCommand com = new OleDbCommand();
 
-                //Создание Таблицы Категорий
-                com = new OleDbCommand("CREATE TABLE categories(Категория CHAR(5), CONSTRAINT categories_pk PRIMARY KEY (Категория))", cn);
-                com.ExecuteNonQuery();
-
-                //Создание Таблицы Судей
-                com = new OleDbCommand("CREATE TABLE judges(Номер COUNTER, ФИО CHAR(100), Категория CHAR(20), CONSTRAINT judges_pk PRIMARY KEY (Номер))", cn);
-                com.ExecuteNonQuery();
-
-                //Создание Таблицы Участников
-                com = new OleDbCommand("CREATE TABLE participants(Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), CONSTRAINT participants_pk PRIMARY KEY (Номер_Книжки), CONSTRAINT fk_participants FOREIGN KEY (Категория) REFERENCES categories(Категория))", cn);
-                com.ExecuteNonQuery();
-
-                //Создание Таблицы Пар
-                com = new OleDbCommand("CREATE TABLE duets(Номер COUNTER, Участник1 INT, Участник2 INT, CONSTRAINT duets_pk PRIMARY KEY (Номер), CONSTRAINT fk_duets FOREIGN KEY (Участник1) REFERENCES participants(Номер_Книжки), CONSTRAINT fk_duets2 FOREIGN KEY (Участник2) REFERENCES participants(Номер_Книжки))", cn);
-                com.ExecuteNonQuery();
-
-                //Создание Таблицы Заходов
-                com = new OleDbCommand("CREATE TABLE sets(Номер COUNTER, Пара INT, Солист INT, CONSTRAINT sets_pk PRIMARY KEY (Номер), CONSTRAINT fk_sets FOREIGN KEY (Пара) REFERENCES duets(Номер))", cn);
+                //Создание Таблицы Турнира
+                com = new OleDbCommand("CREATE TABLE tournir(ID COUNTER, Название CHAR(50), Дата_Проведения CHAR(8),  Время_Проведения CHAR(5),  Место_Проведения CHAR(50), Организация CHAR(50), ФИО_Секретаря CHAR(100), ФИО_Регистратора CHAR(100), CONSTRAINT tournir_pk PRIMARY KEY (Название))", cn);
                 com.ExecuteNonQuery();
 
                 //Создание Таблицы Групп
-                com = new OleDbCommand("CREATE TABLE groups(Номер COUNTER, Заход INT, Категория CHAR(5), CONSTRAINT groups_pk PRIMARY KEY (Номер), CONSTRAINT fk_groups FOREIGN KEY (Заход) REFERENCES Sets(Номер), CONSTRAINT fk_groups1 FOREIGN KEY (Категория) REFERENCES categories(Категория))", cn);
+                com = new OleDbCommand("CREATE TABLE groups(Номер_Группы COUNTER, Название_Турнира CHAR(50), CONSTRAINT groups_pk PRIMARY KEY (Номер_Группы), CONSTRAINT fk_groups FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
                 com.ExecuteNonQuery();
 
-                //Создание Таблицы Турнира
-                com = new OleDbCommand("CREATE TABLE tournir(Название CHAR(50), Дата_Проведения CHAR(20),  Время_Проведения CHAR(10),  Место_Проведения CHAR(50), Организация CHAR(50), Группа INT, ФИО_Секретаря CHAR(100), ФИО_Регистратора CHAR(100), Судья INT, CONSTRAINT tournir_pk PRIMARY KEY (Название), CONSTRAINT fk_tournir FOREIGN KEY (Судья) REFERENCES judges(Номер), CONSTRAINT fk_tournir1 FOREIGN KEY (Группа) REFERENCES groups(Номер))", cn);
+                //Создание Таблицы Категорий
+                com = new OleDbCommand("CREATE TABLE categories(Номер_Группы INT, Категория CHAR(5), CONSTRAINT fk_categories FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Судей
+                com = new OleDbCommand("CREATE TABLE judges(Номер COUNTER, Название_Турнира CHAR(50), ФИО CHAR(100), Категория_Судейства CHAR(20), CONSTRAINT judges_pk PRIMARY KEY (Номер), CONSTRAINT fk_judges FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Участников
+                com = new OleDbCommand("CREATE TABLE participants(Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), CONSTRAINT participants_pk PRIMARY KEY (Номер_Книжки))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Заходов
+                com = new OleDbCommand("CREATE TABLE sets(Номер COUNTER, Номер_Группы INT, CONSTRAINT sets_pk PRIMARY KEY (Номер), CONSTRAINT fk_sets FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Пар
+                com = new OleDbCommand("CREATE TABLE duets(Номер_Пары COUNTER, Номер_Захода INT, CONSTRAINT duets_pk PRIMARY KEY (Номер_Пары), CONSTRAINT fk_duets FOREIGN KEY (Номер_Захода) REFERENCES sets(Номер))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Связи Пар и Участников
+                com = new OleDbCommand("CREATE TABLE du_par_link(Номер_Книжки INT, Номер_Пары INT, CONSTRAINT fk_du_par_link FOREIGN KEY (Номер_Книжки) REFERENCES participants(Номер_Книжки), CONSTRAINT fk_du_par_link1 FOREIGN KEY (Номер_Пары) REFERENCES duets(Номер_Пары))", cn);
                 com.ExecuteNonQuery();
 
                 //Заполнение Категорий
 
-                string[] categories = {"Д-0", "Д-1", "Д-2", "Ю-1", "Ю-2", "М", "М-2", "Вз"};
+                /*string[] categories = {"Д-0", "Д-1", "Д-2", "Ю-1", "Ю-2", "М", "М-2", "Вз"};
+
                 foreach (string item in categories)
                 {
                     //MessageBox.Show(item);
@@ -122,7 +126,7 @@ namespace DataViewer_D_v._001
                     {
                         MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
+                }*/
 
                 TournirClass NewTournir = new TournirClass();
 
@@ -146,20 +150,19 @@ namespace DataViewer_D_v._001
 
                 try
                 {
-                        com.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-
+                    com.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 cn.Close();
             }
             catch(Exception ex) 
             {
                   MessageBox.Show(ex.Message);
             }
+            this.previousForm.Path_textBox.Text = folderName + ".mdb";
         }
 
         private void CreatingTournirDBForm_Load(object sender, EventArgs e)

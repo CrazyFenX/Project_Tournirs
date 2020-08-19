@@ -74,7 +74,7 @@
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.Location = new System.Drawing.Point(437, 154);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(83, 136);
+            this.backButton.Size = new System.Drawing.Size(100, 136);
             this.backButton.TabIndex = 9;
             this.backButton.Text = "назад";
             this.backButton.UseVisualStyleBackColor = false;
@@ -141,19 +141,19 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(437, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 29);
+            this.button1.Size = new System.Drawing.Size(100, 29);
             this.button1.TabIndex = 11;
-            this.button1.Text = "17.08.20";
+            this.button1.Text = "19.08.20";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // startWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(532, 303);
+            this.ClientSize = new System.Drawing.Size(543, 303);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Exit_button);
             this.Controls.Add(this.backButton);

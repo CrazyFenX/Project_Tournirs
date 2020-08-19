@@ -10,6 +10,7 @@ namespace DataViewer_D_v._001
     class SecretaryController
     {
         public static string connectString;
+
         public static OleDbConnection myConnection;
 
         public static OleDbCommand command = new OleDbCommand("", myConnection);
@@ -64,7 +65,8 @@ namespace DataViewer_D_v._001
             }
             myConnection.Close();
         }
-            public static void insertTrainer(Trainer trainer, int bookNumber)
+
+        public static void insertTrainer(Trainer trainer, int bookNumber)
             {
             OleDbCommand commandTrain = new OleDbCommand("", myConnection);
 
@@ -227,5 +229,77 @@ namespace DataViewer_D_v._001
             }
         }
 
+        public static TournirClass TakeTournir(string cn)
+        {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+            int Num = 1;
+
+            TournirClass RetTournir = new TournirClass();
+            OleDbCommand command1 = new OleDbCommand("", myConnection);
+            OleDbCommand command2 = new OleDbCommand("", myConnection);
+            OleDbCommand command3 = new OleDbCommand("", myConnection);
+            OleDbCommand command4 = new OleDbCommand("", myConnection);
+            OleDbCommand command5 = new OleDbCommand("", myConnection);
+            OleDbCommand command6 = new OleDbCommand("", myConnection);
+            OleDbCommand command7 = new OleDbCommand("", myConnection);
+
+            command1.CommandText = "SELECT Название FROM tournir WHERE ID = @Num";
+            command1.Parameters.AddWithValue("Num", Num);
+
+            command2.CommandText = "SELECT Дата_Проведения FROM tournir WHERE ID = @Num";
+            command2.Parameters.AddWithValue("Num", Num);
+
+            command3.CommandText = "SELECT Время_Проведения FROM tournir WHERE ID = @Num";
+            command3.Parameters.AddWithValue("Num", Num);
+
+            command4.CommandText = "SELECT Место_Проведения FROM tournir WHERE ID = @Num";
+            command4.Parameters.AddWithValue("Num", Num);
+
+            command5.CommandText = "SELECT Организация FROM tournir WHERE ID = @Num";
+            command5.Parameters.AddWithValue("Num", Num);
+
+            command6.CommandText = "SELECT ФИО_Секретаря FROM tournir WHERE ID = @Num";
+            command6.Parameters.AddWithValue("Num", Num);
+
+            command7.CommandText = "SELECT ФИО_Регистратора FROM tournir WHERE ID = @Num";
+            command7.Parameters.AddWithValue("Num", Num);
+
+            try
+            {
+                RetTournir.name = command1.ExecuteScalar().ToString();
+                RetTournir.date.ToInt(command2.ExecuteScalar().ToString());
+                RetTournir.time.ToInt(command3.ExecuteScalar().ToString());
+                RetTournir.place = command4.ExecuteScalar().ToString();
+                RetTournir.organisation = command5.ExecuteScalar().ToString();
+                RetTournir.secretary = command6.ExecuteScalar().ToString();
+                RetTournir.registrator = command7.ExecuteScalar().ToString();
+
+                MessageBox.Show($"Турнир: {RetTournir.name}\nДата: {RetTournir.date}\nВремя: {RetTournir.time}\nМесто: {RetTournir.place}\nОрганизация: {RetTournir.organisation}\nСекретарь: {RetTournir.secretary}\nРегистратор: {RetTournir.registrator}");
+                
+                /*
+                public string name;
+                public MyDate date;
+                public TimeClass time;
+                public string place;
+                public string organisation;
+
+                ++++++++public List<GroupClass> groups = new List<GroupClass>();
+
+                public string registrator;
+                public string secretary;
+
+                ++++++++public List<Judge> judges = new List<Judge>();
+                */
+            }
+            catch (Exception ex)
+            {
+                 MessageBox.Show("Упс, что-то пошло не так...\nError: "+ex.Message);
+            }
+
+            myConnection.Close();
+            return RetTournir;
+        }
     }
 }

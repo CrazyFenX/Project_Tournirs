@@ -46,6 +46,12 @@
             this.CreateGroup_button = new System.Windows.Forms.Button();
             this.CreateSet_button = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.creatingSet_groupBox = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.backThird_button = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.BackSecond_button = new System.Windows.Forms.Button();
             this.CreateGroupSecond_button = new System.Windows.Forms.Button();
             this.Categoriess_groupBox = new System.Windows.Forms.GroupBox();
@@ -61,6 +67,7 @@
             this.label_NumberOfGroup = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.creatingSet_groupBox.SuspendLayout();
             this.Categoriess_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,8 +101,9 @@
             // 
             this.Path_textBox.Location = new System.Drawing.Point(13, 277);
             this.Path_textBox.Name = "Path_textBox";
-            this.Path_textBox.Size = new System.Drawing.Size(569, 22);
+            this.Path_textBox.Size = new System.Drawing.Size(571, 22);
             this.Path_textBox.TabIndex = 2;
+            this.Path_textBox.TextChanged += new System.EventHandler(this.Path_textBox_TextChanged);
             // 
             // OpenBase_button
             // 
@@ -256,9 +264,11 @@
             this.CreateSet_button.TabIndex = 9;
             this.CreateSet_button.Text = "Новый Заход";
             this.CreateSet_button.UseVisualStyleBackColor = false;
+            this.CreateSet_button.Click += new System.EventHandler(this.CreateSet_button_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.creatingSet_groupBox);
             this.groupBox2.Controls.Add(this.BackSecond_button);
             this.groupBox2.Controls.Add(this.CreateGroupSecond_button);
             this.groupBox2.Controls.Add(this.Categoriess_groupBox);
@@ -268,10 +278,70 @@
             this.groupBox2.Controls.Add(this.CreateGroup_button);
             this.groupBox2.Location = new System.Drawing.Point(273, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(311, 252);
+            this.groupBox2.Size = new System.Drawing.Size(312, 252);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Формирование";
+            // 
+            // creatingSet_groupBox
+            // 
+            this.creatingSet_groupBox.Controls.Add(this.textBox1);
+            this.creatingSet_groupBox.Controls.Add(this.backThird_button);
+            this.creatingSet_groupBox.Controls.Add(this.label2);
+            this.creatingSet_groupBox.Controls.Add(this.label1);
+            this.creatingSet_groupBox.Controls.Add(this.comboBox1);
+            this.creatingSet_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.creatingSet_groupBox.Location = new System.Drawing.Point(9, 21);
+            this.creatingSet_groupBox.Name = "creatingSet_groupBox";
+            this.creatingSet_groupBox.Size = new System.Drawing.Size(297, 223);
+            this.creatingSet_groupBox.TabIndex = 13;
+            this.creatingSet_groupBox.TabStop = false;
+            this.creatingSet_groupBox.Text = "Создание Захода";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(89, 66);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(63, 26);
+            this.textBox1.TabIndex = 4;
+            // 
+            // backThird_button
+            // 
+            this.backThird_button.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.backThird_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backThird_button.Location = new System.Drawing.Point(200, 170);
+            this.backThird_button.Name = "backThird_button";
+            this.backThird_button.Size = new System.Drawing.Size(89, 37);
+            this.backThird_button.TabIndex = 3;
+            this.backThird_button.Text = "Назад";
+            this.backThird_button.UseVisualStyleBackColor = false;
+            this.backThird_button.Click += new System.EventHandler(this.backThird_button_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(13, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 20);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Номер";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Группа";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(89, 28);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(63, 28);
+            this.comboBox1.TabIndex = 0;
             // 
             // BackSecond_button
             // 
@@ -437,6 +507,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.creatingSet_groupBox.ResumeLayout(false);
+            this.creatingSet_groupBox.PerformLayout();
             this.Categoriess_groupBox.ResumeLayout(false);
             this.Categoriess_groupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -477,5 +549,11 @@
         private System.Windows.Forms.CheckBox M2_checkBox;
         private System.Windows.Forms.TextBox NumberOfGroup_textBox;
         private System.Windows.Forms.Label label_NumberOfGroup;
+        private System.Windows.Forms.GroupBox creatingSet_groupBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button backThird_button;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

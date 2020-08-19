@@ -15,10 +15,11 @@ namespace DataViewer_D_v._001
     {
         public Controller controller = new Controller();
 
-        DataViewerSecretary dataViewerSecretary;
+        public DataViewerSecretary dataViewerSecretary;
 
-        secretaryMainForm secretaryMainForm;
+        public secretaryMainForm secretaryMainForm;
 
+        TournirClass tournir = new TournirClass();
 
         public string folderName;
 
@@ -31,6 +32,8 @@ namespace DataViewer_D_v._001
 
             CreateGroupSecond_button.Visible = false;
             Categoriess_groupBox.Visible = false;
+            creatingSet_groupBox.Visible = false;
+
             label_NumberOfGroup.Visible = false;
             NumberOfGroup_textBox.Visible = false;
             BackSecond_button.Visible = false;
@@ -48,22 +51,13 @@ namespace DataViewer_D_v._001
             NumberOfGroup_textBox.Visible = false;
             BackSecond_button.Visible = false;
         }
+
         private void CreateNewTournirButton_Click(object sender, EventArgs e)
         {
             CreatingTournirDBForm creatingTournirDBForm = new CreatingTournirDBForm(this);
             this.Enabled = false;
             creatingTournirDBForm.Show();
-            /*try
-            {
-                ADOX.Catalog BD = new ADOX.Catalog();
-                //BD.Create("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Exp\Abra.mdb;Jet OLEDB:Engine Type=5;Jet OLEDB:Database Password=password");
-               
-                BD.Create("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Abra.mdb;Jet OLEDB:Engine Type=5");
 
-                OleDbConnection cn = new OleDbConnection("Provider=Microsoft.Jet.OLEDB.4.0;Data Source=Abra.mdb");
-                cn.Open();
-                OleDbCommand com = new OleDbCommand("CREATE TABLE Tables", cn);
-            */
             //Добавить необходимые таблицы:
 
             //*Турнир +
@@ -126,14 +120,6 @@ namespace DataViewer_D_v._001
             ///command.CommandText = str;
             ///command.ExecuteNonQuery();
             ///sqlConnection.Close();
-            /*
-                com.ExecuteNonQuery();
-                cn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }*/
         }
 
         private void backbutton_Click(object sender, EventArgs e)
@@ -158,7 +144,7 @@ namespace DataViewer_D_v._001
             if (Path_textBox.Text == "")
                 this.dataViewerSecretary = new DataViewerSecretary(this);
             else
-                this.dataViewerSecretary = new DataViewerSecretary(this,Path_textBox.Text);
+                this.dataViewerSecretary = new DataViewerSecretary(this, Path_textBox.Text);
 
             dataViewerSecretary.Show();
         }
@@ -181,7 +167,7 @@ namespace DataViewer_D_v._001
                 }
                 Path_textBox.Text = "";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show($"Упс, что-то пошло не так...\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -214,8 +200,6 @@ namespace DataViewer_D_v._001
 
         private void CreateGroup_button_Click(object sender, EventArgs e)
         {
-            //CreatingGroup creatingGroup = new CreatingGroup(this);
-            //this.Enabled = false;
             CreateGroup_button.Visible = false;
             CreateSet_button.Visible = false;
 
@@ -240,21 +224,26 @@ namespace DataViewer_D_v._001
 
         private void CreateGroupSecond_button_Click(object sender, EventArgs e)
         {
-            if (Path_textBox.Text != "")
+            GroupClass group_new = new GroupClass();
+
+            if (NumberOfGroup_textBox.Text != "")
             {
-                try
+                group_new.number = Convert.ToInt32(NumberOfGroup_textBox.Text);
+
+
+            CheckBox[] CategoriesList = new CheckBox[] {D0_checkBox, D1_checkBox, D2_checkBox, M_checkBox, M2_checkBox, U1_checkBox, U2_checkBox, Vz_checkBox};
+
+                if (Path_textBox.Text != "")
                 {
-                    OleDbConnection cn = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}.mdb");
-                    cn.Open();
-                    OleDbCommand com = new OleDbCommand();
-
-
-                    string[] categories = { "Д-0", "Д-1", "Д-2", "Ю-1", "Ю-2", "М", "М-2", "Вз" };
-                    foreach (string item in categories)
+                    try
                     {
-                        //MessageBox.Show(item);
-                        com = new OleDbCommand("INSERT INTO categories(Категория)" + "VALUES (@category)", cn);
-                        com.Parameters.AddWithValue("category", item);
+                        OleDbConnection cn = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}");
+                        cn.Open();
+                        OleDbCommand com = new OleDbCommand();
+
+                        com = new OleDbCommand("INSERT INTO groups(Название_Турнира, Номер_Группы)" + "VALUES (@tournir_name, @group_number)", cn);
+                        com.Parameters.AddWithValue("tournir_name", tournir.name);
+                        com.Parameters.AddWithValue("group_number", group_new.number);
 
                         try
                         {
@@ -262,49 +251,97 @@ namespace DataViewer_D_v._001
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Возникло непредвиденная проблема при обращении к базе:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
 
-                    TournirClass NewTournir = new TournirClass();
+                        string testStr = "";
 
-                    //NewTournir.name = Name_textBox.Text;
-                    //NewTournir.date = new MyDate(DayOfTournir_comboBox.SelectedIndex, MounthOfTournir_comboBox.SelectedIndex, YearOfTournir_comboBox.SelectedIndex);
-                    // NewTournir.time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, MinutesOfTournir_comboBox.SelectedIndex * 5);
-                    // MessageBox.Show(NewTournir.time.ToString());
-                    // NewTournir.place = CityOfTournir_textBox.Text;
-                    // NewTournir.organisation = OrganisationOfTournir_textBox.Text;
-                    // NewTournir.registrator = "SNP_registrator";
-                    // NewTournir.secretary = "SNP_secretary";
-
-                    com = new OleDbCommand("INSERT INTO tournir(Название, Дата_Проведения,  Время_Проведения,  Место_Проведения, Организация, ФИО_Секретаря, ФИО_Регистратора)" + "VALUES (@name,@date,@time,@plase,@organisation,@secretary,@registrator)", cn);
-                    com.Parameters.AddWithValue("name", NewTournir.name);
-                    com.Parameters.AddWithValue("date", NewTournir.date.ToString());
-                    com.Parameters.AddWithValue("time", NewTournir.time.ToString());
-                    com.Parameters.AddWithValue("place", NewTournir.place);
-                    com.Parameters.AddWithValue("organisation", NewTournir.organisation);
-                    com.Parameters.AddWithValue("secretary", NewTournir.secretary);
-                    com.Parameters.AddWithValue("registrator", NewTournir.registrator);
-
-                    try
-                    {
-                        com.ExecuteNonQuery();
+                        for (int i = 0; i < CategoriesList.Length; i++)
+                        {
+                            com = new OleDbCommand("INSERT INTO categories(Номер_Группы, Категория)" + "VALUES (@group_number, @category)", cn);
+                            com.Parameters.AddWithValue("group_number", group_new.number);
+                            if (CategoriesList[i].Checked == true)
+                            {
+                                switch (i)
+                                {
+                                    case 0:
+                                        com.Parameters.AddWithValue("category", "Д-0");
+                                        testStr += "Д-0 ";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                    case 1:
+                                        com.Parameters.AddWithValue("category", "Д-1");
+                                        testStr += "Д-1 ";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                    case 2:
+                                        com.Parameters.AddWithValue("category", "Д-2");
+                                        testStr += "Д-2 ";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                    case 3:
+                                        com.Parameters.AddWithValue("category", "М");
+                                        testStr += "М ";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                    case 4:
+                                        com.Parameters.AddWithValue("category", "М-2");
+                                        testStr += "М-2 ";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                    case 5:
+                                        com.Parameters.AddWithValue("category", "Ю-1");
+                                        testStr += "Ю-1 ";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                    case 6:
+                                        com.Parameters.AddWithValue("category", "Ю-2");
+                                        testStr += "Ю-2 ";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                    case 7:
+                                        com.Parameters.AddWithValue("category", "Вз");
+                                        testStr += "Вз";
+                                        com.ExecuteNonQuery();
+                                        break;
+                                }
+                            }
+                        }
+                        MessageBox.Show("Новая группа успешно создана!\nУказаны категории: " + testStr);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Упс...Что-то пошло не так\n" + ex.Message);
                     }
-
-
-                    cn.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                else
+                    MessageBox.Show("Необходимо выбрать базу турнира!");
             }
             else
-                MessageBox.Show("Необходимо выбрать базу турнира!");
+                MessageBox.Show("Поле номера группы не может быть пустым!");
+        }
+
+        private void Path_textBox_TextChanged(object sender, EventArgs e)
+        {
+            folderName = Path_textBox.Text;
+            try
+            {
+                tournir = SecretaryController.TakeTournir(folderName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void CreateSet_button_Click(object sender, EventArgs e)
+        {
+            creatingSet_groupBox.Visible = true;
+        }
+
+        private void backThird_button_Click(object sender, EventArgs e)
+        {
+            creatingSet_groupBox.Visible = false;
         }
     }
 }

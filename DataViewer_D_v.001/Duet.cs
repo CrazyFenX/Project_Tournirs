@@ -11,5 +11,6 @@ namespace DataViewer_D_v._001
         public Sportsman sportsman2 = new Sportsman();
 
         public int PositionNumber;
+
     }
 }

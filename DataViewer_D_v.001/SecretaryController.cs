@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.CodeDom;
 
 namespace DataViewer_D_v._001
 {
@@ -277,7 +278,7 @@ namespace DataViewer_D_v._001
                 RetTournir.registrator = command7.ExecuteScalar().ToString();
 
                 MessageBox.Show($"Турнир: {RetTournir.name}\nДата: {RetTournir.date}\nВремя: {RetTournir.time}\nМесто: {RetTournir.place}\nОрганизация: {RetTournir.organisation}\nСекретарь: {RetTournir.secretary}\nРегистратор: {RetTournir.registrator}");
-                
+
                 /*
                 public string name;
                 public MyDate date;
@@ -285,21 +286,76 @@ namespace DataViewer_D_v._001
                 public string place;
                 public string organisation;
 
-                ++++++++public List<GroupClass> groups = new List<GroupClass>();
+                public List<GroupClass> groups = new List<GroupClass>();
 
                 public string registrator;
                 public string secretary;
 
                 ++++++++public List<Judge> judges = new List<Judge>();
+
+                ++++++++public List<Judge> Sets = new List<Set>(); В группах
                 */
             }
             catch (Exception ex)
             {
-                 MessageBox.Show("Упс, что-то пошло не так...\nError: "+ex.Message);
+                MessageBox.Show("Упс, что-то пошло не так...\nError: " + ex.Message);
+            }
+
+            try
+            {
+                int i = 1;
+                int k = 0;
+
+                command = new OleDbCommand("", myConnection);
+                command.CommandText = "SELECT COUNT(Номер_Группы) FROM groups";
+
+                k = Convert.ToInt32(command.ExecuteScalar());
+
+                MessageBox.Show(Convert.ToString(k));
+
+                while (i <= k)
+                {
+                    command.CommandText = "SELECT * FROM groups WHERE Номер_Группы = @id";
+                    command.Parameters.AddWithValue("id", i);
+
+                    RetTournir.groups.Add(new GroupClass(i, RetTournir.name));
+
+                    MessageBox.Show(RetTournir.groups[i-1].ToString());
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так...(Блок 2)\nError: " + ex.Message);
             }
 
             myConnection.Close();
             return RetTournir;
+        }
+
+        public static void insertSet(SetClass setInput, string path)
+        {
+            try
+            {
+                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+                myConnection = new OleDbConnection(connectString);
+                myConnection.Open();
+
+                command = new OleDbCommand("", myConnection);
+
+                command.CommandText = "INSERT INTO sets(Номер, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)";
+
+                command.Parameters.AddWithValue("number", setInput.number);
+                command.Parameters.AddWithValue("group_number", setInput.numberOfGroup);
+                command.Parameters.AddWithValue("category", setInput.category);
+
+                command.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так...\n" + ex.Message);
+            }
         }
     }
 }

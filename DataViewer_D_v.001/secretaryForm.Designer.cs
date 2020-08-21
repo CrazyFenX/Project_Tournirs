@@ -47,11 +47,14 @@
             this.CreateSet_button = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.creatingSet_groupBox = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CreateSet_Second_button = new System.Windows.Forms.Button();
+            this.label_setCategory = new System.Windows.Forms.Label();
+            this.setCategory_comboBox = new System.Windows.Forms.ComboBox();
+            this.setNumber_textBox = new System.Windows.Forms.TextBox();
             this.backThird_button = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label_setNumber = new System.Windows.Forms.Label();
+            this.label_setGroupNumber = new System.Windows.Forms.Label();
+            this.setGroupNumber_comboBox = new System.Windows.Forms.ComboBox();
             this.BackSecond_button = new System.Windows.Forms.Button();
             this.CreateGroupSecond_button = new System.Windows.Forms.Button();
             this.Categoriess_groupBox = new System.Windows.Forms.GroupBox();
@@ -285,11 +288,14 @@
             // 
             // creatingSet_groupBox
             // 
-            this.creatingSet_groupBox.Controls.Add(this.textBox1);
+            this.creatingSet_groupBox.Controls.Add(this.CreateSet_Second_button);
+            this.creatingSet_groupBox.Controls.Add(this.label_setCategory);
+            this.creatingSet_groupBox.Controls.Add(this.setCategory_comboBox);
+            this.creatingSet_groupBox.Controls.Add(this.setNumber_textBox);
             this.creatingSet_groupBox.Controls.Add(this.backThird_button);
-            this.creatingSet_groupBox.Controls.Add(this.label2);
-            this.creatingSet_groupBox.Controls.Add(this.label1);
-            this.creatingSet_groupBox.Controls.Add(this.comboBox1);
+            this.creatingSet_groupBox.Controls.Add(this.label_setNumber);
+            this.creatingSet_groupBox.Controls.Add(this.label_setGroupNumber);
+            this.creatingSet_groupBox.Controls.Add(this.setGroupNumber_comboBox);
             this.creatingSet_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.creatingSet_groupBox.Location = new System.Drawing.Point(9, 21);
             this.creatingSet_groupBox.Name = "creatingSet_groupBox";
@@ -298,50 +304,88 @@
             this.creatingSet_groupBox.TabStop = false;
             this.creatingSet_groupBox.Text = "Создание Захода";
             // 
-            // textBox1
+            // CreateSet_Second_button
             // 
-            this.textBox1.Location = new System.Drawing.Point(89, 66);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(63, 26);
-            this.textBox1.TabIndex = 4;
+            this.CreateSet_Second_button.BackColor = System.Drawing.SystemColors.Highlight;
+            this.CreateSet_Second_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CreateSet_Second_button.Location = new System.Drawing.Point(186, 28);
+            this.CreateSet_Second_button.Name = "CreateSet_Second_button";
+            this.CreateSet_Second_button.Size = new System.Drawing.Size(103, 101);
+            this.CreateSet_Second_button.TabIndex = 7;
+            this.CreateSet_Second_button.Text = "Create";
+            this.CreateSet_Second_button.UseVisualStyleBackColor = false;
+            this.CreateSet_Second_button.Click += new System.EventHandler(this.createSet_button_Click);
+            // 
+            // label_setCategory
+            // 
+            this.label_setCategory.AutoSize = true;
+            this.label_setCategory.Location = new System.Drawing.Point(13, 104);
+            this.label_setCategory.Name = "label_setCategory";
+            this.label_setCategory.Size = new System.Drawing.Size(98, 20);
+            this.label_setCategory.TabIndex = 6;
+            this.label_setCategory.Text = "Категория";
+            // 
+            // setCategory_comboBox
+            // 
+            this.setCategory_comboBox.FormattingEnabled = true;
+            this.setCategory_comboBox.Items.AddRange(new object[] {
+            "Д-0",
+            "Д-1",
+            "Д-2",
+            "М",
+            "М-2",
+            "Ю-1",
+            "Ю-2",
+            "Вз"});
+            this.setCategory_comboBox.Location = new System.Drawing.Point(117, 101);
+            this.setCategory_comboBox.Name = "setCategory_comboBox";
+            this.setCategory_comboBox.Size = new System.Drawing.Size(63, 28);
+            this.setCategory_comboBox.TabIndex = 5;
+            // 
+            // setNumber_textBox
+            // 
+            this.setNumber_textBox.Location = new System.Drawing.Point(117, 66);
+            this.setNumber_textBox.Name = "setNumber_textBox";
+            this.setNumber_textBox.Size = new System.Drawing.Size(63, 26);
+            this.setNumber_textBox.TabIndex = 4;
             // 
             // backThird_button
             // 
             this.backThird_button.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.backThird_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backThird_button.Location = new System.Drawing.Point(200, 170);
+            this.backThird_button.Location = new System.Drawing.Point(186, 170);
             this.backThird_button.Name = "backThird_button";
-            this.backThird_button.Size = new System.Drawing.Size(89, 37);
+            this.backThird_button.Size = new System.Drawing.Size(103, 37);
             this.backThird_button.TabIndex = 3;
             this.backThird_button.Text = "Назад";
             this.backThird_button.UseVisualStyleBackColor = false;
             this.backThird_button.Click += new System.EventHandler(this.backThird_button_Click);
             // 
-            // label2
+            // label_setNumber
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Номер";
+            this.label_setNumber.AutoSize = true;
+            this.label_setNumber.Location = new System.Drawing.Point(13, 66);
+            this.label_setNumber.Name = "label_setNumber";
+            this.label_setNumber.Size = new System.Drawing.Size(64, 20);
+            this.label_setNumber.TabIndex = 2;
+            this.label_setNumber.Text = "Номер";
             // 
-            // label1
+            // label_setGroupNumber
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Группа";
+            this.label_setGroupNumber.AutoSize = true;
+            this.label_setGroupNumber.Location = new System.Drawing.Point(13, 31);
+            this.label_setGroupNumber.Name = "label_setGroupNumber";
+            this.label_setGroupNumber.Size = new System.Drawing.Size(67, 20);
+            this.label_setGroupNumber.TabIndex = 1;
+            this.label_setGroupNumber.Text = "Группа";
             // 
-            // comboBox1
+            // setGroupNumber_comboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(89, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(63, 28);
-            this.comboBox1.TabIndex = 0;
+            this.setGroupNumber_comboBox.FormattingEnabled = true;
+            this.setGroupNumber_comboBox.Location = new System.Drawing.Point(117, 28);
+            this.setGroupNumber_comboBox.Name = "setGroupNumber_comboBox";
+            this.setGroupNumber_comboBox.Size = new System.Drawing.Size(63, 28);
+            this.setGroupNumber_comboBox.TabIndex = 0;
             // 
             // BackSecond_button
             // 
@@ -550,10 +594,13 @@
         private System.Windows.Forms.TextBox NumberOfGroup_textBox;
         private System.Windows.Forms.Label label_NumberOfGroup;
         private System.Windows.Forms.GroupBox creatingSet_groupBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label_setGroupNumber;
+        private System.Windows.Forms.ComboBox setGroupNumber_comboBox;
+        private System.Windows.Forms.Label label_setNumber;
         private System.Windows.Forms.Button backThird_button;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox setNumber_textBox;
+        private System.Windows.Forms.Label label_setCategory;
+        private System.Windows.Forms.ComboBox setCategory_comboBox;
+        private System.Windows.Forms.Button CreateSet_Second_button;
     }
 }

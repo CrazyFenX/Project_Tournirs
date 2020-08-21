@@ -343,5 +343,25 @@ namespace DataViewer_D_v._001
         {
             creatingSet_groupBox.Visible = false;
         }
+
+        private void createSet_button_Click(object sender, EventArgs e)
+        {
+            if (Path_textBox.Text != "")
+            {
+                try
+                {
+                    SetClass setNew = new SetClass(Convert.ToInt32(setGroupNumber_comboBox.Text), Convert.ToInt32(setNumber_textBox.Text), setCategory_comboBox.Text);
+                    SecretaryController.insertSet(setNew, Path_textBox.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Упс, что-то пошло не так...\n" + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбоать базу турнира!");
+            }
+        }
     }
 }

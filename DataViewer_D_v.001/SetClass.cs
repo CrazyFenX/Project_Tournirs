@@ -7,7 +7,23 @@ namespace DataViewer_D_v._001
 {
     class SetClass
     {
-        List<Duet> DuetList = new List<Duet>();
-        List<Sportsman> SoloList = new List<Sportsman>();
+        public int number;
+        public int numberOfGroup;
+        public string category;
+
+        public List<Duet> DuetList = new List<Duet>();
+        public List<Sportsman> SoloList = new List<Sportsman>();
+
+        public SetClass()
+        { 
+        
+        }
+
+        public SetClass(int Group_Number, int Number, string Category)
+        {
+            this.numberOfGroup = Group_Number;
+            this.number = Number;
+            this.category = Category;
+        }
     }
 }

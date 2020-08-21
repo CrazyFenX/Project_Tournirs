@@ -48,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.OrganisationOfTournir_textBox = new System.Windows.Forms.TextBox();
+            this.YearOfTournir_textBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // Browse_button
@@ -343,11 +344,20 @@
             this.OrganisationOfTournir_textBox.Size = new System.Drawing.Size(281, 22);
             this.OrganisationOfTournir_textBox.TabIndex = 22;
             // 
+            // YearOfTournir_textBox
+            // 
+            this.YearOfTournir_textBox.Location = new System.Drawing.Point(331, 82);
+            this.YearOfTournir_textBox.Name = "YearOfTournir_textBox";
+            this.YearOfTournir_textBox.Size = new System.Drawing.Size(77, 22);
+            this.YearOfTournir_textBox.TabIndex = 24;
+            this.YearOfTournir_textBox.Text = "2020";
+            // 
             // CreatingTournirDBForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 203);
+            this.Controls.Add(this.YearOfTournir_textBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.OrganisationOfTournir_textBox);
             this.Controls.Add(this.label4);
@@ -399,5 +409,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox OrganisationOfTournir_textBox;
+        private System.Windows.Forms.TextBox YearOfTournir_textBox;
     }
 }

@@ -22,11 +22,12 @@ namespace DataViewer_D_v._001
 
         public TournirClass()
         {
-
+            this.groups = new List<GroupClass>();
         }
 
         public TournirClass(string cn)
         {
+            this.groups = new List<GroupClass>();
             SecretaryController.TakeTournir(cn);
         }
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.OleDb;
 using System.Windows.Forms;
 using System.CodeDom;
+using System.Collections;
 
 namespace DataViewer_D_v._001
 {
@@ -18,17 +19,18 @@ namespace DataViewer_D_v._001
 
         public static void insertInJudges(Judge judje, string path)
         {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+            myConnection = new OleDbConnection(connectString);
+
             try
             {
-                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
-                myConnection = new OleDbConnection(connectString);
                 myConnection.Open();
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO judges(ФИО, Категория)" + "VALUES (@SNP, @Category)";
+                command.CommandText = "INSERT INTO judges(ФИО, Категория_Судейства)" + "VALUES (@SNP, @Category)";
 
-                command.Parameters.AddWithValue("SNP", judje.Surname + judje.Name + judje.Patronymic);
+                command.Parameters.AddWithValue("SNP", judje.Surname + " " + judje.Name + " " + judje.Patronymic);
                 command.Parameters.AddWithValue("Category", judje.JudgeClass);
 
                 command.ExecuteNonQuery();
@@ -238,6 +240,7 @@ namespace DataViewer_D_v._001
             int Num = 1;
 
             TournirClass RetTournir = new TournirClass();
+
             OleDbCommand command1 = new OleDbCommand("", myConnection);
             OleDbCommand command2 = new OleDbCommand("", myConnection);
             OleDbCommand command3 = new OleDbCommand("", myConnection);
@@ -293,13 +296,13 @@ namespace DataViewer_D_v._001
 
                 ++++++++public List<Judge> judges = new List<Judge>();
 
-                ++++++++public List<Judge> Sets = new List<Set>(); В группах
+                public List<Set> Sets = new List<Set>(); В группах
                 */
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Упс, что-то пошло не так...\nError: " + ex.Message);
-            }
+            } //заполнение Турнира
 
             try
             {
@@ -319,14 +322,70 @@ namespace DataViewer_D_v._001
                     command.Parameters.AddWithValue("id", i);
 
                     RetTournir.groups.Add(new GroupClass(i, RetTournir.name));
-
-                    MessageBox.Show(RetTournir.groups[i-1].ToString());
+                    RetTournir.groups[i - 1].SetList = TakeSet(RetTournir.groups[i - 1], cn);
+                        MessageBox.Show(RetTournir.groups[i - 1].ToString());
+                    
                     i++;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Упс, что-то пошло не так...(Блок 2)\nError: " + ex.Message);
+                MessageBox.Show("Упс, что-то пошло не так при определении списка групп\nError: " + ex.Message);
+            } //заполнение групп
+
+            try
+            { 
+                BitArray checkArray =  Controller.GapCounter("Номер", "judges", myConnection);
+
+                int i1 = 0;
+                int counter = 0;
+                int k1 = 0;
+                int max = 0;
+
+                //myConnection.Open();
+
+                command = new OleDbCommand("", myConnection);
+                command.CommandText = "SELECT COUNT(Номер) FROM judges";
+
+                command3 = new OleDbCommand("", myConnection);
+                command3.CommandText = "SELECT MAX(Номер) FROM judges";
+
+                k1 = Convert.ToInt32(command.ExecuteScalar());
+                MessageBox.Show(Convert.ToString(k1));
+
+                max = Convert.ToInt32(command3.ExecuteScalar());
+                MessageBox.Show(Convert.ToString(max));
+
+                foreach (bool item in checkArray)
+                {
+                    if (i1 < max)
+                        if (checkArray[i1])
+                        {
+                            Judge judge_new = new Judge();
+
+                            command1 = new OleDbCommand("SELECT ФИО FROM judges WHERE Номер = @id", myConnection); //NSP
+                            command2 = new OleDbCommand("SELECT Категория_Судейства FROM judges WHERE Номер = @id", myConnection); //JudjeClass
+
+                            command1.Parameters.AddWithValue("id", i1 + 1);
+
+                            command2.Parameters.AddWithValue("id", i1 + 1);
+
+                            judge_new.ToJudge(command1.ExecuteScalar().ToString());
+                            judge_new.JudgeClass = command2.ExecuteScalar().ToString();
+
+                            RetTournir.judges.Add(judge_new);
+                            MessageBox.Show(RetTournir.judges[i1 - counter].ToString() + " " + RetTournir.judges[i1 - counter].JudgeClass);
+                        }
+                        else
+                        {
+                            counter++;
+                        }
+                    i1++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так при определении списка судей\nError: " + ex.Message);
             }
 
             myConnection.Close();
@@ -343,7 +402,7 @@ namespace DataViewer_D_v._001
 
                 command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO sets(Номер, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)";
+                command.CommandText = "INSERT INTO sets(Номер_Захода, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)";
 
                 command.Parameters.AddWithValue("number", setInput.number);
                 command.Parameters.AddWithValue("group_number", setInput.numberOfGroup);
@@ -356,6 +415,53 @@ namespace DataViewer_D_v._001
             {
                 MessageBox.Show("Упс, что-то пошло не так...\n" + ex.Message);
             }
+        }
+
+        public static List<SetClass> TakeSet(GroupClass input_group, string cn)
+        {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+            SetClass set_new = new SetClass();
+
+            List<SetClass> SetList_New = new List<SetClass>();
+            try
+            {
+                int i = 1;
+                int k = 0;
+
+                command = new OleDbCommand("", myConnection);
+                command.CommandText = "SELECT COUNT(Номер_Захода) FROM sets WHERE Номер_Группы = @id";
+                command.Parameters.AddWithValue("id", input_group.number);
+
+                k = Convert.ToInt32(command.ExecuteScalar());
+
+                MessageBox.Show(Convert.ToString(k));
+
+                while (i <= k)
+                {
+                    command.CommandText = "SELECT Категория FROM sets WHERE Номер_Захода = @id";
+                    command.Parameters.AddWithValue("id", i);
+
+                    set_new.category = command.ExecuteScalar().ToString();
+                    set_new.number = i;
+                    set_new.numberOfGroup = input_group.number;
+
+                    SetList_New.Add(set_new); //ДОРАБОТКА
+
+                    MessageBox.Show(SetList_New[i - 1].ToString());
+
+                    i++;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так...(Блок 2)\nError: " + ex.Message);
+            }
+
+            myConnection.Close();
+            
+            return SetList_New;
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.IO;
+using System.Diagnostics;
 
 namespace DataViewer_D_v._001
 {
@@ -242,16 +243,29 @@ namespace DataViewer_D_v._001
                         OleDbCommand com = new OleDbCommand();
 
                         com = new OleDbCommand("INSERT INTO groups(Название_Турнира, Номер_Группы)" + "VALUES (@tournir_name, @group_number)", cn);
+                        ///com = new OleDbCommand($"CREATE TABLE group{tournir.groups.Count + 1}(Номер_Группы INT, Номер_Захода INT)", cn);
+                       
+                        ///try
+                        ///{
+                        ///    com.ExecuteNonQuery();
+                        ///}
+                        ///catch (Exception ex)
+                        ///{
+                        ///    MessageBox.Show($"Возникла проблема при создании таблицы новой группы:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ///}
+                        
+                        ///com = new OleDbCommand($"INSERT INTO group{tournir.groups.Count + 1}(Номер_Группы)" + "VALUES (@group_number)", cn);
                         com.Parameters.AddWithValue("tournir_name", tournir.name);
                         com.Parameters.AddWithValue("group_number", group_new.number);
 
                         try
                         {
                             com.ExecuteNonQuery();
+                            tournir.groups.Add(new GroupClass(group_new.number, tournir.name));
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show($"Возникло непредвиденная проблема при обращении к базе:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show($"Возникла непредвиденная проблема при обращении к базе:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                         string testStr = "";
@@ -307,6 +321,12 @@ namespace DataViewer_D_v._001
                                 }
                             }
                         }
+                        NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
+
+                        setGroupNumber_comboBox.Items.Clear();
+                        for (int i = 0; i < tournir.groups.Count; i++)
+                            setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
+
                         MessageBox.Show("Новая группа успешно создана!\nУказаны категории: " + testStr);
                     }
                     catch (Exception ex)
@@ -327,6 +347,9 @@ namespace DataViewer_D_v._001
             try
             {
                 tournir = SecretaryController.TakeTournir(folderName);
+                for (int i = 0; i < tournir.groups.Count; i++)
+                    setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
+                NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
             }
             catch (Exception ex)
             {
@@ -361,6 +384,18 @@ namespace DataViewer_D_v._001
             else
             {
                 MessageBox.Show("Необходимо выбоать базу турнира!");
+            }
+        }
+
+        private void setGroupNumber_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+               setNumber_textBox.Text = Convert.ToString(tournir.groups[setGroupNumber_comboBox.SelectedIndex].SetList.Count() + 1);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

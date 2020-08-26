@@ -386,6 +386,7 @@
             this.setGroupNumber_comboBox.Name = "setGroupNumber_comboBox";
             this.setGroupNumber_comboBox.Size = new System.Drawing.Size(63, 28);
             this.setGroupNumber_comboBox.TabIndex = 0;
+            this.setGroupNumber_comboBox.SelectedIndexChanged += new System.EventHandler(this.setGroupNumber_comboBox_SelectedIndexChanged);
             // 
             // BackSecond_button
             // 

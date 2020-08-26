@@ -93,11 +93,11 @@ namespace DataViewer_D_v._001
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Заходов
-                    com = new OleDbCommand("CREATE TABLE sets(Номер COUNTER, Номер_Группы INT, Категория CHAR(5), CONSTRAINT sets_pk PRIMARY KEY (Номер), CONSTRAINT fk_sets FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                    com = new OleDbCommand("CREATE TABLE sets(Номер_Захода COUNTER, Номер_Группы INT, Категория CHAR(5), CONSTRAINT sets_uq UNIQUE(Номер_Захода, Номер_Группы), CONSTRAINT sets_pk PRIMARY KEY (Номер_Захода), CONSTRAINT fk_sets FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Пар
-                    com = new OleDbCommand("CREATE TABLE duets(Номер_Пары COUNTER, Номер_Захода INT, CONSTRAINT duets_pk PRIMARY KEY (Номер_Пары), CONSTRAINT fk_duets FOREIGN KEY (Номер_Захода) REFERENCES sets(Номер))", cn);
+                    com = new OleDbCommand("CREATE TABLE duets(Номер_Пары COUNTER, Номер_Захода INT, CONSTRAINT duets_uq UNIQUE(Номер_Пары, Номер_Захода), CONSTRAINT duets_pk PRIMARY KEY (Номер_Пары), CONSTRAINT fk_duets FOREIGN KEY (Номер_Захода) REFERENCES sets(Номер_Захода))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Связи Пар и Участников

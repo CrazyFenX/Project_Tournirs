@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Text;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace DataViewer_D_v._001
 {
@@ -47,7 +48,7 @@ namespace DataViewer_D_v._001
             OleDbCommand commandTrain = new OleDbCommand("", myConnection);
 
             commandTrain.CommandText = "INSERT INTO Trainers(НомерКнижки, Код,Фамилия, Имя, Отчество)" + "VALUES (@bookNumber, @Pas,@Surname,@Name,@Patronymic)";
-            
+
             trainer.pasItendificate();
             commandTrain.Parameters.AddWithValue("booknumber", bookNumber);
             commandTrain.Parameters.AddWithValue("Pas", trainer.Pas);
@@ -115,7 +116,6 @@ namespace DataViewer_D_v._001
             command8.Parameters.AddWithValue("BookNum", BookNumber);
 
 
-
             command9.CommandText = "SELECT Фамилия FROM Trainers WHERE НомерКнижки = @BookNum";
             command9.Parameters.AddWithValue("BookNum", BookNumber);
 
@@ -128,7 +128,7 @@ namespace DataViewer_D_v._001
             try
             {
                 sportsman.Surname = command1.ExecuteScalar().ToString();
-           
+
                 sportsman.Name = command2.ExecuteScalar().ToString();
                 sportsman.Patronymic = command3.ExecuteScalar().ToString();
                 sportsman.ClubName = command4.ExecuteScalar().ToString();
@@ -205,5 +205,39 @@ namespace DataViewer_D_v._001
             }
         }
 
+        public static BitArray GapCounter(string rowName, string tableName, OleDbConnection cn)
+        {
+            int k = 0, i = 1;//, counter = 1;
+            OleDbCommand command1 = new OleDbCommand($"SELECT MAX({rowName}) FROM {tableName}", cn);
+            k = Convert.ToInt32(command1.ExecuteScalar().ToString());
+            BitArray retArr = new BitArray(k);
+
+            MessageBox.Show($"{k}");
+            //cn.Close();
+            while (i <= k)
+            {
+                //cn.Open();
+                OleDbCommand command2 = new OleDbCommand($"SELECT {rowName} FROM {tableName} WHERE {rowName} = @id", cn);
+                command2.Parameters.AddWithValue("id", i);
+                if (command2.ExecuteScalar() == null)
+                {
+                    MessageBox.Show($"Отсутствует эллемент под номером {i}");
+                    retArr[i-1] = false;
+                }
+                else
+                    retArr[i-1] = true;
+                //cn.Close();
+                i++;
+            }
+            //cn.Open();
+            ////
+            string mesStr = "";
+            foreach (bool item in retArr)
+            {
+                mesStr += $"{item} ";
+            }
+            MessageBox.Show(mesStr);
+            return retArr;
+        }
     }
 }

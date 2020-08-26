@@ -74,6 +74,7 @@
             this.Name_textBox.Name = "Name_textBox";
             this.Name_textBox.Size = new System.Drawing.Size(281, 22);
             this.Name_textBox.TabIndex = 2;
+            this.Name_textBox.Text = "Турнир";
             // 
             // Label_name
             // 
@@ -147,6 +148,7 @@
             this.CityOfTournir_textBox.Name = "CityOfTournir_textBox";
             this.CityOfTournir_textBox.Size = new System.Drawing.Size(331, 22);
             this.CityOfTournir_textBox.TabIndex = 12;
+            this.CityOfTournir_textBox.Text = "Новосибирск";
             // 
             // YearOfTournir_comboBox
             // 
@@ -343,6 +345,7 @@
             this.OrganisationOfTournir_textBox.Name = "OrganisationOfTournir_textBox";
             this.OrganisationOfTournir_textBox.Size = new System.Drawing.Size(281, 22);
             this.OrganisationOfTournir_textBox.TabIndex = 22;
+            this.OrganisationOfTournir_textBox.Text = "ООО СтройГаз";
             // 
             // YearOfTournir_textBox
             // 

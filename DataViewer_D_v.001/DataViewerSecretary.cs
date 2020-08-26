@@ -211,19 +211,24 @@ namespace DataViewer_D_v._001
 
         private void showSets_button_Click(object sender, EventArgs e)
         {
-            aConn1.Open();
-            dbAdapter = new OleDbDataAdapter("SELECT * FROM [sets]", aConn1);
-            dataTable = new DataTable();
-            dbAdapter.Fill(dataTable);
-            mainDataGridView.DataSource = dataTable;
+            if (Path_textBox.Text != "")
+            {
+                aConn1.Open();
+                dbAdapter = new OleDbDataAdapter("SELECT * FROM [sets]", aConn1);
+                dataTable = new DataTable();
+                dbAdapter.Fill(dataTable);
+                mainDataGridView.DataSource = dataTable;
 
-            showTournir_button.BackColor = Color.Gray;
-            showJudge_button.BackColor = Color.Gray;
-            showParticipant_button.BackColor = Color.Gray;
-            showCategories_button.BackColor = Color.Gray;
-            showGroup_button.BackColor = Color.Gray;
-            showSets_button.BackColor = Color.Empty;
-            aConn1.Close();
+                showTournir_button.BackColor = Color.Gray;
+                showJudge_button.BackColor = Color.Gray;
+                showParticipant_button.BackColor = Color.Gray;
+                showCategories_button.BackColor = Color.Gray;
+                showGroup_button.BackColor = Color.Gray;
+                showSets_button.BackColor = Color.Empty;
+                aConn1.Close();
+            }
+            else
+                MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
     }
 }

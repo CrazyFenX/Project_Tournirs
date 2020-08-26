@@ -25,5 +25,10 @@ namespace DataViewer_D_v._001
             this.number = Number;
             this.category = Category;
         }
+
+        public override string ToString()
+        {
+            return Convert.ToString(this.number) + " " + Convert.ToString(this.numberOfGroup) + " " + Convert.ToString(this.category);
+        }
     }
 }

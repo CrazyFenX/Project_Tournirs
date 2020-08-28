@@ -69,6 +69,62 @@ namespace DataViewer_D_v._001
             myConnection.Close();
         }
 
+        public static void insertParticipantsInSet(int number, Sportsman sportsman, int groupNumber, int setNumber, string path)
+        {
+            try
+            {
+                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+                myConnection = new OleDbConnection(connectString);
+                myConnection.Open();
+
+                OleDbCommand command = new OleDbCommand("", myConnection);
+
+                command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, Номер_Книжки1, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @BookNumber, @Type)";
+
+                command.Parameters.AddWithValue("Number", number);
+                command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                command.Parameters.AddWithValue("SetNumber", setNumber);
+                command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
+                command.Parameters.AddWithValue("Type", "Соло");
+
+                MessageBox.Show($"Новый Солист:\n{sportsman.BookNumber}\nГруппа: {groupNumber}\nЗаход: {setNumber}");
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Упс, что-то пошло не так при записи очередного солиста...\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            myConnection.Close();
+        }
+
+        public static void insertParticipantsInSet(Sportsman sportsman1, Sportsman sportsman2, int groupNumber, int setNumber, string path)
+        {
+            try
+            {
+                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+                myConnection = new OleDbConnection(connectString);
+                myConnection.Open();
+
+                OleDbCommand command = new OleDbCommand("", myConnection);
+
+                command.CommandText = "INSERT INTO duets(Номер_Группы, Номер_Захода, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@GroupNumber, @SetNumber, @BookNumber1, @BookNumber2, @Type)";
+
+                command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                command.Parameters.AddWithValue("SetNumber", setNumber);
+                command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
+                command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
+                command.Parameters.AddWithValue("Type", "Пара");
+
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Упс, что-то пошло не так при записи очередного пары...\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            myConnection.Close();
+        }
+
         public static void insertTrainer(Trainer trainer, int bookNumber)
             {
             OleDbCommand commandTrain = new OleDbCommand("", myConnection);
@@ -314,17 +370,13 @@ namespace DataViewer_D_v._001
 
                 k = Convert.ToInt32(command.ExecuteScalar());
 
-                MessageBox.Show(Convert.ToString(k));
+                MessageBox.Show("Количество групп: " + Convert.ToString(k));
 
                 while (i <= k)
                 {
-                    command.CommandText = "SELECT * FROM groups WHERE Номер_Группы = @id";
-                    command.Parameters.AddWithValue("id", i);
-
                     RetTournir.groups.Add(new GroupClass(i, RetTournir.name));
                     RetTournir.groups[i - 1].SetList = TakeSet(RetTournir.groups[i - 1], cn);
-                        MessageBox.Show(RetTournir.groups[i - 1].ToString());
-                    
+                    RetTournir.groups[i - 1].CategoryList = TakeCategory(RetTournir.groups[i - 1], cn);
                     i++;
                 }
             }
@@ -334,15 +386,16 @@ namespace DataViewer_D_v._001
             } //заполнение групп
 
             try
-            { 
+            {
+                myConnection.Close();
+                myConnection.Open();
+
                 BitArray checkArray =  Controller.GapCounter("Номер", "judges", myConnection);
 
                 int i1 = 0;
                 int counter = 0;
                 int k1 = 0;
                 int max = 0;
-
-                //myConnection.Open();
 
                 command = new OleDbCommand("", myConnection);
                 command.CommandText = "SELECT COUNT(Номер) FROM judges";
@@ -351,44 +404,53 @@ namespace DataViewer_D_v._001
                 command3.CommandText = "SELECT MAX(Номер) FROM judges";
 
                 k1 = Convert.ToInt32(command.ExecuteScalar());
-                MessageBox.Show(Convert.ToString(k1));
+                MessageBox.Show("Количество судей: " + Convert.ToString(k1));
 
-                max = Convert.ToInt32(command3.ExecuteScalar());
-                MessageBox.Show(Convert.ToString(max));
-
-                foreach (bool item in checkArray)
+                if (k1 > 0)
                 {
-                    if (i1 < max)
-                        if (checkArray[i1])
-                        {
-                            Judge judge_new = new Judge();
+                    max = Convert.ToInt32(command3.ExecuteScalar());
+                    //MessageBox.Show("Максимальный номер судьи: " + Convert.ToString(max));
 
-                            command1 = new OleDbCommand("SELECT ФИО FROM judges WHERE Номер = @id", myConnection); //NSP
-                            command2 = new OleDbCommand("SELECT Категория_Судейства FROM judges WHERE Номер = @id", myConnection); //JudjeClass
+                    foreach (bool item in checkArray)
+                    {
+                        if (i1 < max)
+                            if (checkArray[i1])
+                            {
+                                Judge judge_new = new Judge();
 
-                            command1.Parameters.AddWithValue("id", i1 + 1);
+                                command1 = new OleDbCommand("SELECT ФИО FROM judges WHERE Номер = @id", myConnection); //NSP
+                                command2 = new OleDbCommand("SELECT Категория_Судейства FROM judges WHERE Номер = @id", myConnection); //JudjeClass
 
-                            command2.Parameters.AddWithValue("id", i1 + 1);
+                                command1.Parameters.AddWithValue("id", i1 + 1);
 
-                            judge_new.ToJudge(command1.ExecuteScalar().ToString());
-                            judge_new.JudgeClass = command2.ExecuteScalar().ToString();
+                                command2.Parameters.AddWithValue("id", i1 + 1);
 
-                            RetTournir.judges.Add(judge_new);
-                            MessageBox.Show(RetTournir.judges[i1 - counter].ToString() + " " + RetTournir.judges[i1 - counter].JudgeClass);
-                        }
-                        else
-                        {
-                            counter++;
-                        }
-                    i1++;
+                                judge_new.ToJudge(command1.ExecuteScalar().ToString());
+                                judge_new.JudgeClass = command2.ExecuteScalar().ToString();
+
+                                RetTournir.judges.Add(judge_new);
+                                MessageBox.Show(RetTournir.judges[i1 - counter].ToNSP() + " " + RetTournir.judges[i1 - counter].JudgeClass);
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        i1++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Записей при определении судей не найдено");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Упс, что-то пошло не так при определении списка судей\nError: " + ex.Message);
-            }
+            } //заполнение судей
 
             myConnection.Close();
+            RetTournir.Show();
+
             return RetTournir;
         }
 
@@ -422,46 +484,146 @@ namespace DataViewer_D_v._001
             connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
             myConnection = new OleDbConnection(connectString);
             myConnection.Open();
-            SetClass set_new = new SetClass();
 
             List<SetClass> SetList_New = new List<SetClass>();
+
             try
             {
                 int i = 1;
-                int k = 0;
+                int max = 0;
+                int counter = 0;
+
+                BitArray checkArray = Controller.GapCounter("Номер_Захода", "sets", "Номер_Группы", input_group.number, myConnection);
 
                 command = new OleDbCommand("", myConnection);
-                command.CommandText = "SELECT COUNT(Номер_Захода) FROM sets WHERE Номер_Группы = @id";
+                command.CommandText = "SELECT MAX(Номер_Захода) FROM sets WHERE Номер_Группы = @id";
                 command.Parameters.AddWithValue("id", input_group.number);
 
-                k = Convert.ToInt32(command.ExecuteScalar());
-
-                MessageBox.Show(Convert.ToString(k));
-
-                while (i <= k)
+                if (command.ExecuteScalar() != DBNull.Value && checkArray != null)
                 {
-                    command.CommandText = "SELECT Категория FROM sets WHERE Номер_Захода = @id";
-                    command.Parameters.AddWithValue("id", i);
+                    max = Convert.ToInt32(command.ExecuteScalar());
 
-                    set_new.category = command.ExecuteScalar().ToString();
-                    set_new.number = i;
-                    set_new.numberOfGroup = input_group.number;
+                    MessageBox.Show($"MAX в группе {input_group.number}: " + Convert.ToString(max));
 
-                    SetList_New.Add(set_new); //ДОРАБОТКА
+                    foreach (bool item in checkArray)
+                    {
+                        if (i <= max)
+                            if (checkArray[i-1])
+                            {
+                                command = new OleDbCommand("", myConnection);
+                                command.CommandText = "SELECT Категория FROM sets WHERE Номер_Захода = @id AND Номер_Группы = @num";
+                                command.Parameters.AddWithValue("id", i);
+                                command.Parameters.AddWithValue("num", input_group.number);
 
-                    MessageBox.Show(SetList_New[i - 1].ToString());
+                                SetClass set_new = new SetClass(input_group.number, i, command.ExecuteScalar().ToString());
 
-                    i++;
+                                SetList_New.Add(set_new); //ДОРАБОТКА
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        i++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нулевой результат запроса");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Упс, что-то пошло не так...(Блок 2)\nError: " + ex.Message);
+                MessageBox.Show("Упс, что-то пошло не так при определении списка заходов\nError: " + ex.Message);
             }
 
             myConnection.Close();
-            
             return SetList_New;
+        }
+
+        public static List<string> TakeCategory(GroupClass input_group, string cn)
+        {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+
+            List<string> CategoryList_New = new List<string>();
+
+            try
+            {
+                int i = 1;
+                int max = 0;
+                int counter = 0;
+
+                BitArray checkArray = Controller.GapCounter("Номер", "categories", myConnection);
+
+                command = new OleDbCommand("", myConnection);
+                command.CommandText = "SELECT MAX(Номер) FROM categories WHERE Номер_Группы = @id";
+                command.Parameters.AddWithValue("id", input_group.number);
+
+                if (command.ExecuteScalar() != DBNull.Value && checkArray != null)
+                {
+                    max = Convert.ToInt32(command.ExecuteScalar());
+
+                    MessageBox.Show($"MAX в группе {input_group.number}: " + Convert.ToString(max));
+
+                    foreach (bool item in checkArray)
+                    {
+                        if (i <= max)
+                            if (checkArray[i - 1])
+                            {
+                                command = new OleDbCommand("", myConnection);
+                                command.CommandText = "SELECT Категория FROM categories WHERE Номер = @id AND Номер_Группы = @num";
+                                command.Parameters.AddWithValue("id", i);
+                                command.Parameters.AddWithValue("num", input_group.number);
+
+                                string category = command.ExecuteScalar().ToString();
+                                MessageBox.Show(category);
+                                CategoryList_New.Add(category); //ДОРАБОТКА
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        i++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нулевой результат запроса");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так при определении списка заходов\nError: " + ex.Message);
+            }
+
+            myConnection.Close();
+            return CategoryList_New;
+        }
+
+        public static int TakeMax(string rowName, string tableName, string cn)
+        {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+
+            int max = 0;
+            try
+            {
+                OleDbCommand command = new OleDbCommand("", myConnection);
+                command.CommandText = $"SELECT MAX({rowName}) FROM {tableName}";
+                //command.Parameters.AddWithValue();
+
+                max = Convert.ToInt32(command.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Упс, что-то пошло не так при определении максимального значения {rowName} из {tableName}\nError: " + ex.Message);
+            }
+
+            myConnection.Close();
+
+            return max;
         }
     }
 }

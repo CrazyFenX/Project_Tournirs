@@ -15,8 +15,12 @@ namespace DataViewer_D_v._001
         public List<Sportsman> SoloList = new List<Sportsman>();
 
         public SetClass()
-        { 
-        
+        {
+            this.number = 0;
+            this.numberOfGroup = 0;
+            this.category = "";
+            this.DuetList = new List<Duet>();
+            this.SoloList = new List<Sportsman>();
         }
 
         public SetClass(int Group_Number, int Number, string Category)
@@ -28,7 +32,7 @@ namespace DataViewer_D_v._001
 
         public override string ToString()
         {
-            return Convert.ToString(this.number) + " " + Convert.ToString(this.numberOfGroup) + " " + Convert.ToString(this.category);
+            return "Заход номер " + Convert.ToString(this.number) + " из группы " + Convert.ToString(this.numberOfGroup) + " категория " + Convert.ToString(this.category);
         }
     }
 }

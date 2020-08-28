@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ADOX;
+using System;
 using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,8 @@ namespace DataViewer_D_v._001
         Sportsman sportsman = new Sportsman();
 
         public string folderName;
+
+        TournirClass tournir = new TournirClass();
 
         public registrFormSolo()
         {
@@ -104,6 +107,7 @@ namespace DataViewer_D_v._001
                 Controller.insertInSportDB(sportsman);
                 Controller.insertTrainer(sportsman.OlderTrainer, sportsman.BookNumber);
                 SecretaryController.insertInParticipants(sportsman,Path_textBox.Text);
+                SecretaryController.insertParticipantsInSet(Convert.ToInt32(duetNumber_textBox.Text), sportsman, Convert.ToInt32(groupNumber_comboBox.Text), Convert.ToInt32(setNumber_comboBox.Text), Path_textBox.Text);
             }
             else
                 MessageBox.Show("Не все необходимые поля заполнены!");
@@ -116,7 +120,7 @@ namespace DataViewer_D_v._001
                 City_textBox.Text != "" && DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && 
                 YearOfBirth_comboBox.SelectedIndex != -1 && AgeCategory_comboBox.SelectedIndex != -1 && SportCategory_comboBox.SelectedIndex != -1
                 && SportClass_comboBox.SelectedIndex != -1 && NameOfOldTrainer_textBox.Text != "" && SurnameOfOldTrainer_textBox.Text != ""
-                && PatronymicOfOldTrainer_textBox.Text != "")
+                && PatronymicOfOldTrainer_textBox.Text != "" && groupNumber_comboBox.SelectedIndex != -1 && setNumber_comboBox.SelectedIndex != -1 && duetNumber_textBox.Text != "")
             return true;
             return false;
         }
@@ -212,6 +216,7 @@ namespace DataViewer_D_v._001
             }
         }
         */
+        
         private void searchByBook_Button_Click(object sender, EventArgs e)
         {
             if (BookNumber_textBox.Text != "")
@@ -332,6 +337,48 @@ namespace DataViewer_D_v._001
                 folderName = openFileDialog1.FileName;
                 Path_textBox.Text = folderName;
             }
+        }
+
+        private void Path_textBox_TextChanged(object sender, EventArgs e)
+        {
+            folderName = Path_textBox.Text;
+            try
+            {
+                tournir = SecretaryController.TakeTournir(folderName);
+                for (int i = 0; i < tournir.groups.Count; i++)
+                    groupNumber_comboBox.Items.Add(tournir.groups[i].number);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void groupNumber_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                setNumber_comboBox.Items.Clear();
+                setNumber_comboBox.SelectedIndex = -1;
+                duetNumber_textBox.Text = "";
+
+                for (int i = 0; i < tournir.groups[groupNumber_comboBox.SelectedIndex].SetList.Count; i++)
+                    setNumber_comboBox.Items.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].SetList[i].number);
+
+                AgeCategory_comboBox.Items.Clear();
+                for (int i = 0; i < tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList.Count; i++)
+                    AgeCategory_comboBox.Items.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList[i]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void setNumber_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (setNumber_comboBox.SelectedIndex != -1)
+            duetNumber_textBox.Text = Convert.ToString(SecretaryController.TakeMax("Номер", "duets", Path_textBox.Text) + 1);
         }
     }
 }

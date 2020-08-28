@@ -201,14 +201,21 @@ namespace DataViewer_D_v._001
 
         private void CreateGroup_button_Click(object sender, EventArgs e)
         {
-            CreateGroup_button.Visible = false;
-            CreateSet_button.Visible = false;
+            if (Path_textBox.Text != "")
+            {
+                CreateGroup_button.Visible = false;
+                CreateSet_button.Visible = false;
 
-            CreateGroupSecond_button.Visible = true;
-            Categoriess_groupBox.Visible = true;
-            label_NumberOfGroup.Visible = true;
-            NumberOfGroup_textBox.Visible = true;
-            BackSecond_button.Visible = true;
+                CreateGroupSecond_button.Visible = true;
+                Categoriess_groupBox.Visible = true;
+                label_NumberOfGroup.Visible = true;
+                NumberOfGroup_textBox.Visible = true;
+                BackSecond_button.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбоать базу турнира!");
+            }
         }
 
         private void BackSecond_button_Click(object sender, EventArgs e)
@@ -359,7 +366,14 @@ namespace DataViewer_D_v._001
 
         private void CreateSet_button_Click(object sender, EventArgs e)
         {
-            creatingSet_groupBox.Visible = true;
+            if (Path_textBox.Text != "")
+            {
+                creatingSet_groupBox.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Необходимо выбоать базу турнира!");
+            }
         }
 
         private void backThird_button_Click(object sender, EventArgs e)
@@ -391,7 +405,14 @@ namespace DataViewer_D_v._001
         {
             try
             {
-               setNumber_textBox.Text = Convert.ToString(tournir.groups[setGroupNumber_comboBox.SelectedIndex].SetList.Count() + 1);
+                if (Path_textBox.Text != "")
+                {
+                    setNumber_textBox.Text = Convert.ToString(tournir.groups[setGroupNumber_comboBox.SelectedIndex].SetList.Count() + 1);
+
+                    setCategory_comboBox.Items.Clear();
+                    for (int i = 0; i < tournir.groups[setGroupNumber_comboBox.SelectedIndex].CategoryList.Count; i++)
+                        setCategory_comboBox.Items.Add(tournir.groups[setGroupNumber_comboBox.SelectedIndex].CategoryList[i]);
+                }
             }
             catch(Exception ex)
             {

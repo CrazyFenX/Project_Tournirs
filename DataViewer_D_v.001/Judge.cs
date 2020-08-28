@@ -51,7 +51,7 @@ namespace DataViewer_D_v._001
                     name += NSP[i];
                     i++;
                 }
-                MessageBox.Show(name);
+                //MessageBox.Show(name);
                 i++;
 
                 while (NSP[i] != ' ' && i <= NSP.Length)
@@ -59,7 +59,7 @@ namespace DataViewer_D_v._001
                     surname += NSP[i];
                     i++;
                 }
-                MessageBox.Show(surname);
+                //MessageBox.Show(surname);
                 i++;
 
                 while (NSP[i] != ' ' && i <= NSP.Length)
@@ -67,7 +67,7 @@ namespace DataViewer_D_v._001
                     patronymic += NSP[i];
                     i++;
                 }
-                MessageBox.Show(patronymic);
+                //MessageBox.Show(patronymic);
 
             this.Name = name;
             this.Surname = surname;

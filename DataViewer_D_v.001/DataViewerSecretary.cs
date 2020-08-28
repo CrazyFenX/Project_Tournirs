@@ -126,94 +126,120 @@ namespace DataViewer_D_v._001
 
         private void showTournir_button_Click(object sender, EventArgs e)
         {
-            aConn1.Open();
-            dbAdapter = new OleDbDataAdapter("SELECT * FROM [tournir]", aConn1);
-            dataTable = new DataTable();
-            dbAdapter.Fill(dataTable);
-            mainDataGridView.DataSource = dataTable;
+            if (Path_textBox.Text != "")
+            {
+                aConn1.Open();
+                dbAdapter = new OleDbDataAdapter("SELECT * FROM [tournir]", aConn1);
+                dataTable = new DataTable();
+                dbAdapter.Fill(dataTable);
+                mainDataGridView.DataSource = dataTable;
 
-            showTournir_button.BackColor = Color.Empty;
-            showJudge_button.BackColor = Color.Gray;
-            showParticipant_button.BackColor = Color.Gray;
-            showCategories_button.BackColor = Color.Gray;
-            showGroup_button.BackColor = Color.Gray;
-            showSets_button.BackColor = Color.Gray;
-            aConn1.Close();
+                showTournir_button.BackColor = Color.Empty;
+                showJudge_button.BackColor = Color.Gray;
+                showParticipant_button.BackColor = Color.Gray;
+                showCategories_button.BackColor = Color.Gray;
+                showGroup_button.BackColor = Color.Gray;
+                showSets_button.BackColor = Color.Gray;
+                aConn1.Close();
+            }
+            else
+                MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
 
         private void showJudge_button_Click(object sender, EventArgs e)
         {
-            aConn1.Open();
-            dbAdapter = new OleDbDataAdapter("SELECT * FROM [judges]", aConn1);
-            dataTable = new DataTable();
-            dbAdapter.Fill(dataTable);
-            mainDataGridView.DataSource = dataTable;
+            if (Path_textBox.Text != "")
+            {
+                aConn1.Open();
+                dbAdapter = new OleDbDataAdapter("SELECT * FROM [judges]", aConn1);
+                dataTable = new DataTable();
+                dbAdapter.Fill(dataTable);
+                mainDataGridView.DataSource = dataTable;
 
-            showTournir_button.BackColor = Color.Gray;
-            showJudge_button.BackColor = Color.Empty;
-            showParticipant_button.BackColor = Color.Gray;
-            showCategories_button.BackColor = Color.Gray;
-            showGroup_button.BackColor = Color.Gray;
-            showSets_button.BackColor = Color.Gray;
-            aConn1.Close();
+                showTournir_button.BackColor = Color.Gray;
+                showJudge_button.BackColor = Color.Empty;
+                showParticipant_button.BackColor = Color.Gray;
+                showCategories_button.BackColor = Color.Gray;
+                showGroup_button.BackColor = Color.Gray;
+                showSets_button.BackColor = Color.Gray;
+                aConn1.Close();
+            }
+            else
+                MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
 
         private void showParticipant_button_Click(object sender, EventArgs e)
         {
-            aConn1.Open();
-            dbAdapter = new OleDbDataAdapter("SELECT * FROM [participants]", aConn1);
-            dataTable = new DataTable();
-            dbAdapter.Fill(dataTable);
-            mainDataGridView.DataSource = dataTable;
+            if (Path_textBox.Text != "")
+            {
+                aConn1.Open();
+                dbAdapter = new OleDbDataAdapter("SELECT * FROM [participants]", aConn1);
+                dataTable = new DataTable();
+                dbAdapter.Fill(dataTable);
+                mainDataGridView.DataSource = dataTable;
 
-            showTournir_button.BackColor = Color.Gray;
-            showJudge_button.BackColor = Color.Gray;
-            showParticipant_button.BackColor = Color.Empty;
-            showCategories_button.BackColor = Color.Gray;
-            showGroup_button.BackColor = Color.Gray;
-            showSets_button.BackColor = Color.Gray;
-            aConn1.Close();
+                showTournir_button.BackColor = Color.Gray;
+                showJudge_button.BackColor = Color.Gray;
+                showParticipant_button.BackColor = Color.Empty;
+                showCategories_button.BackColor = Color.Gray;
+                showGroup_button.BackColor = Color.Gray;
+                showSets_button.BackColor = Color.Gray;
+                aConn1.Close();
+            }
+            else
+                MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
 
         private void showGroup_button_Click(object sender, EventArgs e)
         {
-            aConn1.Open();
-            dbAdapter = new OleDbDataAdapter("SELECT * FROM [groups]", aConn1);
-            dataTable = new DataTable();
-            dbAdapter.Fill(dataTable);
-            mainDataGridView.DataSource = dataTable;
+            if (Path_textBox.Text != "")
+            {
+                aConn1.Open();
+                dbAdapter = new OleDbDataAdapter("SELECT * FROM [groups]", aConn1);
+                dataTable = new DataTable();
+                dbAdapter.Fill(dataTable);
+                mainDataGridView.DataSource = dataTable;
 
-            showTournir_button.BackColor = Color.Gray;
-            showJudge_button.BackColor = Color.Gray;
-            showParticipant_button.BackColor = Color.Gray;
-            showCategories_button.BackColor = Color.Gray;
-            showGroup_button.BackColor = Color.Empty;
-            showSets_button.BackColor = Color.Gray;
-            aConn1.Close();
+                showTournir_button.BackColor = Color.Gray;
+                showJudge_button.BackColor = Color.Gray;
+                showParticipant_button.BackColor = Color.Gray;
+                showCategories_button.BackColor = Color.Gray;
+                showGroup_button.BackColor = Color.Empty;
+                showSets_button.BackColor = Color.Gray;
+                aConn1.Close();
+            }
+            else
+                MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
 
         private void showCategories_button_Click(object sender, EventArgs e)
         {
-            aConn1.Open();
-            dbAdapter = new OleDbDataAdapter("SELECT * FROM [categories]", aConn1);
-            dataTable = new DataTable();
-            dbAdapter.Fill(dataTable);
-            mainDataGridView.DataSource = dataTable;
+            if (Path_textBox.Text != "")
+            {
+                aConn1.Open();
+                dbAdapter = new OleDbDataAdapter("SELECT * FROM [categories]", aConn1);
+                dataTable = new DataTable();
+                dbAdapter.Fill(dataTable);
+                mainDataGridView.DataSource = dataTable;
 
-            showTournir_button.BackColor = Color.Gray;
-            showJudge_button.BackColor = Color.Gray;
-            showParticipant_button.BackColor = Color.Gray;
-            showCategories_button.BackColor = Color.Empty;
-            showGroup_button.BackColor = Color.Gray;
-            showSets_button.BackColor = Color.Gray;
-            aConn1.Close();
+                showTournir_button.BackColor = Color.Gray;
+                showJudge_button.BackColor = Color.Gray;
+                showParticipant_button.BackColor = Color.Gray;
+                showCategories_button.BackColor = Color.Empty;
+                showGroup_button.BackColor = Color.Gray;
+                showSets_button.BackColor = Color.Gray;
+                aConn1.Close();
+            }
+            else
+                MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
 
         private void showSets_button_Click(object sender, EventArgs e)
         {
             if (Path_textBox.Text != "")
             {
-                aConn1.Open();
+
+                    aConn1.Open();
                 dbAdapter = new OleDbDataAdapter("SELECT * FROM [sets]", aConn1);
                 dataTable = new DataTable();
                 dbAdapter.Fill(dataTable);

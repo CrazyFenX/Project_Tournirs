@@ -5,6 +5,8 @@ using System.Linq;
 using System.Security.Policy;
 using System.Text;
 using System.Data.OleDb;
+using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace DataViewer_D_v._001
 {
@@ -29,6 +31,50 @@ namespace DataViewer_D_v._001
         {
             this.groups = new List<GroupClass>();
             SecretaryController.TakeTournir(cn);
+        }
+
+        public void Show()
+        {
+            string result = "";
+
+            result += this.name;
+            result += "\n";
+
+            result += this.date.ToString();
+            result += "\n";
+
+            result += this.time.ToString();
+            result += "\n";
+
+            result += this.place;
+            result += "\n";
+
+            result += this.organisation;
+            result += "\n";
+
+            foreach (Judge item in this.judges)
+            {
+                result += item.ToNSP();
+                result += "\n";
+            }
+
+            result += this.registrator;
+            result += "\n";
+
+            result += this.secretary;
+            result += "\n";
+
+            foreach (GroupClass group in this.groups)
+            {
+                result += group.ToString();
+                result += "\n";
+                foreach (SetClass set in group.SetList)
+                {
+                    result += set.ToString();
+                    result += "\n";
+                }
+            }
+            MessageBox.Show(result);
         }
     }
 }

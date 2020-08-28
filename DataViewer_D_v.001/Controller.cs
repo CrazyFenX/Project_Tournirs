@@ -209,34 +209,94 @@ namespace DataViewer_D_v._001
         {
             int k = 0, i = 1;//, counter = 1;
             OleDbCommand command1 = new OleDbCommand($"SELECT MAX({rowName}) FROM {tableName}", cn);
-            k = Convert.ToInt32(command1.ExecuteScalar().ToString());
-            BitArray retArr = new BitArray(k);
+            BitArray retArr = new BitArray(0);
 
-            MessageBox.Show($"{k}");
-            //cn.Close();
-            while (i <= k)
+            try
             {
-                //cn.Open();
-                OleDbCommand command2 = new OleDbCommand($"SELECT {rowName} FROM {tableName} WHERE {rowName} = @id", cn);
-                command2.Parameters.AddWithValue("id", i);
-                if (command2.ExecuteScalar() == null)
+                if (command1.ExecuteScalar() != DBNull.Value)
                 {
-                    MessageBox.Show($"Отсутствует эллемент под номером {i}");
-                    retArr[i-1] = false;
+                    k = Convert.ToInt32(command1.ExecuteScalar().ToString());
+                    retArr = new BitArray(k);
+
+                    while (i <= k)
+                    {
+                        OleDbCommand command2 = new OleDbCommand($"SELECT {rowName} FROM {tableName} WHERE {rowName} = @id", cn);
+                        command2.Parameters.AddWithValue("id", i);
+                        if (command2.ExecuteScalar() == null)
+                        {
+                            MessageBox.Show($"Отсутствует эллемент под номером {i}");
+                            retArr[i - 1] = false;
+                        }
+                        else
+                            retArr[i - 1] = true;
+                        i++;
+                    }
+
+                    string mesStr = "";
+                    foreach (bool item in retArr)
+                    {
+                        mesStr += $"{item} ";
+                    }
+                    MessageBox.Show(mesStr);
                 }
                 else
-                    retArr[i-1] = true;
-                //cn.Close();
-                i++;
+                    MessageBox.Show($"Записей в {rowName} из {tableName} не найдено");
             }
-            //cn.Open();
-            ////
-            string mesStr = "";
-            foreach (bool item in retArr)
+            catch (Exception ex)
             {
-                mesStr += $"{item} ";
+                MessageBox.Show("ошибка в GapCounter при обработке " + rowName + " в таблице " + tableName + ex.Message);
             }
-            MessageBox.Show(mesStr);
+            return retArr;
+        }
+
+        public static BitArray GapCounter(string rowName, string tableName, string parametrRowName, int parametr, OleDbConnection cn)
+        {
+            int k = 0, i = 1;//, counter = 1;
+            OleDbCommand command1 = new OleDbCommand($"SELECT MAX({rowName}) FROM {tableName} WHERE {parametrRowName} = @num", cn);
+            command1.Parameters.AddWithValue("num", parametr);
+            BitArray retArr = new BitArray(0);
+
+            try
+            {
+                if (command1.ExecuteScalar() != DBNull.Value)
+                {
+                    k = Convert.ToInt32(command1.ExecuteScalar().ToString());
+                    //MessageBox.Show($"макс номер захода в группе {parametr}: {k}");
+                    retArr = new BitArray(k);
+
+                    while (i <= k)
+                    {
+                        OleDbCommand command2 = new OleDbCommand($"SELECT {rowName} FROM {tableName} WHERE {rowName} = @id AND {parametrRowName} = @num", cn);
+                        command2.Parameters.AddWithValue("id", i);
+                        command2.Parameters.AddWithValue("num", parametr);
+
+                        if (command2.ExecuteScalar() == null)
+                        {
+                            //MessageBox.Show($"Отсутствует эллемент под номером {i}");
+                            retArr[i - 1] = false;
+                        }
+                        else
+                            retArr[i - 1] = true;
+                        i++;
+                    }
+
+                    string mesStr = "";
+                    foreach (bool item in retArr)
+                    {
+                        mesStr += $"{item} ";
+                    }
+                    //MessageBox.Show(mesStr);
+                }
+                else
+                {
+                    MessageBox.Show($"Записей в {rowName} из {tableName} не найдено");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("ошибка в GapCounter при обработке " + rowName + " в таблице " + tableName + ex.Message);
+            }
             return retArr;
         }
     }

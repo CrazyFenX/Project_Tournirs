@@ -26,7 +26,7 @@ namespace DataViewer_D_v._001
 
         public override string ToString()
         {
-            return Convert.ToString(this.number) + Convert.ToString(this.tournir_name);
+            return "Группа номер " + Convert.ToString(this.number) + " в " + Convert.ToString(this.tournir_name);
         }
     }
 }

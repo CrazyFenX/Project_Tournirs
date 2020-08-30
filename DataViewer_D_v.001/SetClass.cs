@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataViewer_D_v._001
 {
-    class SetClass
+    public class SetClass
     {
         public int number;
         public int numberOfGroup;

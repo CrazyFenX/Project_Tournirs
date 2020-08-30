@@ -81,7 +81,7 @@ namespace DataViewer_D_v._001
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Категорий
-                    com = new OleDbCommand("CREATE TABLE categories(Номер_Группы INT, Категория CHAR(5), CONSTRAINT fk_categories FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                    com = new OleDbCommand("CREATE TABLE categories(Номер INT, Номер_Группы INT, Категория CHAR(5), CONSTRAINT fk_categories FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Судей

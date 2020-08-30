@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace DataViewer_D_v._001
 {
-    class TournirClass
+    public class TournirClass
     {
         public string name;
         public MyDate date = new MyDate();

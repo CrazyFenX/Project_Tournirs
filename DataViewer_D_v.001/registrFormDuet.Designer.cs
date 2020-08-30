@@ -32,10 +32,6 @@
             this.openDataBasaButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.CommonProperties_groupBox = new System.Windows.Forms.GroupBox();
-            this.Label_Number = new System.Windows.Forms.Label();
-            this.Number_textBox = new System.Windows.Forms.TextBox();
-            this.Label_Group = new System.Windows.Forms.Label();
-            this.Group_textBox = new System.Windows.Forms.TextBox();
             this.Label_City = new System.Windows.Forms.Label();
             this.City_textBox = new System.Windows.Forms.TextBox();
             this.Label_CategoryOfDancing = new System.Windows.Forms.Label();
@@ -99,11 +95,19 @@
             this.Browse_button = new System.Windows.Forms.Button();
             this.Path_textBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Group_n_Number_groupBox = new System.Windows.Forms.GroupBox();
+            this.duetNumber_textBox = new System.Windows.Forms.TextBox();
+            this.Label_DuetNumber = new System.Windows.Forms.Label();
+            this.setNumber_comboBox = new System.Windows.Forms.ComboBox();
+            this.Label_GroupNumber = new System.Windows.Forms.Label();
+            this.groupNumber_comboBox = new System.Windows.Forms.ComboBox();
+            this.Label_SetNumber = new System.Windows.Forms.Label();
             this.CommonProperties_groupBox.SuspendLayout();
             this.DuetTrainer_groupBox.SuspendLayout();
             this.OldTrainer_groupBox.SuspendLayout();
             this.FirstSportsman_groupBox.SuspendLayout();
             this.SecondSportsman_groupBox.SuspendLayout();
+            this.Group_n_Number_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchByBook_1_button
@@ -137,7 +141,7 @@
             this.backButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.backButton.Location = new System.Drawing.Point(768, 410);
+            this.backButton.Location = new System.Drawing.Point(768, 457);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(183, 47);
             this.backButton.TabIndex = 28;
@@ -147,10 +151,7 @@
             // 
             // CommonProperties_groupBox
             // 
-            this.CommonProperties_groupBox.Controls.Add(this.Label_Number);
-            this.CommonProperties_groupBox.Controls.Add(this.Number_textBox);
-            this.CommonProperties_groupBox.Controls.Add(this.Label_Group);
-            this.CommonProperties_groupBox.Controls.Add(this.Group_textBox);
+            this.CommonProperties_groupBox.Controls.Add(this.Group_n_Number_groupBox);
             this.CommonProperties_groupBox.Controls.Add(this.Label_City);
             this.CommonProperties_groupBox.Controls.Add(this.City_textBox);
             this.CommonProperties_groupBox.Controls.Add(this.Label_CategoryOfDancing);
@@ -161,42 +162,10 @@
             this.CommonProperties_groupBox.Controls.Add(this.OldTrainer_groupBox);
             this.CommonProperties_groupBox.Location = new System.Drawing.Point(12, 275);
             this.CommonProperties_groupBox.Name = "CommonProperties_groupBox";
-            this.CommonProperties_groupBox.Size = new System.Drawing.Size(750, 144);
+            this.CommonProperties_groupBox.Size = new System.Drawing.Size(750, 195);
             this.CommonProperties_groupBox.TabIndex = 27;
             this.CommonProperties_groupBox.TabStop = false;
             this.CommonProperties_groupBox.Text = "Общее";
-            // 
-            // Label_Number
-            // 
-            this.Label_Number.AutoSize = true;
-            this.Label_Number.Location = new System.Drawing.Point(172, 114);
-            this.Label_Number.Name = "Label_Number";
-            this.Label_Number.Size = new System.Drawing.Size(51, 17);
-            this.Label_Number.TabIndex = 32;
-            this.Label_Number.Text = "Номер";
-            // 
-            // Number_textBox
-            // 
-            this.Number_textBox.Location = new System.Drawing.Point(233, 111);
-            this.Number_textBox.Name = "Number_textBox";
-            this.Number_textBox.Size = new System.Drawing.Size(49, 22);
-            this.Number_textBox.TabIndex = 31;
-            // 
-            // Label_Group
-            // 
-            this.Label_Group.AutoSize = true;
-            this.Label_Group.Location = new System.Drawing.Point(11, 114);
-            this.Label_Group.Name = "Label_Group";
-            this.Label_Group.Size = new System.Drawing.Size(55, 17);
-            this.Label_Group.TabIndex = 30;
-            this.Label_Group.Text = "Группа";
-            // 
-            // Group_textBox
-            // 
-            this.Group_textBox.Location = new System.Drawing.Point(72, 111);
-            this.Group_textBox.Name = "Group_textBox";
-            this.Group_textBox.Size = new System.Drawing.Size(49, 22);
-            this.Group_textBox.TabIndex = 29;
             // 
             // Label_City
             // 
@@ -478,7 +447,6 @@
             this.Label_BookNumber1.Size = new System.Drawing.Size(57, 17);
             this.Label_BookNumber1.TabIndex = 20;
             this.Label_BookNumber1.Text = "Книжка";
-            this.Label_BookNumber1.Click += new System.EventHandler(this.label11_Click);
             // 
             // SportClass1_comboBox
             // 
@@ -1022,7 +990,7 @@
             // Browse_button
             // 
             this.Browse_button.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.Browse_button.Location = new System.Drawing.Point(653, 425);
+            this.Browse_button.Location = new System.Drawing.Point(653, 472);
             this.Browse_button.Name = "Browse_button";
             this.Browse_button.Size = new System.Drawing.Size(109, 32);
             this.Browse_button.TabIndex = 31;
@@ -1032,21 +1000,86 @@
             // 
             // Path_textBox
             // 
-            this.Path_textBox.Location = new System.Drawing.Point(12, 429);
+            this.Path_textBox.Location = new System.Drawing.Point(12, 476);
             this.Path_textBox.Name = "Path_textBox";
             this.Path_textBox.Size = new System.Drawing.Size(635, 22);
             this.Path_textBox.TabIndex = 30;
+            this.Path_textBox.TextChanged += new System.EventHandler(this.Path_textBox_TextChanged);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Group_n_Number_groupBox
+            // 
+            this.Group_n_Number_groupBox.Controls.Add(this.duetNumber_textBox);
+            this.Group_n_Number_groupBox.Controls.Add(this.Label_DuetNumber);
+            this.Group_n_Number_groupBox.Controls.Add(this.setNumber_comboBox);
+            this.Group_n_Number_groupBox.Controls.Add(this.Label_GroupNumber);
+            this.Group_n_Number_groupBox.Controls.Add(this.groupNumber_comboBox);
+            this.Group_n_Number_groupBox.Controls.Add(this.Label_SetNumber);
+            this.Group_n_Number_groupBox.Location = new System.Drawing.Point(6, 144);
+            this.Group_n_Number_groupBox.Name = "Group_n_Number_groupBox";
+            this.Group_n_Number_groupBox.Size = new System.Drawing.Size(596, 44);
+            this.Group_n_Number_groupBox.TabIndex = 32;
+            this.Group_n_Number_groupBox.TabStop = false;
+            // 
+            // duetNumber_textBox
+            // 
+            this.duetNumber_textBox.Location = new System.Drawing.Point(461, 13);
+            this.duetNumber_textBox.Name = "duetNumber_textBox";
+            this.duetNumber_textBox.Size = new System.Drawing.Size(79, 22);
+            this.duetNumber_textBox.TabIndex = 37;
+            // 
+            // Label_DuetNumber
+            // 
+            this.Label_DuetNumber.AutoSize = true;
+            this.Label_DuetNumber.Location = new System.Drawing.Point(399, 13);
+            this.Label_DuetNumber.Name = "Label_DuetNumber";
+            this.Label_DuetNumber.Size = new System.Drawing.Size(51, 17);
+            this.Label_DuetNumber.TabIndex = 36;
+            this.Label_DuetNumber.Text = "Номер";
+            // 
+            // setNumber_comboBox
+            // 
+            this.setNumber_comboBox.FormattingEnabled = true;
+            this.setNumber_comboBox.Location = new System.Drawing.Point(254, 11);
+            this.setNumber_comboBox.Name = "setNumber_comboBox";
+            this.setNumber_comboBox.Size = new System.Drawing.Size(89, 24);
+            this.setNumber_comboBox.TabIndex = 37;
+            // 
+            // Label_GroupNumber
+            // 
+            this.Label_GroupNumber.AutoSize = true;
+            this.Label_GroupNumber.Location = new System.Drawing.Point(13, 11);
+            this.Label_GroupNumber.Name = "Label_GroupNumber";
+            this.Label_GroupNumber.Size = new System.Drawing.Size(55, 17);
+            this.Label_GroupNumber.TabIndex = 26;
+            this.Label_GroupNumber.Text = "Группа";
+            // 
+            // groupNumber_comboBox
+            // 
+            this.groupNumber_comboBox.FormattingEnabled = true;
+            this.groupNumber_comboBox.Location = new System.Drawing.Point(74, 11);
+            this.groupNumber_comboBox.Name = "groupNumber_comboBox";
+            this.groupNumber_comboBox.Size = new System.Drawing.Size(85, 24);
+            this.groupNumber_comboBox.TabIndex = 36;
+            // 
+            // Label_SetNumber
+            // 
+            this.Label_SetNumber.AutoSize = true;
+            this.Label_SetNumber.Location = new System.Drawing.Point(197, 11);
+            this.Label_SetNumber.Name = "Label_SetNumber";
+            this.Label_SetNumber.Size = new System.Drawing.Size(47, 17);
+            this.Label_SetNumber.TabIndex = 24;
+            this.Label_SetNumber.Text = "Заход";
             // 
             // registrFormDuet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(963, 466);
+            this.ClientSize = new System.Drawing.Size(955, 503);
             this.Controls.Add(this.Browse_button);
             this.Controls.Add(this.Path_textBox);
             this.Controls.Add(this.SecondSportsman_groupBox);
@@ -1070,6 +1103,8 @@
             this.FirstSportsman_groupBox.PerformLayout();
             this.SecondSportsman_groupBox.ResumeLayout(false);
             this.SecondSportsman_groupBox.PerformLayout();
+            this.Group_n_Number_groupBox.ResumeLayout(false);
+            this.Group_n_Number_groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1129,10 +1164,6 @@
         private System.Windows.Forms.Label Label_City;
         private System.Windows.Forms.TextBox City_textBox;
         private System.Windows.Forms.Button searchByBook_2_Button;
-        private System.Windows.Forms.Label Label_Number;
-        private System.Windows.Forms.TextBox Number_textBox;
-        private System.Windows.Forms.Label Label_Group;
-        private System.Windows.Forms.TextBox Group_textBox;
         private System.Windows.Forms.Label Label_SportCategory_1;
         private System.Windows.Forms.ComboBox SportCategory1_comboBox;
         private System.Windows.Forms.Label Label_SportCategory_2;
@@ -1148,5 +1179,12 @@
         private System.Windows.Forms.Button Browse_button;
         private System.Windows.Forms.TextBox Path_textBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.GroupBox Group_n_Number_groupBox;
+        private System.Windows.Forms.TextBox duetNumber_textBox;
+        private System.Windows.Forms.Label Label_DuetNumber;
+        private System.Windows.Forms.ComboBox setNumber_comboBox;
+        private System.Windows.Forms.Label Label_GroupNumber;
+        private System.Windows.Forms.ComboBox groupNumber_comboBox;
+        private System.Windows.Forms.Label Label_SetNumber;
     }
 }

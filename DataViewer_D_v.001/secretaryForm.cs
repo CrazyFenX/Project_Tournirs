@@ -27,7 +27,9 @@ namespace DataViewer_D_v._001
         public secretaryForm(secretaryMainForm secretaryMainForm)
         {
             InitializeComponent();
+            tournir = new TournirClass();
             this.secretaryMainForm = secretaryMainForm;
+
             CreateGroup_button.Visible = true;
             CreateSet_button.Visible = true;
 
@@ -43,6 +45,8 @@ namespace DataViewer_D_v._001
         public secretaryForm()
         {
             InitializeComponent();
+            tournir = new TournirClass();
+
             CreateGroup_button.Visible = true;
             CreateSet_button.Visible = true;
 
@@ -127,6 +131,8 @@ namespace DataViewer_D_v._001
         {
             this.secretaryMainForm.Enabled = true;
             this.Hide();
+
+            this.secretaryMainForm.tournir = this.tournir;
         }
 
         private void secretaryForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -265,10 +271,12 @@ namespace DataViewer_D_v._001
                         com.Parameters.AddWithValue("tournir_name", tournir.name);
                         com.Parameters.AddWithValue("group_number", group_new.number);
 
+                        group_new.tournir_name = tournir.name;
+
                         try
                         {
                             com.ExecuteNonQuery();
-                            tournir.groups.Add(new GroupClass(group_new.number, tournir.name));
+                            //tournir.groups.Add(group_new = new GroupClass(group_new.number, tournir.name));
                         }
                         catch (Exception ex)
                         {
@@ -279,8 +287,10 @@ namespace DataViewer_D_v._001
 
                         for (int i = 0; i < CategoriesList.Length; i++)
                         {
-                            com = new OleDbCommand("INSERT INTO categories(Номер_Группы, Категория)" + "VALUES (@group_number, @category)", cn);
+                            com = new OleDbCommand("INSERT INTO categories(Номер, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)", cn);
+                            com.Parameters.AddWithValue("number", i + 1);
                             com.Parameters.AddWithValue("group_number", group_new.number);
+
                             if (CategoriesList[i].Checked == true)
                             {
                                 switch (i)
@@ -288,52 +298,80 @@ namespace DataViewer_D_v._001
                                     case 0:
                                         com.Parameters.AddWithValue("category", "Д-0");
                                         testStr += "Д-0 ";
+                                        group_new.CategoryList.Add("Д-0");
                                         com.ExecuteNonQuery();
                                         break;
                                     case 1:
                                         com.Parameters.AddWithValue("category", "Д-1");
                                         testStr += "Д-1 ";
+                                        group_new.CategoryList.Add("Д-1");
                                         com.ExecuteNonQuery();
                                         break;
                                     case 2:
                                         com.Parameters.AddWithValue("category", "Д-2");
                                         testStr += "Д-2 ";
+                                        group_new.CategoryList.Add("Д-2");
                                         com.ExecuteNonQuery();
                                         break;
                                     case 3:
                                         com.Parameters.AddWithValue("category", "М");
                                         testStr += "М ";
+                                        group_new.CategoryList.Add("М");
                                         com.ExecuteNonQuery();
                                         break;
                                     case 4:
                                         com.Parameters.AddWithValue("category", "М-2");
                                         testStr += "М-2 ";
+                                        group_new.CategoryList.Add("М-2");
                                         com.ExecuteNonQuery();
                                         break;
                                     case 5:
                                         com.Parameters.AddWithValue("category", "Ю-1");
                                         testStr += "Ю-1 ";
+                                        group_new.CategoryList.Add("Ю-1");
                                         com.ExecuteNonQuery();
                                         break;
                                     case 6:
                                         com.Parameters.AddWithValue("category", "Ю-2");
                                         testStr += "Ю-2 ";
+                                        group_new.CategoryList.Add("Ю-2");
                                         com.ExecuteNonQuery();
                                         break;
                                     case 7:
                                         com.Parameters.AddWithValue("category", "Вз");
                                         testStr += "Вз";
+                                        group_new.CategoryList.Add("Вз");
                                         com.ExecuteNonQuery();
                                         break;
                                 }
                             }
                         }
-                        NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
+
+                        tournir.groups.Add(group_new);
+
+                        MessageBox.Show(tournir.groups[tournir.groups.Count - 1].show());
 
                         setGroupNumber_comboBox.Items.Clear();
-                        for (int i = 0; i < tournir.groups.Count; i++)
-                            setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
+                        MessageBox.Show($"{tournir.groups.Count}");//Работает
 
+                        for (int i = 0; i < tournir.groups.Count; i++)
+                        {
+                            MessageBox.Show($"{tournir.groups[i].number}");
+                            setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
+                        }
+
+                        MessageBox.Show($"Все Ок");
+
+                        setCategory_comboBox.Items.Clear();
+                        //MessageBox.Show($"{tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text)].CategoryList.Count}");
+
+                        for (int i = 0; i < tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList.Count; i++)
+                        {
+                            MessageBox.Show($"{tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList[i]}");
+                            setCategory_comboBox.Items.Add(tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList[i]);
+                        }
+
+                        NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
                         MessageBox.Show("Новая группа успешно создана!\nУказаны категории: " + testStr);
                     }
                     catch (Exception ex)
@@ -389,6 +427,7 @@ namespace DataViewer_D_v._001
                 {
                     SetClass setNew = new SetClass(Convert.ToInt32(setGroupNumber_comboBox.Text), Convert.ToInt32(setNumber_textBox.Text), setCategory_comboBox.Text);
                     SecretaryController.insertSet(setNew, Path_textBox.Text);
+                    tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].SetList.Add(setNew);
                 }
                 catch (Exception ex)
                 {
@@ -407,17 +446,34 @@ namespace DataViewer_D_v._001
             {
                 if (Path_textBox.Text != "")
                 {
-                    setNumber_textBox.Text = Convert.ToString(tournir.groups[setGroupNumber_comboBox.SelectedIndex].SetList.Count() + 1);
+                    setNumber_textBox.Text = Convert.ToString(tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].SetList.Count() + 1);
 
                     setCategory_comboBox.Items.Clear();
-                    for (int i = 0; i < tournir.groups[setGroupNumber_comboBox.SelectedIndex].CategoryList.Count; i++)
-                        setCategory_comboBox.Items.Add(tournir.groups[setGroupNumber_comboBox.SelectedIndex].CategoryList[i]);
+                    //MessageBox.Show($"{tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].CategoryList.Count}");
+
+                    string retStr = "";
+
+                    foreach (string category in tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].CategoryList)
+                    {
+                        setCategory_comboBox.Items.Add(category);
+                        retStr += category;
+                    }
+
+                    //MessageBox.Show(retStr);
                 }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void configButton_Click(object sender, EventArgs e)
+        {
+            if (Path_textBox.Text != "")
+                tournir.Show();
+            else
+                MessageBox.Show("Сперва необходимо выбрать базу турнира!");
         }
     }
 }

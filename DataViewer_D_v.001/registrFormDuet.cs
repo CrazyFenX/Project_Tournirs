@@ -19,6 +19,8 @@ namespace DataViewer_D_v._001
 
         string folderName;
 
+        TournirClass tournir = new TournirClass();
+
         public registrFormDuet()
         {
             InitializeComponent();
@@ -56,11 +58,6 @@ namespace DataViewer_D_v._001
             startWindow.duetButton.Visible = true;
             startWindow.sekwayButton.Visible = true;
             startWindow.ansamblButton.Visible = true;
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void registrationButton_Click(object sender, EventArgs e)
@@ -114,6 +111,7 @@ namespace DataViewer_D_v._001
                 SecretaryController.insertInParticipants(sportsman_first, Path_textBox.Text);
                 SecretaryController.insertInParticipants(sportsman_second, Path_textBox.Text);
 
+                SecretaryController.insertParticipantsInSet(Convert.ToInt32(duetNumber_textBox.Text), sportsman_first, sportsman_second, Convert.ToInt32(groupNumber_comboBox.Text), Convert.ToInt32(setNumber_comboBox.Text), Path_textBox.Text);
             }
             else
                 MessageBox.Show("Не все необходимые поля заполнены!");
@@ -418,6 +416,21 @@ namespace DataViewer_D_v._001
             {
                 folderName = openFileDialog1.FileName;
                 Path_textBox.Text = folderName;
+            }
+        }
+
+        private void Path_textBox_TextChanged(object sender, EventArgs e)
+        {
+            folderName = Path_textBox.Text;
+            try
+            {
+                tournir = SecretaryController.TakeTournir(folderName);
+                for (int i = 0; i < tournir.groups.Count; i++)
+                    groupNumber_comboBox.Items.Add(tournir.groups[i].number);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

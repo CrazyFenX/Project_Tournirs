@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace DataViewer_D_v._001
 {
-    class Judge
+    public class Judge
     {
         public int Number;
 

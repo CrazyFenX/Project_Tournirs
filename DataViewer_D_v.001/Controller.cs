@@ -224,7 +224,7 @@ namespace DataViewer_D_v._001
                         command2.Parameters.AddWithValue("id", i);
                         if (command2.ExecuteScalar() == null)
                         {
-                            MessageBox.Show($"Отсутствует эллемент под номером {i}");
+                            //MessageBox.Show($"Отсутствует эллемент под номером {i}");
                             retArr[i - 1] = false;
                         }
                         else
@@ -237,7 +237,7 @@ namespace DataViewer_D_v._001
                     {
                         mesStr += $"{item} ";
                     }
-                    MessageBox.Show(mesStr);
+                    //MessageBox.Show(mesStr);
                 }
                 else
                     MessageBox.Show($"Записей в {rowName} из {tableName} не найдено");

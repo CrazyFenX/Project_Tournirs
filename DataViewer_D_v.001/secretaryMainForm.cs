@@ -13,22 +13,14 @@ namespace DataViewer_D_v._001
     {
         startWindow startWindow = new startWindow();
 
+        public TournirClass tournir = new TournirClass();
+
         public secretaryMainForm()
         {
             InitializeComponent();
         }
 
         private void secretaryMainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }
@@ -72,6 +64,18 @@ namespace DataViewer_D_v._001
             startWindow.duetButton.Visible = false;
             startWindow.sekwayButton.Visible = false;
             startWindow.ansamblButton.Visible = false;
+        }
+
+        private void reglament_button_Click(object sender, EventArgs e)
+        {
+            formationReglament formRegform = new formationReglament(this);
+            this.Enabled = false;
+            formRegform.Show();
+        }
+
+        private void configButton_Click(object sender, EventArgs e)
+        {
+            this.tournir.Show();
         }
     }
 }

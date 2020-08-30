@@ -100,6 +100,12 @@
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
     </Compile>
     <Compile Include="Duet.cs" />
+    <Compile Include="formationReglament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formationReglament.Designer.cs">
+      <DependentUpon>formationReglament.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupClass.cs" />
     <Compile Include="Judge.cs" />
     <Compile Include="MyDate.cs" />
@@ -173,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataViewerSecretary.resx">
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formationReglament.resx">
+      <DependentUpon>formationReglament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="registrFormDuet.resx">
       <DependentUpon>registrFormDuet.cs</DependentUpon>

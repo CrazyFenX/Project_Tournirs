@@ -98,7 +98,7 @@ namespace DataViewer_D_v._001
             myConnection.Close();
         }
 
-        public static void insertParticipantsInSet(Sportsman sportsman1, Sportsman sportsman2, int groupNumber, int setNumber, string path)
+        public static void insertParticipantsInSet(int number, Sportsman sportsman1, Sportsman sportsman2, int groupNumber, int setNumber, string path)
         {
             try
             {
@@ -108,8 +108,9 @@ namespace DataViewer_D_v._001
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO duets(Номер_Группы, Номер_Захода, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@GroupNumber, @SetNumber, @BookNumber1, @BookNumber2, @Type)";
+                command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @BookNumber1, @BookNumber2, @Type)";
 
+                command.Parameters.AddWithValue("Number", number);
                 command.Parameters.AddWithValue("GroupNumber", groupNumber);
                 command.Parameters.AddWithValue("SetNumber", setNumber);
                 command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
@@ -554,7 +555,7 @@ namespace DataViewer_D_v._001
                 int max = 0;
                 int counter = 0;
 
-                BitArray checkArray = Controller.GapCounter("Номер", "categories", myConnection);
+                BitArray checkArray = Controller.GapCounter("Номер", "categories", "Номер_Группы", input_group.number, myConnection);
 
                 command = new OleDbCommand("", myConnection);
                 command.CommandText = "SELECT MAX(Номер) FROM categories WHERE Номер_Группы = @id";
@@ -564,7 +565,7 @@ namespace DataViewer_D_v._001
                 {
                     max = Convert.ToInt32(command.ExecuteScalar());
 
-                    MessageBox.Show($"MAX в группе {input_group.number}: " + Convert.ToString(max));
+                    //MessageBox.Show($"MAX в группе {input_group.number}: " + Convert.ToString(max));
 
                     foreach (bool item in checkArray)
                     {
@@ -577,7 +578,7 @@ namespace DataViewer_D_v._001
                                 command.Parameters.AddWithValue("num", input_group.number);
 
                                 string category = command.ExecuteScalar().ToString();
-                                MessageBox.Show(category);
+                                //MessageBox.Show(category);
                                 CategoryList_New.Add(category); //ДОРАБОТКА
                             }
                             else

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DataViewer_D_v._001
 {
-    class Duet
+    public class Duet
     {
         public Sportsman sportsman1 = new Sportsman();
         public Sportsman sportsman2 = new Sportsman();

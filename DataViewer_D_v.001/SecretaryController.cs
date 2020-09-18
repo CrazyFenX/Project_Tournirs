@@ -52,13 +52,14 @@ namespace DataViewer_D_v._001
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO participants(Номер_Книжки, Фамилия, Имя, Отчество, Категория)" + "VALUES (@BookNumber,@Surname,@Name,@Patronymic,@AgeCategory)";
+                command.CommandText = "INSERT INTO participants(Номер_Книжки, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@BookNumber,@Surname,@Name,@Patronymic,@AgeCategory,@GroupNumber)";
 
                 command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
                 command.Parameters.AddWithValue("Surname", sportsman.Surname);
                 command.Parameters.AddWithValue("Name", sportsman.Name);
                 command.Parameters.AddWithValue("Patronymic", sportsman.Patronymic);
                 command.Parameters.AddWithValue("AgeCategory",sportsman.AgeCategory);
+                command.Parameters.AddWithValue("GroupNumber", sportsman.GroupNumber);
 
                 command.ExecuteNonQuery();
             }
@@ -78,14 +79,23 @@ namespace DataViewer_D_v._001
                 myConnection.Open();
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
-
-                command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, Номер_Книжки1, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @BookNumber, @Type)";
-
-                command.Parameters.AddWithValue("Number", number);
-                command.Parameters.AddWithValue("GroupNumber", groupNumber);
-                command.Parameters.AddWithValue("SetNumber", setNumber);
-                command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
-                command.Parameters.AddWithValue("Type", "Соло");
+                if (setNumber != -1)
+                {
+                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, Номер_Книжки1, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @BookNumber, @Type)";
+                    command.Parameters.AddWithValue("Number", number);
+                    command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                    command.Parameters.AddWithValue("SetNumber", setNumber);
+                    command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
+                    command.Parameters.AddWithValue("Type", "Соло");
+                }
+                else
+                {
+                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber, @Type)";
+                    command.Parameters.AddWithValue("Number", number);
+                    command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                    command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
+                    command.Parameters.AddWithValue("Type", "Соло");
+                }                
 
                 MessageBox.Show($"Новый Солист:\n{sportsman.BookNumber}\nГруппа: {groupNumber}\nЗаход: {setNumber}");
 
@@ -107,16 +117,27 @@ namespace DataViewer_D_v._001
                 myConnection.Open();
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
+                if (setNumber != -1)
+                {
+                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @BookNumber1, @BookNumber2, @Type)";
 
-                command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @BookNumber1, @BookNumber2, @Type)";
+                    command.Parameters.AddWithValue("Number", number);
+                    command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                    command.Parameters.AddWithValue("SetNumber", setNumber);
+                    command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
+                    command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
+                    command.Parameters.AddWithValue("Type", "Пара");
+                }
+                else 
+                {
+                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber1, @BookNumber2, @Type)";
 
-                command.Parameters.AddWithValue("Number", number);
-                command.Parameters.AddWithValue("GroupNumber", groupNumber);
-                command.Parameters.AddWithValue("SetNumber", setNumber);
-                command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
-                command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
-                command.Parameters.AddWithValue("Type", "Пара");
-
+                    command.Parameters.AddWithValue("Number", number);
+                    command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                    command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
+                    command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
+                    command.Parameters.AddWithValue("Type", "Пара");
+                }
                 command.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -339,22 +360,6 @@ namespace DataViewer_D_v._001
 
                 MessageBox.Show($"Турнир: {RetTournir.name}\nДата: {RetTournir.date}\nВремя: {RetTournir.time}\nМесто: {RetTournir.place}\nОрганизация: {RetTournir.organisation}\nСекретарь: {RetTournir.secretary}\nРегистратор: {RetTournir.registrator}");
 
-                /*
-                public string name;
-                public MyDate date;
-                public TimeClass time;
-                public string place;
-                public string organisation;
-
-                public List<GroupClass> groups = new List<GroupClass>();
-
-                public string registrator;
-                public string secretary;
-
-                ++++++++public List<Judge> judges = new List<Judge>();
-
-                public List<Set> Sets = new List<Set>(); В группах
-                */
             }
             catch (Exception ex)
             {

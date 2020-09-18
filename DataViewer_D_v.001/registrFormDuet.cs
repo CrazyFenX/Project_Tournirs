@@ -62,6 +62,28 @@ namespace DataViewer_D_v._001
 
         private void registrationButton_Click(object sender, EventArgs e)
         {
+            bool searchFailedFlag = false;
+
+            if (BookNumber1_textBox.Text != "" && BookNumber2_textBox.Text != "")
+                try
+                {
+                    sportsman_first = Controller.SearchByBookNumber(Convert.ToInt32(BookNumber1_textBox.Text));
+                    sportsman_second = Controller.SearchByBookNumber(Convert.ToInt32(BookNumber2_textBox.Text));
+
+                    if (sportsman_first.Name != "NotDefined" || sportsman_second.Name != "NotDefined")
+                    {
+                        searchFailedFlag = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex.Message}");
+                }
+            else
+            {
+                MessageBox.Show("Заполните поле 'Номер Книжки' для первого спортсмена!");
+            }
+
             if (checkAllBoxes())
             {
                 sportsman_first.Name = Name1textBox.Text;
@@ -103,10 +125,13 @@ namespace DataViewer_D_v._001
                 sportsman_second.SportClass = Convert.ToString(SportClass2_comboBox.SelectedItem);
                 sportsman_second.SportCategory = Convert.ToString(SportCategory2_comboBox.SelectedItem);
 
-                Controller.insertInSportDB(sportsman_first);
-                Controller.insertInSportDB(sportsman_second);
+                if (searchFailedFlag)
+                {
+                    Controller.insertInSportDB(sportsman_first);
+                    Controller.insertInSportDB(sportsman_second);
 
-                Controller.insertTrainer(sportsman_first.OlderTrainer, sportsman_first.BookNumber);
+                    Controller.insertTrainer(sportsman_first.OlderTrainer, sportsman_first.BookNumber);
+                }
 
                 SecretaryController.insertInParticipants(sportsman_first, Path_textBox.Text);
                 SecretaryController.insertInParticipants(sportsman_second, Path_textBox.Text);
@@ -427,6 +452,31 @@ namespace DataViewer_D_v._001
                 tournir = SecretaryController.TakeTournir(folderName);
                 for (int i = 0; i < tournir.groups.Count; i++)
                     groupNumber_comboBox.Items.Add(tournir.groups[i].number);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void groupNumber_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                setNumber_comboBox.Items.Clear();
+                setNumber_comboBox.SelectedIndex = -1;
+                duetNumber_textBox.Text = "";
+
+                for (int i = 0; i < tournir.groups[groupNumber_comboBox.SelectedIndex].SetList.Count; i++)
+                    setNumber_comboBox.Items.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].SetList[i].number);
+
+                AgeCategory1_comboBox.Items.Clear();
+                AgeCategory2_comboBox.Items.Clear();
+                for (int i = 0; i < tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList.Count; i++)
+                {
+                    AgeCategory1_comboBox.Items.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList[i]);
+                    AgeCategory2_comboBox.Items.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList[i]);
+                }
             }
             catch (Exception ex)
             {

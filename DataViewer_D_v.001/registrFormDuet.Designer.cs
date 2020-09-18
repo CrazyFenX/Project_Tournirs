@@ -32,6 +32,13 @@
             this.openDataBasaButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.CommonProperties_groupBox = new System.Windows.Forms.GroupBox();
+            this.Group_n_Number_groupBox = new System.Windows.Forms.GroupBox();
+            this.duetNumber_textBox = new System.Windows.Forms.TextBox();
+            this.Label_DuetNumber = new System.Windows.Forms.Label();
+            this.setNumber_comboBox = new System.Windows.Forms.ComboBox();
+            this.Label_GroupNumber = new System.Windows.Forms.Label();
+            this.groupNumber_comboBox = new System.Windows.Forms.ComboBox();
+            this.Label_SetNumber = new System.Windows.Forms.Label();
             this.Label_City = new System.Windows.Forms.Label();
             this.City_textBox = new System.Windows.Forms.TextBox();
             this.Label_CategoryOfDancing = new System.Windows.Forms.Label();
@@ -95,19 +102,12 @@
             this.Browse_button = new System.Windows.Forms.Button();
             this.Path_textBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.Group_n_Number_groupBox = new System.Windows.Forms.GroupBox();
-            this.duetNumber_textBox = new System.Windows.Forms.TextBox();
-            this.Label_DuetNumber = new System.Windows.Forms.Label();
-            this.setNumber_comboBox = new System.Windows.Forms.ComboBox();
-            this.Label_GroupNumber = new System.Windows.Forms.Label();
-            this.groupNumber_comboBox = new System.Windows.Forms.ComboBox();
-            this.Label_SetNumber = new System.Windows.Forms.Label();
             this.CommonProperties_groupBox.SuspendLayout();
+            this.Group_n_Number_groupBox.SuspendLayout();
             this.DuetTrainer_groupBox.SuspendLayout();
             this.OldTrainer_groupBox.SuspendLayout();
             this.FirstSportsman_groupBox.SuspendLayout();
             this.SecondSportsman_groupBox.SuspendLayout();
-            this.Group_n_Number_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // searchByBook_1_button
@@ -166,6 +166,71 @@
             this.CommonProperties_groupBox.TabIndex = 27;
             this.CommonProperties_groupBox.TabStop = false;
             this.CommonProperties_groupBox.Text = "Общее";
+            // 
+            // Group_n_Number_groupBox
+            // 
+            this.Group_n_Number_groupBox.Controls.Add(this.duetNumber_textBox);
+            this.Group_n_Number_groupBox.Controls.Add(this.Label_DuetNumber);
+            this.Group_n_Number_groupBox.Controls.Add(this.setNumber_comboBox);
+            this.Group_n_Number_groupBox.Controls.Add(this.Label_GroupNumber);
+            this.Group_n_Number_groupBox.Controls.Add(this.groupNumber_comboBox);
+            this.Group_n_Number_groupBox.Controls.Add(this.Label_SetNumber);
+            this.Group_n_Number_groupBox.Location = new System.Drawing.Point(6, 144);
+            this.Group_n_Number_groupBox.Name = "Group_n_Number_groupBox";
+            this.Group_n_Number_groupBox.Size = new System.Drawing.Size(596, 44);
+            this.Group_n_Number_groupBox.TabIndex = 32;
+            this.Group_n_Number_groupBox.TabStop = false;
+            // 
+            // duetNumber_textBox
+            // 
+            this.duetNumber_textBox.Location = new System.Drawing.Point(461, 13);
+            this.duetNumber_textBox.Name = "duetNumber_textBox";
+            this.duetNumber_textBox.Size = new System.Drawing.Size(79, 22);
+            this.duetNumber_textBox.TabIndex = 37;
+            // 
+            // Label_DuetNumber
+            // 
+            this.Label_DuetNumber.AutoSize = true;
+            this.Label_DuetNumber.Location = new System.Drawing.Point(399, 13);
+            this.Label_DuetNumber.Name = "Label_DuetNumber";
+            this.Label_DuetNumber.Size = new System.Drawing.Size(51, 17);
+            this.Label_DuetNumber.TabIndex = 36;
+            this.Label_DuetNumber.Text = "Номер";
+            // 
+            // setNumber_comboBox
+            // 
+            this.setNumber_comboBox.FormattingEnabled = true;
+            this.setNumber_comboBox.Location = new System.Drawing.Point(254, 11);
+            this.setNumber_comboBox.Name = "setNumber_comboBox";
+            this.setNumber_comboBox.Size = new System.Drawing.Size(89, 24);
+            this.setNumber_comboBox.TabIndex = 37;
+            // 
+            // Label_GroupNumber
+            // 
+            this.Label_GroupNumber.AutoSize = true;
+            this.Label_GroupNumber.Location = new System.Drawing.Point(13, 11);
+            this.Label_GroupNumber.Name = "Label_GroupNumber";
+            this.Label_GroupNumber.Size = new System.Drawing.Size(55, 17);
+            this.Label_GroupNumber.TabIndex = 26;
+            this.Label_GroupNumber.Text = "Группа";
+            // 
+            // groupNumber_comboBox
+            // 
+            this.groupNumber_comboBox.FormattingEnabled = true;
+            this.groupNumber_comboBox.Location = new System.Drawing.Point(74, 11);
+            this.groupNumber_comboBox.Name = "groupNumber_comboBox";
+            this.groupNumber_comboBox.Size = new System.Drawing.Size(85, 24);
+            this.groupNumber_comboBox.TabIndex = 36;
+            this.groupNumber_comboBox.SelectedIndexChanged += new System.EventHandler(this.groupNumber_comboBox_SelectedIndexChanged);
+            // 
+            // Label_SetNumber
+            // 
+            this.Label_SetNumber.AutoSize = true;
+            this.Label_SetNumber.Location = new System.Drawing.Point(197, 11);
+            this.Label_SetNumber.Name = "Label_SetNumber";
+            this.Label_SetNumber.Size = new System.Drawing.Size(47, 17);
+            this.Label_SetNumber.TabIndex = 24;
+            this.Label_SetNumber.Text = "Заход";
             // 
             // Label_City
             // 
@@ -1010,70 +1075,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // Group_n_Number_groupBox
-            // 
-            this.Group_n_Number_groupBox.Controls.Add(this.duetNumber_textBox);
-            this.Group_n_Number_groupBox.Controls.Add(this.Label_DuetNumber);
-            this.Group_n_Number_groupBox.Controls.Add(this.setNumber_comboBox);
-            this.Group_n_Number_groupBox.Controls.Add(this.Label_GroupNumber);
-            this.Group_n_Number_groupBox.Controls.Add(this.groupNumber_comboBox);
-            this.Group_n_Number_groupBox.Controls.Add(this.Label_SetNumber);
-            this.Group_n_Number_groupBox.Location = new System.Drawing.Point(6, 144);
-            this.Group_n_Number_groupBox.Name = "Group_n_Number_groupBox";
-            this.Group_n_Number_groupBox.Size = new System.Drawing.Size(596, 44);
-            this.Group_n_Number_groupBox.TabIndex = 32;
-            this.Group_n_Number_groupBox.TabStop = false;
-            // 
-            // duetNumber_textBox
-            // 
-            this.duetNumber_textBox.Location = new System.Drawing.Point(461, 13);
-            this.duetNumber_textBox.Name = "duetNumber_textBox";
-            this.duetNumber_textBox.Size = new System.Drawing.Size(79, 22);
-            this.duetNumber_textBox.TabIndex = 37;
-            // 
-            // Label_DuetNumber
-            // 
-            this.Label_DuetNumber.AutoSize = true;
-            this.Label_DuetNumber.Location = new System.Drawing.Point(399, 13);
-            this.Label_DuetNumber.Name = "Label_DuetNumber";
-            this.Label_DuetNumber.Size = new System.Drawing.Size(51, 17);
-            this.Label_DuetNumber.TabIndex = 36;
-            this.Label_DuetNumber.Text = "Номер";
-            // 
-            // setNumber_comboBox
-            // 
-            this.setNumber_comboBox.FormattingEnabled = true;
-            this.setNumber_comboBox.Location = new System.Drawing.Point(254, 11);
-            this.setNumber_comboBox.Name = "setNumber_comboBox";
-            this.setNumber_comboBox.Size = new System.Drawing.Size(89, 24);
-            this.setNumber_comboBox.TabIndex = 37;
-            // 
-            // Label_GroupNumber
-            // 
-            this.Label_GroupNumber.AutoSize = true;
-            this.Label_GroupNumber.Location = new System.Drawing.Point(13, 11);
-            this.Label_GroupNumber.Name = "Label_GroupNumber";
-            this.Label_GroupNumber.Size = new System.Drawing.Size(55, 17);
-            this.Label_GroupNumber.TabIndex = 26;
-            this.Label_GroupNumber.Text = "Группа";
-            // 
-            // groupNumber_comboBox
-            // 
-            this.groupNumber_comboBox.FormattingEnabled = true;
-            this.groupNumber_comboBox.Location = new System.Drawing.Point(74, 11);
-            this.groupNumber_comboBox.Name = "groupNumber_comboBox";
-            this.groupNumber_comboBox.Size = new System.Drawing.Size(85, 24);
-            this.groupNumber_comboBox.TabIndex = 36;
-            // 
-            // Label_SetNumber
-            // 
-            this.Label_SetNumber.AutoSize = true;
-            this.Label_SetNumber.Location = new System.Drawing.Point(197, 11);
-            this.Label_SetNumber.Name = "Label_SetNumber";
-            this.Label_SetNumber.Size = new System.Drawing.Size(47, 17);
-            this.Label_SetNumber.TabIndex = 24;
-            this.Label_SetNumber.Text = "Заход";
-            // 
             // registrFormDuet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1095,6 +1096,8 @@
             this.Load += new System.EventHandler(this.registrFormDuet_Load);
             this.CommonProperties_groupBox.ResumeLayout(false);
             this.CommonProperties_groupBox.PerformLayout();
+            this.Group_n_Number_groupBox.ResumeLayout(false);
+            this.Group_n_Number_groupBox.PerformLayout();
             this.DuetTrainer_groupBox.ResumeLayout(false);
             this.DuetTrainer_groupBox.PerformLayout();
             this.OldTrainer_groupBox.ResumeLayout(false);
@@ -1103,8 +1106,6 @@
             this.FirstSportsman_groupBox.PerformLayout();
             this.SecondSportsman_groupBox.ResumeLayout(false);
             this.SecondSportsman_groupBox.PerformLayout();
-            this.Group_n_Number_groupBox.ResumeLayout(false);
-            this.Group_n_Number_groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

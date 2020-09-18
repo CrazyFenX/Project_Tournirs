@@ -15,6 +15,9 @@ namespace DataViewer_D_v._001
 
         public int BookNumber;
 
+        public int GroupNumber;
+        public int SetNumber;
+
         public string ClubName;
         public string City;
 
@@ -26,8 +29,8 @@ namespace DataViewer_D_v._001
         public string SportCategory;
 
         public Sportsman() //Constructor
-        { 
-            //pass
+        {
+           // this.Name = "NotDefined";
         }
 
         ~Sportsman()    //Destructor

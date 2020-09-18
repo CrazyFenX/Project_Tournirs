@@ -91,6 +91,8 @@ namespace DataViewer_D_v._001
 
                 sportsman.BookNumber = Convert.ToInt32(BookNumber_textBox.Text);
 
+                sportsman.GroupNumber = Convert.ToInt32(groupNumber_comboBox.Text);
+
                 sportsman.ClubName = ClubName_textBox.Text;
                 sportsman.City = City_textBox.Text;
 
@@ -120,7 +122,7 @@ namespace DataViewer_D_v._001
                 City_textBox.Text != "" && DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && 
                 YearOfBirth_comboBox.SelectedIndex != -1 && AgeCategory_comboBox.SelectedIndex != -1 && SportCategory_comboBox.SelectedIndex != -1
                 && SportClass_comboBox.SelectedIndex != -1 && NameOfOldTrainer_textBox.Text != "" && SurnameOfOldTrainer_textBox.Text != ""
-                && PatronymicOfOldTrainer_textBox.Text != "" && groupNumber_comboBox.SelectedIndex != -1 && setNumber_comboBox.SelectedIndex != -1 && duetNumber_textBox.Text != "")
+                && PatronymicOfOldTrainer_textBox.Text != "" && groupNumber_comboBox.SelectedIndex != -1 && setNumber_comboBox.SelectedIndex != -1 && duetNumber_textBox.Text != "" && Path_textBox.Text != "")
             return true;
             return false;
         }

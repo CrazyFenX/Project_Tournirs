@@ -16,7 +16,6 @@ namespace DataViewer_D_v._001
 
         public static OleDbCommand command = new OleDbCommand("", myConnection);
 
-
         public static void insertInSportDB(Sportsman sportsman)
         {
             OleDbCommand command = new OleDbCommand("", myConnection);
@@ -84,12 +83,9 @@ namespace DataViewer_D_v._001
 
             OleDbCommand command8 = new OleDbCommand("", myConnection);
 
-
-
             OleDbCommand command9 = new OleDbCommand("", myConnection); //OldTrainer.Surname
             OleDbCommand command10 = new OleDbCommand("", myConnection);//OldTrainer.Name
             OleDbCommand command11 = new OleDbCommand("", myConnection);//OldTrainer.Patronymic
-
 
             command1.CommandText = "SELECT Фамилия FROM Sportsmans WHERE НомерКнижки = @BookNum";
             command1.Parameters.AddWithValue("BookNum", BookNumber);
@@ -114,7 +110,6 @@ namespace DataViewer_D_v._001
 
             command8.CommandText = "SELECT Разряд FROM Sportsmans WHERE НомерКнижки = @BookNum";
             command8.Parameters.AddWithValue("BookNum", BookNumber);
-
 
             command9.CommandText = "SELECT Фамилия FROM Trainers WHERE НомерКнижки = @BookNum";
             command9.Parameters.AddWithValue("BookNum", BookNumber);
@@ -147,6 +142,7 @@ namespace DataViewer_D_v._001
             catch (System.NullReferenceException ex)
             {
                 MessageBox.Show("Спортсмен не найден!\n" + ex.Message);
+                sportsman.Name = "NotDefined";
             }
             return sportsman;
         }

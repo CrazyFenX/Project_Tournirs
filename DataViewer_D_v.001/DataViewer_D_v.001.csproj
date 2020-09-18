@@ -107,6 +107,12 @@
       <DependentUpon>formationReglament.cs</DependentUpon>
     </Compile>
     <Compile Include="GroupClass.cs" />
+    <Compile Include="HoldingTournament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoldingTournament.Designer.cs">
+      <DependentUpon>HoldingTournament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Judge.cs" />
     <Compile Include="MyDate.cs" />
     <Compile Include="PeopleDataSet.Designer.cs">
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formationReglament.resx">
       <DependentUpon>formationReglament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoldingTournament.resx">
+      <DependentUpon>HoldingTournament.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="registrFormDuet.resx">
       <DependentUpon>registrFormDuet.cs</DependentUpon>

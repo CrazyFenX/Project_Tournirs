@@ -47,6 +47,8 @@
             this.Label_SportCategory = new System.Windows.Forms.Label();
             this.SportCategory_comboBox = new System.Windows.Forms.ComboBox();
             this.Group_n_Number_groupBox = new System.Windows.Forms.GroupBox();
+            this.duetNumber_textBox = new System.Windows.Forms.TextBox();
+            this.Label_DuetNumber = new System.Windows.Forms.Label();
             this.setNumber_comboBox = new System.Windows.Forms.ComboBox();
             this.Label_GroupNumber = new System.Windows.Forms.Label();
             this.groupNumber_comboBox = new System.Windows.Forms.ComboBox();
@@ -91,8 +93,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Path_textBox = new System.Windows.Forms.TextBox();
             this.Browse_button = new System.Windows.Forms.Button();
-            this.duetNumber_textBox = new System.Windows.Forms.TextBox();
-            this.Label_DuetNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bD1DataSetBindingSource)).BeginInit();
             this.Sportsman_groupBox.SuspendLayout();
             this.Group_n_Number_groupBox.SuspendLayout();
@@ -290,6 +290,22 @@
             this.Group_n_Number_groupBox.Size = new System.Drawing.Size(141, 129);
             this.Group_n_Number_groupBox.TabIndex = 28;
             this.Group_n_Number_groupBox.TabStop = false;
+            // 
+            // duetNumber_textBox
+            // 
+            this.duetNumber_textBox.Location = new System.Drawing.Point(72, 89);
+            this.duetNumber_textBox.Name = "duetNumber_textBox";
+            this.duetNumber_textBox.Size = new System.Drawing.Size(53, 22);
+            this.duetNumber_textBox.TabIndex = 37;
+            // 
+            // Label_DuetNumber
+            // 
+            this.Label_DuetNumber.AutoSize = true;
+            this.Label_DuetNumber.Location = new System.Drawing.Point(10, 89);
+            this.Label_DuetNumber.Name = "Label_DuetNumber";
+            this.Label_DuetNumber.Size = new System.Drawing.Size(51, 17);
+            this.Label_DuetNumber.TabIndex = 36;
+            this.Label_DuetNumber.Text = "Номер";
             // 
             // setNumber_comboBox
             // 
@@ -806,6 +822,7 @@
             // 
             // Path_textBox
             // 
+            this.Path_textBox.Enabled = false;
             this.Path_textBox.Location = new System.Drawing.Point(12, 416);
             this.Path_textBox.Name = "Path_textBox";
             this.Path_textBox.Size = new System.Drawing.Size(608, 22);
@@ -822,22 +839,6 @@
             this.Browse_button.Text = "Browse";
             this.Browse_button.UseVisualStyleBackColor = false;
             this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
-            // 
-            // duetNumber_textBox
-            // 
-            this.duetNumber_textBox.Location = new System.Drawing.Point(72, 89);
-            this.duetNumber_textBox.Name = "duetNumber_textBox";
-            this.duetNumber_textBox.Size = new System.Drawing.Size(53, 22);
-            this.duetNumber_textBox.TabIndex = 37;
-            // 
-            // Label_DuetNumber
-            // 
-            this.Label_DuetNumber.AutoSize = true;
-            this.Label_DuetNumber.Location = new System.Drawing.Point(10, 89);
-            this.Label_DuetNumber.Name = "Label_DuetNumber";
-            this.Label_DuetNumber.Size = new System.Drawing.Size(51, 17);
-            this.Label_DuetNumber.TabIndex = 36;
-            this.Label_DuetNumber.Text = "Номер";
             // 
             // registrFormSolo
             // 

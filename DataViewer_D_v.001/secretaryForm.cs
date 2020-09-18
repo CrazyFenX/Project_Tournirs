@@ -392,6 +392,8 @@ namespace DataViewer_D_v._001
             try
             {
                 tournir = SecretaryController.TakeTournir(folderName);
+                tournir.path = Path_textBox.Text;
+
                 for (int i = 0; i < tournir.groups.Count; i++)
                     setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
                 NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);

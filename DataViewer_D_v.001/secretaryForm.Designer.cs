@@ -103,6 +103,7 @@
             // 
             // Path_textBox
             // 
+            this.Path_textBox.Enabled = false;
             this.Path_textBox.Location = new System.Drawing.Point(13, 277);
             this.Path_textBox.Name = "Path_textBox";
             this.Path_textBox.Size = new System.Drawing.Size(571, 22);
@@ -370,7 +371,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.creatingSet_groupBox);
             this.groupBox2.Controls.Add(this.BackSecond_button);
             this.groupBox2.Controls.Add(this.CreateGroupSecond_button);
             this.groupBox2.Controls.Add(this.Categoriess_groupBox);
@@ -396,9 +396,9 @@
             this.creatingSet_groupBox.Controls.Add(this.label_setGroupNumber);
             this.creatingSet_groupBox.Controls.Add(this.setGroupNumber_comboBox);
             this.creatingSet_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.creatingSet_groupBox.Location = new System.Drawing.Point(6, 21);
+            this.creatingSet_groupBox.Location = new System.Drawing.Point(601, 235);
             this.creatingSet_groupBox.Name = "creatingSet_groupBox";
-            this.creatingSet_groupBox.Size = new System.Drawing.Size(297, 221);
+            this.creatingSet_groupBox.Size = new System.Drawing.Size(177, 22);
             this.creatingSet_groupBox.TabIndex = 13;
             this.creatingSet_groupBox.TabStop = false;
             this.creatingSet_groupBox.Text = "Создание Захода";
@@ -548,6 +548,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(803, 385);
+            this.Controls.Add(this.creatingSet_groupBox);
             this.Controls.Add(this.configButton);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button5);

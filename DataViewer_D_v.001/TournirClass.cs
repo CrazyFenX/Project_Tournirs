@@ -17,10 +17,13 @@ namespace DataViewer_D_v._001
         public TimeClass time = new TimeClass(0,0);
         public string place;
         public string organisation;
-        public List<GroupClass> groups = new List<GroupClass>();//Продумать
+        public List<GroupClass> groups = new List<GroupClass>();
         public string registrator;
         public string secretary;
         public List<Judge> judges = new List<Judge>();//Продумать
+        public string path;
+
+        public List<List<GroupClass>> tourList = new List<List<GroupClass>>();//Продумать (карта перехода из groups в tourList)
 
         public TournirClass()
         {

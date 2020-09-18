@@ -89,7 +89,7 @@ namespace DataViewer_D_v._001
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Участников
-                    com = new OleDbCommand("CREATE TABLE participants(Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), Счет INT DEFAULT 0, CONSTRAINT participants_pk PRIMARY KEY (Номер_Книжки))", cn);
+                    com = new OleDbCommand("CREATE TABLE participants(Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), Номер_Группы INT, Счет INT DEFAULT 0, CONSTRAINT participants_pk PRIMARY KEY (Номер_Книжки))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Заходов
@@ -102,17 +102,12 @@ namespace DataViewer_D_v._001
                     com = new OleDbCommand("CREATE TABLE duets(Номер INT, Номер_Группы INT DEFAULT 0, Номер_Захода INT, Номер_Книжки1 INT, Номер_Книжки2 INT, Тип CHAR(4))", cn);
                     com.ExecuteNonQuery();
 
-                    //Создание Связи Пар и Участников
-                    ///доработка связей///com = new OleDbCommand("CREATE TABLE du_par_link(Номер_Книжки INT, Номер_Пары INT, CONSTRAINT fk_du_par_link FOREIGN KEY (Номер_Книжки) REFERENCES participants(Номер_Книжки), CONSTRAINT fk_du_par_link1 FOREIGN KEY (Номер_Пары) REFERENCES duets(Номер_Пары))", cn);
-                    //com = new OleDbCommand("CREATE TABLE du_par_link(Номер_Книжки INT, Номер_Пары INT)", cn);
-                    //com.ExecuteNonQuery();
-
                     TournirClass NewTournir = new TournirClass();
 
                     NewTournir.name = Name_textBox.Text;
                     NewTournir.date = new MyDate(DayOfTournir_comboBox.SelectedIndex + 1, MounthOfTournir_comboBox.SelectedIndex + 1, Convert.ToInt32(YearOfTournir_textBox.Text));
                     NewTournir.time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, MinutesOfTournir_comboBox.SelectedIndex * 5);
-                    MessageBox.Show(NewTournir.time.ToString());
+                    //MessageBox.Show(NewTournir.time.ToString());
                     NewTournir.place = CityOfTournir_textBox.Text;
                     NewTournir.organisation = OrganisationOfTournir_textBox.Text;
                     NewTournir.registrator = "SNP_registrator";

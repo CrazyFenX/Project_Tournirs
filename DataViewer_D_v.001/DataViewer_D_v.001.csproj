@@ -107,6 +107,8 @@
       <DependentUpon>formationReglament.cs</DependentUpon>
     </Compile>
     <Compile Include="GroupClass.cs" />
+    <Compile Include="GroupInTour.cs" />
+    <Compile Include="HoldingMarker.cs" />
     <Compile Include="HoldingTournament.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +158,7 @@
       <DependentUpon>secretaryMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SetClass.cs" />
+    <Compile Include="SetInTour.cs" />
     <Compile Include="Sportsman.cs" />
     <Compile Include="startForm.cs">
       <SubType>Form</SubType>
@@ -172,6 +175,7 @@
       <DependentUpon>registrFormSolo.cs</DependentUpon>
     </Compile>
     <Compile Include="TimeClass.cs" />
+    <Compile Include="Tour.cs" />
     <Compile Include="TournirClass.cs" />
     <Compile Include="Trainer.cs" />
     <EmbeddedResource Include="CreatingGroup.resx">

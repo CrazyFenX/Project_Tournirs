@@ -10,7 +10,15 @@ namespace DataViewer_D_v._001
         public Sportsman sportsman1 = new Sportsman();
         public Sportsman sportsman2 = new Sportsman();
 
-        public int PositionNumber;
+        public int number;
 
+        public Duet(int Num)
+        {
+            this.number = Num;
+        }
+
+        public Duet()
+        {
+        }
     }
 }

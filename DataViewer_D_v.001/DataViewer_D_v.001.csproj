@@ -74,6 +74,8 @@
       <DependentUpon>BD1DataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="CheckBoxForDuets.cs" />
+    <Compile Include="ComboBoxForEndingTour.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="CreatingGroup.cs">
       <SubType>Form</SubType>
@@ -100,6 +102,7 @@
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
     </Compile>
     <Compile Include="Duet.cs" />
+    <Compile Include="DuetInTour.cs" />
     <Compile Include="formationReglament.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -166,10 +166,15 @@ namespace DataViewer_D_v._001
 
         private void startToutnamentButton_Click(object sender, EventArgs e)
         {
-            HoldingTournament holdingToutnamentForm = new HoldingTournament(this);
+            if (Path_textBox.Text != "")
+            {
+                HoldingTournament holdingToutnamentForm = new HoldingTournament(this);
 
-            this.Enabled = false;
-            holdingToutnamentForm.Show();
+                this.Enabled = false;
+                holdingToutnamentForm.Show();
+            }
+            else
+                MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
     }
 }

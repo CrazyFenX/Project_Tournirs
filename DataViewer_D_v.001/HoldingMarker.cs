@@ -20,5 +20,12 @@ namespace DataViewer_D_v._001
             this.setNumber = Set;
             this.duetNumber = Duet;
         }
+
+        public override string ToString()
+        {
+            string outStr = "";
+            outStr += this.tourNumber + " " + this.groupNumber + " " + this.setNumber + " " + this.duetNumber;
+            return outStr;
+        }
     }
 }

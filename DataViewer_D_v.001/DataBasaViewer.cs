@@ -20,7 +20,7 @@ namespace DataViewer_D_v._001
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLastLast.Trainers". При необходимости она может быть перемещена или удалена.
             this.trainersTableAdapter1.Fill(this.peopleDataSetLastLast.Trainers);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLastLast.Sportsmans". При необходимости она может быть перемещена или удалена.
+            // всTODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLastLast.Sportsmans". При необходимости она может быть перемещена или удалена.
             this.sportsmansTableAdapter1.Fill(this.peopleDataSetLastLast.Sportsmans);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLast.Sportsmans". При необходимости она может быть перемещена или удалена.
           

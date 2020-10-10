@@ -32,6 +32,10 @@
             this.startButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.ControlPanel = new System.Windows.Forms.Panel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.showTableButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.prevButton = new System.Windows.Forms.Button();
@@ -47,7 +51,6 @@
             this.buttonPanel = new System.Windows.Forms.Panel();
             this.acceptButton = new System.Windows.Forms.Button();
             this.backPanelButton = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ControlPanel.SuspendLayout();
             this.buttonPanel.SuspendLayout();
             this.SuspendLayout();
@@ -80,11 +83,53 @@
             // 
             this.ControlPanel.AutoScroll = true;
             this.ControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ControlPanel.Controls.Add(this.checkBox1);
+            this.ControlPanel.Controls.Add(this.label2);
+            this.ControlPanel.Controls.Add(this.label1);
             this.ControlPanel.Controls.Add(this.comboBox1);
             this.ControlPanel.Location = new System.Drawing.Point(27, 95);
             this.ControlPanel.Name = "ControlPanel";
             this.ControlPanel.Size = new System.Drawing.Size(792, 359);
             this.ControlPanel.TabIndex = 2;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(54, 133);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(18, 17);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(249, 148);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(26, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "A";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(244, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 25);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Заход 2";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(59, 76);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(45, 33);
+            this.comboBox1.TabIndex = 0;
             // 
             // showTableButton
             // 
@@ -147,6 +192,10 @@
             this.timelabel.Name = "timelabel";
             this.timelabel.Size = new System.Drawing.Size(0, 20);
             this.timelabel.TabIndex = 8;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // nowTimelabel1
             // 
@@ -233,14 +282,6 @@
             this.backPanelButton.UseVisualStyleBackColor = false;
             this.backPanelButton.Click += new System.EventHandler(this.backPanelButton_Click);
             // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(61, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(45, 24);
-            this.comboBox1.TabIndex = 0;
-            // 
             // HoldingTournament
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -267,6 +308,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HoldingTournament_FormClosing);
             this.Load += new System.EventHandler(this.HoldingTournament_Load);
             this.ControlPanel.ResumeLayout(false);
+            this.ControlPanel.PerformLayout();
             this.buttonPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -294,5 +336,8 @@
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Button backPanelButton;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

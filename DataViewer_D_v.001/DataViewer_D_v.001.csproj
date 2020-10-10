@@ -180,6 +180,7 @@
     <Compile Include="TimeClass.cs" />
     <Compile Include="Tour.cs" />
     <Compile Include="TournirClass.cs" />
+    <Compile Include="tournirResultComboBox.cs" />
     <Compile Include="Trainer.cs" />
     <EmbeddedResource Include="CreatingGroup.resx">
       <DependentUpon>CreatingGroup.cs</DependentUpon>

@@ -15,6 +15,8 @@ namespace DataViewer_D_v._001
         public bool isItViewed;
 
         public double mark;
+        //место в турнире
+        public uint position;
 
         public DuetInTour()
         {

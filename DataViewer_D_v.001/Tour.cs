@@ -16,14 +16,14 @@ namespace DataViewer_D_v._001
 
         public List<CheckBoxForDuets> result_list;
 
-        public List<ComboBox> resultOfTournir_list;
+        public List<tournirResultComboBox> resultOfTournir_list;
 
         public Tour(int Num)
         {
             this.number = Num;
             this.groupList = new List<GroupInTour>();
             this.result_list = new List<CheckBoxForDuets>();
-            this.resultOfTournir_list = new List<ComboBox>();
+            this.resultOfTournir_list = new List<tournirResultComboBox>();
         }
 
         public Tour(int Num, Panel TourPanel, Button TourButton)
@@ -33,19 +33,19 @@ namespace DataViewer_D_v._001
             this.controlTourPanel = TourPanel;
             this.tourButton = TourButton;
             this.result_list = new List<CheckBoxForDuets>();
-            this.resultOfTournir_list = new List<ComboBox>();
+            this.resultOfTournir_list = new List<tournirResultComboBox>();
         }
 
         public Tour()
         {
             this.groupList = new List<GroupInTour>();
             this.result_list = new List<CheckBoxForDuets>();
-            this.resultOfTournir_list = new List<ComboBox>();
+            this.resultOfTournir_list = new List<tournirResultComboBox>();
         }
 
         public void changeNextTour(List<Tour> tempTourList, int groupNum, int judgeCount)
         {
-            MessageBox.Show($"рассматривается группа {groupNum}"); // TEESSSTTT
+            MessageBox.Show($"рассматривается группа {groupNum + 1}"); // TEESSSTTT
 
             if (this.result_list.Count > 0 && tempTourList.Count - 1 > tempTourList.IndexOf(this) && judgeCount > 0)
             {
@@ -94,11 +94,13 @@ namespace DataViewer_D_v._001
                     foreach (DuetInTour duetItem in setItem.DuetListInTour)
                     {
                         contrStr += $"Пара {duetItem.number + 1}\n";
+                        contrStr += $"{duetItem.passToNextTour}\n";
                     }
                 }
+                
                 MessageBox.Show("По факту\n" + contrStr);
 
-                tempTourList[tempTourList.IndexOf(this) + 1].removeEmpty();
+                tempTourList[tempTourList.IndexOf(this) + 1].removeEmptySets();
 
                 contrStr = "";       //TESTTTT
                 contrStr += $"Группа {groupNum + 1}\n";
@@ -108,6 +110,9 @@ namespace DataViewer_D_v._001
                     foreach (DuetInTour duetItem in setItem.DuetListInTour)
                     {
                         contrStr += $"Пара {duetItem.number + 1}\n";
+                        duetItem.passToNextTour = false;
+
+                        contrStr += $"{duetItem.passToNextTour}\n";
                     }
                 }
                 MessageBox.Show("После удаления пустых заходов\n" + contrStr);
@@ -117,27 +122,40 @@ namespace DataViewer_D_v._001
                 MessageBox.Show("Список оценок пуст, не зарегистрировано ниодного судьи или перед вами последний тур!");
         }
 
-        public void removeEmpty()
+        public void takeTournirResults(int groupNum, int judgeCount)
+        {
+            MessageBox.Show($"рассматривается группа {groupNum + 1}"); // TEESSSTTT
+
+            if (this.resultOfTournir_list.Count > 0 && judgeCount > 0)
+            {
+                int i = 1;
+                foreach (tournirResultComboBox comboBoxItem in this.resultOfTournir_list)
+                {
+                    this.groupList[groupNum].SetListInTour[comboBoxItem.marker.setNumber].DuetListInTour[comboBoxItem.marker.duetNumber].mark += comboBoxItem.valueComboBox.SelectedIndex + 1;
+                    MessageBox.Show($"рассматривается пара " + comboBoxItem.marker.ToString()); // TEESSSTTT
+
+                    if (i > 0 && i % judgeCount == 0)
+                    {
+                        MessageBox.Show($"{i}");
+                        this.groupList[groupNum].SetListInTour[comboBoxItem.marker.setNumber].DuetListInTour[comboBoxItem.marker.duetNumber].mark /= judgeCount;
+                        MessageBox.Show($"оценка {this.groupList[groupNum].SetListInTour[comboBoxItem.marker.setNumber].DuetListInTour[comboBoxItem.marker.duetNumber].mark}"); // TEESSSTTT
+                    }
+                    i++;
+                }
+
+            }
+        }
+
+        public void removeEmptySets()
         {
             for (int i = 0; i < groupList.Count; i++)
-            {
-                if (groupList[i].SetListInTour.Count == 0)
-                {
-                    groupList.Remove(groupList[i]);
-                }
-                else
-                {
-                    for (int j = 0; j < groupList[i].SetListInTour.Count; j++)
+                for (int j = 0; j < groupList[i].SetListInTour.Count; j++)
+                    if (groupList[i].SetListInTour[j].DuetListInTour.Count == 0)
                     {
-                        if (groupList[i].SetListInTour[j].DuetListInTour.Count == 0)
-                        {
-                            MessageBox.Show("Удален заход номер " + (groupList[i].SetListInTour[j].number + 1).ToString());
-                            groupList[i].SetListInTour.Remove(groupList[i].SetListInTour[j]);
-                            j--;
-                        }
+                        MessageBox.Show("Удален заход номер " + (groupList[i].SetListInTour[j].number + 1).ToString());
+                        groupList[i].SetListInTour.Remove(groupList[i].SetListInTour[j]);
+                        j--;
                     }
-                }
-            }
         }
     }
 }

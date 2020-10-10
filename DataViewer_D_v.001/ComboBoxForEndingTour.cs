@@ -10,16 +10,16 @@ namespace DataViewer_D_v._001
     {
         public HoldingMarker marker;
         public ComboBox markComboBox;
-        public bool isItViewed;
+        //public bool isItViewed;
         public int mark;
 
         public ComboBoxForEndingTour()
         {
         }
 
-        public ComboBoxForEndingTour(HoldingMarker mark)
+        public ComboBoxForEndingTour(HoldingMarker marker)
         {
-            this.marker = mark;
+            this.marker = marker;
         }
 
         public ComboBoxForEndingTour(HoldingMarker marker, ComboBox comBox)

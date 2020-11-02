@@ -18,12 +18,11 @@ namespace DataViewer_D_v._001
 
         private void DataBasaViewer_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLastLast.Trainers". При необходимости она может быть перемещена или удалена.
-            this.trainersTableAdapter1.Fill(this.peopleDataSetLastLast.Trainers);
-            // всTODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLastLast.Sportsmans". При необходимости она может быть перемещена или удалена.
-            this.sportsmansTableAdapter1.Fill(this.peopleDataSetLastLast.Sportsmans);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLast.Sportsmans". При необходимости она может быть перемещена или удалена.
-          
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSet2.Trainers". При необходимости она может быть перемещена или удалена.
+            this.trainersTableAdapter2.Fill(this.peopleDataSet2.Trainers);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSet2.Sportsmans". При необходимости она может быть перемещена или удалена.
+            this.sportsmansTableAdapter3.Fill(this.peopleDataSet2.Sportsmans);
+            
             dataGridView_trainers.Visible = false;
 
             showSports_button.BackColor = Color.Empty;
@@ -53,7 +52,7 @@ namespace DataViewer_D_v._001
             showSports_button.BackColor = Color.Empty;
             showTrainers_button.BackColor = Color.Gray;
 
-            this.sportsmansTableAdapter1.Fill(this.peopleDataSetLastLast.Sportsmans);
+            this.sportsmansTableAdapter3.Fill(this.peopleDataSet2.Sportsmans);
         }
 
         private void showTrainers_button_Click(object sender, EventArgs e)
@@ -64,7 +63,7 @@ namespace DataViewer_D_v._001
             showSports_button.BackColor = Color.Gray;
             showTrainers_button.BackColor = Color.Empty;
 
-            this.trainersTableAdapter1.Fill(this.peopleDataSetLastLast.Trainers);
+            this.trainersTableAdapter2.Fill(this.peopleDataSet2.Trainers);
         }
     }
 }

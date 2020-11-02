@@ -131,6 +131,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PeopleDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PeopleDataSetLast.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -262,6 +267,17 @@
     </None>
     <None Include="PeopleDataSet1.xss">
       <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PeopleDataSet2.xsc">
+      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="PeopleDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PeopleDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PeopleDataSet2.xss">
+      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
     </None>
     <None Include="PeopleDataSetLast.xsc">
       <DependentUpon>PeopleDataSetLast.xsd</DependentUpon>

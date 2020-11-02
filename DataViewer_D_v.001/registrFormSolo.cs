@@ -27,6 +27,8 @@ namespace DataViewer_D_v._001
         {
             InitializeComponent();
 
+            sportsman = new Sportsman();
+
             if (FirstTrainer_checkBox.Checked == false)
             {
                 FirstTrainer_groupBox.ForeColor = Color.Gray;
@@ -97,6 +99,10 @@ namespace DataViewer_D_v._001
                 sportsman.City = City_textBox.Text;
 
                 sportsman.OlderTrainer = new Trainer(NameOfOldTrainer_textBox.Text, SurnameOfOldTrainer_textBox.Text, PatronymicOfOldTrainer_textBox.Text, 1);
+                if (FirstTrainer_checkBox.Checked)
+                    sportsman.FirstTrainer = new Trainer(NameFirstTrainer_textBox.Text, SurnameFirstTrainer_textBox.Text, PatronymicFirstTrainer_textBox.Text, 1);
+                if (SecondTrainer_checkBox.Checked)
+                    sportsman.SecondTrainer = new Trainer(NameSecondTrainer_textBox.Text, SurnameSecondTrainer_textBox.Text, PatronymicSecondTrainer_textBox.Text, 1);
 
                 sportsman.AgeCategory = Convert.ToString(AgeCategory_comboBox.SelectedItem);
                 sportsman.SportClass = Convert.ToString(SportClass_comboBox.SelectedItem);
@@ -108,8 +114,12 @@ namespace DataViewer_D_v._001
 
                 Controller.insertInSportDB(sportsman);
                 Controller.insertTrainer(sportsman.OlderTrainer, sportsman.BookNumber);
+                if (FirstTrainer_checkBox.Checked)
+                    Controller.insertTrainer(sportsman.FirstTrainer, sportsman.BookNumber);
+                if (SecondTrainer_checkBox.Checked)
+                    Controller.insertTrainer(sportsman.SecondTrainer, sportsman.BookNumber);
                 SecretaryController.insertInParticipants(sportsman,Path_textBox.Text);
-                SecretaryController.insertParticipantsInSet(Convert.ToInt32(duetNumber_textBox.Text), sportsman, Convert.ToInt32(groupNumber_comboBox.Text), Convert.ToInt32(setNumber_comboBox.Text), Path_textBox.Text);
+                //SecretaryController.insertParticipantsInSet(Convert.ToInt32(duetNumber_textBox.Text), sportsman, Convert.ToInt32(groupNumber_comboBox.Text), Convert.ToInt32(setNumber_comboBox.Text), Path_textBox.Text);
             }
             else
                 MessageBox.Show("Не все необходимые поля заполнены!");
@@ -119,10 +129,12 @@ namespace DataViewer_D_v._001
         {
             if (Name_textBox.Text != "" && Surname_textBox.Text != "" && Patronymic_textBox.Text != "" && BookNumber_textBox.Text != "" &&
                 ClubName_textBox.Text != "" && NameOfOldTrainer_textBox.Text != "" && SurnameOfOldTrainer_textBox.Text != "" &&
-                City_textBox.Text != "" && DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && 
+                City_textBox.Text != "" && DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 &&
                 YearOfBirth_comboBox.SelectedIndex != -1 && AgeCategory_comboBox.SelectedIndex != -1 && SportCategory_comboBox.SelectedIndex != -1
-                && SportClass_comboBox.SelectedIndex != -1 && NameOfOldTrainer_textBox.Text != "" && SurnameOfOldTrainer_textBox.Text != ""
-                && PatronymicOfOldTrainer_textBox.Text != "" && groupNumber_comboBox.SelectedIndex != -1 && setNumber_comboBox.SelectedIndex != -1 && duetNumber_textBox.Text != "" && Path_textBox.Text != "")
+                && SportClass_comboBox.SelectedIndex != -1 && groupNumber_comboBox.SelectedIndex != -1 && duetNumber_textBox.Text != "" && Path_textBox.Text != ""
+                && ((FirstTrainer_checkBox.Checked && SurnameFirstTrainer_textBox.Text != "" && NameFirstTrainer_textBox.Text != "" && PatronymicFirstTrainer_textBox.Text != "") || (!FirstTrainer_checkBox.Checked))
+                && ((SecondTrainer_checkBox.Checked && SurnameSecondTrainer_textBox.Text != "" && NameSecondTrainer_textBox.Text != "" && PatronymicSecondTrainer_textBox.Text != "") || (!SecondTrainer_checkBox.Checked)))
+                
             return true;
             return false;
         }
@@ -386,6 +398,14 @@ namespace DataViewer_D_v._001
         private void AgeCategory_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Controller.takeSportClassSet(AgeCategory_comboBox, SportClass_comboBox);
+        }
+
+        private void registrFormSolo_Resize(object sender, EventArgs e)
+        {
+            if (this.Size.Width < 890)
+                this.Size = new Size(890, this.Size.Height);
+            if (this.Size.Height < 515)
+                this.Size = new Size(this.Size.Width, 515);
         }
     }
 }

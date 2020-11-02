@@ -46,7 +46,7 @@ namespace DataViewer_D_v._001
         {
             OleDbCommand commandTrain = new OleDbCommand("", myConnection);
 
-            commandTrain.CommandText = "INSERT INTO Trainers(НомерКнижки, Код,Фамилия, Имя, Отчество)" + "VALUES (@bookNumber, @Pas,@Surname,@Name,@Patronymic)";
+            commandTrain.CommandText = "INSERT INTO Trainers(НомерКнижки, Код, Фамилия, Имя, Отчество)" + "VALUES (@bookNumber, @Pas, @Surname, @Name, @Patronymic)";
 
             trainer.pasItendificate();
             commandTrain.Parameters.AddWithValue("booknumber", bookNumber);
@@ -114,7 +114,7 @@ namespace DataViewer_D_v._001
             command9.CommandText = "SELECT Фамилия FROM Trainers WHERE НомерКнижки = @BookNum";
             command9.Parameters.AddWithValue("BookNum", BookNumber);
 
-            command10.CommandText = "SELECT Имя FROM Trainers WHERE НомерКнижки = @BookNum";
+            command10.CommandText = "SELECT Имя FROM Trainers НомерКнижки WHERE НомерКнижки = @BookNum";
             command10.Parameters.AddWithValue("BookNum", BookNumber);
 
             command11.CommandText = "SELECT Отчество FROM Trainers WHERE НомерКнижки = @BookNum";
@@ -130,7 +130,7 @@ namespace DataViewer_D_v._001
                 sportsman.City = command5.ExecuteScalar().ToString();
                 sportsman.BirthDate.ToInt(command6.ExecuteScalar().ToString());
 
-                MessageBox.Show(sportsman.BirthDate.ToString());
+                //MessageBox.Show(sportsman.BirthDate.ToString());
 
                 sportsman.SportClass = command7.ExecuteScalar().ToString();
                 sportsman.SportCategory = command8.ExecuteScalar().ToString();
@@ -139,76 +139,84 @@ namespace DataViewer_D_v._001
                 sportsman.OlderTrainer.Name = command10.ExecuteScalar().ToString();
                 sportsman.OlderTrainer.Patronymic = command11.ExecuteScalar().ToString();
             }
-            catch (System.NullReferenceException ex)
+            catch (/*System.NullReferenceException*/Exception ex)
             {
-                MessageBox.Show("Спортсмен не найден!\n" + ex.Message);
-                sportsman.Name = "NotDefined";
+                //MessageBox.Show("Спортсмен не найден!\n" + ex.Message);
+                MessageBox.Show("Что-то пошло не так! \n" + ex.Message);
+                //sportsman.Name = "NotDefined";
             }
             return sportsman;
         }
 
         public static void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, ComboBox AgeCategory_comboBox, ComboBox CategoryOfDancing_comboBox)
         {
-            if (DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && YearOfBirth_comboBox.SelectedIndex != -1)
+            try
             {
-                DateTime cureDate = DateTime.Now;
-                
-                MessageBox.Show((DayOfBirth_comboBox.SelectedIndex + 1).ToString() + (MounthOfBirth_comboBox.SelectedIndex + 1).ToString() + (2020 - YearOfBirth_comboBox.SelectedIndex).ToString());
-
-                DateTime birthDate = new DateTime(Convert.ToInt16(2020 - YearOfBirth_comboBox.SelectedIndex), Convert.ToInt16(MounthOfBirth_comboBox.SelectedIndex + 1), Convert.ToInt16(DayOfBirth_comboBox.SelectedIndex + 1));
-
-                MessageBox.Show("Сейчас " + cureDate.ToString());
-                MessageBox.Show("Дата рожд. " + birthDate.ToShortDateString());
-                DateTime differ = new DateTime((cureDate - birthDate).Ticks);
-
-                MessageBox.Show(differ.ToShortDateString());
-                
-                switch (differ.Year)
+                if (DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && YearOfBirth_comboBox.SelectedIndex != -1)
                 {
-                    case 1:
-                    case 2:
-                    case 3:
-                    case 4:
-                    case 5:
-                    case 6:
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 0:
-                        AgeCategory_comboBox.SelectedIndex = 1;
-                        CategoryOfDancing_comboBox.SelectedIndex = 1;
-                        break;
-                    case 10:
-                    case 11:
-                        AgeCategory_comboBox.SelectedIndex = 2;
-                        CategoryOfDancing_comboBox.SelectedIndex = 2;
-                        break;
-                    case 12:
-                    case 13:
-                        AgeCategory_comboBox.SelectedIndex = 3;
-                        CategoryOfDancing_comboBox.SelectedIndex = 3;
-                        break;
-                    case 14:
-                    case 15:
-                        AgeCategory_comboBox.SelectedIndex = 4;
-                        CategoryOfDancing_comboBox.SelectedIndex = 4;
-                        break;
-                    case 16:
-                    case 17:
-                    case 18:
-                        AgeCategory_comboBox.SelectedIndex = 5;
-                        CategoryOfDancing_comboBox.SelectedIndex = 5;
-                        break;
-                    case 19:
-                    case 20:
-                        AgeCategory_comboBox.SelectedIndex = 6;
-                        CategoryOfDancing_comboBox.SelectedIndex = 6;
-                        break;
-                    default:
-                        AgeCategory_comboBox.SelectedIndex = 7;
-                        CategoryOfDancing_comboBox.SelectedIndex = 7;
-                        break;
+                    DateTime cureDate = DateTime.Now;
+
+                    //MessageBox.Show((DayOfBirth_comboBox.SelectedIndex + 1).ToString() + (MounthOfBirth_comboBox.SelectedIndex + 1).ToString() + (2020 - YearOfBirth_comboBox.SelectedIndex).ToString());
+
+                    DateTime birthDate = new DateTime(Convert.ToInt16(2020 - YearOfBirth_comboBox.SelectedIndex), Convert.ToInt16(MounthOfBirth_comboBox.SelectedIndex + 1), Convert.ToInt16(DayOfBirth_comboBox.SelectedIndex + 1));
+
+                    //MessageBox.Show("Сейчас " + cureDate.ToString());
+                    //MessageBox.Show("Дата рожд. " + birthDate.ToShortDateString());
+                    DateTime differ = new DateTime((cureDate - birthDate).Ticks);
+
+                    //MessageBox.Show(differ.ToShortDateString());
+
+                    switch (differ.Year)
+                    {
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                        case 5:
+                        case 6:
+                        case 7:
+                        case 8:
+                        case 9:
+                        case 0:
+                            AgeCategory_comboBox.SelectedIndex = 1;
+                            CategoryOfDancing_comboBox.SelectedIndex = 1;
+                            break;
+                        case 10:
+                        case 11:
+                            AgeCategory_comboBox.SelectedIndex = 2;
+                            CategoryOfDancing_comboBox.SelectedIndex = 2;
+                            break;
+                        case 12:
+                        case 13:
+                            AgeCategory_comboBox.SelectedIndex = 3;
+                            CategoryOfDancing_comboBox.SelectedIndex = 3;
+                            break;
+                        case 14:
+                        case 15:
+                            AgeCategory_comboBox.SelectedIndex = 4;
+                            CategoryOfDancing_comboBox.SelectedIndex = 4;
+                            break;
+                        case 16:
+                        case 17:
+                        case 18:
+                            AgeCategory_comboBox.SelectedIndex = 5;
+                            CategoryOfDancing_comboBox.SelectedIndex = 5;
+                            break;
+                        case 19:
+                        case 20:
+                            AgeCategory_comboBox.SelectedIndex = 6;
+                            CategoryOfDancing_comboBox.SelectedIndex = 6;
+                            break;
+                        default:
+                            AgeCategory_comboBox.SelectedIndex = 7;
+                            CategoryOfDancing_comboBox.SelectedIndex = 7;
+                            break;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Спортсмену не подходит ни одна из категорий группы!\n" + ex.Message);
             }
         }
 

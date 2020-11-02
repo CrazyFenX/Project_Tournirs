@@ -24,6 +24,8 @@ namespace DataViewer_D_v._001
         public string City;
 
         public Trainer OlderTrainer = new Trainer();
+        public Trainer FirstTrainer = new Trainer();
+        public Trainer SecondTrainer = new Trainer();
 
         public string AgeCategory;
         public string SportClass;
@@ -33,6 +35,10 @@ namespace DataViewer_D_v._001
         public Sportsman() //Constructor
         {
            // this.Name = "NotDefined";
+            OlderTrainer = new Trainer();
+            FirstTrainer = new Trainer();
+            SecondTrainer = new Trainer();
+            MyDate BirthDate = new MyDate();
         }
 
         ~Sportsman()    //Destructor

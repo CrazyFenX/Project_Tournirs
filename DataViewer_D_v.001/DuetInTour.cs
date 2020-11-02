@@ -16,7 +16,8 @@ namespace DataViewer_D_v._001
 
         public double mark;
         //место в турнире
-        public uint position;
+        public uint positionInTour;
+        public uint positionInGroup;
 
         public DuetInTour()
         {
@@ -40,6 +41,11 @@ namespace DataViewer_D_v._001
             duetButton = btn;
             passToNextTour = false;
             isItViewed = false;
+        }
+
+        public override string ToString()
+        {
+            return "Номер " + number.ToString() + "  Оценка " + mark.ToString() + "  " + isItViewed.ToString() + "  Позиция в туре " + positionInTour.ToString() + "  Позиция в группе " + positionInGroup.ToString();
         }
     }
 }

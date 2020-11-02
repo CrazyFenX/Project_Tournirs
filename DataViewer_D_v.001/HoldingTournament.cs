@@ -118,16 +118,6 @@ namespace DataViewer_D_v._001
                                 groupInTourNew.SetListInTour[countOfSets].DuetListInTour.Add(new DuetInTour(duetItem.number, buttonDuetNew));
                             }
                             countOfSets++;
-
-                            //for (int j = 0; j < setItem.DuetList.Count; j++)
-                            //{
-                            //    heigh += 5;
-                            //    tourNew.controlTourPanel.Controls.Add(buttonDuetNew = new Button() { Name = "duetButton" + (setItem.DuetList[j].number), TextAlign = ContentAlignment.MiddleLeft, Location = new Point(40, heigh), Size = new Size(460, 20), Text = "Пара номер " + duetItem.number + 1 });
-                            //    heigh += 20;
-
-                            //    groupInTourNew.SetListInTour[countOfSets].DuetListInTour.Add(new DuetInTour(buttonDuetNew));
-                            //}
-                            //countOfSets++;
                         }
                     }
 
@@ -251,12 +241,24 @@ namespace DataViewer_D_v._001
             int j = 0;
             foreach (SetInTour setItem in tourList[currentMark.tourNumber].groupList[currentMark.groupNumber].SetListInTour)
             {
-                ControlPanel.Controls.Add(new Label() { Text = "Заход" + Convert.ToString(setItem.number + 1), Location = new Point(5, height), Size = new Size(100, 25), Font = new Font("", 12) });
+                ControlPanel.Controls.Add(new Label() 
+                {
+                    Text = "Заход" + Convert.ToString(setItem.number + 1), Location = new Point(5, height), 
+                    Size = new Size(100, 25), Font = new Font("", 12),
+                    Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right))),
+                    Dock = DockStyle.Fill
+                });
                 height += 30;
 
                 foreach (DuetInTour duetItem in setItem.DuetListInTour)
                 {
-                    ControlPanel.Controls.Add(new Label() { Text = "Пара" + Convert.ToString(duetItem.number + 1), Location = new Point(10, height), Size = new Size(90, 25), Font = new Font("", 12) });
+                    ControlPanel.Controls.Add(new Label() 
+                    {
+                        Text = "Пара" + Convert.ToString(duetItem.number + 1), Location = new Point(10, height), 
+                        Size = new Size(90, 25), Font = new Font("", 12),
+                        Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right))),
+                        Dock = DockStyle.Fill
+                    });
 
                     HoldingMarker markerForCheckList = new HoldingMarker(currentMark.tourNumber, currentMark.groupNumber,
                         tourList[currentMark.tourNumber].groupList[currentMark.groupNumber].SetListInTour.IndexOf(setItem),
@@ -308,7 +310,7 @@ namespace DataViewer_D_v._001
 
         public void drawMarking(HoldingMarker marker)
         {
-            MessageBox.Show($"{marker.tourNumber}\n{tourList.Count - 1}");
+            //MessageBox.Show($"{marker.tourNumber}\n{tourList.Count - 1}");
             if (marker.tourNumber >= tourList.Count - 1)
                 drawTournirEnding();
             else
@@ -322,8 +324,19 @@ namespace DataViewer_D_v._001
 
             timer1.Start();
 
-            Panel ControlPanel = new Panel();
-            Button TourOneButton = new Button();
+            Panel ControlPanel = new Panel()
+            {
+                Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Bottom))),
+                Dock = System.Windows.Forms.DockStyle.Fill
+            };
+            
+            Button TourOneButton = new Button()
+            {
+                Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Bottom))),
+                Dock = System.Windows.Forms.DockStyle.Fill
+            };
 
             foreach (Tour item in tourList)
                 item.controlTourPanel.Controls.Clear();
@@ -337,15 +350,32 @@ namespace DataViewer_D_v._001
 
             currentMark = new HoldingMarker(0, 0, 0, 0);
 
-            int countOfTour = Convert.ToInt32(countOfTourTextBox.Text);
+            int countOfTour = (int)countOfTourNumericUpDown.Value;
 
 
             pushStartLabel.Visible = false;
 
             for (int i = 0; i < countOfTour; i++)
             {
-                Controls.Add(ControlPanel = new Panel() { Name = "ControlPanel" + i, Location = new Point(25, 78), Size = new Size(500, 350), BorderStyle = BorderStyle.FixedSingle, AutoScroll = true });
-                Controls.Add(TourOneButton = new Button() { Name = "TourButton" + i, Location = new Point(25 + i * 500 / countOfTour, 45), Size = new Size(500 / countOfTour, 35), Text = "Тур " + (i + 1), Font = new Font("", 12), TextAlign = ContentAlignment.MiddleLeft });
+                Controls.Add(ControlPanel = new Panel()
+                { Name = "ControlPanel" + i, Location = new Point(25, 78),
+                    Size = new Size(500, 350), BorderStyle = BorderStyle.FixedSingle, AutoScroll = true,
+                    Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Bottom)))
+                });
+                if (i == countOfTour - 1)
+                    Controls.Add(TourOneButton = new Button() 
+                    { Name = "TourButton" + i, Location = new Point(25 + i * 500 / countOfTour, 45),
+                        Size = new Size(500 / countOfTour, 35), Text = "Финал", Font = new Font("", 12),
+                        TextAlign = ContentAlignment.MiddleLeft,
+                        Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)))
+                    });
+                else 
+                    Controls.Add(TourOneButton = new Button() 
+                    { Name = "TourButton" + i, Location = new Point(25 + i * 500 / countOfTour, 45), 
+                        Size = new Size(500 / countOfTour, 35), Text = "Тур 1/" + (Math.Pow(2, countOfTour - (i + 1))), 
+                        Font = new Font("", 12), TextAlign = ContentAlignment.MiddleLeft,
+                        //Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)))
+                    });
 
                 tourButtonList.Add(TourOneButton);
 
@@ -363,7 +393,7 @@ namespace DataViewer_D_v._001
                 DateTime nowDate = DateTime.Now;
                 System.TimeSpan diffTime = DateTime.Now - timeOfStart;
                 DateTime rel = new DateTime(diffTime.Ticks);
-                MessageBox.Show(rel.Hour.ToString() + ":" + rel.Minute.ToString() + ":" + rel.Second.ToString());
+                //MessageBox.Show(rel.Hour.ToString() + ":" + rel.Minute.ToString() + ":" + rel.Second.ToString());
                 nowTimelabel.Text = rel.Hour.ToString() + ":" + rel.Minute.ToString() + ":" + rel.Second.ToString();
                 Thread.Sleep(1000);
             }
@@ -469,30 +499,25 @@ namespace DataViewer_D_v._001
                         {
                             if (marker.tourNumber >= tourList.Count - 1)
                             {
-                                //tourList[currentMark.tourNumber].takeNextTournir(tourList, currentMark.tourNumber);
-                                //ClrMarkerButton(marker);
-                                //tourButtonList[marker.tourNumber].PerformClick();
                                 result = MessageBox.Show("Вы завершили последний тур!\nЗавершить турнир?", "Системное сообщение", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2);
                                 if (result == DialogResult.Yes)
-                                    //drawTournirEnding();
                                     drawMarking(marker);
-                                //drawGroupEnding();
                             }
                             else
                             {
-                                //marker.tourNumber++;
-                                //marker.groupNumber = 0;
-                                //marker.setNumber = 0;
-                                //marker.duetNumber = 0;
-                                //ClrAndMarkerIt(marker);
-                                //drawGroupEnding();
                                 drawMarking(marker);
+                                marker.groupNumber += 1;
+                                marker.setNumber = 0;
+                                marker.duetNumber = 0;
                             }
                         }
                     }
                     else
                     {
                         drawMarking(marker);
+                        marker.groupNumber += 1;
+                        marker.setNumber = 0;
+                        marker.duetNumber = 0;
                     }
                 }
                 else
@@ -502,9 +527,7 @@ namespace DataViewer_D_v._001
                 }
             }
             else
-            {
                 marker.duetNumber += 1;
-            }
         }
 
         public void decrementMarker(HoldingMarker marker)
@@ -574,16 +597,14 @@ namespace DataViewer_D_v._001
                     {
                         //MessageBox.Show("это группа последнего тура!");
                         //tourList[currentMark.tourNumber].takeTournirResults(currentMark.groupNumber, tournir.judges.Count);
-
                     }
                 }
             }
             else
             {
-                //pass
                 MessageBox.Show("это группа последнего тура!");
                 tourList[currentMark.tourNumber].takeTournirResults(currentMark.groupNumber, tournir.judges.Count);
-
+                tourList[currentMark.tourNumber].takePositions((int)countsOfPositionsNumericUpDown.Value, currentMark.groupNumber);
             }
             ControlPanel.Visible = false;
             buttonPanel.Visible = false;
@@ -600,11 +621,6 @@ namespace DataViewer_D_v._001
         {
             TimeSpan tempSpan = DateTime.Now - timeOfStart;
             diffDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, tempSpan.Hours, tempSpan.Minutes, tempSpan.Seconds);
-
-            //diffDate.Hour = tempSpan.Hours;
-            //diffDate.Minute = tempSpan.Minutes;
-            //diffDate.Second = tempSpan.Seconds;
-
             nowTimelabel.Text = diffDate.ToLongTimeString(); ;
         }
     }

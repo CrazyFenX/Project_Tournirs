@@ -133,6 +133,8 @@ namespace DataViewer_D_v._001
             this.Hide();
 
             this.secretaryMainForm.tournir = this.tournir;
+            if (this.Path_textBox.Text != "")
+                this.secretaryMainForm.Path_textBox.Text = this.Path_textBox.Text;
         }
 
         private void secretaryForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -162,7 +164,7 @@ namespace DataViewer_D_v._001
             {
                 if (Path_textBox.Text == "")
                 {
-                    MessageBox.Show("Choose the DataBase before!");
+                    MessageBox.Show("Сперва нужно выбрать базу данных!");
                 }
                 else
                 {
@@ -243,10 +245,7 @@ namespace DataViewer_D_v._001
             if (NumberOfGroup_textBox.Text != "")
             {
                 group_new.number = Convert.ToInt32(NumberOfGroup_textBox.Text);
-
-
-            CheckBox[] CategoriesList = new CheckBox[] {D0_checkBox, D1_checkBox, D2_checkBox, M_checkBox, M2_checkBox, U1_checkBox, U2_checkBox, Vz_checkBox};
-
+                CheckBox[] CategoriesList = new CheckBox[] {D0_checkBox, D1_checkBox, D2_checkBox, M_checkBox, M2_checkBox, U1_checkBox, U2_checkBox, Vz_checkBox};
                 if (Path_textBox.Text != "")
                 {
                     try
@@ -272,7 +271,6 @@ namespace DataViewer_D_v._001
                         com.Parameters.AddWithValue("group_number", group_new.number);
 
                         group_new.tournir_name = tournir.name;
-
                         try
                         {
                             com.ExecuteNonQuery();
@@ -349,25 +347,25 @@ namespace DataViewer_D_v._001
 
                         tournir.groups.Add(group_new);
 
-                        MessageBox.Show(tournir.groups[tournir.groups.Count - 1].show());
+                        //MessageBox.Show(tournir.groups[tournir.groups.Count - 1].show());
 
                         setGroupNumber_comboBox.Items.Clear();
-                        MessageBox.Show($"{tournir.groups.Count}");//Работает
+                        //MessageBox.Show($"{tournir.groups.Count}");//Работает
 
                         for (int i = 0; i < tournir.groups.Count; i++)
                         {
-                            MessageBox.Show($"{tournir.groups[i].number}");
+                            //MessageBox.Show($"{tournir.groups[i].number}");
                             setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
                         }
 
-                        MessageBox.Show($"Все Ок");
+                        //MessageBox.Show($"Все Ок");
 
                         setCategory_comboBox.Items.Clear();
                         //MessageBox.Show($"{tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text)].CategoryList.Count}");
 
                         for (int i = 0; i < tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList.Count; i++)
                         {
-                            MessageBox.Show($"{tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList[i]}");
+                            //MessageBox.Show($"{tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList[i]}");
                             setCategory_comboBox.Items.Add(tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList[i]);
                         }
 

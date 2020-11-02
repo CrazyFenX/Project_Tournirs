@@ -376,7 +376,7 @@ namespace DataViewer_D_v._001
 
                 k = Convert.ToInt32(command.ExecuteScalar());
 
-                MessageBox.Show("Количество групп: " + Convert.ToString(k));
+                //MessageBox.Show("Количество групп: " + Convert.ToString(k));
 
                 while (i <= k)
                 {
@@ -435,7 +435,7 @@ namespace DataViewer_D_v._001
                                 judge_new.JudgeClass = command2.ExecuteScalar().ToString();
 
                                 RetTournir.judges.Add(judge_new);
-                                MessageBox.Show(RetTournir.judges[i1 - counter].ToNSP() + " " + RetTournir.judges[i1 - counter].JudgeClass);
+                                //MessageBox.Show(RetTournir.judges[i1 - counter].ToNSP() + " " + RetTournir.judges[i1 - counter].JudgeClass);
                             }
                             else
                             {
@@ -446,7 +446,7 @@ namespace DataViewer_D_v._001
                 }
                 else
                 {
-                    MessageBox.Show($"Записей при определении судей не найдено");
+                    MessageBox.Show($"Записей при определении судей не найдено!");
                 }
             }
             catch (Exception ex)

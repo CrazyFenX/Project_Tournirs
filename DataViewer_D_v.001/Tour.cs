@@ -10,6 +10,7 @@ namespace DataViewer_D_v._001
     {
         public int number;
         public List<GroupInTour> groupList = new List<GroupInTour>();
+        public int countOfParticipants;
 
         public Panel controlTourPanel;
         public Button tourButton;
@@ -24,6 +25,7 @@ namespace DataViewer_D_v._001
             this.groupList = new List<GroupInTour>();
             this.result_list = new List<CheckBoxForDuets>();
             this.resultOfTournir_list = new List<tournirResultComboBox>();
+            this.countOfParticipants = 0;
         }
 
         public Tour(int Num, Panel TourPanel, Button TourButton)
@@ -34,6 +36,7 @@ namespace DataViewer_D_v._001
             this.tourButton = TourButton;
             this.result_list = new List<CheckBoxForDuets>();
             this.resultOfTournir_list = new List<tournirResultComboBox>();
+            this.countOfParticipants = 0;
         }
 
         public Tour()
@@ -41,6 +44,16 @@ namespace DataViewer_D_v._001
             this.groupList = new List<GroupInTour>();
             this.result_list = new List<CheckBoxForDuets>();
             this.resultOfTournir_list = new List<tournirResultComboBox>();
+            this.countOfParticipants = 0;
+        }
+
+        private void getCountOfParticipants()
+        {
+            this.countOfParticipants = 0;
+            foreach (GroupInTour groupItem in this.groupList)
+                foreach (SetInTour setItem in groupItem.SetListInTour)
+                    foreach (DuetInTour duetItem in setItem.DuetListInTour)
+                        countOfParticipants++;
         }
 
         public void changeNextTour(List<Tour> tempTourList, int groupNum, int judgeCount)
@@ -49,7 +62,7 @@ namespace DataViewer_D_v._001
 
             if (this.result_list.Count > 0 && tempTourList.Count - 1 > tempTourList.IndexOf(this) && judgeCount > 0)
             {
-                MessageBox.Show(judgeCount.ToString());
+                //MessageBox.Show(judgeCount.ToString());
 
                 List<SetInTour> retSetList = new List<SetInTour>();
 
@@ -58,7 +71,7 @@ namespace DataViewer_D_v._001
                     retSetList.Add(new SetInTour(this.groupList[groupNum].SetListInTour[h].number, this.groupList[groupNum].SetListInTour[h].setButton));
                     retSetList[retSetList.Count - 1].DuetListInTour = new List<DuetInTour>();
                 }
-                MessageBox.Show($"Создан лист длины {this.groupList[groupNum].SetListInTour.Count}");
+                //MessageBox.Show($"Создан лист длины {this.groupList[groupNum].SetListInTour.Count}");
 
                 foreach (CheckBoxForDuets item in this.result_list)
                 {
@@ -70,6 +83,13 @@ namespace DataViewer_D_v._001
                 }
 
                 tempTourList[tempTourList.IndexOf(this) + 1].groupList[groupNum].SetListInTour = retSetList;
+                if(this.countOfParticipants == 0)
+                    this.getCountOfParticipants();
+                if (this.groupList[groupNum].countOfParticipants == 0)
+                    this.groupList[groupNum].takeCountOfParticipants();
+
+                MessageBox.Show("Участников в туре " + this.countOfParticipants.ToString());
+                MessageBox.Show("Участников в группе " + this.groupList[groupNum].countOfParticipants.ToString());
 
                 string contrStr = "";//TESTTTT
                 contrStr += $"Группа {groupNum + 1}\n";
@@ -81,6 +101,14 @@ namespace DataViewer_D_v._001
                         if (duetItem.passToNextTour)
                         {
                             contrStr += $"Пара {duetItem.number + 1}\n";
+                        }
+                        else
+                        {
+                            duetItem.positionInTour = (uint)this.countOfParticipants;
+                            duetItem.positionInGroup = (uint)this.groupList[groupNum].countOfParticipants;
+                            MessageBox.Show(duetItem.ToString());
+                            this.countOfParticipants--;
+                            this.groupList[groupNum].countOfParticipants--;
                         }
                     }
                 }
@@ -97,7 +125,7 @@ namespace DataViewer_D_v._001
                         contrStr += $"{duetItem.passToNextTour}\n";
                     }
                 }
-                
+
                 MessageBox.Show("По факту\n" + contrStr);
 
                 tempTourList[tempTourList.IndexOf(this) + 1].removeEmptySets();
@@ -142,8 +170,73 @@ namespace DataViewer_D_v._001
                     }
                     i++;
                 }
+            }
+        }
+
+        public void takePositions(int countPos, int groupNum)
+        {
+            //foreach (GroupInTour groupItem in this.groupList)
+            //{
+            List<DuetInTour> tempPartisipantList = new List<DuetInTour>();
+            List<DuetInTour> tempToTempPartisipantList = new List<DuetInTour>(); //Test
+
+            foreach (SetInTour setItem in this.groupList[groupNum].SetListInTour)
+            {
+                foreach (DuetInTour duetItem in setItem.DuetListInTour)
+                {
+                    tempPartisipantList.Add(duetItem);
+                }
+            }
+
+            duetInTourComparer comparer = new duetInTourComparer();
+
+            showDITList(tempPartisipantList);
+            //sortController.QuickSort(tempPartisipantList);
+            tempPartisipantList.Sort(comparer);
+            showDITList(tempPartisipantList);
+
+            foreach (DuetInTour duetItem in tempPartisipantList)
+            {
+                duetItem.positionInGroup = (uint)(tempPartisipantList.IndexOf(duetItem) + 1);
+            }
+
+            foreach (SetInTour setItem in this.groupList[groupNum].SetListInTour) //Test
+            {
+                foreach (DuetInTour duetItem in setItem.DuetListInTour)//Test
+                {
+                    tempToTempPartisipantList.Add(duetItem);//Test
+                }
+            }
+
+            showDITList(tempToTempPartisipantList);//Test
+            //}
+            this.showAllParticipants();
+        }
+
+        public void showAllParticipants()
+        {
+            string retStr = "";
+            foreach (GroupInTour groupItem in this.groupList)
+            {
+                foreach (SetInTour setItem in groupItem.SetListInTour)
+                {
+                    foreach (DuetInTour duetItem in setItem.DuetListInTour)
+                    {
+                        retStr += duetItem.ToString() + "\n";
+                    }
+                }
 
             }
+        }
+
+        private static void showDITList(List<DuetInTour> DITList)
+        {
+            string retStr = "";
+            foreach (DuetInTour duetItem in DITList)
+            {
+                retStr += duetItem.ToString() + "\n";
+            }
+            MessageBox.Show(retStr);
         }
 
         public void removeEmptySets()

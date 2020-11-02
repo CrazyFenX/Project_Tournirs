@@ -32,10 +32,6 @@
             this.startButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.ControlPanel = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.showTableButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
             this.prevButton = new System.Windows.Forms.Button();
@@ -46,17 +42,22 @@
             this.nowTimelabel1 = new System.Windows.Forms.Label();
             this.nowTimelabel = new System.Windows.Forms.Label();
             this.nextTournirButton = new System.Windows.Forms.Button();
-            this.countOfTourTextBox = new System.Windows.Forms.TextBox();
             this.pushStartLabel = new System.Windows.Forms.Label();
             this.buttonPanel = new System.Windows.Forms.Panel();
             this.acceptButton = new System.Windows.Forms.Button();
             this.backPanelButton = new System.Windows.Forms.Button();
-            this.ControlPanel.SuspendLayout();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.countsOfPositionsNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.countOfTourNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.buttonPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.countsOfPositionsNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countOfTourNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // startButton
             // 
+            this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.startButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.startButton.Location = new System.Drawing.Point(837, 146);
@@ -69,6 +70,7 @@
             // 
             // backButton
             // 
+            this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backButton.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.Location = new System.Drawing.Point(837, 494);
@@ -81,58 +83,19 @@
             // 
             // ControlPanel
             // 
+            this.ControlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ControlPanel.AutoScroll = true;
             this.ControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ControlPanel.Controls.Add(this.checkBox1);
-            this.ControlPanel.Controls.Add(this.label2);
-            this.ControlPanel.Controls.Add(this.label1);
-            this.ControlPanel.Controls.Add(this.comboBox1);
             this.ControlPanel.Location = new System.Drawing.Point(27, 95);
             this.ControlPanel.Name = "ControlPanel";
             this.ControlPanel.Size = new System.Drawing.Size(792, 359);
             this.ControlPanel.TabIndex = 2;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(54, 133);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(18, 17);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(249, 148);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(26, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "A";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(244, 107);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Заход 2";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(59, 76);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(45, 33);
-            this.comboBox1.TabIndex = 0;
-            // 
             // showTableButton
             // 
+            this.showTableButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.showTableButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.showTableButton.Location = new System.Drawing.Point(837, 219);
             this.showTableButton.Name = "showTableButton";
@@ -143,6 +106,7 @@
             // 
             // nextButton
             // 
+            this.nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nextButton.Location = new System.Drawing.Point(837, 357);
             this.nextButton.Name = "nextButton";
@@ -155,6 +119,7 @@
             // 
             // prevButton
             // 
+            this.prevButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.prevButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.prevButton.Location = new System.Drawing.Point(837, 306);
             this.prevButton.Name = "prevButton";
@@ -199,6 +164,7 @@
             // 
             // nowTimelabel1
             // 
+            this.nowTimelabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nowTimelabel1.AutoSize = true;
             this.nowTimelabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nowTimelabel1.Location = new System.Drawing.Point(19, 554);
@@ -209,6 +175,7 @@
             // 
             // nowTimelabel
             // 
+            this.nowTimelabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nowTimelabel.AutoSize = true;
             this.nowTimelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nowTimelabel.Location = new System.Drawing.Point(215, 554);
@@ -219,6 +186,7 @@
             // 
             // nextTournirButton
             // 
+            this.nextTournirButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.nextTournirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.nextTournirButton.Location = new System.Drawing.Point(837, 418);
             this.nextTournirButton.Name = "nextTournirButton";
@@ -227,15 +195,6 @@
             this.nextTournirButton.Text = "Следующий тур";
             this.nextTournirButton.UseVisualStyleBackColor = true;
             this.nextTournirButton.Click += new System.EventHandler(this.nextTournirButton_Click);
-            // 
-            // countOfTourTextBox
-            // 
-            this.countOfTourTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countOfTourTextBox.Location = new System.Drawing.Point(837, 95);
-            this.countOfTourTextBox.Name = "countOfTourTextBox";
-            this.countOfTourTextBox.Size = new System.Drawing.Size(73, 30);
-            this.countOfTourTextBox.TabIndex = 13;
-            this.countOfTourTextBox.Text = "2";
             // 
             // pushStartLabel
             // 
@@ -249,6 +208,8 @@
             // 
             // buttonPanel
             // 
+            this.buttonPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPanel.AutoScroll = true;
             this.buttonPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.buttonPanel.Controls.Add(this.acceptButton);
@@ -260,6 +221,7 @@
             // 
             // acceptButton
             // 
+            this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.acceptButton.Location = new System.Drawing.Point(478, 7);
@@ -272,6 +234,7 @@
             // 
             // backPanelButton
             // 
+            this.backPanelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backPanelButton.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.backPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backPanelButton.Location = new System.Drawing.Point(680, 7);
@@ -282,15 +245,88 @@
             this.backPanelButton.UseVisualStyleBackColor = false;
             this.backPanelButton.Click += new System.EventHandler(this.backPanelButton_Click);
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(832, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 25);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Туров";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(832, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 25);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Мест";
+            // 
+            // countsOfPositionsNumericUpDown
+            // 
+            this.countsOfPositionsNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.countsOfPositionsNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countsOfPositionsNumericUpDown.Location = new System.Drawing.Point(927, 50);
+            this.countsOfPositionsNumericUpDown.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.countsOfPositionsNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.countsOfPositionsNumericUpDown.Name = "countsOfPositionsNumericUpDown";
+            this.countsOfPositionsNumericUpDown.Size = new System.Drawing.Size(61, 30);
+            this.countsOfPositionsNumericUpDown.TabIndex = 20;
+            this.countsOfPositionsNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // countOfTourNumericUpDown
+            // 
+            this.countOfTourNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.countOfTourNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.countOfTourNumericUpDown.Location = new System.Drawing.Point(927, 96);
+            this.countOfTourNumericUpDown.Maximum = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            this.countOfTourNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.countOfTourNumericUpDown.Name = "countOfTourNumericUpDown";
+            this.countOfTourNumericUpDown.Size = new System.Drawing.Size(61, 30);
+            this.countOfTourNumericUpDown.TabIndex = 21;
+            this.countOfTourNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // HoldingTournament
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1031, 593);
+            this.Controls.Add(this.countOfTourNumericUpDown);
+            this.Controls.Add(this.countsOfPositionsNumericUpDown);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonPanel);
             this.Controls.Add(this.ControlPanel);
             this.Controls.Add(this.pushStartLabel);
-            this.Controls.Add(this.countOfTourTextBox);
             this.Controls.Add(this.nextTournirButton);
             this.Controls.Add(this.nowTimelabel);
             this.Controls.Add(this.nowTimelabel1);
@@ -302,14 +338,13 @@
             this.Controls.Add(this.showTableButton);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.startButton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "HoldingTournament";
             this.Text = "HoldingTournament";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HoldingTournament_FormClosing);
             this.Load += new System.EventHandler(this.HoldingTournament_Load);
-            this.ControlPanel.ResumeLayout(false);
-            this.ControlPanel.PerformLayout();
             this.buttonPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.countsOfPositionsNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.countOfTourNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,14 +365,13 @@
         private System.Windows.Forms.Label nowTimelabel1;
         private System.Windows.Forms.Label nowTimelabel;
         private System.Windows.Forms.Button nextTournirButton;
-        private System.Windows.Forms.TextBox countOfTourTextBox;
         private System.Windows.Forms.Label pushStartLabel;
         private System.Windows.Forms.Panel buttonPanel;
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.Button backPanelButton;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown countsOfPositionsNumericUpDown;
+        private System.Windows.Forms.NumericUpDown countOfTourNumericUpDown;
     }
 }

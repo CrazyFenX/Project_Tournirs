@@ -97,13 +97,17 @@ namespace DataViewer_D_v._001
                 sportsman_first.BirthDate = new MyDate();
                 sportsman_second.BirthDate = new MyDate();
 
+                //sportsman_first.BirthDate = new DateTime(2020 - YearOfBirth1_comboBox.SelectedIndex, MounthOfBirth1_comboBox.SelectedIndex + 1, DayOfBirth1_comboBox.SelectedIndex + 1);
+                //sportsman_second.BirthDate = new DateTime(2020 - YearOfBirth2_comboBox.SelectedIndex, MounthOfBirth2_comboBox.SelectedIndex + 1, DayOfBirth2_comboBox.SelectedIndex + 1);
+
                 sportsman_first.BirthDate.Day = DayOfBirth1_comboBox.SelectedIndex + 1;
-                sportsman_first.BirthDate.Mounth = MounthOfBirth1_comboBox.SelectedIndex + 1;
+                sportsman_first.BirthDate.Month = MounthOfBirth1_comboBox.SelectedIndex + 1;
                 sportsman_first.BirthDate.Year = 2020 - YearOfBirth1_comboBox.SelectedIndex;
 
+                //MessageBox.Show(sportsman_first.BirthDate.ToShortDateString() + "\n" + sportsman_second.BirthDate.ToShortDateString());
 
                 sportsman_second.BirthDate.Day = DayOfBirth2_comboBox.SelectedIndex + 1;
-                sportsman_second.BirthDate.Mounth = MounthOfBirth2_comboBox.SelectedIndex + 1;
+                sportsman_second.BirthDate.Month = MounthOfBirth2_comboBox.SelectedIndex + 1;
                 sportsman_second.BirthDate.Year = 2020 - YearOfBirth2_comboBox.SelectedIndex;
 
                 sportsman_first.BookNumber = Convert.ToInt32(BookNumber1_textBox.Text);
@@ -167,34 +171,34 @@ namespace DataViewer_D_v._001
         /////////////////////////////////////////////////////////////
         private void DayOfBirth1_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox, CategoryOfDancing_comboBox);
         }
 
         private void MounthOfBirth1_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox, CategoryOfDancing_comboBox);
         }
 
         private void YearOfBirth1_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox, CategoryOfDancing_comboBox);
         }
         /////////////////////////////////////////////////////////////
 
         /////////////////////////////////////////////////////////////
         private void DayOfBirth2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox, CategoryOfDancing_comboBox);
         }
 
         private void MounthOfBirth2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox, CategoryOfDancing_comboBox);
         }
 
         private void YearOfBirth2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox, CategoryOfDancing_comboBox);
         }
         /////////////////////////////////////////////////////////////
 
@@ -224,7 +228,7 @@ namespace DataViewer_D_v._001
             Patronymic1textBox.Text = sportsman_first.Patronymic;
 
             DayOfBirth1_comboBox.SelectedIndex = sportsman_first.BirthDate.Day - 1;
-            MounthOfBirth1_comboBox.SelectedIndex = sportsman_first.BirthDate.Mounth - 1;
+            MounthOfBirth1_comboBox.SelectedIndex = sportsman_first.BirthDate.Month - 1;
             if (sportsman_first.BirthDate.Year > 0)
                 YearOfBirth1_comboBox.SelectedIndex = 2020 - sportsman_first.BirthDate.Year;
 
@@ -323,7 +327,7 @@ namespace DataViewer_D_v._001
             Patronymic2textBox.Text = sportsman_second.Patronymic;
 
             DayOfBirth2_comboBox.SelectedIndex = sportsman_second.BirthDate.Day - 1;
-            MounthOfBirth2_comboBox.SelectedIndex = sportsman_second.BirthDate.Mounth - 1;
+            MounthOfBirth2_comboBox.SelectedIndex = sportsman_second.BirthDate.Month - 1;
             if (sportsman_second.BirthDate.Year > 0)
                 YearOfBirth2_comboBox.SelectedIndex = 2020 - sportsman_second.BirthDate.Year;
 
@@ -482,6 +486,17 @@ namespace DataViewer_D_v._001
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void AgeCategory1_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //зависимость класса
+            Controller.takeSportClassSet(AgeCategory1_comboBox, SportClass1_comboBox);
+        }
+
+        private void AgeCategory2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Controller.takeSportClassSet(AgeCategory2_comboBox, SportClass2_comboBox);
         }
     }
 }

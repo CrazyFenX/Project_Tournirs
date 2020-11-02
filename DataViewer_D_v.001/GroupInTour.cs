@@ -12,6 +12,7 @@ namespace DataViewer_D_v._001
         public Button groupButton;
 
         public bool isValid;
+        public uint countOfParticipants;
 
         public GroupInTour(Button buttgroup)
         {
@@ -23,6 +24,14 @@ namespace DataViewer_D_v._001
         {
             this.SetListInTour = new List<SetInTour>();
             this.isValid = true;
+        }
+
+        public void takeCountOfParticipants()
+        {
+            foreach (SetInTour setItem in this.SetListInTour)
+            {
+                countOfParticipants += (uint)setItem.DuetListInTour.Count();
+            }
         }
     }
 }

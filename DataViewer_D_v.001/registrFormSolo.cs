@@ -84,9 +84,9 @@ namespace DataViewer_D_v._001
                 sportsman.Surname = Surname_textBox.Text;
                 sportsman.Patronymic = Patronymic_textBox.Text;
 
-                sportsman.BirthDate = new MyDate();
+                //sportsman.BirthDate = new DateTime(2020 - YearOfBirth_comboBox.SelectedIndex, MounthOfBirth_comboBox.SelectedIndex + 1, DayOfBirth_comboBox.SelectedIndex + 1);
                 sportsman.BirthDate.Day = DayOfBirth_comboBox.SelectedIndex + 1;
-                sportsman.BirthDate.Mounth = MounthOfBirth_comboBox.SelectedIndex + 1;
+                sportsman.BirthDate.Month = MounthOfBirth_comboBox.SelectedIndex + 1;
                 sportsman.BirthDate.Year = 2020 - YearOfBirth_comboBox.SelectedIndex;
 
                 sportsman.BookNumber = Convert.ToInt32(BookNumber_textBox.Text);
@@ -151,17 +151,17 @@ namespace DataViewer_D_v._001
 
         private void DayOfBirth_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth_comboBox, MounthOfBirth_comboBox, YearOfBirth_comboBox, AgeCategory_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth_comboBox, MounthOfBirth_comboBox, YearOfBirth_comboBox, AgeCategory_comboBox, CategoryOfDancing_comboBox);
         }
 
         private void MounthOfBirth_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth_comboBox, MounthOfBirth_comboBox, YearOfBirth_comboBox, AgeCategory_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth_comboBox, MounthOfBirth_comboBox, YearOfBirth_comboBox, AgeCategory_comboBox, CategoryOfDancing_comboBox);
         }
 
         private void YearOfBirth_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Controller.AgeCategoryAutoFill(DayOfBirth_comboBox, MounthOfBirth_comboBox, YearOfBirth_comboBox, AgeCategory_comboBox);
+            Controller.AgeCategoryAutoFill(DayOfBirth_comboBox, MounthOfBirth_comboBox, YearOfBirth_comboBox, AgeCategory_comboBox, CategoryOfDancing_comboBox);
         }
 
         /*public void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, ComboBox AgeCategory_comboBox)
@@ -244,7 +244,7 @@ namespace DataViewer_D_v._001
             Patronymic_textBox.Text = sportsman.Patronymic;
 
             DayOfBirth_comboBox.SelectedIndex = sportsman.BirthDate.Day - 1;
-            MounthOfBirth_comboBox.SelectedIndex = sportsman.BirthDate.Mounth - 1;
+            MounthOfBirth_comboBox.SelectedIndex = sportsman.BirthDate.Month - 1;
             if (sportsman.BirthDate.Year > 0)
                 YearOfBirth_comboBox.SelectedIndex = 2020 - sportsman.BirthDate.Year;
 
@@ -381,6 +381,11 @@ namespace DataViewer_D_v._001
         {
             if (setNumber_comboBox.SelectedIndex != -1)
             duetNumber_textBox.Text = Convert.ToString(SecretaryController.TakeMax("Номер", "duets", Path_textBox.Text) + 1);
+        }
+
+        private void AgeCategory_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Controller.takeSportClassSet(AgeCategory_comboBox, SportClass_comboBox);
         }
     }
 }

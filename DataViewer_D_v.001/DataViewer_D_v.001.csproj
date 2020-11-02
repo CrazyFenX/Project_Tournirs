@@ -103,6 +103,7 @@
     </Compile>
     <Compile Include="Duet.cs" />
     <Compile Include="DuetInTour.cs" />
+    <Compile Include="duetInTourComparer.cs" />
     <Compile Include="formationReglament.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +163,7 @@
     </Compile>
     <Compile Include="SetClass.cs" />
     <Compile Include="SetInTour.cs" />
+    <Compile Include="sortController.cs" />
     <Compile Include="Sportsman.cs" />
     <Compile Include="startForm.cs">
       <SubType>Form</SubType>

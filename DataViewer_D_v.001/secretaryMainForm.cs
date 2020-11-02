@@ -73,9 +73,16 @@ namespace DataViewer_D_v._001
 
         private void reglament_button_Click(object sender, EventArgs e)
         {
-            formationReglament formRegform = new formationReglament(this);
-            this.Enabled = false;
-            formRegform.Show();
+            if (this.tournir.name != "" && Path_textBox.Text != "")
+            {
+                formationReglament formRegform = new formationReglament(this);
+                this.Enabled = false;
+                formRegform.Show();
+            }
+            else
+            {
+                MessageBox.Show("Не все поля заполнены!");
+            }
         }
 
         private void configButton_Click(object sender, EventArgs e)
@@ -100,7 +107,7 @@ namespace DataViewer_D_v._001
 
                     command.Parameters.AddWithValue("id", i + 1);
                     countOfElements = Convert.ToInt32(command.ExecuteScalar().ToString());
-                    MessageBox.Show(Convert.ToString(countOfElements));
+                    //MessageBox.Show(Convert.ToString(countOfElements));
 
                     List<SetClass> newSetList = new List<SetClass>();
                     List<int> newBookNumList = new List<int>();
@@ -128,9 +135,7 @@ namespace DataViewer_D_v._001
                         }
                         outStr += "\n";
                     }
-                    MessageBox.Show(outStr);
-                    //}
-                    //tournir.groups[i].SetList = newSetList;\
+                    //MessageBox.Show(outStr);
                 }
                 con.Close();
             }
@@ -144,8 +149,6 @@ namespace DataViewer_D_v._001
             try
             {
                 tournir = SecretaryController.TakeTournir(folderName);
-                //for (int i = 0; i < tournir.groups.Count; i++)
-                //    groupNumber_comboBox.Items.Add(tournir.groups[i].number);
             }
             catch (Exception ex)
             {

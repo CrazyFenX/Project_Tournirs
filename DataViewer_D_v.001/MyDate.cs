@@ -10,7 +10,7 @@ namespace DataViewer_D_v._001
     public class MyDate
     {
         public int Day;
-        public int Mounth;
+        public int Month;
         public int Year;
 
         public MyDate()
@@ -20,7 +20,7 @@ namespace DataViewer_D_v._001
         public MyDate(int day, int mounth, int year)
         {
             this.Day = day;
-            this.Mounth = mounth;
+            this.Month = mounth;
             this.Year = year;
         }
 
@@ -34,10 +34,10 @@ namespace DataViewer_D_v._001
             else
                 DayStr = Convert.ToString(this.Day);
 
-            if (this.Mounth < 10)
-                MounthStr = "0" + Convert.ToString(this.Mounth);
+            if (this.Month < 10)
+                MounthStr = "0" + Convert.ToString(this.Month);
             else
-                MounthStr = Convert.ToString(this.Mounth);
+                MounthStr = Convert.ToString(this.Month);
 
             return DayStr + "." + MounthStr + "." + Convert.ToString(Year);
         }
@@ -46,7 +46,7 @@ namespace DataViewer_D_v._001
         {
             int i = 0;
             this.Day = 0;
-            this.Mounth = 0;
+            this.Month = 0;
             this.Year = 0;
 
             while (DateStr[i] != 46 && i != DateStr.Length)
@@ -59,7 +59,7 @@ namespace DataViewer_D_v._001
 
             while (DateStr[i] != 46 && i != DateStr.Length)
             {
-                this.Mounth = this.Mounth * 10 + (Convert.ToInt32(DateStr[i]) - 48);
+                this.Month = this.Month * 10 + (Convert.ToInt32(DateStr[i]) - 48);
                 i++;
             }
 

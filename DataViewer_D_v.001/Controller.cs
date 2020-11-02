@@ -147,19 +147,23 @@ namespace DataViewer_D_v._001
             return sportsman;
         }
 
-        public static void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, ComboBox AgeCategory_comboBox)
+        public static void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, ComboBox AgeCategory_comboBox, ComboBox CategoryOfDancing_comboBox)
         {
             if (DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && YearOfBirth_comboBox.SelectedIndex != -1)
             {
                 DateTime cureDate = DateTime.Now;
-                MyDate curMyDate = new MyDate(cureDate.Day, cureDate.Month, cureDate.Year);
-                MyDate birthDate = new MyDate(DayOfBirth_comboBox.SelectedIndex + 1, MounthOfBirth_comboBox.SelectedIndex + 1, 2020 - YearOfBirth_comboBox.SelectedIndex);
-                int differ;
+                
+                MessageBox.Show((DayOfBirth_comboBox.SelectedIndex + 1).ToString() + (MounthOfBirth_comboBox.SelectedIndex + 1).ToString() + (2020 - YearOfBirth_comboBox.SelectedIndex).ToString());
 
-                differ = curMyDate.Year - birthDate.Year;
-                MessageBox.Show(Convert.ToString(curMyDate.Year - birthDate.Year));
+                DateTime birthDate = new DateTime(Convert.ToInt16(2020 - YearOfBirth_comboBox.SelectedIndex), Convert.ToInt16(MounthOfBirth_comboBox.SelectedIndex + 1), Convert.ToInt16(DayOfBirth_comboBox.SelectedIndex + 1));
 
-                switch (differ)
+                MessageBox.Show("Сейчас " + cureDate.ToString());
+                MessageBox.Show("Дата рожд. " + birthDate.ToShortDateString());
+                DateTime differ = new DateTime((cureDate - birthDate).Ticks);
+
+                MessageBox.Show(differ.ToShortDateString());
+                
+                switch (differ.Year)
                 {
                     case 1:
                     case 2:
@@ -172,30 +176,37 @@ namespace DataViewer_D_v._001
                     case 9:
                     case 0:
                         AgeCategory_comboBox.SelectedIndex = 1;
+                        CategoryOfDancing_comboBox.SelectedIndex = 1;
                         break;
                     case 10:
                     case 11:
                         AgeCategory_comboBox.SelectedIndex = 2;
+                        CategoryOfDancing_comboBox.SelectedIndex = 2;
                         break;
                     case 12:
                     case 13:
                         AgeCategory_comboBox.SelectedIndex = 3;
+                        CategoryOfDancing_comboBox.SelectedIndex = 3;
                         break;
                     case 14:
                     case 15:
                         AgeCategory_comboBox.SelectedIndex = 4;
+                        CategoryOfDancing_comboBox.SelectedIndex = 4;
                         break;
                     case 16:
                     case 17:
                     case 18:
                         AgeCategory_comboBox.SelectedIndex = 5;
+                        CategoryOfDancing_comboBox.SelectedIndex = 5;
                         break;
                     case 19:
                     case 20:
                         AgeCategory_comboBox.SelectedIndex = 6;
+                        CategoryOfDancing_comboBox.SelectedIndex = 6;
                         break;
                     default:
                         AgeCategory_comboBox.SelectedIndex = 7;
+                        CategoryOfDancing_comboBox.SelectedIndex = 7;
                         break;
                 }
             }
@@ -294,6 +305,41 @@ namespace DataViewer_D_v._001
                 MessageBox.Show("ошибка в GapCounter при обработке " + rowName + " в таблице " + tableName + ex.Message);
             }
             return retArr;
+        }
+
+        public static void takeSportClassSet(ComboBox first, ComboBox second)
+        {
+            second.Items.Clear();
+            switch (first.SelectedIndex)
+            {
+                case 0:
+                    second.Items.Add("H");
+                    break;
+                case 1:
+                    second.Items.AddRange(new object[] {"H", "E", "D" });
+                    break;
+                case 2:
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C" });
+                    break;
+                case 3:
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B" });
+                    break;
+                case 4:
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A" });
+                    break;
+                case 5:
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S" });
+                    break;
+                case 6:
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S", "M" });
+                    break;
+                case 7:
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S", "M" });
+                    break;
+                default:
+                    second.Items.Clear();
+                    break;
+            }
         }
     }
 }

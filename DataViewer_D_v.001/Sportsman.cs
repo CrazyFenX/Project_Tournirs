@@ -13,6 +13,8 @@ namespace DataViewer_D_v._001
 
         public MyDate BirthDate = new MyDate();
 
+        //public DateTime BirthDate = new DateTime();
+
         public int BookNumber;
 
         public int GroupNumber;

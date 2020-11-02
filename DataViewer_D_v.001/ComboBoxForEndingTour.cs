@@ -15,17 +15,20 @@ namespace DataViewer_D_v._001
 
         public ComboBoxForEndingTour()
         {
+            this.mark = 0;
         }
 
         public ComboBoxForEndingTour(HoldingMarker marker)
         {
             this.marker = marker;
+            this.mark = 0;
         }
 
         public ComboBoxForEndingTour(HoldingMarker marker, ComboBox comBox)
         {
             this.marker = marker;
             this.markComboBox = comBox;
+            this.mark = 0;
         }
 
         public override string ToString()

@@ -60,7 +60,7 @@
             this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.startButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.startButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.startButton.Location = new System.Drawing.Point(837, 146);
+            this.startButton.Location = new System.Drawing.Point(930, 146);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(163, 67);
             this.startButton.TabIndex = 0;
@@ -73,7 +73,7 @@
             this.backButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backButton.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backButton.Location = new System.Drawing.Point(837, 494);
+            this.backButton.Location = new System.Drawing.Point(930, 586);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(163, 47);
             this.backButton.TabIndex = 1;
@@ -90,25 +90,26 @@
             this.ControlPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ControlPanel.Location = new System.Drawing.Point(27, 95);
             this.ControlPanel.Name = "ControlPanel";
-            this.ControlPanel.Size = new System.Drawing.Size(792, 359);
+            this.ControlPanel.Size = new System.Drawing.Size(885, 451);
             this.ControlPanel.TabIndex = 2;
             // 
             // showTableButton
             // 
             this.showTableButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.showTableButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.showTableButton.Location = new System.Drawing.Point(837, 219);
+            this.showTableButton.Location = new System.Drawing.Point(930, 219);
             this.showTableButton.Name = "showTableButton";
             this.showTableButton.Size = new System.Drawing.Size(163, 67);
             this.showTableButton.TabIndex = 3;
             this.showTableButton.Text = "Турнирная таблица";
             this.showTableButton.UseVisualStyleBackColor = true;
+            this.showTableButton.Click += new System.EventHandler(this.showTableButton_Click);
             // 
             // nextButton
             // 
             this.nextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.nextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nextButton.Location = new System.Drawing.Point(837, 357);
+            this.nextButton.Location = new System.Drawing.Point(930, 357);
             this.nextButton.Name = "nextButton";
             this.nextButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.nextButton.Size = new System.Drawing.Size(45, 45);
@@ -121,7 +122,7 @@
             // 
             this.prevButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.prevButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.prevButton.Location = new System.Drawing.Point(837, 306);
+            this.prevButton.Location = new System.Drawing.Point(930, 306);
             this.prevButton.Name = "prevButton";
             this.prevButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.prevButton.Size = new System.Drawing.Size(45, 45);
@@ -167,7 +168,7 @@
             this.nowTimelabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nowTimelabel1.AutoSize = true;
             this.nowTimelabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nowTimelabel1.Location = new System.Drawing.Point(19, 554);
+            this.nowTimelabel1.Location = new System.Drawing.Point(19, 646);
             this.nowTimelabel1.Name = "nowTimelabel1";
             this.nowTimelabel1.Size = new System.Drawing.Size(190, 20);
             this.nowTimelabel1.TabIndex = 9;
@@ -178,7 +179,7 @@
             this.nowTimelabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.nowTimelabel.AutoSize = true;
             this.nowTimelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nowTimelabel.Location = new System.Drawing.Point(215, 554);
+            this.nowTimelabel.Location = new System.Drawing.Point(215, 646);
             this.nowTimelabel.Name = "nowTimelabel";
             this.nowTimelabel.Size = new System.Drawing.Size(61, 20);
             this.nowTimelabel.TabIndex = 10;
@@ -188,7 +189,7 @@
             // 
             this.nextTournirButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.nextTournirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nextTournirButton.Location = new System.Drawing.Point(837, 418);
+            this.nextTournirButton.Location = new System.Drawing.Point(930, 510);
             this.nextTournirButton.Name = "nextTournirButton";
             this.nextTournirButton.Size = new System.Drawing.Size(163, 68);
             this.nextTournirButton.TabIndex = 11;
@@ -214,9 +215,9 @@
             this.buttonPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.buttonPanel.Controls.Add(this.acceptButton);
             this.buttonPanel.Controls.Add(this.backPanelButton);
-            this.buttonPanel.Location = new System.Drawing.Point(27, 460);
+            this.buttonPanel.Location = new System.Drawing.Point(27, 552);
             this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(792, 64);
+            this.buttonPanel.Size = new System.Drawing.Size(885, 64);
             this.buttonPanel.TabIndex = 16;
             // 
             // acceptButton
@@ -224,7 +225,7 @@
             this.acceptButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.acceptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.acceptButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.acceptButton.Location = new System.Drawing.Point(478, 7);
+            this.acceptButton.Location = new System.Drawing.Point(571, 7);
             this.acceptButton.Name = "acceptButton";
             this.acceptButton.Size = new System.Drawing.Size(170, 47);
             this.acceptButton.TabIndex = 15;
@@ -237,7 +238,7 @@
             this.backPanelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.backPanelButton.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.backPanelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backPanelButton.Location = new System.Drawing.Point(680, 7);
+            this.backPanelButton.Location = new System.Drawing.Point(773, 7);
             this.backPanelButton.Name = "backPanelButton";
             this.backPanelButton.Size = new System.Drawing.Size(99, 47);
             this.backPanelButton.TabIndex = 14;
@@ -250,7 +251,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(832, 98);
+            this.label3.Location = new System.Drawing.Point(925, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 25);
             this.label3.TabIndex = 18;
@@ -261,7 +262,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(832, 52);
+            this.label4.Location = new System.Drawing.Point(925, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 25);
             this.label4.TabIndex = 19;
@@ -271,7 +272,7 @@
             // 
             this.countsOfPositionsNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.countsOfPositionsNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countsOfPositionsNumericUpDown.Location = new System.Drawing.Point(927, 50);
+            this.countsOfPositionsNumericUpDown.Location = new System.Drawing.Point(1020, 50);
             this.countsOfPositionsNumericUpDown.Maximum = new decimal(new int[] {
             8,
             0,
@@ -295,7 +296,7 @@
             // 
             this.countOfTourNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.countOfTourNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.countOfTourNumericUpDown.Location = new System.Drawing.Point(927, 96);
+            this.countOfTourNumericUpDown.Location = new System.Drawing.Point(1020, 96);
             this.countOfTourNumericUpDown.Maximum = new decimal(new int[] {
             6,
             0,
@@ -319,7 +320,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1031, 593);
+            this.ClientSize = new System.Drawing.Size(1124, 685);
             this.Controls.Add(this.countOfTourNumericUpDown);
             this.Controls.Add(this.countsOfPositionsNumericUpDown);
             this.Controls.Add(this.label4);

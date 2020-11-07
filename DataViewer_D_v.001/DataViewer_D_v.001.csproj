@@ -89,6 +89,7 @@
     <Compile Include="CreatingTournirDBForm.Designer.cs">
       <DependentUpon>CreatingTournirDBForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="danceClass.cs" />
     <Compile Include="DataBasaViewer.cs">
       <SubType>Form</SubType>
     </Compile>

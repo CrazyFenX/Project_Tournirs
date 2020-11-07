@@ -42,6 +42,10 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.setCountTextBox = new System.Windows.Forms.TextBox();
+            this.duetCountTextBox = new System.Windows.Forms.TextBox();
+            this.setCountLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -82,6 +86,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackColor = System.Drawing.Color.Brown;
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.setCountLabel);
+            this.groupBox3.Controls.Add(this.duetCountTextBox);
+            this.groupBox3.Controls.Add(this.setCountTextBox);
             this.groupBox3.Controls.Add(this.startToutnamentButton);
             this.groupBox3.Controls.Add(this.button2);
             this.groupBox3.Controls.Add(this.button3);
@@ -242,6 +250,44 @@
             this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button3_Click);
             // 
+            // setCountTextBox
+            // 
+            this.setCountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.setCountTextBox.Location = new System.Drawing.Point(428, 22);
+            this.setCountTextBox.Name = "setCountTextBox";
+            this.setCountTextBox.Size = new System.Drawing.Size(49, 34);
+            this.setCountTextBox.TabIndex = 47;
+            // 
+            // duetCountTextBox
+            // 
+            this.duetCountTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.duetCountTextBox.Location = new System.Drawing.Point(428, 62);
+            this.duetCountTextBox.Name = "duetCountTextBox";
+            this.duetCountTextBox.Size = new System.Drawing.Size(49, 34);
+            this.duetCountTextBox.TabIndex = 48;
+            // 
+            // setCountLabel
+            // 
+            this.setCountLabel.AutoSize = true;
+            this.setCountLabel.BackColor = System.Drawing.Color.White;
+            this.setCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.setCountLabel.Location = new System.Drawing.Point(265, 32);
+            this.setCountLabel.Name = "setCountLabel";
+            this.setCountLabel.Size = new System.Drawing.Size(157, 20);
+            this.setCountLabel.TabIndex = 49;
+            this.setCountLabel.Text = "Заходов в группе";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(301, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(121, 20);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "Пар в заходе";
+            // 
             // secretaryMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -257,6 +303,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.secretaryMainForm_FormClosing);
             this.Load += new System.EventHandler(this.secretaryMainForm_Load);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -279,5 +326,9 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button startToutnamentButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label setCountLabel;
+        private System.Windows.Forms.TextBox duetCountTextBox;
+        private System.Windows.Forms.TextBox setCountTextBox;
     }
 }

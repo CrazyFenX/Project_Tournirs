@@ -93,6 +93,17 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Path_textBox = new System.Windows.Forms.TextBox();
             this.Browse_button = new System.Windows.Forms.Button();
+            this.danceGroupBox = new System.Windows.Forms.GroupBox();
+            this.danceCheckBox6 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox7 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox8 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox9 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox10 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox5 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox4 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox3 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox2 = new System.Windows.Forms.CheckBox();
+            this.danceCheckBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.bD1DataSetBindingSource)).BeginInit();
             this.Sportsman_groupBox.SuspendLayout();
             this.Group_n_Number_groupBox.SuspendLayout();
@@ -100,6 +111,7 @@
             this.Club_groupBox.SuspendLayout();
             this.FirstTrainer_groupBox.SuspendLayout();
             this.SecondTrainer_groupBox.SuspendLayout();
+            this.danceGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // registrationButton
@@ -108,7 +120,7 @@
             this.registrationButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.registrationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registrationButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.registrationButton.Location = new System.Drawing.Point(897, 17);
+            this.registrationButton.Location = new System.Drawing.Point(981, 17);
             this.registrationButton.Name = "registrationButton";
             this.registrationButton.Size = new System.Drawing.Size(219, 56);
             this.registrationButton.TabIndex = 3;
@@ -123,7 +135,7 @@
             this.Name_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Name_textBox.Location = new System.Drawing.Point(146, 106);
             this.Name_textBox.Name = "Name_textBox";
-            this.Name_textBox.Size = new System.Drawing.Size(392, 26);
+            this.Name_textBox.Size = new System.Drawing.Size(476, 26);
             this.Name_textBox.TabIndex = 4;
             this.Name_textBox.Text = "Иван";
             // 
@@ -134,7 +146,7 @@
             this.Surname_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Surname_textBox.Location = new System.Drawing.Point(146, 78);
             this.Surname_textBox.Name = "Surname_textBox";
-            this.Surname_textBox.Size = new System.Drawing.Size(392, 26);
+            this.Surname_textBox.Size = new System.Drawing.Size(476, 26);
             this.Surname_textBox.TabIndex = 5;
             this.Surname_textBox.Text = "Иванов";
             // 
@@ -197,6 +209,7 @@
             this.Sportsman_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Sportsman_groupBox.Controls.Add(this.danceGroupBox);
             this.Sportsman_groupBox.Controls.Add(this.Label_Patronymic);
             this.Sportsman_groupBox.Controls.Add(this.Patronymic_textBox);
             this.Sportsman_groupBox.Controls.Add(this.City_textBox);
@@ -223,7 +236,7 @@
             this.Sportsman_groupBox.Controls.Add(this.Name_textBox);
             this.Sportsman_groupBox.Location = new System.Drawing.Point(12, 5);
             this.Sportsman_groupBox.Name = "Sportsman_groupBox";
-            this.Sportsman_groupBox.Size = new System.Drawing.Size(554, 532);
+            this.Sportsman_groupBox.Size = new System.Drawing.Size(638, 544);
             this.Sportsman_groupBox.TabIndex = 16;
             this.Sportsman_groupBox.TabStop = false;
             this.Sportsman_groupBox.Text = "Танцор";
@@ -245,7 +258,7 @@
             this.Patronymic_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Patronymic_textBox.Location = new System.Drawing.Point(146, 134);
             this.Patronymic_textBox.Name = "Patronymic_textBox";
-            this.Patronymic_textBox.Size = new System.Drawing.Size(392, 26);
+            this.Patronymic_textBox.Size = new System.Drawing.Size(476, 26);
             this.Patronymic_textBox.TabIndex = 34;
             this.Patronymic_textBox.Text = "Иванович";
             // 
@@ -253,7 +266,7 @@
             // 
             this.City_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.City_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.City_textBox.Location = new System.Drawing.Point(364, 378);
+            this.City_textBox.Location = new System.Drawing.Point(463, 371);
             this.City_textBox.Name = "City_textBox";
             this.City_textBox.Size = new System.Drawing.Size(159, 26);
             this.City_textBox.TabIndex = 33;
@@ -264,7 +277,7 @@
             this.Label_City.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_City.AutoSize = true;
             this.Label_City.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_City.Location = new System.Drawing.Point(297, 376);
+            this.Label_City.Location = new System.Drawing.Point(396, 369);
             this.Label_City.Name = "Label_City";
             this.Label_City.Size = new System.Drawing.Size(61, 20);
             this.Label_City.TabIndex = 32;
@@ -275,7 +288,7 @@
             this.Label_SportCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_SportCategory.AutoSize = true;
             this.Label_SportCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_SportCategory.Location = new System.Drawing.Point(29, 378);
+            this.Label_SportCategory.Location = new System.Drawing.Point(18, 307);
             this.Label_SportCategory.Name = "Label_SportCategory";
             this.Label_SportCategory.Size = new System.Drawing.Size(71, 20);
             this.Label_SportCategory.TabIndex = 30;
@@ -296,7 +309,7 @@
             "КМС",
             "МС",
             "МСМК"});
-            this.SportCategory_comboBox.Location = new System.Drawing.Point(110, 378);
+            this.SportCategory_comboBox.Location = new System.Drawing.Point(99, 307);
             this.SportCategory_comboBox.Name = "SportCategory_comboBox";
             this.SportCategory_comboBox.Size = new System.Drawing.Size(80, 28);
             this.SportCategory_comboBox.TabIndex = 29;
@@ -310,9 +323,9 @@
             this.Group_n_Number_groupBox.Controls.Add(this.Label_GroupNumber);
             this.Group_n_Number_groupBox.Controls.Add(this.groupNumber_comboBox);
             this.Group_n_Number_groupBox.Controls.Add(this.Label_SetNumber);
-            this.Group_n_Number_groupBox.Location = new System.Drawing.Point(378, 228);
+            this.Group_n_Number_groupBox.Location = new System.Drawing.Point(400, 234);
             this.Group_n_Number_groupBox.Name = "Group_n_Number_groupBox";
-            this.Group_n_Number_groupBox.Size = new System.Drawing.Size(160, 129);
+            this.Group_n_Number_groupBox.Size = new System.Drawing.Size(222, 129);
             this.Group_n_Number_groupBox.TabIndex = 28;
             this.Group_n_Number_groupBox.TabStop = false;
             // 
@@ -320,7 +333,7 @@
             // 
             this.duetNumber_textBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.duetNumber_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.duetNumber_textBox.Location = new System.Drawing.Point(92, 89);
+            this.duetNumber_textBox.Location = new System.Drawing.Point(123, 89);
             this.duetNumber_textBox.Name = "duetNumber_textBox";
             this.duetNumber_textBox.Size = new System.Drawing.Size(53, 26);
             this.duetNumber_textBox.TabIndex = 37;
@@ -330,7 +343,7 @@
             this.Label_DuetNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label_DuetNumber.AutoSize = true;
             this.Label_DuetNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_DuetNumber.Location = new System.Drawing.Point(10, 89);
+            this.Label_DuetNumber.Location = new System.Drawing.Point(41, 89);
             this.Label_DuetNumber.Name = "Label_DuetNumber";
             this.Label_DuetNumber.Size = new System.Drawing.Size(64, 20);
             this.Label_DuetNumber.TabIndex = 36;
@@ -341,7 +354,7 @@
             this.setNumber_comboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.setNumber_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.setNumber_comboBox.FormattingEnabled = true;
-            this.setNumber_comboBox.Location = new System.Drawing.Point(92, 53);
+            this.setNumber_comboBox.Location = new System.Drawing.Point(123, 53);
             this.setNumber_comboBox.Name = "setNumber_comboBox";
             this.setNumber_comboBox.Size = new System.Drawing.Size(53, 28);
             this.setNumber_comboBox.TabIndex = 37;
@@ -352,7 +365,7 @@
             this.Label_GroupNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label_GroupNumber.AutoSize = true;
             this.Label_GroupNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_GroupNumber.Location = new System.Drawing.Point(11, 15);
+            this.Label_GroupNumber.Location = new System.Drawing.Point(42, 15);
             this.Label_GroupNumber.Name = "Label_GroupNumber";
             this.Label_GroupNumber.Size = new System.Drawing.Size(67, 20);
             this.Label_GroupNumber.TabIndex = 26;
@@ -363,7 +376,7 @@
             this.groupNumber_comboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupNumber_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupNumber_comboBox.FormattingEnabled = true;
-            this.groupNumber_comboBox.Location = new System.Drawing.Point(92, 15);
+            this.groupNumber_comboBox.Location = new System.Drawing.Point(123, 15);
             this.groupNumber_comboBox.Name = "groupNumber_comboBox";
             this.groupNumber_comboBox.Size = new System.Drawing.Size(53, 28);
             this.groupNumber_comboBox.TabIndex = 36;
@@ -374,7 +387,7 @@
             this.Label_SetNumber.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Label_SetNumber.AutoSize = true;
             this.Label_SetNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_SetNumber.Location = new System.Drawing.Point(15, 53);
+            this.Label_SetNumber.Location = new System.Drawing.Point(46, 53);
             this.Label_SetNumber.Name = "Label_SetNumber";
             this.Label_SetNumber.Size = new System.Drawing.Size(61, 20);
             this.Label_SetNumber.TabIndex = 24;
@@ -386,7 +399,7 @@
             this.searchByBook_Button.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.searchByBook_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.searchByBook_Button.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.searchByBook_Button.Location = new System.Drawing.Point(362, 25);
+            this.searchByBook_Button.Location = new System.Drawing.Point(446, 25);
             this.searchByBook_Button.Name = "searchByBook_Button";
             this.searchByBook_Button.Size = new System.Drawing.Size(176, 36);
             this.searchByBook_Button.TabIndex = 22;
@@ -399,7 +412,7 @@
             this.Label_CategoryOfDancing.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_CategoryOfDancing.AutoSize = true;
             this.Label_CategoryOfDancing.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_CategoryOfDancing.Location = new System.Drawing.Point(18, 285);
+            this.Label_CategoryOfDancing.Location = new System.Drawing.Point(18, 276);
             this.Label_CategoryOfDancing.Name = "Label_CategoryOfDancing";
             this.Label_CategoryOfDancing.Size = new System.Drawing.Size(239, 20);
             this.Label_CategoryOfDancing.TabIndex = 23;
@@ -419,7 +432,7 @@
             "М",
             "М-2",
             "Вз"});
-            this.CategoryOfDancing_comboBox.Location = new System.Drawing.Point(275, 281);
+            this.CategoryOfDancing_comboBox.Location = new System.Drawing.Point(275, 272);
             this.CategoryOfDancing_comboBox.Name = "CategoryOfDancing_comboBox";
             this.CategoryOfDancing_comboBox.Size = new System.Drawing.Size(83, 28);
             this.CategoryOfDancing_comboBox.TabIndex = 22;
@@ -431,7 +444,7 @@
             this.BookNumber_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BookNumber_textBox.Location = new System.Drawing.Point(146, 32);
             this.BookNumber_textBox.Name = "BookNumber_textBox";
-            this.BookNumber_textBox.Size = new System.Drawing.Size(210, 26);
+            this.BookNumber_textBox.Size = new System.Drawing.Size(294, 26);
             this.BookNumber_textBox.TabIndex = 21;
             this.BookNumber_textBox.Text = "123456";
             // 
@@ -459,7 +472,7 @@
             "А",
             "S",
             "М"});
-            this.SportClass_comboBox.Location = new System.Drawing.Point(283, 243);
+            this.SportClass_comboBox.Location = new System.Drawing.Point(283, 234);
             this.SportClass_comboBox.Name = "SportClass_comboBox";
             this.SportClass_comboBox.Size = new System.Drawing.Size(75, 28);
             this.SportClass_comboBox.TabIndex = 19;
@@ -469,7 +482,7 @@
             this.Label_SportClass.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_SportClass.AutoSize = true;
             this.Label_SportClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_SportClass.Location = new System.Drawing.Point(209, 247);
+            this.Label_SportClass.Location = new System.Drawing.Point(209, 238);
             this.Label_SportClass.Name = "Label_SportClass";
             this.Label_SportClass.Size = new System.Drawing.Size(58, 20);
             this.Label_SportClass.TabIndex = 18;
@@ -480,7 +493,7 @@
             this.Label_AgeCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_AgeCategory.AutoSize = true;
             this.Label_AgeCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_AgeCategory.Location = new System.Drawing.Point(18, 247);
+            this.Label_AgeCategory.Location = new System.Drawing.Point(18, 238);
             this.Label_AgeCategory.Name = "Label_AgeCategory";
             this.Label_AgeCategory.Size = new System.Drawing.Size(98, 20);
             this.Label_AgeCategory.TabIndex = 17;
@@ -500,7 +513,7 @@
             "М",
             "М-2",
             "Вз"});
-            this.AgeCategory_comboBox.Location = new System.Drawing.Point(122, 247);
+            this.AgeCategory_comboBox.Location = new System.Drawing.Point(122, 238);
             this.AgeCategory_comboBox.Name = "AgeCategory_comboBox";
             this.AgeCategory_comboBox.Size = new System.Drawing.Size(68, 28);
             this.AgeCategory_comboBox.TabIndex = 16;
@@ -646,7 +659,7 @@
             this.OldTrainer_groupBox.Controls.Add(this.SurnameOfOldTrainer_textBox);
             this.OldTrainer_groupBox.Controls.Add(this.NameOfOldTrainer_textBox);
             this.OldTrainer_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OldTrainer_groupBox.Location = new System.Drawing.Point(572, 7);
+            this.OldTrainer_groupBox.Location = new System.Drawing.Point(656, 7);
             this.OldTrainer_groupBox.Name = "OldTrainer_groupBox";
             this.OldTrainer_groupBox.Size = new System.Drawing.Size(319, 123);
             this.OldTrainer_groupBox.TabIndex = 17;
@@ -676,7 +689,7 @@
             this.Club_groupBox.Controls.Add(this.Label_ClubName);
             this.Club_groupBox.Controls.Add(this.ClubName_textBox);
             this.Club_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Club_groupBox.Location = new System.Drawing.Point(572, 444);
+            this.Club_groupBox.Location = new System.Drawing.Point(656, 456);
             this.Club_groupBox.Name = "Club_groupBox";
             this.Club_groupBox.Size = new System.Drawing.Size(319, 93);
             this.Club_groupBox.TabIndex = 19;
@@ -706,7 +719,7 @@
             this.backButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.backButton.Location = new System.Drawing.Point(897, 528);
+            this.backButton.Location = new System.Drawing.Point(981, 540);
             this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(219, 47);
             this.backButton.TabIndex = 20;
@@ -720,7 +733,7 @@
             this.openDataBasaButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.openDataBasaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.openDataBasaButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openDataBasaButton.Location = new System.Drawing.Point(897, 79);
+            this.openDataBasaButton.Location = new System.Drawing.Point(981, 79);
             this.openDataBasaButton.Name = "openDataBasaButton";
             this.openDataBasaButton.Size = new System.Drawing.Size(219, 53);
             this.openDataBasaButton.TabIndex = 21;
@@ -740,7 +753,7 @@
             this.FirstTrainer_groupBox.Controls.Add(this.NameFirstTrainer_textBox);
             this.FirstTrainer_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FirstTrainer_groupBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.FirstTrainer_groupBox.Location = new System.Drawing.Point(572, 131);
+            this.FirstTrainer_groupBox.Location = new System.Drawing.Point(656, 131);
             this.FirstTrainer_groupBox.Name = "FirstTrainer_groupBox";
             this.FirstTrainer_groupBox.Size = new System.Drawing.Size(319, 147);
             this.FirstTrainer_groupBox.TabIndex = 18;
@@ -851,7 +864,7 @@
             this.SecondTrainer_groupBox.Controls.Add(this.Label_NameOfOtherTrainer_2);
             this.SecondTrainer_groupBox.Controls.Add(this.SurnameSecondTrainer_textBox);
             this.SecondTrainer_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SecondTrainer_groupBox.Location = new System.Drawing.Point(572, 284);
+            this.SecondTrainer_groupBox.Location = new System.Drawing.Point(656, 296);
             this.SecondTrainer_groupBox.Name = "SecondTrainer_groupBox";
             this.SecondTrainer_groupBox.Size = new System.Drawing.Size(319, 154);
             this.SecondTrainer_groupBox.TabIndex = 22;
@@ -895,9 +908,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Path_textBox.Enabled = false;
             this.Path_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Path_textBox.Location = new System.Drawing.Point(12, 547);
+            this.Path_textBox.Location = new System.Drawing.Point(12, 559);
             this.Path_textBox.Name = "Path_textBox";
-            this.Path_textBox.Size = new System.Drawing.Size(764, 23);
+            this.Path_textBox.Size = new System.Drawing.Size(848, 23);
             this.Path_textBox.TabIndex = 23;
             this.Path_textBox.TextChanged += new System.EventHandler(this.Path_textBox_TextChanged);
             // 
@@ -906,7 +919,7 @@
             this.Browse_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Browse_button.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Browse_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Browse_button.Location = new System.Drawing.Point(782, 542);
+            this.Browse_button.Location = new System.Drawing.Point(866, 554);
             this.Browse_button.Name = "Browse_button";
             this.Browse_button.Size = new System.Drawing.Size(109, 32);
             this.Browse_button.TabIndex = 24;
@@ -914,12 +927,133 @@
             this.Browse_button.UseVisualStyleBackColor = false;
             this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
             // 
+            // danceGroupBox
+            // 
+            this.danceGroupBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.danceGroupBox.Controls.Add(this.danceCheckBox6);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox7);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox8);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox9);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox10);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox5);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox4);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox3);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox2);
+            this.danceGroupBox.Controls.Add(this.danceCheckBox1);
+            this.danceGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.danceGroupBox.Location = new System.Drawing.Point(22, 341);
+            this.danceGroupBox.Name = "danceGroupBox";
+            this.danceGroupBox.Size = new System.Drawing.Size(368, 191);
+            this.danceGroupBox.TabIndex = 33;
+            this.danceGroupBox.TabStop = false;
+            this.danceGroupBox.Text = "Танцы";
+            // 
+            // danceCheckBox6
+            // 
+            this.danceCheckBox6.AutoSize = true;
+            this.danceCheckBox6.Location = new System.Drawing.Point(145, 152);
+            this.danceCheckBox6.Name = "danceCheckBox6";
+            this.danceCheckBox6.Size = new System.Drawing.Size(110, 24);
+            this.danceCheckBox6.TabIndex = 43;
+            this.danceCheckBox6.Text = "Квикстеп";
+            this.danceCheckBox6.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox7
+            // 
+            this.danceCheckBox7.AutoSize = true;
+            this.danceCheckBox7.Location = new System.Drawing.Point(145, 122);
+            this.danceCheckBox7.Name = "danceCheckBox7";
+            this.danceCheckBox7.Size = new System.Drawing.Size(218, 24);
+            this.danceCheckBox7.TabIndex = 42;
+            this.danceCheckBox7.Text = "Медленный фокстрот";
+            this.danceCheckBox7.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox8
+            // 
+            this.danceCheckBox8.AutoSize = true;
+            this.danceCheckBox8.Location = new System.Drawing.Point(145, 92);
+            this.danceCheckBox8.Name = "danceCheckBox8";
+            this.danceCheckBox8.Size = new System.Drawing.Size(79, 24);
+            this.danceCheckBox8.TabIndex = 41;
+            this.danceCheckBox8.Text = "Танго";
+            this.danceCheckBox8.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox9
+            // 
+            this.danceCheckBox9.AutoSize = true;
+            this.danceCheckBox9.Location = new System.Drawing.Point(145, 62);
+            this.danceCheckBox9.Name = "danceCheckBox9";
+            this.danceCheckBox9.Size = new System.Drawing.Size(155, 24);
+            this.danceCheckBox9.TabIndex = 40;
+            this.danceCheckBox9.Text = "Венский вальс";
+            this.danceCheckBox9.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox10
+            // 
+            this.danceCheckBox10.AutoSize = true;
+            this.danceCheckBox10.Location = new System.Drawing.Point(145, 32);
+            this.danceCheckBox10.Name = "danceCheckBox10";
+            this.danceCheckBox10.Size = new System.Drawing.Size(82, 24);
+            this.danceCheckBox10.TabIndex = 39;
+            this.danceCheckBox10.Text = "Вальс";
+            this.danceCheckBox10.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox5
+            // 
+            this.danceCheckBox5.AutoSize = true;
+            this.danceCheckBox5.Location = new System.Drawing.Point(14, 152);
+            this.danceCheckBox5.Name = "danceCheckBox5";
+            this.danceCheckBox5.Size = new System.Drawing.Size(86, 24);
+            this.danceCheckBox5.TabIndex = 38;
+            this.danceCheckBox5.Text = "Джайв";
+            this.danceCheckBox5.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox4
+            // 
+            this.danceCheckBox4.AutoSize = true;
+            this.danceCheckBox4.Location = new System.Drawing.Point(14, 122);
+            this.danceCheckBox4.Name = "danceCheckBox4";
+            this.danceCheckBox4.Size = new System.Drawing.Size(125, 24);
+            this.danceCheckBox4.TabIndex = 37;
+            this.danceCheckBox4.Text = "Пасадобль";
+            this.danceCheckBox4.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox3
+            // 
+            this.danceCheckBox3.AutoSize = true;
+            this.danceCheckBox3.Location = new System.Drawing.Point(14, 92);
+            this.danceCheckBox3.Name = "danceCheckBox3";
+            this.danceCheckBox3.Size = new System.Drawing.Size(82, 24);
+            this.danceCheckBox3.TabIndex = 36;
+            this.danceCheckBox3.Text = "Румба";
+            this.danceCheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox2
+            // 
+            this.danceCheckBox2.AutoSize = true;
+            this.danceCheckBox2.Location = new System.Drawing.Point(14, 62);
+            this.danceCheckBox2.Name = "danceCheckBox2";
+            this.danceCheckBox2.Size = new System.Drawing.Size(106, 24);
+            this.danceCheckBox2.TabIndex = 35;
+            this.danceCheckBox2.Text = "Ча-ча-ча";
+            this.danceCheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // danceCheckBox1
+            // 
+            this.danceCheckBox1.AutoSize = true;
+            this.danceCheckBox1.Location = new System.Drawing.Point(14, 32);
+            this.danceCheckBox1.Name = "danceCheckBox1";
+            this.danceCheckBox1.Size = new System.Drawing.Size(85, 24);
+            this.danceCheckBox1.TabIndex = 34;
+            this.danceCheckBox1.Text = "Самба";
+            this.danceCheckBox1.UseVisualStyleBackColor = true;
+            // 
             // registrFormSolo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1118, 579);
+            this.ClientSize = new System.Drawing.Size(1202, 591);
             this.Controls.Add(this.Browse_button);
             this.Controls.Add(this.Path_textBox);
             this.Controls.Add(this.SecondTrainer_groupBox);
@@ -948,6 +1082,8 @@
             this.FirstTrainer_groupBox.PerformLayout();
             this.SecondTrainer_groupBox.ResumeLayout(false);
             this.SecondTrainer_groupBox.PerformLayout();
+            this.danceGroupBox.ResumeLayout(false);
+            this.danceGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1019,5 +1155,16 @@
         private System.Windows.Forms.ComboBox groupNumber_comboBox;
         private System.Windows.Forms.TextBox duetNumber_textBox;
         private System.Windows.Forms.Label Label_DuetNumber;
+        private System.Windows.Forms.GroupBox danceGroupBox;
+        private System.Windows.Forms.CheckBox danceCheckBox6;
+        private System.Windows.Forms.CheckBox danceCheckBox7;
+        private System.Windows.Forms.CheckBox danceCheckBox8;
+        private System.Windows.Forms.CheckBox danceCheckBox9;
+        private System.Windows.Forms.CheckBox danceCheckBox10;
+        private System.Windows.Forms.CheckBox danceCheckBox5;
+        private System.Windows.Forms.CheckBox danceCheckBox4;
+        private System.Windows.Forms.CheckBox danceCheckBox3;
+        private System.Windows.Forms.CheckBox danceCheckBox2;
+        private System.Windows.Forms.CheckBox danceCheckBox1;
     }
 }

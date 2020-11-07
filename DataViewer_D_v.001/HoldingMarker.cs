@@ -8,10 +8,19 @@ namespace DataViewer_D_v._001
     public class HoldingMarker
     {
         public int tourNumber;
-
         public int groupNumber;
+        public int danceNumber;
         public int setNumber;
         public int duetNumber;
+
+        public HoldingMarker(int Tour, int Group, int Dance, int Set, int Duet)
+        {
+            this.tourNumber = Tour;
+            this.groupNumber = Group;
+            this.danceNumber = Dance;
+            this.setNumber = Set;
+            this.duetNumber = Duet;
+        }
 
         public HoldingMarker(int Tour, int Group, int Set, int Duet)
         {

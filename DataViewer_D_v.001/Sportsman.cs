@@ -19,6 +19,7 @@ namespace DataViewer_D_v._001
 
         public int GroupNumber;
         public int SetNumber;
+        public int NumberInTournir;
 
         public string ClubName;
         public string City;
@@ -29,12 +30,28 @@ namespace DataViewer_D_v._001
 
         public string AgeCategory;
         public string SportClass;
+        public List<danceClass> danceList = new List<danceClass>();
 
         public string SportCategory;
 
         public Sportsman() //Constructor
         {
-           // this.Name = "NotDefined";
+            // this.Name = "NotDefined";
+            Name = "";
+            Surname = "";
+            Patronymic = "";
+            BookNumber = -1;
+
+            OlderTrainer = new Trainer();
+            FirstTrainer = new Trainer();
+            SecondTrainer = new Trainer();
+            MyDate BirthDate = new MyDate();
+        }
+
+        public Sportsman(int Num) //Constructor
+        {
+            // this.Name = "NotDefined";
+            BookNumber = Num;
             OlderTrainer = new Trainer();
             FirstTrainer = new Trainer();
             SecondTrainer = new Trainer();
@@ -44,6 +61,11 @@ namespace DataViewer_D_v._001
         ~Sportsman()    //Destructor
         {
             //pass
+        }
+
+        public override string ToString()
+        {
+            return Surname + " " + Name + " " + Patronymic + " " + BookNumber.ToString();
         }
     }
 }

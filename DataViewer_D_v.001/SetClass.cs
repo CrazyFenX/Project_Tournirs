@@ -30,6 +30,15 @@ namespace DataViewer_D_v._001
             this.category = Category;
         }
 
+        public SetClass(int Group_Number, int Number)
+        {
+            this.numberOfGroup = Group_Number;
+            this.number = Number;
+            this.category = "";
+            this.DuetList = new List<Duet>();
+            this.SoloList = new List<Sportsman>();
+        }
+
         public override string ToString()
         {
             return "Заход номер " + Convert.ToString(this.number) + " из группы " + Convert.ToString(this.numberOfGroup) + " категория " + Convert.ToString(this.category);

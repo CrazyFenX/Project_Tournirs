@@ -471,6 +471,8 @@ namespace DataViewer_D_v._001
                 setNumber_comboBox.SelectedIndex = -1;
                 duetNumber_textBox.Text = "";
 
+                duetNumber_textBox.Text = SecretaryController.TakeMax("Номер", "Participant", Path_textBox.Text).ToString();
+
                 for (int i = 0; i < tournir.groups[groupNumber_comboBox.SelectedIndex].SetList.Count; i++)
                     setNumber_comboBox.Items.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].SetList[i].number);
 
@@ -497,6 +499,14 @@ namespace DataViewer_D_v._001
         private void AgeCategory2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Controller.takeSportClassSet(AgeCategory2_comboBox, SportClass2_comboBox);
+        }
+
+        private void registrFormDuet_Resize(object sender, EventArgs e)
+        {
+            if (this.Size.Width < 930)
+                this.Size = new Size(900, this.Size.Height);
+            if (this.Size.Height < 650)
+                this.Size = new Size(this.Size.Width, 650);
         }
     }
 }

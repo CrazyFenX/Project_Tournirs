@@ -33,9 +33,9 @@ namespace DataViewer_D_v._001
         {
             try
             {
-                this.trainersTableAdapter1.Update(this.peopleDataSetLastLast.Trainers);
+                this.trainersTableAdapter2.Update(this.peopleDataSet2.Trainers);
                 // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLastLast.Sportsmans". При необходимости она может быть перемещена или удалена.
-                this.sportsmansTableAdapter1.Update(this.peopleDataSetLastLast.Sportsmans);
+                this.sportsmansTableAdapter3.Update(this.peopleDataSet2.Sportsmans);
             }
             catch (Exception ex)
             {

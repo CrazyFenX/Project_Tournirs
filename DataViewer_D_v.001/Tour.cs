@@ -12,6 +12,8 @@ namespace DataViewer_D_v._001
         public List<GroupInTour> groupList = new List<GroupInTour>();
         public int countOfParticipants;
 
+        public List<DuetInTour> mainDuetList = new List<DuetInTour>();
+
         public Panel controlTourPanel;
         public Button tourButton;
 
@@ -65,6 +67,7 @@ namespace DataViewer_D_v._001
                 //MessageBox.Show(judgeCount.ToString());
 
                 List<SetInTour> retSetList = new List<SetInTour>();
+                List<SetInTour> retSetCommunalList = new List<SetInTour>();
 
                 for (int h = 0; h < this.groupList[groupNum].SetListInTour.Count; h++)
                 {
@@ -78,18 +81,21 @@ namespace DataViewer_D_v._001
                     if (item.validnessCheckBox.Checked && !this.groupList[item.marker.groupNumber].SetListInTour[item.marker.setNumber].DuetListInTour[item.marker.duetNumber].passToNextTour)
                     {
                         retSetList[item.marker.setNumber].DuetListInTour.Add(this.groupList[item.marker.groupNumber].SetListInTour[item.marker.setNumber].DuetListInTour[item.marker.duetNumber]);
+                        //retSetCommunalList[item.marker.setNumber].DuetListInTour.Add(this.groupList[item.marker.groupNumber].SetListInTour[item.marker.setNumber].DuetListInTour[item.marker.duetNumber]);
                         this.groupList[item.marker.groupNumber].SetListInTour[item.marker.setNumber].DuetListInTour[item.marker.duetNumber].passToNextTour = true;
                     }
                 }
 
                 tempTourList[tempTourList.IndexOf(this) + 1].groupList[groupNum].SetListInTour = retSetList;
-                if(this.countOfParticipants == 0)
+                tempTourList[tempTourList.IndexOf(this) + 1].groupList[groupNum].takeDuetInGroupList();
+                
+                if (this.countOfParticipants == 0)
                     this.getCountOfParticipants();
                 if (this.groupList[groupNum].countOfParticipants == 0)
                     this.groupList[groupNum].takeCountOfParticipants();
 
-                MessageBox.Show("Участников в туре " + this.countOfParticipants.ToString());
-                MessageBox.Show("Участников в группе " + this.groupList[groupNum].countOfParticipants.ToString());
+                //MessageBox.Show("Участников в туре " + this.countOfParticipants.ToString());
+                //MessageBox.Show("Участников в группе " + this.groupList[groupNum].countOfParticipants.ToString());
 
                 string contrStr = "";//TESTTTT
                 contrStr += $"Группа {groupNum + 1}\n";
@@ -106,13 +112,13 @@ namespace DataViewer_D_v._001
                         {
                             duetItem.positionInTour = (uint)this.countOfParticipants;
                             duetItem.positionInGroup = (uint)this.groupList[groupNum].countOfParticipants;
-                            MessageBox.Show(duetItem.ToString());
+                        MessageBox.Show(duetItem.ToString());
                             this.countOfParticipants--;
                             this.groupList[groupNum].countOfParticipants--;
                         }
                     }
                 }
-                MessageBox.Show("Предполагалось\n" + contrStr);       //TESTTTT
+                //MessageBox.Show("Предполагалось\n" + contrStr);       //TESTTTT
 
                 contrStr = "";                                      //TESTTTT
                 contrStr += $"Группа {groupNum + 1}\n";
@@ -150,27 +156,55 @@ namespace DataViewer_D_v._001
                 MessageBox.Show("Список оценок пуст, не зарегистрировано ниодного судьи или перед вами последний тур!");
         }
 
-        public void takeTournirResults(int groupNum, int judgeCount)
+        public void takeGroupResults(int groupNum, int judgeCount)
         {
             MessageBox.Show($"рассматривается группа {groupNum + 1}"); // TEESSSTTT
 
             if (this.resultOfTournir_list.Count > 0 && judgeCount > 0)
             {
                 int i = 1;
-                foreach (tournirResultComboBox comboBoxItem in this.resultOfTournir_list)
+                //int startPos = 0;
+                //for (int g = 0; g < groupNum; g++)
+                //{
+                //    foreach (DuetInTour duetItem in this.groupList[g].DuetInGroupList)
+                //    {
+                //        startPos++;
+                //    }
+                //}
+                //MessageBox.Show(startPos.ToString());
+
+                //for (int j = startPos; j < this.resultOfTournir_list.Count; j++)
+                //{
+                //    this.groupList[groupNum].SetListInTour[this.resultOfTournir_list[j].marker.setNumber].DuetListInTour[this.resultOfTournir_list[j].marker.duetNumber].mark += this.resultOfTournir_list[j].valueComboBox.SelectedIndex + 1;
+                //    //MessageBox.Show($"рассматривается пара " + comboBoxItem.marker.ToString()); // TEESSSTTT
+
+                //    if (i > 0 && i % judgeCount == 0)
+                //    {
+                //        MessageBox.Show($"рассматривается пара " + this.resultOfTournir_list[j].marker.ToString());
+                //        //MessageBox.Show($"{i}");
+                //        this.groupList[groupNum].SetListInTour[this.resultOfTournir_list[j].marker.setNumber].DuetListInTour[this.resultOfTournir_list[j].marker.duetNumber].mark /= judgeCount;
+                //        MessageBox.Show($"оценка {this.groupList[groupNum].SetListInTour[this.resultOfTournir_list[j].marker.setNumber].DuetListInTour[this.resultOfTournir_list[j].marker.duetNumber].mark}"); // TEESSSTTT
+                //    }
+                //    i++;
+                //}
+
+                //foreach (tournirResultComboBox comboBoxItem in this.resultOfTournir_list)
+                foreach (tournirResultComboBox comboBoxItem in this.groupList[groupNum].resultOfGroup_list)
                 {
                     this.groupList[groupNum].SetListInTour[comboBoxItem.marker.setNumber].DuetListInTour[comboBoxItem.marker.duetNumber].mark += comboBoxItem.valueComboBox.SelectedIndex + 1;
-                    MessageBox.Show($"рассматривается пара " + comboBoxItem.marker.ToString()); // TEESSSTTT
+                    //MessageBox.Show($"рассматривается пара " + comboBoxItem.marker.ToString()); // TEESSSTTT
 
                     if (i > 0 && i % judgeCount == 0)
                     {
-                        MessageBox.Show($"{i}");
+                        MessageBox.Show($"рассматривается пара " + comboBoxItem.marker.ToString());
+                        //MessageBox.Show($"{i}");
                         this.groupList[groupNum].SetListInTour[comboBoxItem.marker.setNumber].DuetListInTour[comboBoxItem.marker.duetNumber].mark /= judgeCount;
                         MessageBox.Show($"оценка {this.groupList[groupNum].SetListInTour[comboBoxItem.marker.setNumber].DuetListInTour[comboBoxItem.marker.duetNumber].mark}"); // TEESSSTTT
                     }
                     i++;
                 }
             }
+            this.takeMainDuetList();
         }
 
         public void takePositions(int countPos, int groupNum)
@@ -249,6 +283,32 @@ namespace DataViewer_D_v._001
                         groupList[i].SetListInTour.Remove(groupList[i].SetListInTour[j]);
                         j--;
                     }
+        }
+
+
+        public void takeMainDuetList()
+        {
+            string retstr = "";
+            mainDuetList.Clear();
+            foreach (GroupInTour groupItem in this.groupList)
+            {
+                groupItem.takeDuetInGroupList();
+                foreach (DuetInTour duetItem in groupItem.DuetInGroupList)
+                {
+                    mainDuetList.Add(duetItem);
+                    retstr += duetItem.ToString() + "\n";
+                }
+                retstr += "\n";
+            }
+            MessageBox.Show(retstr);
+        }
+
+        public void takeGroupDIGList()
+        {
+            foreach (GroupInTour groupItem in this.groupList)
+            {
+                groupItem.takeDuetInGroupList();
+            }
         }
     }
 }

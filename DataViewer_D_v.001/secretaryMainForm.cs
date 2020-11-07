@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -94,50 +95,137 @@ namespace DataViewer_D_v._001
         {
             if (this.tournir.name != "" && Path_textBox.Text != "")
             {
+                //Constants
+                //int setCountInGroup = Convert.ToInt32(setCountTextBox.Text);
+                int duetCountInSet = Convert.ToInt32(duetCountTextBox.Text);
+
+                //задать количество участников в каждом заходе
                 connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}";
                 OleDbConnection con = new OleDbConnection(connectString);
                 con.Open();
 
+                List<Duet> DuetList_New = new List<Duet>();
+                List<Duet> SoloList_New = new List<Duet>();
+                //Sportsman sportsman1 = new Sportsman();
+                //Sportsman sportsman2 = new Sportsman();
+
                 int countOfElements = 0;
                 Random rnd = new Random();
 
+                Controller.myConnection.Open();
+
                 for (int i = 0; i < tournir.groups.Count; i++)
                 {
+                    int index = 0;
                     OleDbCommand command = new OleDbCommand("SELECT COUNT(Номер_Книжки1) From duets WHERE Номер_Группы = @id", con);
 
                     command.Parameters.AddWithValue("id", i + 1);
                     countOfElements = Convert.ToInt32(command.ExecuteScalar().ToString());
                     //MessageBox.Show(Convert.ToString(countOfElements));
 
-                    List<SetClass> newSetList = new List<SetClass>();
-                    List<int> newBookNumList = new List<int>();
+                    //List<Duet> newDuetList = new List<Duet>();
+                    //List<int> newBookNumDuetList = new List<int>();
+                    //List<int> newBookNumSoloList = new List<int>();
 
-                    string outStr = "";
+                    string outStr = "Пары группы номер" + (i + 1).ToString() + "\n";
+                    string outStr1 = "Солисты группы номер" + (i + 1).ToString() + "\n";
 
-                    OleDbCommand command1 = new OleDbCommand("SELECT Номер_Книжки1, Номер_Книжки2 From duets WHERE Номер_Группы = @id", con);
+                    OleDbCommand command1 = new OleDbCommand("SELECT Номер, Номер_Книжки1, Номер_Книжки2 From duets WHERE Номер_Группы = @id", con);
 
                     command1.Parameters.AddWithValue("id", i + 1);
                     OleDbDataReader reader = command1.ExecuteReader();
                     int j = 0;
+                    int j1 = 0;
+
+                    int Num1 = 0, Num2 = 0;
 
                     while (reader.Read())
                     {
-                        newBookNumList.Add(Convert.ToInt32(reader["Номер_Книжки1"]));
-                        outStr += newBookNumList[j];
-                        j++;
-
                         if (reader["Номер_Книжки2"].ToString() != "")
                         {
+                            Sportsman sportsman1 = new Sportsman();
+                            Sportsman sportsman2 = new Sportsman();
                             outStr += " ";
-                            newBookNumList.Add(Convert.ToInt32(reader["Номер_Книжки2"]));
-                            outStr += newBookNumList[j];
+                            Num1 = (Convert.ToInt32(reader["Номер_Книжки1"]));
+                            Num2 = (Convert.ToInt32(reader["Номер_Книжки2"]));
+
+                            sportsman1 = Controller.SearchByBookNumberShort(Num1);
+                            sportsman1.BookNumber = Num1;
+                            sportsman1.GroupNumber = i + 1;
+                            sportsman2 = Controller.SearchByBookNumberShort(Num2);
+                            sportsman2.BookNumber = Num2;
+                            sportsman2.GroupNumber = i + 1;
+                            DuetList_New.Add(new Duet(Convert.ToInt32(reader["Номер"]), i, sportsman1, sportsman2));
+                            
+                            outStr += DuetList_New[j1].ToString() + "\n";
+                            j1++;
+                        }
+                        else
+                        {
+                            Sportsman sportsman1 = new Sportsman();
+                            //newBookNumSoloList.Add(Convert.ToInt32(reader["Номер_Книжки1"]));
+                            Num1 = (Convert.ToInt32(reader["Номер_Книжки1"]));
+
+                            sportsman1 = Controller.SearchByBookNumberShort(Num1);
+                            sportsman1.BookNumber = Num1;
+                            sportsman1.GroupNumber = i + 1;
+                            SoloList_New.Add(new Duet(Convert.ToInt32(reader["Номер"]), i, sportsman1));
+
+                            outStr1 += SoloList_New[j].ToString() + "\n";
                             j++;
                         }
                         outStr += "\n";
+                        outStr1 += "\n";
                     }
-                    //MessageBox.Show(outStr);
+                    MessageBox.Show(outStr);
+                    outStr = "";
+                    DuetList_New.OrderBy(x => rnd.Next());
+                    foreach (Duet duetItem in DuetList_New)
+                    {
+                        outStr += duetItem.ToString();
+                    }
+                    MessageBox.Show(outStr);
+
+                    MessageBox.Show(outStr1);
+                    outStr1 = "";
+                    SoloList_New.OrderBy(x => rnd.Next());
+                    foreach (Duet soloItem in SoloList_New)
+                    {
+                        outStr1 += soloItem.ToString();
+                    }
+                    MessageBox.Show(outStr1);
+
+                    outStr = "";
+                    tournir.groups[i].SetList.Clear();
+
+                    int setCountInGroup = DuetList_New.Count / duetCountInSet;
+                    outStr += "Группа " + (i + 1).ToString() + "\n";
+                    for (int h = 0; h < setCountInGroup; h++)
+                    {
+                        tournir.groups[i].SetList.Add(new SetClass(i, h/*Добавить категорию*/));
+                        outStr += "Заход " + (tournir.groups[i].SetList.Count).ToString() + "\n";
+                        for (int h1 = 0; h1 < duetCountInSet; h1++)
+                        {
+                            if (index <= DuetList_New.Count - 1)
+                            {
+                                tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Add(DuetList_New[index]);
+                                outStr += "Пара " + (tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Count).ToString() + "\n";
+                                index++;
+                            }
+                            else
+                                break;
+                        }
+                    }
+                    MessageBox.Show(outStr);
+                    //for (int i1 = 0; i1 < DuetList_New.Count; i1++)
+                    //{
+                    //    if(index % duetCountInSet)
+                    //    tournir.groups[i].SetList[index];
+                    //    if ()
+                    //}
                 }
                 con.Close();
+                Controller.myConnection.Close();
             }
             else
                 MessageBox.Show("Не все поля заполнены!");

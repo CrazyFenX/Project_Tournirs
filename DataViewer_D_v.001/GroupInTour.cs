@@ -11,6 +11,10 @@ namespace DataViewer_D_v._001
         public List<SetInTour> SetListInTour;
         public Button groupButton;
 
+        public List<DuetInTour> DuetInGroupList = new List<DuetInTour>();
+
+        public List<tournirResultComboBox> resultOfGroup_list = new List<tournirResultComboBox>();
+
         public bool isValid;
         public uint countOfParticipants;
 
@@ -32,6 +36,21 @@ namespace DataViewer_D_v._001
             {
                 countOfParticipants += (uint)setItem.DuetListInTour.Count();
             }
+        }
+
+        public void takeDuetInGroupList()
+        {
+            string retstr = "";
+            this.DuetInGroupList.Clear();
+            foreach (SetInTour setItem in this.SetListInTour)
+            {
+                foreach (DuetInTour duetItem in setItem.DuetListInTour)
+                {
+                    this.DuetInGroupList.Add(duetItem);
+                    retstr += duetItem.ToString() +"\n";
+                }
+            }
+            //MessageBox.Show(retstr);
         }
     }
 }

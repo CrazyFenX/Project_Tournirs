@@ -55,7 +55,7 @@ namespace DataViewer_D_v._001
         private void Create_button_Click(object sender, EventArgs e)
         {
             if (Name_textBox.Text != "" && Path_textBox.Text != "" && DayOfTournir_comboBox.SelectedIndex != -1 && MounthOfTournir_comboBox.SelectedIndex != -1 &&
-                HourOfTournir_comboBox.SelectedIndex != -1 && MinutesOfTournir_comboBox.SelectedIndex != -1 && CityOfTournir_textBox.Text != "" && OrganisationOfTournir_textBox.Text != "")
+                HourTournirStart_comboBox.SelectedIndex != -1 && MinutesTournirStart_comboBox.SelectedIndex != -1 && CityOfTournir_textBox.Text != "" && OrganisationOfTournir_textBox.Text != "")
             {
                 folderName = "";
                 folderName = Path_textBox.Text;
@@ -97,6 +97,10 @@ namespace DataViewer_D_v._001
                     com = new OleDbCommand("CREATE TABLE sets(Номер_Захода INT DEFAULT 0, Номер_Группы INT DEFAULT 0, Категория CHAR(5), CONSTRAINT sets_pk PRIMARY KEY (Номер_Захода, Номер_Группы))", cn);
                     com.ExecuteNonQuery();
 
+                    //Создание Таблицы Танцев
+                    com = new OleDbCommand("CREATE TABLE dances(Номер_Книжки INT, Номер_Группы INT DEFAULT 0, Название CHAR(20), CONSTRAINT dance_pk PRIMARY KEY (Номер_Книжки, Название, Номер_Группы))", cn);
+                    com.ExecuteNonQuery();
+
                     //Создание Таблицы Пар
                     ///доработка связей///com = new OleDbCommand("CREATE TABLE duets(Номер_Пары COUNTER, Номер_Захода INT, CONSTRAINT duets_uq UNIQUE(Номер_Пары, Номер_Захода), CONSTRAINT duets_pk PRIMARY KEY (Номер_Пары), CONSTRAINT fk_duets FOREIGN KEY (Номер_Захода) REFERENCES sets(Номер_Захода))", cn);
                     com = new OleDbCommand("CREATE TABLE duets(Номер INT, Номер_Группы INT DEFAULT 0, Номер_Захода INT, Номер_Книжки1 INT, Номер_Книжки2 INT, Тип CHAR(4))", cn);
@@ -106,7 +110,7 @@ namespace DataViewer_D_v._001
 
                     NewTournir.name = Name_textBox.Text;
                     NewTournir.date = new MyDate(DayOfTournir_comboBox.SelectedIndex + 1, MounthOfTournir_comboBox.SelectedIndex + 1, Convert.ToInt32(YearOfTournir_textBox.Text));
-                    NewTournir.time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, MinutesOfTournir_comboBox.SelectedIndex * 5);
+                    NewTournir.time = new TimeClass(HourTournirStart_comboBox.SelectedIndex, MinutesTournirStart_comboBox.SelectedIndex * 5);
                     //MessageBox.Show(NewTournir.time.ToString());
                     NewTournir.place = CityOfTournir_textBox.Text;
                     NewTournir.organisation = OrganisationOfTournir_textBox.Text;

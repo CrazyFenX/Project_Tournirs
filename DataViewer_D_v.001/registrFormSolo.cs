@@ -19,6 +19,8 @@ namespace DataViewer_D_v._001
 
         Sportsman sportsman = new Sportsman();
 
+        List<CheckBox> danceCheckList = new List<CheckBox>();
+
         public string folderName;
 
         TournirClass tournir = new TournirClass();
@@ -37,6 +39,17 @@ namespace DataViewer_D_v._001
             {
                 SecondTrainer_groupBox.ForeColor = Color.Gray;
             }
+
+            danceCheckList.Add(danceCheckBox1);
+            danceCheckList.Add(danceCheckBox2);
+            danceCheckList.Add(danceCheckBox3);
+            danceCheckList.Add(danceCheckBox4);
+            danceCheckList.Add(danceCheckBox5);
+            danceCheckList.Add(danceCheckBox6);
+            danceCheckList.Add(danceCheckBox7);
+            danceCheckList.Add(danceCheckBox8);
+            danceCheckList.Add(danceCheckBox9);
+            danceCheckList.Add(danceCheckBox10);
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -85,7 +98,7 @@ namespace DataViewer_D_v._001
                 sportsman.Name = Name_textBox.Text;
                 sportsman.Surname = Surname_textBox.Text;
                 sportsman.Patronymic = Patronymic_textBox.Text;
-
+                sportsman.NumberInTournir = Convert.ToInt32(duetNumber_textBox.Text);
                 //sportsman.BirthDate = new DateTime(2020 - YearOfBirth_comboBox.SelectedIndex, MounthOfBirth_comboBox.SelectedIndex + 1, DayOfBirth_comboBox.SelectedIndex + 1);
                 sportsman.BirthDate.Day = DayOfBirth_comboBox.SelectedIndex + 1;
                 sportsman.BirthDate.Month = MounthOfBirth_comboBox.SelectedIndex + 1;
@@ -97,6 +110,17 @@ namespace DataViewer_D_v._001
 
                 sportsman.ClubName = ClubName_textBox.Text;
                 sportsman.City = City_textBox.Text;
+
+                string retstr = "";
+                foreach (CheckBox item in danceCheckList)
+                {
+                    if (item.Checked)
+                    {
+                        sportsman.danceList.Add(new danceClass(item.Text));
+                        retstr += item.Text + "\n";
+                    }
+                }
+                MessageBox.Show(retstr);
 
                 sportsman.OlderTrainer = new Trainer(NameOfOldTrainer_textBox.Text, SurnameOfOldTrainer_textBox.Text, PatronymicOfOldTrainer_textBox.Text, 1);
                 if (FirstTrainer_checkBox.Checked)
@@ -119,7 +143,8 @@ namespace DataViewer_D_v._001
                 if (SecondTrainer_checkBox.Checked)
                     Controller.insertTrainer(sportsman.SecondTrainer, sportsman.BookNumber);
                 SecretaryController.insertInParticipants(sportsman,Path_textBox.Text);
-                //SecretaryController.insertParticipantsInSet(Convert.ToInt32(duetNumber_textBox.Text), sportsman, Convert.ToInt32(groupNumber_comboBox.Text), Convert.ToInt32(setNumber_comboBox.Text), Path_textBox.Text);
+                if (setNumber_comboBox.SelectedIndex != -1)
+                    SecretaryController.insertParticipantsInSet(Convert.ToInt32(duetNumber_textBox.Text), sportsman, Convert.ToInt32(groupNumber_comboBox.Text), Convert.ToInt32(setNumber_comboBox.Text), Path_textBox.Text);
             }
             else
                 MessageBox.Show("Не все необходимые поля заполнены!");
@@ -376,6 +401,8 @@ namespace DataViewer_D_v._001
                 setNumber_comboBox.SelectedIndex = -1;
                 duetNumber_textBox.Text = "";
 
+                duetNumber_textBox.Text = (SecretaryController.TakeMax("Номер","Participants", Path_textBox.Text) + 1).ToString();
+
                 for (int i = 0; i < tournir.groups[groupNumber_comboBox.SelectedIndex].SetList.Count; i++)
                     setNumber_comboBox.Items.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].SetList[i].number);
 
@@ -402,10 +429,10 @@ namespace DataViewer_D_v._001
 
         private void registrFormSolo_Resize(object sender, EventArgs e)
         {
-            if (this.Size.Width < 890)
-                this.Size = new Size(890, this.Size.Height);
-            if (this.Size.Height < 515)
-                this.Size = new Size(this.Size.Width, 515);
+            if (this.Size.Width < 900)
+                this.Size = new Size(900, this.Size.Height);
+            if (this.Size.Height < 530)
+                this.Size = new Size(this.Size.Width, 530);
         }
     }
 }

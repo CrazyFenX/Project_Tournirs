@@ -148,6 +148,64 @@ namespace DataViewer_D_v._001
             return sportsman;
         }
 
+        public static Sportsman SearchByBookNumberShort(int BookNumber)
+        {
+            Sportsman sportsman = new Sportsman();
+
+            OleDbCommand command1 = new OleDbCommand("", myConnection);
+
+            OleDbCommand command2 = new OleDbCommand("", myConnection);
+            OleDbCommand command3 = new OleDbCommand("", myConnection);
+
+            OleDbCommand command4 = new OleDbCommand("", myConnection);
+            OleDbCommand command5 = new OleDbCommand("", myConnection);
+
+            OleDbCommand command6 = new OleDbCommand("", myConnection);
+
+            OleDbCommand command7 = new OleDbCommand("", myConnection);
+
+
+            command1.CommandText = "SELECT Фамилия FROM Sportsmans WHERE НомерКнижки = @BookNum";
+            command1.Parameters.AddWithValue("BookNum", BookNumber);
+
+            command2.CommandText = "SELECT Имя FROM Sportsmans WHERE НомерКнижки = @BookNum";
+            command2.Parameters.AddWithValue("BookNum", BookNumber);
+
+            command3.CommandText = "SELECT Отчество FROM Sportsmans WHERE НомерКнижки = @BookNum";
+            command3.Parameters.AddWithValue("BookNum", BookNumber);
+
+            command4.CommandText = "SELECT НазваниеКлуба FROM Sportsmans WHERE НомерКнижки = @BookNum";
+            command4.Parameters.AddWithValue("BookNum", BookNumber);
+
+            command5.CommandText = "SELECT Город FROM Sportsmans WHERE НомерКнижки = @BookNum";
+            command5.Parameters.AddWithValue("BookNum", BookNumber);
+
+            command6.CommandText = "SELECT СпортивныйКласс FROM Sportsmans WHERE НомерКнижки = @BookNum";
+            command6.Parameters.AddWithValue("BookNum", BookNumber);
+
+            command7.CommandText = "SELECT Разряд FROM Sportsmans WHERE НомерКнижки = @BookNum";
+            command7.Parameters.AddWithValue("BookNum", BookNumber);
+
+            try
+            {
+                sportsman.Surname = command1.ExecuteScalar().ToString();
+                sportsman.Name = command2.ExecuteScalar().ToString();
+                sportsman.Patronymic = command3.ExecuteScalar().ToString();
+                sportsman.ClubName = command4.ExecuteScalar().ToString();
+                sportsman.City = command5.ExecuteScalar().ToString();
+
+            //MessageBox.Show(sportsman.BirthDate.ToString());
+
+                sportsman.SportClass = command6.ExecuteScalar().ToString();
+                sportsman.SportCategory = command7.ExecuteScalar().ToString();
+            }
+            catch (/*System.NullReferenceException*/Exception ex)
+            {
+                MessageBox.Show("Что-то пошло не так! \n" + ex.Message);
+            }
+            return sportsman;
+        }
+
         public static void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, ComboBox AgeCategory_comboBox, ComboBox CategoryOfDancing_comboBox)
         {
             try
@@ -208,8 +266,8 @@ namespace DataViewer_D_v._001
                             CategoryOfDancing_comboBox.SelectedIndex = 6;
                             break;
                         default:
-                            AgeCategory_comboBox.SelectedIndex = 7;
-                            CategoryOfDancing_comboBox.SelectedIndex = 7;
+                            AgeCategory_comboBox.SelectedIndex = 0;
+                            CategoryOfDancing_comboBox.SelectedIndex = 0;
                             break;
                     }
                 }

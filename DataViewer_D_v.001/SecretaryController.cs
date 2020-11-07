@@ -52,8 +52,9 @@ namespace DataViewer_D_v._001
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO participants(Номер_Книжки, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@BookNumber,@Surname,@Name,@Patronymic,@AgeCategory,@GroupNumber)";
+                command.CommandText = "INSERT INTO participants(Номер, Номер_Книжки, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@Number, @BookNumber,@Surname,@Name,@Patronymic,@AgeCategory,@GroupNumber)";
 
+                command.Parameters.AddWithValue("Number", sportsman.NumberInTournir);
                 command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
                 command.Parameters.AddWithValue("Surname", sportsman.Surname);
                 command.Parameters.AddWithValue("Name", sportsman.Name);
@@ -82,6 +83,7 @@ namespace DataViewer_D_v._001
                 if (setNumber != -1)
                 {
                     command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, Номер_Книжки1, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @BookNumber, @Type)";
+                    //command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber, @Type)";
                     command.Parameters.AddWithValue("Number", number);
                     command.Parameters.AddWithValue("GroupNumber", groupNumber);
                     command.Parameters.AddWithValue("SetNumber", setNumber);
@@ -240,7 +242,7 @@ namespace DataViewer_D_v._001
                 sportsman.City = command5.ExecuteScalar().ToString();
                 sportsman.BirthDate.ToInt(command6.ExecuteScalar().ToString());
 
-                MessageBox.Show(sportsman.BirthDate.ToString());
+                //MessageBox.Show(sportsman.BirthDate.ToString());
 
                 sportsman.SportClass = command7.ExecuteScalar().ToString();
                 sportsman.SportCategory = command8.ExecuteScalar().ToString();
@@ -266,7 +268,7 @@ namespace DataViewer_D_v._001
                 int differ;
 
                 differ = curMyDate.Year - birthDate.Year;
-                MessageBox.Show(Convert.ToString(curMyDate.Year - birthDate.Year));
+                //MessageBox.Show(Convert.ToString(curMyDate.Year - birthDate.Year));
 
                 switch (differ)
                 {
@@ -485,6 +487,30 @@ namespace DataViewer_D_v._001
             }
         }
 
+        public static void insertDance(danceClass danceInput, string path)
+        {
+            try
+            {
+                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+                myConnection = new OleDbConnection(connectString);
+                myConnection.Open();
+
+                command = new OleDbCommand("", myConnection);
+
+                command.CommandText = "INSERT INTO dances(Номер_Группы, Танец)" + "VALUES (@group_number, @dance)";
+
+                command.Parameters.AddWithValue("group_number", danceInput.groupnumber);
+                command.Parameters.AddWithValue("dance", danceInput.name);
+
+                command.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так...\n" + ex.Message);
+            }
+        }
+
         public static List<SetClass> TakeSet(GroupClass input_group, string cn)
         {
             connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
@@ -509,7 +535,7 @@ namespace DataViewer_D_v._001
                 {
                     max = Convert.ToInt32(command.ExecuteScalar());
 
-                    MessageBox.Show($"MAX в группе {input_group.number}: " + Convert.ToString(max));
+                    //MessageBox.Show($"MAX в группе {input_group.number}: " + Convert.ToString(max));
 
                     foreach (bool item in checkArray)
                     {
@@ -544,6 +570,68 @@ namespace DataViewer_D_v._001
 
             myConnection.Close();
             return SetList_New;
+        }
+
+        public static List<Duet> TakeDuets(GroupClass input_group, string cn)
+        {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+
+            List<Duet> DuetList_New = new List<Duet>();
+            //List<> DuetList_New = new List<Duet>();
+
+            try
+            {
+                int i = 1;
+                int max = 0;
+                int counter = 0;
+
+                BitArray checkArray = Controller.GapCounter("Номер_Захода", "sets", "Номер_Группы", input_group.number, myConnection);
+
+                command = new OleDbCommand("", myConnection);
+                command.CommandText = "SELECT MAX(Номер) FROM duets WHERE Номер_Группы = @id";
+                command.Parameters.AddWithValue("id", input_group.number);
+
+                if (command.ExecuteScalar() != DBNull.Value && checkArray != null)
+                {
+                    max = Convert.ToInt32(command.ExecuteScalar());
+
+                    //MessageBox.Show($"MAX в группе {input_group.number}: " + Convert.ToString(max));
+
+                    foreach (bool item in checkArray)
+                    {
+                        if (i <= max)
+                            if (checkArray[i - 1])
+                            {
+                                command = new OleDbCommand("", myConnection);
+                                command.CommandText = "SELECT Категория FROM sets WHERE Номер_Захода = @id AND Номер_Группы = @num";
+                                command.Parameters.AddWithValue("id", i);
+                                command.Parameters.AddWithValue("num", input_group.number);
+
+                                Duet set_new = new Duet();
+
+                                DuetList_New.Add(set_new); //ДОРАБОТКА
+                            }
+                            else
+                            {
+                                counter++;
+                            }
+                        i++;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нулевой результат запроса");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так при определении списка заходов\nError: " + ex.Message);
+            }
+
+            myConnection.Close();
+            return DuetList_New;
         }
 
         public static List<string> TakeCategory(GroupClass input_group, string cn)

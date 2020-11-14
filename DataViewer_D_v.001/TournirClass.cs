@@ -23,6 +23,8 @@ namespace DataViewer_D_v._001
         public List<Judge> judges = new List<Judge>();//Продумать
         public string path;
 
+        public ushort[] groupsOrder = new ushort[0];
+
         public List<List<GroupClass>> tourList = new List<List<GroupClass>>();//Продумать (карта перехода из groups в tourList)
 
         public TournirClass()
@@ -57,7 +59,7 @@ namespace DataViewer_D_v._001
 
             foreach (Judge item in this.judges)
             {
-                result += item.ToNSP();
+                result += item.ToString();
                 result += "\n";
             }
 
@@ -71,12 +73,13 @@ namespace DataViewer_D_v._001
             {
                 result += group.ToString();
                 result += "\n";
-                foreach (SetClass set in group.SetList)
+                foreach (Judge jud in group.JudgeList)
                 {
-                    result += set.ToString();
+                    result += jud.ToString();
                     result += "\n";
                 }
             }
+
             MessageBox.Show(result);
         }
 

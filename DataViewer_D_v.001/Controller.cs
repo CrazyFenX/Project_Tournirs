@@ -20,9 +20,9 @@ namespace DataViewer_D_v._001
         {
             OleDbCommand command = new OleDbCommand("", myConnection);
 
-            command.CommandText = "INSERT INTO Sportsmans(НомерКнижки, Фамилия, Имя, Отчество, НазваниеКлуба, Город, ДатаРождения, СпортивныйКласс, Разряд)" + "VALUES (@BookNumber,@Surname,@Name,@Patronymic,@ClubName,@City,@BirthDate,@SportClass,@SportCategory)";
+            command.CommandText = "INSERT INTO Sportsmans(Номер, Фамилия, Имя, Отчество, НазваниеКлуба, Город, ДатаРождения, СпортивныйКласс, Разряд)" + "VALUES (@Number,@Surname,@Name,@Patronymic,@ClubName,@City,@BirthDate,@SportClass,@SportCategory)";
 
-            command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
+            command.Parameters.AddWithValue("Number", sportsman.NumberInTournir);
             command.Parameters.AddWithValue("Surname", sportsman.Surname);
             command.Parameters.AddWithValue("Name", sportsman.Name);
             command.Parameters.AddWithValue("Patronymic", sportsman.Patronymic);
@@ -206,7 +206,147 @@ namespace DataViewer_D_v._001
             return sportsman;
         }
 
-        public static void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, ComboBox AgeCategory_comboBox, ComboBox CategoryOfDancing_comboBox)
+        //public static void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, ComboBox AgeCategory_comboBox, ComboBox CategoryOfDancing_comboBox)
+        //{
+        //    try
+        //    {
+        //        if (DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && YearOfBirth_comboBox.SelectedIndex != -1)
+        //        {
+        //            DateTime cureDate = DateTime.Now;
+
+        //            //MessageBox.Show((DayOfBirth_comboBox.SelectedIndex + 1).ToString() + (MounthOfBirth_comboBox.SelectedIndex + 1).ToString() + (2020 - YearOfBirth_comboBox.SelectedIndex).ToString());
+
+        //            DateTime birthDate = new DateTime(Convert.ToInt16(2020 - YearOfBirth_comboBox.SelectedIndex), Convert.ToInt16(MounthOfBirth_comboBox.SelectedIndex + 1), Convert.ToInt16(DayOfBirth_comboBox.SelectedIndex + 1));
+
+        //            //MessageBox.Show("Сейчас " + cureDate.ToString());
+        //            //MessageBox.Show("Дата рожд. " + birthDate.ToShortDateString());
+        //            DateTime differ = new DateTime((cureDate - birthDate).Ticks);
+
+        //            //MessageBox.Show(differ.ToShortDateString());
+
+        //            switch (differ.Year)
+        //            {
+        //                case 1:
+        //                case 2:
+        //                case 3:
+        //                case 4:
+        //                case 5:
+        //                case 6:
+        //                case 7:
+        //                case 8:
+        //                case 9:
+        //                case 0:
+        //                    AgeCategory_comboBox.SelectedIndex = 1;
+        //                    CategoryOfDancing_comboBox.SelectedIndex = 1;
+        //                    break;
+        //                case 10:
+        //                case 11:
+        //                    AgeCategory_comboBox.SelectedIndex = 2;
+        //                    CategoryOfDancing_comboBox.SelectedIndex = 2;
+        //                    break;
+        //                case 12:
+        //                case 13:
+        //                    AgeCategory_comboBox.SelectedIndex = 3;
+        //                    CategoryOfDancing_comboBox.SelectedIndex = 3;
+        //                    break;
+        //                case 14:
+        //                case 15:
+        //                    AgeCategory_comboBox.SelectedIndex = 4;
+        //                    CategoryOfDancing_comboBox.SelectedIndex = 4;
+        //                    break;
+        //                case 16:
+        //                case 17:
+        //                case 18:
+        //                    AgeCategory_comboBox.SelectedIndex = 5;
+        //                    CategoryOfDancing_comboBox.SelectedIndex = 5;
+        //                    break;
+        //                case 19:
+        //                case 20:
+        //                    AgeCategory_comboBox.SelectedIndex = 6;
+        //                    CategoryOfDancing_comboBox.SelectedIndex = 6;
+        //                    break;
+        //                default:
+        //                    AgeCategory_comboBox.SelectedIndex = 0;
+        //                    CategoryOfDancing_comboBox.SelectedIndex = 0;
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Спортсмену не подходит ни одна из категорий группы!\n" + ex.Message);
+        //    }
+        //}
+
+        //public static void AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, List<string> AgeList, Sportsman sportsman1)
+        //{
+        //    try
+        //    {
+        //        if (DayOfBirth_comboBox.SelectedIndex != -1 && MounthOfBirth_comboBox.SelectedIndex != -1 && YearOfBirth_comboBox.SelectedIndex != -1)
+        //        {
+        //            DateTime cureDate = DateTime.Now;
+
+        //            //MessageBox.Show((DayOfBirth_comboBox.SelectedIndex + 1).ToString() + (MounthOfBirth_comboBox.SelectedIndex + 1).ToString() + (2020 - YearOfBirth_comboBox.SelectedIndex).ToString());
+
+        //            DateTime birthDate = new DateTime(Convert.ToInt16(2020 - YearOfBirth_comboBox.SelectedIndex), Convert.ToInt16(MounthOfBirth_comboBox.SelectedIndex + 1), Convert.ToInt16(DayOfBirth_comboBox.SelectedIndex + 1));
+
+        //            //MessageBox.Show("Сейчас " + cureDate.ToString());
+        //            //MessageBox.Show("Дата рожд. " + birthDate.ToShortDateString());
+        //            DateTime differ = new DateTime((cureDate - birthDate).Ticks);
+
+        //            //MessageBox.Show(differ.ToShortDateString());
+
+        //            switch (differ.Year)
+        //            {
+        //                case 0:
+        //                case 1:
+        //                case 2:
+        //                case 3:
+        //                case 4:
+        //                case 5:
+        //                case 6:
+        //                case 7:
+        //                    sportsman1.AgeCategory = AgeList[0]; //Д-0
+        //                    break;
+        //                case 8:
+        //                case 9:
+        //                    sportsman1.AgeCategory = AgeList[1]; //Д-1
+        //                    break;
+        //                case 10:
+        //                case 11:
+        //                    sportsman1.AgeCategory = AgeList[2]; //Д-2
+        //                    break;
+        //                case 12:
+        //                case 13:
+        //                    sportsman1.AgeCategory = AgeList[3]; //Ю-1
+        //                    break;
+        //                case 14:
+        //                case 15:
+        //                    sportsman1.AgeCategory = AgeList[4]; //Ю-2
+        //                    break;
+        //                case 16:
+        //                case 17:
+        //                case 18:
+        //                    sportsman1.AgeCategory = AgeList[5]; //М
+        //                    break;
+        //                case 19:
+        //                case 20:
+        //                case 21:
+        //                    sportsman1.AgeCategory = AgeList[6]; //М-2
+        //                    break;
+        //                default:
+        //                    sportsman1.AgeCategory = AgeList[7]; //Вз
+        //                    break;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("Спортсмену не подходит ни одна из категорий группы!\n" + ex.Message);
+        //    }
+        //}
+
+        public static string AgeCategoryAutoFill(ComboBox DayOfBirth_comboBox, ComboBox MounthOfBirth_comboBox, ComboBox YearOfBirth_comboBox, List<string> AgeList)
         {
             try
             {
@@ -222,10 +362,11 @@ namespace DataViewer_D_v._001
                     //MessageBox.Show("Дата рожд. " + birthDate.ToShortDateString());
                     DateTime differ = new DateTime((cureDate - birthDate).Ticks);
 
-                    //MessageBox.Show(differ.ToShortDateString());
+                    //MessageBox.Show(differ.Year.ToString());
 
                     switch (differ.Year)
                     {
+                        case 0:
                         case 1:
                         case 2:
                         case 3:
@@ -233,48 +374,38 @@ namespace DataViewer_D_v._001
                         case 5:
                         case 6:
                         case 7:
+                            return AgeList[0]; //Д-0
                         case 8:
                         case 9:
-                        case 0:
-                            AgeCategory_comboBox.SelectedIndex = 1;
-                            CategoryOfDancing_comboBox.SelectedIndex = 1;
-                            break;
+                            return AgeList[1]; //Д-1
                         case 10:
                         case 11:
-                            AgeCategory_comboBox.SelectedIndex = 2;
-                            CategoryOfDancing_comboBox.SelectedIndex = 2;
-                            break;
+                            return AgeList[2]; //Д-2
                         case 12:
                         case 13:
-                            AgeCategory_comboBox.SelectedIndex = 3;
-                            CategoryOfDancing_comboBox.SelectedIndex = 3;
-                            break;
+                            return AgeList[3]; //Ю-1
                         case 14:
                         case 15:
-                            AgeCategory_comboBox.SelectedIndex = 4;
-                            CategoryOfDancing_comboBox.SelectedIndex = 4;
-                            break;
+                            return AgeList[4]; //Ю-2
                         case 16:
                         case 17:
                         case 18:
-                            AgeCategory_comboBox.SelectedIndex = 5;
-                            CategoryOfDancing_comboBox.SelectedIndex = 5;
-                            break;
+                            return AgeList[5]; //М
                         case 19:
                         case 20:
-                            AgeCategory_comboBox.SelectedIndex = 6;
-                            CategoryOfDancing_comboBox.SelectedIndex = 6;
-                            break;
+                        case 21:
+                            return AgeList[6]; //М-2
                         default:
-                            AgeCategory_comboBox.SelectedIndex = 0;
-                            CategoryOfDancing_comboBox.SelectedIndex = 0;
-                            break;
+                            return AgeList[7]; //Вз
                     }
                 }
+                return "Вз";
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Спортсмену не подходит ни одна из категорий группы!\n" + ex.Message);
+                //MessageBox.Show("Проблема при определении возраста спорсмена!\n" + ex.Message);
+                //MessageBox.Show("Возраст спортсмена не подходит ни одной категорий выбранной группы!\n" + ex.Message);
+                return "0";
             }
         }
 
@@ -373,10 +504,10 @@ namespace DataViewer_D_v._001
             return retArr;
         }
 
-        public static void takeSportClassSet(ComboBox first, ComboBox second)
+        public static void takeSportClassSet(int index, ComboBox second)
         {
             second.Items.Clear();
-            switch (first.SelectedIndex)
+            switch (index)
             {
                 case 0:
                     second.Items.Add("H");
@@ -406,6 +537,11 @@ namespace DataViewer_D_v._001
                     second.Items.Clear();
                     break;
             }
+        }
+
+        public static void checkAgeCategory(string category, List<string> categoryList)
+        {
+            
         }
     }
 }

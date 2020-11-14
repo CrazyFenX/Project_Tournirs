@@ -53,7 +53,7 @@ namespace DataViewer_D_v._001
             tournamentIsAlive = false;
             this.previousForm = PreviousForm;
             this.tournir = PreviousForm.tournir;
-            TestAddingDuets(tournir);
+            //TestAddingDuets(tournir);
 
             tourList = new List<Tour>();
             tourButtonList = new List<Button>();
@@ -478,7 +478,7 @@ namespace DataViewer_D_v._001
             buttonPanel.Visible = false;
         }
 
-        public void TestAddingDuets(TournirClass ourTournir)
+        public void TestAddindDuets(TournirClass ourTournir)
         {
             Random rnd = new Random();
             for(int j = 0; j < ourTournir.groups.Count; j++)
@@ -490,6 +490,18 @@ namespace DataViewer_D_v._001
                     }
                 }
         }
+
+        //public void AddingDuets(TournirClass ourTournir)
+        //{
+        //    for (int j = 0; j < ourTournir.groups.Count; j++)
+        //        foreach (SetClass item in ourTournir.groups[j].SetList)
+        //        {
+        //            for (int i = 0; i < rnd.Next() % 5 + 1; i++)
+        //            {
+        //                item.DuetList.Add(new Duet(i));
+        //            }
+        //        }
+        //}
 
         public void GoToMarkeredButton(HoldingMarker marker)
         {

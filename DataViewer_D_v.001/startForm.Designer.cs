@@ -156,7 +156,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 11;
-            this.button1.Text = "2.11.20";
+            this.button1.Text = "8.11.20";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // startWindow

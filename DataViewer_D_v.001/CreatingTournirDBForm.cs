@@ -73,15 +73,19 @@ namespace DataViewer_D_v._001
                     OleDbCommand com = new OleDbCommand();
 
                     //Создание Таблицы Турнира
-                    com = new OleDbCommand("CREATE TABLE tournir(ID COUNTER, Название CHAR(50), Дата_Проведения CHAR(10),  Время_Проведения CHAR(5),  Место_Проведения CHAR(50), Организация CHAR(50), ФИО_Секретаря CHAR(100), ФИО_Регистратора CHAR(100), CONSTRAINT tournir_pk PRIMARY KEY (Название))", cn);
+                    com = new OleDbCommand("CREATE TABLE tournir(ID COUNTER, Название CHAR(50), Дата_Проведения CHAR(10),  Время_Проведения CHAR(5),  Место_Проведения CHAR(150), Организация CHAR(50), ФИО_Секретаря CHAR(100), ФИО_Регистратора CHAR(100), CONSTRAINT tournir_pk PRIMARY KEY (Название))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Групп
-                    com = new OleDbCommand("CREATE TABLE groups(Номер_Группы COUNTER, Название_Турнира CHAR(50), Время CHAR(5), CONSTRAINT groups_pk PRIMARY KEY (Номер_Группы), CONSTRAINT fk_groups FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
+                    com = new OleDbCommand("CREATE TABLE groups(Номер_Группы COUNTER, Название_Турнира CHAR(50), Время CHAR(5), Категория CHAR(50), Категории CHAR(50), Танцы CHAR(50), CONSTRAINT groups_pk PRIMARY KEY (Номер_Группы), CONSTRAINT fk_groups FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Категорий
-                    com = new OleDbCommand("CREATE TABLE categories(Номер INT, Номер_Группы INT, Категория CHAR(5), CONSTRAINT fk_categories FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                    com = new OleDbCommand("CREATE TABLE categories(Номер INT, Номер_Группы INT, Категория CHAR(6), CONSTRAINT fk_categories FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                    com.ExecuteNonQuery();
+
+                    //Создание Таблицы Танцев
+                    com = new OleDbCommand("CREATE TABLE dances(Номер COUNTER, Номер_Группы INT, Танец CHAR(5), CONSTRAINT fk_dances FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Судей
@@ -89,22 +93,25 @@ namespace DataViewer_D_v._001
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Участников
-                    com = new OleDbCommand("CREATE TABLE participants(Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), Номер_Группы INT, Счет INT DEFAULT 0, CONSTRAINT participants_pk PRIMARY KEY (Номер_Книжки))", cn);
+                    //com = new OleDbCommand("CREATE TABLE participants(Номер COUNTER DEFAULT 0, Номер_Книжки INT, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), Номер_Группы INT, Счет INT DEFAULT 0)", cn);
+                    com = new OleDbCommand("CREATE TABLE participants(Номер COUNTER DEFAULT 0, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), Номер_Группы INT, Счет INT DEFAULT 0)", cn);
                     com.ExecuteNonQuery();
-
+                    
+                    com = new OleDbCommand("CREATE TABLE duets(Номер INT, Номер_Группы INT DEFAULT 0, Номер_Захода INT, ФИО1 CHAR(100), ФИО2 CHAR(100), Тип CHAR(4))", cn);
+                    com.ExecuteNonQuery();
                     //Создание Таблицы Заходов
                     ///доработка связей///com = new OleDbCommand("CREATE TABLE sets(Номер_Захода INT DEFAULT 0, Номер_Группы INT DEFAULT 0, Категория CHAR(5), CONSTRAINT sets_uq UNIQUE(Номер_Захода, Номер_Группы), CONSTRAINT sets_pk PRIMARY KEY (Номер_Захода, Номер_Группы), CONSTRAINT fk_sets FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
-                    com = new OleDbCommand("CREATE TABLE sets(Номер_Захода INT DEFAULT 0, Номер_Группы INT DEFAULT 0, Категория CHAR(5), CONSTRAINT sets_pk PRIMARY KEY (Номер_Захода, Номер_Группы))", cn);
-                    com.ExecuteNonQuery();
+                    //com = new OleDbCommand("CREATE TABLE sets(Номер_Захода INT DEFAULT 0, Номер_Группы INT DEFAULT 0, Категория CHAR(5), CONSTRAINT sets_pk PRIMARY KEY (Номер_Захода, Номер_Группы))", cn);
+                    //com.ExecuteNonQuery();
 
                     //Создание Таблицы Танцев
-                    com = new OleDbCommand("CREATE TABLE dances(Номер_Книжки INT, Номер_Группы INT DEFAULT 0, Название CHAR(20), CONSTRAINT dance_pk PRIMARY KEY (Номер_Книжки, Название, Номер_Группы))", cn);
-                    com.ExecuteNonQuery();
+                    //com = new OleDbCommand("CREATE TABLE dances(Номер_Книжки INT, Номер_Группы INT DEFAULT 0, Название CHAR(20), CONSTRAINT dance_pk PRIMARY KEY (Номер_Книжки, Название, Номер_Группы))", cn);
+                    //com.ExecuteNonQuery();
 
                     //Создание Таблицы Пар
                     ///доработка связей///com = new OleDbCommand("CREATE TABLE duets(Номер_Пары COUNTER, Номер_Захода INT, CONSTRAINT duets_uq UNIQUE(Номер_Пары, Номер_Захода), CONSTRAINT duets_pk PRIMARY KEY (Номер_Пары), CONSTRAINT fk_duets FOREIGN KEY (Номер_Захода) REFERENCES sets(Номер_Захода))", cn);
-                    com = new OleDbCommand("CREATE TABLE duets(Номер INT, Номер_Группы INT DEFAULT 0, Номер_Захода INT, Номер_Книжки1 INT, Номер_Книжки2 INT, Тип CHAR(4))", cn);
-                    com.ExecuteNonQuery();
+                    //com = new OleDbCommand("CREATE TABLE duets(Номер INT, Номер_Группы INT DEFAULT 0, Номер_Захода INT, Номер_Книжки1 INT, Номер_Книжки2 INT, Тип CHAR(4))", cn);
+                    //com.ExecuteNonQuery();
 
                     TournirClass NewTournir = new TournirClass();
 

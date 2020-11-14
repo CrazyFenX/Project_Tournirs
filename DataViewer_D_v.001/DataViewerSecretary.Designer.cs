@@ -294,7 +294,7 @@
             this.showSets_button.TabIndex = 17;
             this.showSets_button.Text = "Sets";
             this.showSets_button.UseVisualStyleBackColor = false;
-            this.showSets_button.Click += new System.EventHandler(this.showSets_button_Click);
+            //this.showSets_button.Click += new System.EventHandler(this.showSets_button_Click);
             // 
             // DataViewerSecretary
             // 

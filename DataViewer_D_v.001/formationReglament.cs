@@ -17,6 +17,7 @@ namespace DataViewer_D_v._001
         List<ComboBox> times_Comboboxes;
         ComboBox HourOfTournir_comboBox;
         ComboBox MinutesOfTournir_comboBox;
+        List<ComboBox> groupComboBoxList = new List<ComboBox>();
 
         public static string connectString;
 
@@ -54,24 +55,47 @@ namespace DataViewer_D_v._001
             MinutesOfTournir_comboBox = new ComboBox();
             Label doublePointLabel = new Label();
 
+            ComboBox groupComboBox = new ComboBox();
+            groupComboBoxList = new List<ComboBox>();
+
+            List<ComboBox.ObjectCollection> comboCollection = new List<ComboBox.ObjectCollection>();
+
             times_Comboboxes = new List<ComboBox>();
             try
             {
                 for (int i = 0; i < this.tournir.groups.Count; i++)
                 {
-                    formation_groupBox.Controls["panelOfElements"].Controls.Add(new GroupBox() { Name = "groupbox" + (i).ToString(), Location = new Point(5, 50 * (i)), Size = new Size(450, 50) });
-                    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(groupLabel = new Label() { Name = "groupLabel" + (i).ToString(), Location = new Point(5, 15), Text = "Группа номер " + (i + 1).ToString() });
-                    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(HourOfTournir_comboBox = new ComboBox() { Name = "HourOfTournir_comboBox" + (i).ToString(), Location = new Point(330, 18), Size = new Size(40, 24), Text = "Часы" ,Items = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" } });
-                    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(MinutesOfTournir_comboBox = new ComboBox() { Name = "MinutesOfTournir_comboBox" + (i).ToString(), Location = new Point(384, 18), Size = new Size(60, 24), Text = "Минуты", Items = { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" } });
-                    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(doublePointLabel = new Label() { Name = "doublePointLabel" + (i).ToString(), Location = new Point(370, 18), Text = ":", Size = new Size(14, 24) });
-
-                    times_Comboboxes.Add(HourOfTournir_comboBox);
-                    times_Comboboxes.Add(MinutesOfTournir_comboBox);
-
+                    panelOfElements.Controls.Add(groupComboBox = new ComboBox()
+                    {
+                        Name = "comboBox" + (i).ToString(),
+                        Location = new Point(5, 50 * (i)),
+                        Size = new Size(450, 50)
+                    });
+                    for (int j = 0; j < tournir.groups.Count; j++)
+                        groupComboBox.Items.Add((j + 1).ToString() + ")  " + tournir.groups[j].name);
+                    groupComboBoxList.Add(groupComboBox);
+                    //times_Comboboxes.Add(HourOfTournir_comboBox);
+                    //times_Comboboxes.Add(MinutesOfTournir_comboBox);
                 }
-                MessageBox.Show($"{times_Comboboxes.Count}");
+                //MessageBox.Show($"{times_Comboboxes.Count}");
 
                 timeTournirLabel.Text = "Время начала турнира: " + tournir.time.ToString();
+
+                //for (int i = 0; i < this.tournir.groups.Count; i++)
+                //{
+                //    formation_groupBox.Controls["panelOfElements"].Controls.Add(new GroupBox() { Name = "groupbox" + (i).ToString(), Location = new Point(5, 50 * (i)), Size = new Size(450, 50) });
+                //    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(groupLabel = new Label() { Name = "groupLabel" + (i).ToString(), Location = new Point(5, 15), Text = "Группа номер " + (i + 1).ToString() });
+                //    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(HourOfTournir_comboBox = new ComboBox() { Name = "HourOfTournir_comboBox" + (i).ToString(), Location = new Point(330, 18), Size = new Size(40, 24), Text = "Часы" ,Items = { "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23" } });
+                //    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(MinutesOfTournir_comboBox = new ComboBox() { Name = "MinutesOfTournir_comboBox" + (i).ToString(), Location = new Point(384, 18), Size = new Size(60, 24), Text = "Минуты", Items = { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" } });
+                //    formation_groupBox.Controls["panelOfElements"].Controls["groupbox" + (i).ToString()].Controls.Add(doublePointLabel = new Label() { Name = "doublePointLabel" + (i).ToString(), Location = new Point(370, 18), Text = ":", Size = new Size(14, 24) });
+
+                //    times_Comboboxes.Add(HourOfTournir_comboBox);
+                //    times_Comboboxes.Add(MinutesOfTournir_comboBox);
+
+                //}
+                //MessageBox.Show($"{times_Comboboxes.Count}");
+
+                //timeTournirLabel.Text = "Время начала турнира: " + tournir.time.ToString();
             }
             catch (Exception ex)
             {
@@ -86,45 +110,59 @@ namespace DataViewer_D_v._001
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < times_Comboboxes.Count; i++)
+            for (int i = 0; i < groupComboBoxList.Count; i++)
             {
-                if (times_Comboboxes[i].SelectedIndex == -1)
+                if (groupComboBoxList[i].SelectedIndex == -1)
                 {
                     MessageBox.Show("Не все поля заполнены!");
                     return;
                 }
-
+                for (int j = i + 1; j < groupComboBoxList.Count; j++)
+                {
+                    if (groupComboBoxList[i].SelectedIndex == groupComboBoxList[j].SelectedIndex)
+                    {
+                        MessageBox.Show("Недопустимо выбирать одну группу несколько раз!");
+                        return;
+                    }
+                }
             }
-            MessageBox.Show("Все поля заполнены!");
-
             try
             {
-                con = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={tournir.path}");
-                con.Open();
-                command = new OleDbCommand("", con);
-
-                for (int i = 0; i < tournir.groups.Count; i++)
+                ushort[] positionsList = new ushort[tournir.groups.Count];
+                string retstr = "";
+                for (int i = 0; i < groupComboBoxList.Count; i++)
                 {
-                    HourOfTournir_comboBox = times_Comboboxes[i * 2];
-                    MinutesOfTournir_comboBox = times_Comboboxes[i * 2 + 1];
-
-                    this.tournir.groups[i].time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, (MinutesOfTournir_comboBox.SelectedIndex) * 5);
-                    MessageBox.Show(tournir.groups[i].time.ToString());
-
-                    command = new OleDbCommand("", con);
-                    command.CommandText = "UPDATE groups SET Время = @time WHERE Номер_Группы = @id";
-                    command.Parameters.AddWithValue("time", tournir.groups[i].time.ToString());
-                    command.Parameters.AddWithValue("id", i + 1);
-
-                    command.ExecuteNonQuery();
+                    positionsList[i] = (ushort)(groupComboBoxList[i].SelectedIndex + 1);
+                    retstr += (groupComboBoxList[i].SelectedIndex + 1).ToString() + " ";
                 }
+                MessageBox.Show(retstr);
+                tournir.groupsOrder = positionsList;
+                    //con = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={tournir.path}");
+                    //con.Open();
+                    //command = new OleDbCommand("", con);
+
+                //for (int i = 0; i < tournir.groups.Count; i++)
+                //{
+                //    HourOfTournir_comboBox = times_Comboboxes[i * 2];
+                //    MinutesOfTournir_comboBox = times_Comboboxes[i * 2 + 1];
+
+                //    this.tournir.groups[i].time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, (MinutesOfTournir_comboBox.SelectedIndex) * 5);
+                //    MessageBox.Show(tournir.groups[i].time.ToString());
+
+                //    command = new OleDbCommand("", con);
+                //    command.CommandText = "UPDATE groups SET Время = @time WHERE Номер_Группы = @id";
+                //    command.Parameters.AddWithValue("time", tournir.groups[i].time.ToString());
+                //    command.Parameters.AddWithValue("id", i + 1);
+
+                //    command.ExecuteNonQuery();
+                //}
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            con.Close();
+            //con.Close();
         }
     }
 }

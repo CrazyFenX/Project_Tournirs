@@ -18,10 +18,10 @@ namespace DataViewer_D_v._001
 
         private void DataBasaViewer_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSet2.Trainers". При необходимости она может быть перемещена или удалена.
-            this.trainersTableAdapter2.Fill(this.peopleDataSet2.Trainers);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSet2.Sportsmans". При необходимости она может быть перемещена или удалена.
-            this.sportsmansTableAdapter3.Fill(this.peopleDataSet2.Sportsmans);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSet3.Trainers". При необходимости она может быть перемещена или удалена.
+            this.trainersTableAdapter3.Fill(this.peopleDataSet3.Trainers);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSet3.Sportsmans". При необходимости она может быть перемещена или удалена.
+            this.sportsmansTableAdapter4.Fill(this.peopleDataSet3.Sportsmans);
             
             dataGridView_trainers.Visible = false;
 
@@ -33,9 +33,9 @@ namespace DataViewer_D_v._001
         {
             try
             {
-                this.trainersTableAdapter2.Update(this.peopleDataSet2.Trainers);
+                this.trainersTableAdapter3.Update(this.peopleDataSet3.Trainers);
                 // TODO: данная строка кода позволяет загрузить данные в таблицу "peopleDataSetLastLast.Sportsmans". При необходимости она может быть перемещена или удалена.
-                this.sportsmansTableAdapter3.Update(this.peopleDataSet2.Sportsmans);
+                this.sportsmansTableAdapter4.Update(this.peopleDataSet3.Sportsmans);
             }
             catch (Exception ex)
             {
@@ -52,7 +52,7 @@ namespace DataViewer_D_v._001
             showSports_button.BackColor = Color.Empty;
             showTrainers_button.BackColor = Color.Gray;
 
-            this.sportsmansTableAdapter3.Fill(this.peopleDataSet2.Sportsmans);
+            this.sportsmansTableAdapter4.Fill(this.peopleDataSet3.Sportsmans);
         }
 
         private void showTrainers_button_Click(object sender, EventArgs e)
@@ -63,7 +63,12 @@ namespace DataViewer_D_v._001
             showSports_button.BackColor = Color.Gray;
             showTrainers_button.BackColor = Color.Empty;
 
-            this.trainersTableAdapter2.Fill(this.peopleDataSet2.Trainers);
+            this.trainersTableAdapter3.Fill(this.peopleDataSet3.Trainers);
+        }
+
+        private void dataGridView_sportsmen_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

@@ -31,6 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DataBasaViewer));
             this.dataGridView_sportsmen = new System.Windows.Forms.DataGridView();
+            this.номерКнижкиDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фамилияDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.имяDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.отчествоDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.названиеКлубаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.городDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.датаРожденияDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.спортивныйКлассDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.разрядDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.тренераDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sportsmansBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet2BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet2 = new DataViewer_D_v._001.PeopleDataSet2();
             this.sportsmansBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.peopleDataSetLastLast = new DataViewer_D_v._001.PeopleDataSetLastLast();
             this.DataView_bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
@@ -51,47 +64,46 @@
             this.showSports_button = new System.Windows.Forms.Button();
             this.showTrainers_button = new System.Windows.Forms.Button();
             this.dataGridView_trainers = new System.Windows.Forms.DataGridView();
-            this.trainersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.trainersTableAdapter = new DataViewer_D_v._001.PeopleDataSetLastTableAdapters.TrainersTableAdapter();
-            this.sportsmansTableAdapter1 = new DataViewer_D_v._001.PeopleDataSetLastLastTableAdapters.SportsmansTableAdapter();
-            this.trainersTableAdapter1 = new DataViewer_D_v._001.PeopleDataSetLastLastTableAdapters.TrainersTableAdapter();
-            this.sportsmansTableAdapter2 = new DataViewer_D_v._001.PeopleDataSetLastTableAdapters.SportsmansTableAdapter();
-            this.peopleDataSet2 = new DataViewer_D_v._001.PeopleDataSet2();
-            this.peopleDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet2BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.sportsmansBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sportsmansTableAdapter3 = new DataViewer_D_v._001.PeopleDataSet2TableAdapters.SportsmansTableAdapter();
-            this.номерКнижкиDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.фамилияDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.имяDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.отчествоDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.названиеКлубаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.городDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.датаРожденияDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.спортивныйКлассDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.разрядDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.тренераDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.trainersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.trainersTableAdapter2 = new DataViewer_D_v._001.PeopleDataSet2TableAdapters.TrainersTableAdapter();
             this.номерКнижкиDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.кодDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.фамилияDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.имяDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.отчествоDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trainersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.trainersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.trainersTableAdapter = new DataViewer_D_v._001.PeopleDataSetLastTableAdapters.TrainersTableAdapter();
+            this.sportsmansTableAdapter1 = new DataViewer_D_v._001.PeopleDataSetLastLastTableAdapters.SportsmansTableAdapter();
+            this.trainersTableAdapter1 = new DataViewer_D_v._001.PeopleDataSetLastLastTableAdapters.TrainersTableAdapter();
+            this.sportsmansTableAdapter2 = new DataViewer_D_v._001.PeopleDataSetLastTableAdapters.SportsmansTableAdapter();
+            this.peopleDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.sportsmansTableAdapter3 = new DataViewer_D_v._001.PeopleDataSet2TableAdapters.SportsmansTableAdapter();
+            this.trainersTableAdapter2 = new DataViewer_D_v._001.PeopleDataSet2TableAdapters.TrainersTableAdapter();
+            this.sportsmansBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.trainersBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.peopleDataSet3 = new DataViewer_D_v._001.PeopleDataSet3();
+            this.sportsmansBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.sportsmansTableAdapter4 = new DataViewer_D_v._001.PeopleDataSet3TableAdapters.SportsmansTableAdapter();
+            this.trainersBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.trainersTableAdapter3 = new DataViewer_D_v._001.PeopleDataSet3TableAdapters.TrainersTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_sportsmen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetLastLast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataView_bindingNavigator)).BeginInit();
             this.DataView_bindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_trainers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView_sportsmen
@@ -112,13 +124,109 @@
             this.спортивныйКлассDataGridViewTextBoxColumn,
             this.разрядDataGridViewTextBoxColumn,
             this.тренераDataGridViewTextBoxColumn});
-            this.dataGridView_sportsmen.DataSource = this.sportsmansBindingSource1;
+            this.dataGridView_sportsmen.DataSource = this.sportsmansBindingSource3;
             this.dataGridView_sportsmen.Location = new System.Drawing.Point(24, 30);
             this.dataGridView_sportsmen.Name = "dataGridView_sportsmen";
             this.dataGridView_sportsmen.RowHeadersWidth = 51;
             this.dataGridView_sportsmen.RowTemplate.Height = 24;
             this.dataGridView_sportsmen.Size = new System.Drawing.Size(790, 335);
             this.dataGridView_sportsmen.TabIndex = 0;
+            this.dataGridView_sportsmen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_sportsmen_CellContentClick);
+            // 
+            // номерКнижкиDataGridViewTextBoxColumn
+            // 
+            this.номерКнижкиDataGridViewTextBoxColumn.DataPropertyName = "НомерКнижки";
+            this.номерКнижкиDataGridViewTextBoxColumn.HeaderText = "НомерКнижки";
+            this.номерКнижкиDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.номерКнижкиDataGridViewTextBoxColumn.Name = "номерКнижкиDataGridViewTextBoxColumn";
+            this.номерКнижкиDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // фамилияDataGridViewTextBoxColumn
+            // 
+            this.фамилияDataGridViewTextBoxColumn.DataPropertyName = "Фамилия";
+            this.фамилияDataGridViewTextBoxColumn.HeaderText = "Фамилия";
+            this.фамилияDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.фамилияDataGridViewTextBoxColumn.Name = "фамилияDataGridViewTextBoxColumn";
+            this.фамилияDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // имяDataGridViewTextBoxColumn
+            // 
+            this.имяDataGridViewTextBoxColumn.DataPropertyName = "Имя";
+            this.имяDataGridViewTextBoxColumn.HeaderText = "Имя";
+            this.имяDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.имяDataGridViewTextBoxColumn.Name = "имяDataGridViewTextBoxColumn";
+            this.имяDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // отчествоDataGridViewTextBoxColumn
+            // 
+            this.отчествоDataGridViewTextBoxColumn.DataPropertyName = "Отчество";
+            this.отчествоDataGridViewTextBoxColumn.HeaderText = "Отчество";
+            this.отчествоDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.отчествоDataGridViewTextBoxColumn.Name = "отчествоDataGridViewTextBoxColumn";
+            this.отчествоDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // названиеКлубаDataGridViewTextBoxColumn
+            // 
+            this.названиеКлубаDataGridViewTextBoxColumn.DataPropertyName = "НазваниеКлуба";
+            this.названиеКлубаDataGridViewTextBoxColumn.HeaderText = "НазваниеКлуба";
+            this.названиеКлубаDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.названиеКлубаDataGridViewTextBoxColumn.Name = "названиеКлубаDataGridViewTextBoxColumn";
+            this.названиеКлубаDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // городDataGridViewTextBoxColumn
+            // 
+            this.городDataGridViewTextBoxColumn.DataPropertyName = "Город";
+            this.городDataGridViewTextBoxColumn.HeaderText = "Город";
+            this.городDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.городDataGridViewTextBoxColumn.Name = "городDataGridViewTextBoxColumn";
+            this.городDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // датаРожденияDataGridViewTextBoxColumn
+            // 
+            this.датаРожденияDataGridViewTextBoxColumn.DataPropertyName = "ДатаРождения";
+            this.датаРожденияDataGridViewTextBoxColumn.HeaderText = "ДатаРождения";
+            this.датаРожденияDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.датаРожденияDataGridViewTextBoxColumn.Name = "датаРожденияDataGridViewTextBoxColumn";
+            this.датаРожденияDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // спортивныйКлассDataGridViewTextBoxColumn
+            // 
+            this.спортивныйКлассDataGridViewTextBoxColumn.DataPropertyName = "СпортивныйКласс";
+            this.спортивныйКлассDataGridViewTextBoxColumn.HeaderText = "СпортивныйКласс";
+            this.спортивныйКлассDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.спортивныйКлассDataGridViewTextBoxColumn.Name = "спортивныйКлассDataGridViewTextBoxColumn";
+            this.спортивныйКлассDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // разрядDataGridViewTextBoxColumn
+            // 
+            this.разрядDataGridViewTextBoxColumn.DataPropertyName = "Разряд";
+            this.разрядDataGridViewTextBoxColumn.HeaderText = "Разряд";
+            this.разрядDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.разрядDataGridViewTextBoxColumn.Name = "разрядDataGridViewTextBoxColumn";
+            this.разрядDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // тренераDataGridViewTextBoxColumn
+            // 
+            this.тренераDataGridViewTextBoxColumn.DataPropertyName = "Тренера";
+            this.тренераDataGridViewTextBoxColumn.HeaderText = "Тренера";
+            this.тренераDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.тренераDataGridViewTextBoxColumn.Name = "тренераDataGridViewTextBoxColumn";
+            this.тренераDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // sportsmansBindingSource1
+            // 
+            this.sportsmansBindingSource1.DataMember = "Sportsmans";
+            this.sportsmansBindingSource1.DataSource = this.peopleDataSet2BindingSource2;
+            // 
+            // peopleDataSet2BindingSource2
+            // 
+            this.peopleDataSet2BindingSource2.DataSource = this.peopleDataSet2;
+            this.peopleDataSet2BindingSource2.Position = 0;
+            // 
+            // peopleDataSet2
+            // 
+            this.peopleDataSet2.DataSetName = "PeopleDataSet2";
+            this.peopleDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // sportsmansBindingSource
             // 
@@ -301,152 +409,13 @@
             this.фамилияDataGridViewTextBoxColumn1,
             this.имяDataGridViewTextBoxColumn1,
             this.отчествоDataGridViewTextBoxColumn1});
-            this.dataGridView_trainers.DataSource = this.trainersBindingSource1;
+            this.dataGridView_trainers.DataSource = this.trainersBindingSource3;
             this.dataGridView_trainers.Location = new System.Drawing.Point(24, 30);
             this.dataGridView_trainers.Name = "dataGridView_trainers";
             this.dataGridView_trainers.RowHeadersWidth = 51;
             this.dataGridView_trainers.RowTemplate.Height = 24;
             this.dataGridView_trainers.Size = new System.Drawing.Size(790, 335);
             this.dataGridView_trainers.TabIndex = 5;
-            // 
-            // trainersBindingSource
-            // 
-            this.trainersBindingSource.DataMember = "Trainers";
-            this.trainersBindingSource.DataSource = this.peopleDataSetLastLast;
-            // 
-            // trainersTableAdapter
-            // 
-            this.trainersTableAdapter.ClearBeforeFill = true;
-            // 
-            // sportsmansTableAdapter1
-            // 
-            this.sportsmansTableAdapter1.ClearBeforeFill = true;
-            // 
-            // trainersTableAdapter1
-            // 
-            this.trainersTableAdapter1.ClearBeforeFill = true;
-            // 
-            // sportsmansTableAdapter2
-            // 
-            this.sportsmansTableAdapter2.ClearBeforeFill = true;
-            // 
-            // peopleDataSet2
-            // 
-            this.peopleDataSet2.DataSetName = "PeopleDataSet2";
-            this.peopleDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // peopleDataSet2BindingSource
-            // 
-            this.peopleDataSet2BindingSource.DataSource = this.peopleDataSet2;
-            this.peopleDataSet2BindingSource.Position = 0;
-            // 
-            // peopleDataSet2BindingSource1
-            // 
-            this.peopleDataSet2BindingSource1.DataSource = this.peopleDataSet2;
-            this.peopleDataSet2BindingSource1.Position = 0;
-            // 
-            // peopleDataSet2BindingSource2
-            // 
-            this.peopleDataSet2BindingSource2.DataSource = this.peopleDataSet2;
-            this.peopleDataSet2BindingSource2.Position = 0;
-            // 
-            // sportsmansBindingSource1
-            // 
-            this.sportsmansBindingSource1.DataMember = "Sportsmans";
-            this.sportsmansBindingSource1.DataSource = this.peopleDataSet2BindingSource2;
-            // 
-            // sportsmansTableAdapter3
-            // 
-            this.sportsmansTableAdapter3.ClearBeforeFill = true;
-            // 
-            // номерКнижкиDataGridViewTextBoxColumn
-            // 
-            this.номерКнижкиDataGridViewTextBoxColumn.DataPropertyName = "НомерКнижки";
-            this.номерКнижкиDataGridViewTextBoxColumn.HeaderText = "НомерКнижки";
-            this.номерКнижкиDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.номерКнижкиDataGridViewTextBoxColumn.Name = "номерКнижкиDataGridViewTextBoxColumn";
-            this.номерКнижкиDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // фамилияDataGridViewTextBoxColumn
-            // 
-            this.фамилияDataGridViewTextBoxColumn.DataPropertyName = "Фамилия";
-            this.фамилияDataGridViewTextBoxColumn.HeaderText = "Фамилия";
-            this.фамилияDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.фамилияDataGridViewTextBoxColumn.Name = "фамилияDataGridViewTextBoxColumn";
-            this.фамилияDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // имяDataGridViewTextBoxColumn
-            // 
-            this.имяDataGridViewTextBoxColumn.DataPropertyName = "Имя";
-            this.имяDataGridViewTextBoxColumn.HeaderText = "Имя";
-            this.имяDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.имяDataGridViewTextBoxColumn.Name = "имяDataGridViewTextBoxColumn";
-            this.имяDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // отчествоDataGridViewTextBoxColumn
-            // 
-            this.отчествоDataGridViewTextBoxColumn.DataPropertyName = "Отчество";
-            this.отчествоDataGridViewTextBoxColumn.HeaderText = "Отчество";
-            this.отчествоDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.отчествоDataGridViewTextBoxColumn.Name = "отчествоDataGridViewTextBoxColumn";
-            this.отчествоDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // названиеКлубаDataGridViewTextBoxColumn
-            // 
-            this.названиеКлубаDataGridViewTextBoxColumn.DataPropertyName = "НазваниеКлуба";
-            this.названиеКлубаDataGridViewTextBoxColumn.HeaderText = "НазваниеКлуба";
-            this.названиеКлубаDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.названиеКлубаDataGridViewTextBoxColumn.Name = "названиеКлубаDataGridViewTextBoxColumn";
-            this.названиеКлубаDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // городDataGridViewTextBoxColumn
-            // 
-            this.городDataGridViewTextBoxColumn.DataPropertyName = "Город";
-            this.городDataGridViewTextBoxColumn.HeaderText = "Город";
-            this.городDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.городDataGridViewTextBoxColumn.Name = "городDataGridViewTextBoxColumn";
-            this.городDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // датаРожденияDataGridViewTextBoxColumn
-            // 
-            this.датаРожденияDataGridViewTextBoxColumn.DataPropertyName = "ДатаРождения";
-            this.датаРожденияDataGridViewTextBoxColumn.HeaderText = "ДатаРождения";
-            this.датаРожденияDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.датаРожденияDataGridViewTextBoxColumn.Name = "датаРожденияDataGridViewTextBoxColumn";
-            this.датаРожденияDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // спортивныйКлассDataGridViewTextBoxColumn
-            // 
-            this.спортивныйКлассDataGridViewTextBoxColumn.DataPropertyName = "СпортивныйКласс";
-            this.спортивныйКлассDataGridViewTextBoxColumn.HeaderText = "СпортивныйКласс";
-            this.спортивныйКлассDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.спортивныйКлассDataGridViewTextBoxColumn.Name = "спортивныйКлассDataGridViewTextBoxColumn";
-            this.спортивныйКлассDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // разрядDataGridViewTextBoxColumn
-            // 
-            this.разрядDataGridViewTextBoxColumn.DataPropertyName = "Разряд";
-            this.разрядDataGridViewTextBoxColumn.HeaderText = "Разряд";
-            this.разрядDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.разрядDataGridViewTextBoxColumn.Name = "разрядDataGridViewTextBoxColumn";
-            this.разрядDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // тренераDataGridViewTextBoxColumn
-            // 
-            this.тренераDataGridViewTextBoxColumn.DataPropertyName = "Тренера";
-            this.тренераDataGridViewTextBoxColumn.HeaderText = "Тренера";
-            this.тренераDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.тренераDataGridViewTextBoxColumn.Name = "тренераDataGridViewTextBoxColumn";
-            this.тренераDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // trainersBindingSource1
-            // 
-            this.trainersBindingSource1.DataMember = "Trainers";
-            this.trainersBindingSource1.DataSource = this.peopleDataSet2BindingSource2;
-            // 
-            // trainersTableAdapter2
-            // 
-            this.trainersTableAdapter2.ClearBeforeFill = true;
             // 
             // номерКнижкиDataGridViewTextBoxColumn1
             // 
@@ -488,6 +457,83 @@
             this.отчествоDataGridViewTextBoxColumn1.Name = "отчествоDataGridViewTextBoxColumn1";
             this.отчествоDataGridViewTextBoxColumn1.Width = 125;
             // 
+            // trainersBindingSource1
+            // 
+            this.trainersBindingSource1.DataMember = "Trainers";
+            this.trainersBindingSource1.DataSource = this.peopleDataSet2BindingSource2;
+            // 
+            // trainersBindingSource
+            // 
+            this.trainersBindingSource.DataMember = "Trainers";
+            this.trainersBindingSource.DataSource = this.peopleDataSetLastLast;
+            // 
+            // trainersTableAdapter
+            // 
+            this.trainersTableAdapter.ClearBeforeFill = true;
+            // 
+            // sportsmansTableAdapter1
+            // 
+            this.sportsmansTableAdapter1.ClearBeforeFill = true;
+            // 
+            // trainersTableAdapter1
+            // 
+            this.trainersTableAdapter1.ClearBeforeFill = true;
+            // 
+            // sportsmansTableAdapter2
+            // 
+            this.sportsmansTableAdapter2.ClearBeforeFill = true;
+            // 
+            // peopleDataSet2BindingSource
+            // 
+            this.peopleDataSet2BindingSource.DataSource = this.peopleDataSet2;
+            this.peopleDataSet2BindingSource.Position = 0;
+            // 
+            // peopleDataSet2BindingSource1
+            // 
+            this.peopleDataSet2BindingSource1.DataSource = this.peopleDataSet2;
+            this.peopleDataSet2BindingSource1.Position = 0;
+            // 
+            // sportsmansTableAdapter3
+            // 
+            this.sportsmansTableAdapter3.ClearBeforeFill = true;
+            // 
+            // trainersTableAdapter2
+            // 
+            this.trainersTableAdapter2.ClearBeforeFill = true;
+            // 
+            // sportsmansBindingSource2
+            // 
+            this.sportsmansBindingSource2.DataMember = "Sportsmans";
+            this.sportsmansBindingSource2.DataSource = this.peopleDataSet2BindingSource2;
+            // 
+            // trainersBindingSource2
+            // 
+            this.trainersBindingSource2.DataMember = "Trainers";
+            this.trainersBindingSource2.DataSource = this.peopleDataSet2BindingSource2;
+            // 
+            // peopleDataSet3
+            // 
+            this.peopleDataSet3.DataSetName = "PeopleDataSet3";
+            this.peopleDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // sportsmansBindingSource3
+            // 
+            this.sportsmansBindingSource3.DataMember = "Sportsmans";
+            this.sportsmansBindingSource3.DataSource = this.peopleDataSet3;
+            // 
+            // sportsmansTableAdapter4
+            // 
+            this.sportsmansTableAdapter4.ClearBeforeFill = true;
+            // 
+            // trainersBindingSource3
+            // 
+            this.trainersBindingSource3.DataMember = "Trainers";
+            this.trainersBindingSource3.DataSource = this.peopleDataSet3;
+            // 
+            // trainersTableAdapter3
+            // 
+            this.trainersTableAdapter3.ClearBeforeFill = true;
+            // 
             // DataBasaViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -504,19 +550,24 @@
             this.Text = "DataBasaViewer";
             this.Load += new System.EventHandler(this.DataBasaViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_sportsmen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetLastLast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataView_bindingNavigator)).EndInit();
             this.DataView_bindingNavigator.ResumeLayout(false);
             this.DataView_bindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_trainers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -573,5 +624,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn фамилияDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn имяDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn отчествоDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource sportsmansBindingSource2;
+        private System.Windows.Forms.BindingSource trainersBindingSource2;
+        private PeopleDataSet3 peopleDataSet3;
+        private System.Windows.Forms.BindingSource sportsmansBindingSource3;
+        private PeopleDataSet3TableAdapters.SportsmansTableAdapter sportsmansTableAdapter4;
+        private System.Windows.Forms.BindingSource trainersBindingSource3;
+        private PeopleDataSet3TableAdapters.TrainersTableAdapter trainersTableAdapter3;
     }
 }

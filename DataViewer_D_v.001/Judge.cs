@@ -8,14 +8,17 @@ namespace DataViewer_D_v._001
 {
     public class Judge
     {
-        public int Number;
+        public ushort Number;
 
         public string Name;
         public string Surname;
         public string Patronymic;
 
         public string JudgeClass;
-        
+
+        //public ushort number;
+        public char judgeChar;
+
         public Judge()
         { 
         
@@ -23,7 +26,7 @@ namespace DataViewer_D_v._001
 
         public Judge(int number, string name, string surname, string patronymic, string judjeClass)
         {
-            this.Number = number;
+            this.Number = (ushort)number;
             this.Name = name;
             this.Surname = surname;
             this.Patronymic = patronymic;
@@ -76,7 +79,7 @@ namespace DataViewer_D_v._001
 
         public override string ToString()
         {
-            return this.Name + " " + this.Surname + " " + this.Patronymic;
+            return this.Name + " " + this.Surname + " " + this.Patronymic + " " + this.Number.ToString() + " " + this.judgeChar;
         }
     }
 }

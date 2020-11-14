@@ -34,6 +34,7 @@
             this.configButton = new System.Windows.Forms.Button();
             this.timeTournirLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.formation_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -141,5 +142,6 @@
         private System.Windows.Forms.Button configButton;
         private System.Windows.Forms.Label timeTournirLabel;
         private System.Windows.Forms.Button saveButton;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

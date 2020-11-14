@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgeCategoryClass.cs" />
     <Compile Include="BD1DataSet.cs">
       <DependentUpon>BD1DataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -111,6 +112,12 @@
     <Compile Include="formationReglament.Designer.cs">
       <DependentUpon>formationReglament.cs</DependentUpon>
     </Compile>
+    <Compile Include="GradingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GradingForm.Designer.cs">
+      <DependentUpon>GradingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GroupClass.cs" />
     <Compile Include="GroupInTour.cs" />
     <Compile Include="HoldingMarker.cs" />
@@ -136,6 +143,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PeopleDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PeopleDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="PeopleDataSetLast.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -204,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formationReglament.resx">
       <DependentUpon>formationReglament.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GradingForm.resx">
+      <DependentUpon>GradingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HoldingTournament.resx">
       <DependentUpon>HoldingTournament.cs</DependentUpon>
@@ -279,6 +294,17 @@
     </None>
     <None Include="PeopleDataSet2.xss">
       <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="PeopleDataSet3.xsc">
+      <DependentUpon>PeopleDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="PeopleDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PeopleDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PeopleDataSet3.xss">
+      <DependentUpon>PeopleDataSet3.xsd</DependentUpon>
     </None>
     <None Include="PeopleDataSetLast.xsc">
       <DependentUpon>PeopleDataSetLast.xsd</DependentUpon>

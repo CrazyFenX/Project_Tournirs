@@ -63,9 +63,13 @@ namespace DataViewer_D_v._001
             //pass
         }
 
+        //public override string ToString()
+        //{
+        //    return Surname + " " + Name + " " + Patronymic + " " + BookNumber.ToString();
+        //}
         public override string ToString()
         {
-            return Surname + " " + Name + " " + Patronymic + " " + BookNumber.ToString();
+            return Surname + " " + Name + " " + Patronymic;
         }
     }
 }

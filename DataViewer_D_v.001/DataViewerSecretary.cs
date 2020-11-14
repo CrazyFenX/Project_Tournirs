@@ -25,6 +25,8 @@ namespace DataViewer_D_v._001
         public DataViewerSecretary()
         {
             InitializeComponent();
+
+            showSets_button.Visible = false;
         }
 
         public DataViewerSecretary(secretaryForm secretaryForm)
@@ -35,6 +37,8 @@ namespace DataViewer_D_v._001
 
             this.secretaryForm = secretaryForm;
             this.secretaryForm.Enabled = false;
+
+            showSets_button.Visible = false;
         }
 
         public DataViewerSecretary(secretaryForm secretaryForm, string path)
@@ -46,6 +50,8 @@ namespace DataViewer_D_v._001
             this.secretaryForm = secretaryForm;
             this.Path_textBox.Text = path;
             this.secretaryForm.Enabled = false;
+
+            showSets_button.Visible = false;
         }
 
         private void Path_textBox_TextChanged(object sender, EventArgs e)
@@ -234,27 +240,27 @@ namespace DataViewer_D_v._001
                 MessageBox.Show("Сперва нужно выбрать базу турнира!");
         }
 
-        private void showSets_button_Click(object sender, EventArgs e)
-        {
-            if (Path_textBox.Text != "")
-            {
+        //private void showSets_button_Click(object sender, EventArgs e)
+        //{
+        //    if (Path_textBox.Text != "")
+        //    {
 
-                    aConn1.Open();
-                dbAdapter = new OleDbDataAdapter("SELECT * FROM [sets]", aConn1);
-                dataTable = new DataTable();
-                dbAdapter.Fill(dataTable);
-                mainDataGridView.DataSource = dataTable;
+        //            aConn1.Open();
+        //        dbAdapter = new OleDbDataAdapter("SELECT * FROM [sets]", aConn1);
+        //        dataTable = new DataTable();
+        //        dbAdapter.Fill(dataTable);
+        //        mainDataGridView.DataSource = dataTable;
 
-                showTournir_button.BackColor = Color.Gray;
-                showJudge_button.BackColor = Color.Gray;
-                showParticipant_button.BackColor = Color.Gray;
-                showCategories_button.BackColor = Color.Gray;
-                showGroup_button.BackColor = Color.Gray;
-                showSets_button.BackColor = Color.Empty;
-                aConn1.Close();
-            }
-            else
-                MessageBox.Show("Сперва нужно выбрать базу турнира!");
-        }
+        //        showTournir_button.BackColor = Color.Gray;
+        //        showJudge_button.BackColor = Color.Gray;
+        //        showParticipant_button.BackColor = Color.Gray;
+        //        showCategories_button.BackColor = Color.Gray;
+        //        showGroup_button.BackColor = Color.Gray;
+        //        showSets_button.BackColor = Color.Empty;
+        //        aConn1.Close();
+        //    }
+        //    else
+        //        MessageBox.Show("Сперва нужно выбрать базу турнира!");
+        //}
     }
 }

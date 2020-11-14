@@ -24,22 +24,31 @@ namespace DataViewer_D_v._001
 
         public string folderName;
 
+        private List<Label> groupLabelList = new List<Label>();
+        private List<CheckBox[]> judgeChessCheckList = new List<CheckBox[]>();
+        //public CheckBox[] judgeChessCheckList = new CheckBox[0, 0];
+
         public secretaryForm(secretaryMainForm secretaryMainForm)
         {
             InitializeComponent();
-            tournir = new TournirClass();
+            //tournir = new TournirClass();
+            tournir = secretaryMainForm.tournir;
             this.secretaryMainForm = secretaryMainForm;
 
+            judgeGroupBox.Visible = false;
+            Categoriess_groupBox.Visible = false;
             CreateGroup_button.Visible = true;
-            CreateSet_button.Visible = true;
+            //CreateSet_button.Visible = true;
 
             CreateGroupSecond_button.Visible = false;
             Categoriess_groupBox.Visible = false;
-            creatingSet_groupBox.Visible = false;
+            //creatingSet_groupBox.Visible = false;
 
             label_NumberOfGroup.Visible = false;
             NumberOfGroup_textBox.Visible = false;
             BackSecond_button.Visible = false;
+
+            judgeChessPanel.Visible = false;
         }
 
         public secretaryForm()
@@ -48,7 +57,7 @@ namespace DataViewer_D_v._001
             tournir = new TournirClass();
 
             CreateGroup_button.Visible = true;
-            CreateSet_button.Visible = true;
+            //CreateSet_button.Visible = true;
 
             CreateGroupSecond_button.Visible = false;
             Categoriess_groupBox.Visible = false;
@@ -202,7 +211,13 @@ namespace DataViewer_D_v._001
             judge.JudgeClass = JudgeClass_textBox.Text;
 
             if (Path_textBox.Text != "")
+            {
+                //Text = Convert.ToString((char)(65 + i)),
                 SecretaryController.insertInJudges(judge, Path_textBox.Text);
+                judge.Number = (ushort)(SecretaryController.TakeMax("judges", "Номер", Path_textBox.Text));
+                judge.judgeChar = (char)(64 + judge.Number);
+                tournir.judges.Add(judge);
+            }
             else
                 MessageBox.Show("Необходимо выбрать базу Турнира!");
         }
@@ -211,8 +226,10 @@ namespace DataViewer_D_v._001
         {
             if (Path_textBox.Text != "")
             {
+                Categoriess_groupBox.Visible = true;
+
                 CreateGroup_button.Visible = false;
-                CreateSet_button.Visible = false;
+                //CreateSet_button.Visible = false;
 
                 CreateGroupSecond_button.Visible = true;
                 Categoriess_groupBox.Visible = true;
@@ -229,7 +246,7 @@ namespace DataViewer_D_v._001
         private void BackSecond_button_Click(object sender, EventArgs e)
         {
             CreateGroup_button.Visible = true;
-            CreateSet_button.Visible = true;
+            //CreateSet_button.Visible = true;
 
             CreateGroupSecond_button.Visible = false;
             Categoriess_groupBox.Visible = false;
@@ -245,128 +262,256 @@ namespace DataViewer_D_v._001
             if (NumberOfGroup_textBox.Text != "")
             {
                 group_new.number = Convert.ToInt32(NumberOfGroup_textBox.Text);
-                CheckBox[] CategoriesList = new CheckBox[] {D0_checkBox, D1_checkBox, D2_checkBox, M_checkBox, M2_checkBox, U1_checkBox, U2_checkBox, Vz_checkBox};
+                CheckBox[] CategoriesList = new CheckBox[] { D0_checkBox, D1_checkBox, D2_checkBox, M_checkBox, M2_checkBox, U1_checkBox, U2_checkBox, Vz_checkBox, other_checkBox };
+                CheckBox[] DancesList = new CheckBox[] { W_dance_checkBox, V_dance_checkBox, T_dance_checkBox, F_dance_checkBox, Q_dance_checkBox, S_dance_checkBox, Ch_dance_checkBox, R_dance_checkBox, P_dance_checkBox, J_dance_checkBox };
+
+                string str = "";
+
+                foreach (CheckBox item in DancesList)
+                    if (item.Checked)
+                    {
+                        group_new.DancesList.Add(item.Text);
+                        str += item.Text;
+                        MessageBox.Show(str);
+                    }
+
+                foreach (CheckBox item in CategoriesList)
+                    if (item.Checked)
+                    {
+                        group_new.CategoryList.Add(item.Text);
+                        str += item.Text;
+                        MessageBox.Show(str);
+                    }
+
+                group_new.tournir_name = tournir.name;
+                group_new.name = categoryNameTextBox.Text;
+
                 if (Path_textBox.Text != "")
                 {
                     try
                     {
                         OleDbConnection cn = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}");
                         cn.Open();
-                        OleDbCommand com = new OleDbCommand();
+                        OleDbCommand com1 = new OleDbCommand();
+                        OleDbCommand com2 = new OleDbCommand();
 
-                        com = new OleDbCommand("INSERT INTO groups(Название_Турнира, Номер_Группы)" + "VALUES (@tournir_name, @group_number)", cn);
-                        ///com = new OleDbCommand($"CREATE TABLE group{tournir.groups.Count + 1}(Номер_Группы INT, Номер_Захода INT)", cn);
-                       
-                        ///try
-                        ///{
-                        ///    com.ExecuteNonQuery();
-                        ///}
-                        ///catch (Exception ex)
-                        ///{
-                        ///    MessageBox.Show($"Возникла проблема при создании таблицы новой группы:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        ///}
-                        
-                        ///com = new OleDbCommand($"INSERT INTO group{tournir.groups.Count + 1}(Номер_Группы)" + "VALUES (@group_number)", cn);
-                        com.Parameters.AddWithValue("tournir_name", tournir.name);
-                        com.Parameters.AddWithValue("group_number", group_new.number);
+                        com1 = new OleDbCommand("INSERT INTO groups(Название_Турнира, Номер_Группы, Категория, Категории, Танцы)" + "VALUES (@tournir_name, @group_number, @category, @categories, @dances)", cn);
 
-                        group_new.tournir_name = tournir.name;
+                        com1.Parameters.AddWithValue("tournir_name", group_new.tournir_name);
+                        com1.Parameters.AddWithValue("group_number", group_new.number);
+                        com1.Parameters.AddWithValue("category", group_new.name);
+                        string testStr = "";
+                        for (int i = 0; i < CategoriesList.Length; i++)
+                        {
+                            testStr = "";
+                            if (CategoriesList[i].Checked == true)
+                            {
+                                switch (i)
+                                {
+                                    case 0:
+                                        testStr += "Д-0;";
+                                        group_new.CategoryList.Add("Д-0");
+                                        break;
+                                    case 1:
+                                        testStr += "Д-1;";
+                                        group_new.CategoryList.Add("Д-1");
+                                        break;
+                                    case 2:
+                                        testStr += "Д-2;";
+                                        group_new.CategoryList.Add("Д-2");
+                                        break;
+                                    case 3:
+                                        testStr += "М;";
+                                        group_new.CategoryList.Add("М");
+                                        break;
+                                    case 4:
+                                        testStr += "М-2;";
+                                        group_new.CategoryList.Add("М-2");
+                                        break;
+                                    case 5:
+                                        testStr += "Ю-1;";
+                                        group_new.CategoryList.Add("Ю-1");
+                                        break;
+                                    case 6:
+                                        testStr += "Ю-2;";
+                                        group_new.CategoryList.Add("Ю-2");
+                                        break;
+                                    case 7:
+                                        testStr += "Вз;";
+                                        group_new.CategoryList.Add("Вз");
+                                        break;
+                                    default:
+                                        testStr += "Другая;";
+                                        group_new.CategoryList.Add("Другая");
+                                        break;
+                                }
+                            }
+                        }
+                        com1.Parameters.AddWithValue("categories", testStr);
+
+                        string testStr1 = "";
+                        for (int i = 0; i < DancesList.Length; i++)
+                        {
+                            if (DancesList[i].Checked == true)
+                            {
+                                switch (i)
+                                {
+                                    case 0:
+                                        testStr1 += "W;";
+                                        group_new.DancesList.Add("W");
+                                        break;
+                                    case 1:
+                                        testStr1 += "V;";
+                                        group_new.DancesList.Add("V");
+                                        break;
+                                    case 2:
+                                        testStr1 += "T;";
+                                        group_new.DancesList.Add("T");
+                                        break;
+                                    case 3:
+                                        testStr1 += "F;";
+                                        group_new.DancesList.Add("F");
+                                        break;
+                                    case 4:
+                                        testStr1 += "Q;";
+                                        group_new.DancesList.Add("Q");
+                                        break;
+                                    case 5:
+                                        testStr1 += "S;";
+                                        group_new.DancesList.Add("S");
+                                        break;
+                                    case 6:
+                                        testStr1 += "Ch;";
+                                        group_new.DancesList.Add("Ch");
+                                        break;
+                                    case 7:
+                                        testStr1 += "R;";
+                                        group_new.DancesList.Add("R");
+                                        break;
+                                    case 8:
+                                        testStr1 += "P;";
+                                        group_new.DancesList.Add("P");
+                                        break;
+                                    case 9:
+                                        testStr1 += "J;";
+                                        group_new.DancesList.Add("J");
+                                        break;
+                                }
+                            }
+                        }
+                        com1.Parameters.AddWithValue("dances", testStr1);
+
                         try
                         {
-                            com.ExecuteNonQuery();
-                            //tournir.groups.Add(group_new = new GroupClass(group_new.number, tournir.name));
+                            com1.ExecuteNonQuery();
+                            tournir.groups.Add(group_new);
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show($"Возникла непредвиденная проблема при обращении к базе:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
-                        string testStr = "";
-
                         for (int i = 0; i < CategoriesList.Length; i++)
                         {
-                            com = new OleDbCommand("INSERT INTO categories(Номер, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)", cn);
-                            com.Parameters.AddWithValue("number", i + 1);
-                            com.Parameters.AddWithValue("group_number", group_new.number);
+                            com2 = new OleDbCommand("INSERT INTO categories(Номер, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)", cn);
+                            com2.Parameters.AddWithValue("number", i + 1);
+                            com2.Parameters.AddWithValue("group_number", group_new.number);
 
                             if (CategoriesList[i].Checked == true)
                             {
                                 switch (i)
                                 {
                                     case 0:
-                                        com.Parameters.AddWithValue("category", "Д-0");
-                                        testStr += "Д-0 ";
-                                        group_new.CategoryList.Add("Д-0");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "Д-0");
+                                        com2.ExecuteNonQuery();
                                         break;
                                     case 1:
-                                        com.Parameters.AddWithValue("category", "Д-1");
-                                        testStr += "Д-1 ";
-                                        group_new.CategoryList.Add("Д-1");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "Д-1");
+                                        com2.ExecuteNonQuery();
                                         break;
                                     case 2:
-                                        com.Parameters.AddWithValue("category", "Д-2");
-                                        testStr += "Д-2 ";
-                                        group_new.CategoryList.Add("Д-2");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "Д-2");
+                                        com2.ExecuteNonQuery();
                                         break;
                                     case 3:
-                                        com.Parameters.AddWithValue("category", "М");
-                                        testStr += "М ";
-                                        group_new.CategoryList.Add("М");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "М");
+                                        com2.ExecuteNonQuery();
                                         break;
                                     case 4:
-                                        com.Parameters.AddWithValue("category", "М-2");
-                                        testStr += "М-2 ";
-                                        group_new.CategoryList.Add("М-2");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "М-2");
+                                        com2.ExecuteNonQuery();
                                         break;
                                     case 5:
-                                        com.Parameters.AddWithValue("category", "Ю-1");
-                                        testStr += "Ю-1 ";
-                                        group_new.CategoryList.Add("Ю-1");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "Ю-1");
+                                        com2.ExecuteNonQuery();
                                         break;
                                     case 6:
-                                        com.Parameters.AddWithValue("category", "Ю-2");
-                                        testStr += "Ю-2 ";
-                                        group_new.CategoryList.Add("Ю-2");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "Ю-2");
+                                        com2.ExecuteNonQuery();
                                         break;
                                     case 7:
-                                        com.Parameters.AddWithValue("category", "Вз");
-                                        testStr += "Вз";
-                                        group_new.CategoryList.Add("Вз");
-                                        com.ExecuteNonQuery();
+                                        com2.Parameters.AddWithValue("category", "Вз");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    default:
+                                        com2.Parameters.AddWithValue("category", "Другая");
+                                        com2.ExecuteNonQuery();
                                         break;
                                 }
                             }
                         }
 
-                        tournir.groups.Add(group_new);
-
-                        //MessageBox.Show(tournir.groups[tournir.groups.Count - 1].show());
-
-                        setGroupNumber_comboBox.Items.Clear();
-                        //MessageBox.Show($"{tournir.groups.Count}");//Работает
-
-                        for (int i = 0; i < tournir.groups.Count; i++)
+                        for (int i = 0; i < DancesList.Length; i++)
                         {
-                            //MessageBox.Show($"{tournir.groups[i].number}");
-                            setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
-                        }
+                            com2 = new OleDbCommand("INSERT INTO dances(Номер_Группы, Танец)" + "VALUES (@group_number, @dance)", cn);
+                            com2.Parameters.AddWithValue("group_number", group_new.number);
 
-                        //MessageBox.Show($"Все Ок");
-
-                        setCategory_comboBox.Items.Clear();
-                        //MessageBox.Show($"{tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text)].CategoryList.Count}");
-
-                        for (int i = 0; i < tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList.Count; i++)
-                        {
-                            //MessageBox.Show($"{tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList[i]}");
-                            setCategory_comboBox.Items.Add(tournir.groups[Convert.ToInt32(NumberOfGroup_textBox.Text) - 1].CategoryList[i]);
+                            if (DancesList[i].Checked == true)
+                            {
+                                switch (i)
+                                {
+                                    case 0:
+                                        com2.Parameters.AddWithValue("dance", "W");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 1:
+                                        com2.Parameters.AddWithValue("dance", "V");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 2:
+                                        com2.Parameters.AddWithValue("dance", "T");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 3:
+                                        com2.Parameters.AddWithValue("dance", "F");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 4:
+                                        com2.Parameters.AddWithValue("dance", "Q");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 5:
+                                        com2.Parameters.AddWithValue("dance", "S");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 6:
+                                        com2.Parameters.AddWithValue("dance", "Ch");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 7:
+                                        com2.Parameters.AddWithValue("dance", "R");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 8:
+                                        com2.Parameters.AddWithValue("dance", "P");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                    case 9:
+                                        com2.Parameters.AddWithValue("dance", "J");
+                                        com2.ExecuteNonQuery();
+                                        break;
+                                }
+                            }
                         }
 
                         NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
@@ -392,8 +537,8 @@ namespace DataViewer_D_v._001
                 tournir = SecretaryController.TakeTournir(folderName);
                 tournir.path = Path_textBox.Text;
 
-                for (int i = 0; i < tournir.groups.Count; i++)
-                    setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
+                //for (int i = 0; i < tournir.groups.Count; i++)
+                //    setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
                 NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
             }
             catch (Exception ex)
@@ -402,71 +547,38 @@ namespace DataViewer_D_v._001
             }
         }
 
-        private void CreateSet_button_Click(object sender, EventArgs e)
-        {
-            if (Path_textBox.Text != "")
-            {
-                creatingSet_groupBox.Visible = true;
-            }
-            else
-            {
-                MessageBox.Show("Необходимо выбоать базу турнира!");
-            }
-        }
-
         private void backThird_button_Click(object sender, EventArgs e)
         {
-            creatingSet_groupBox.Visible = false;
+            //creatingSet_groupBox.Visible = false;
         }
 
-        private void createSet_button_Click(object sender, EventArgs e)
-        {
-            if (Path_textBox.Text != "")
-            {
-                try
-                {
-                    SetClass setNew = new SetClass(Convert.ToInt32(setGroupNumber_comboBox.Text), Convert.ToInt32(setNumber_textBox.Text), setCategory_comboBox.Text);
-                    SecretaryController.insertSet(setNew, Path_textBox.Text);
-                    tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].SetList.Add(setNew);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Упс, что-то пошло не так...\n" + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Необходимо выбоать базу турнира!");
-            }
-        }
+        //private void setGroupNumber_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (Path_textBox.Text != "")
+        //        {
+        //            //setNumber_textBox.Text = Convert.ToString(tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].SetList.Count() + 1);
 
-        private void setGroupNumber_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Path_textBox.Text != "")
-                {
-                    setNumber_textBox.Text = Convert.ToString(tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].SetList.Count() + 1);
+        //            //setCategory_comboBox.Items.Clear();
+        //            //MessageBox.Show($"{tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].CategoryList.Count}");
 
-                    setCategory_comboBox.Items.Clear();
-                    //MessageBox.Show($"{tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].CategoryList.Count}");
+        //            string retStr = "";
 
-                    string retStr = "";
+        //            //foreach (string category in tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].CategoryList)
+        //            //{
+        //            //    setCategory_comboBox.Items.Add(category);
+        //            //    retStr += category;
+        //            //}
 
-                    foreach (string category in tournir.groups[Convert.ToInt32(setGroupNumber_comboBox.Text) - 1].CategoryList)
-                    {
-                        setCategory_comboBox.Items.Add(category);
-                        retStr += category;
-                    }
-
-                    //MessageBox.Show(retStr);
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //            //MessageBox.Show(retStr);
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         private void configButton_Click(object sender, EventArgs e)
         {
@@ -474,6 +586,177 @@ namespace DataViewer_D_v._001
                 tournir.Show();
             else
                 MessageBox.Show("Сперва необходимо выбрать базу турнира!");
+        }
+
+        private void showJudgeRegButton_Click(object sender, EventArgs e)
+        {
+            if (Path_textBox.Text != "")
+                judgeGroupBox.Visible = true;
+            else
+                MessageBox.Show("Сперва необходимо выбрать базу турнира!");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            judgeGroupBox.Visible = false;
+        }
+
+        private void secretaryForm_Resize(object sender, EventArgs e)
+        {
+            {
+                if (this.Size.Width < 740)
+                    this.Size = new Size(740, this.Size.Height);
+                if (this.Size.Height < 490)
+                    this.Size = new Size(this.Size.Width, 490);
+            }
+        }
+
+        public void TourButtonsEvent(object sender, EventArgs e)
+        {
+
+        }
+
+        private void judgeChessBbutton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int N = tournir.judges.Count;
+                int M = tournir.groups.Count;
+                CheckBox[] tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
+
+                CheckBox checkBoxOfJudge = new CheckBox();
+                judgeChessPanel.Controls.Clear();
+
+                judgeChessCheckList = new List<CheckBox[]>();
+
+                judgeChessPanel.Visible = true;
+                int height = 45;
+
+                ToolTip t = new ToolTip();
+
+                Label new_label = new Label();
+
+                for (int i = 0; i < this.tournir.judges.Count; i++)
+                {
+                    judgeChessPanel.Controls.Add(new_label = new Label()
+                    {
+                        Text = tournir.judges[i].judgeChar.ToString(),
+                        Location = new Point(105 + 60 * i, 15),
+                        Size = new Size(30, 25),
+                        Font = new Font("", 12)
+                    });
+                    t.SetToolTip(new_label, tournir.judges[i].ToNSP());
+                }
+
+                foreach (GroupClass groupItem in tournir.groups)
+                {
+                    tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
+                    judgeChessPanel.Controls.Add(new_label = new Label()
+                    {
+                        Text = "Группа" + Convert.ToString(groupItem.number),
+                        Location = new Point(10, height),
+                        Size = new Size(90, 25),
+                        Font = new Font("", 12)
+                    });
+                    t.SetToolTip(new_label, groupItem.name);
+
+                    string retstr = "Группа " + groupItem.number.ToString() + "\n";
+
+                    int j = 0;
+                    for (int i = 0; i < this.tournir.judges.Count; i++)
+                    {
+                        judgeChessPanel.Controls.Add(checkBoxOfJudge = new CheckBox()
+                        {
+                            Location = new Point(105 + 60 * i, height),
+                            Size = new Size(20, 20),
+                            Font = new Font("", 12)
+                        });
+
+                        checkBoxOfJudge.BringToFront();
+                        tempJudgeChessCheckList[i] = checkBoxOfJudge;
+                        retstr += groupItem.number.ToString() + " " + i.ToString() +  " " + tempJudgeChessCheckList[i].ToString(); 
+                        j++;
+                    }
+                    MessageBox.Show(retstr);
+                    judgeChessCheckList.Add(tempJudgeChessCheckList);
+                    height += 30;
+                }
+
+                judgeAllowButton.Visible = true;
+                judgeChessPanel.Visible = true;
+                judgeChessButton.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void judgeAllowButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OleDbConnection cn = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}");
+                cn.Open();
+                //string retstr = "";
+                for (int i = 0; i < tournir.groups.Count; i++)
+                {
+                    OleDbCommand command = new OleDbCommand();
+                    command = new OleDbCommand("", cn);
+                    command.CommandText = "UPDATE groups SET Судьи = '' WHERE Номер_Группы = @id";
+                    ////command.Parameters.AddWithValue("judge", "");
+                    command.Parameters.AddWithValue("id", i + 1);
+                    command.ExecuteNonQuery();
+                    tournir.groups[i].JudgeList.Count();
+                    ////retstr += "Группа " + tournir.groups[i].number.ToString();
+
+                    for (int j = 0; j < tournir.judges.Count; j++)
+                    {
+                        if (judgeChessCheckList[i][j].Checked)
+                        {
+                            tournir.groups[i].JudgeList.Add(tournir.judges[j]);
+                            
+                            command = new OleDbCommand("", cn);
+                            command.CommandText = "UPDATE groups SET Судьи = @judge WHERE Номер_Группы = @id";
+                            command.Parameters.AddWithValue("judge", (j + 1) + ";");
+                            command.Parameters.AddWithValue("id", i + 1);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                }
+                judgeAllowButton.Visible = false;
+                judgeChessPanel.Visible = false;
+                judgeChessButton.Visible = true;
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void judgeListButton_Click(object sender, EventArgs e)
+        {
+            string retstr = "";
+            foreach (Judge jItem in tournir.judges)
+            {
+                retstr += jItem.ToString() + "\n";
+            }
+            MessageBox.Show(retstr);
+        }
+
+        private void judgeInGroupButton_Click(object sender, EventArgs e)
+        {
+            string retstr = "";
+            foreach (GroupClass gItem in tournir.groups)
+            {
+                retstr += "Группа " + gItem.number + "\n";
+                foreach (Judge judgeItem in gItem.JudgeList)
+                {
+                    retstr += judgeItem.ToString() + "\n";
+                }
+            }
+            MessageBox.Show(retstr);
         }
     }
 }

@@ -31,6 +31,13 @@
             this.openDataBasaButton = new System.Windows.Forms.Button();
             this.backButton = new System.Windows.Forms.Button();
             this.CommonProperties_groupBox = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.Label_City = new System.Windows.Forms.Label();
             this.City_textBox = new System.Windows.Forms.TextBox();
             this.Label_ClubName = new System.Windows.Forms.Label();
@@ -85,24 +92,17 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Label_GroupName = new System.Windows.Forms.Label();
             this.groupName_textBox = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.Group_n_Number_groupBox = new System.Windows.Forms.GroupBox();
             this.duetNumber_textBox = new System.Windows.Forms.TextBox();
             this.Label_DuetNumber = new System.Windows.Forms.Label();
             this.Label_GroupNumber = new System.Windows.Forms.Label();
             this.groupNumber_comboBox = new System.Windows.Forms.ComboBox();
             this.CommonProperties_groupBox.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.DuetTrainer_groupBox.SuspendLayout();
             this.OldTrainer_groupBox.SuspendLayout();
             this.FirstSportsman_groupBox.SuspendLayout();
             this.SecondSportsman_groupBox.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.Group_n_Number_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,6 +152,79 @@
             this.CommonProperties_groupBox.TabIndex = 27;
             this.CommonProperties_groupBox.TabStop = false;
             this.CommonProperties_groupBox.Text = "Общее";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Location = new System.Drawing.Point(660, 76);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(264, 220);
+            this.groupBox1.TabIndex = 27;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Тренер пары";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 144);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Отчество";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Фамилия";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox1.Location = new System.Drawing.Point(133, 141);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(117, 26);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.Text = "Генадьевич";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 97);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 20);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "Имя";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox2.Location = new System.Drawing.Point(133, 47);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(117, 26);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Text = "Миронов";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBox3.Location = new System.Drawing.Point(133, 94);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(117, 26);
+            this.textBox3.TabIndex = 7;
+            this.textBox3.Text = "Сергей";
             // 
             // Label_City
             // 
@@ -938,79 +1011,6 @@
             this.groupName_textBox.Size = new System.Drawing.Size(787, 61);
             this.groupName_textBox.TabIndex = 39;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Location = new System.Drawing.Point(660, 76);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(264, 220);
-            this.groupBox1.TabIndex = 27;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Тренер пары";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 144);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Отчество";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Фамилия";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.Location = new System.Drawing.Point(133, 141);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 26);
-            this.textBox1.TabIndex = 17;
-            this.textBox1.Text = "Генадьевич";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 97);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 20);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Имя";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox2.Location = new System.Drawing.Point(133, 47);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(117, 26);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.Text = "Миронов";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox3.Location = new System.Drawing.Point(133, 94);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(117, 26);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.Text = "Сергей";
-            // 
             // Group_n_Number_groupBox
             // 
             this.Group_n_Number_groupBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -1062,6 +1062,7 @@
             this.groupNumber_comboBox.Name = "groupNumber_comboBox";
             this.groupNumber_comboBox.Size = new System.Drawing.Size(85, 28);
             this.groupNumber_comboBox.TabIndex = 36;
+            this.groupNumber_comboBox.SelectedIndexChanged += new System.EventHandler(this.groupNumber_comboBox_SelectedIndexChanged_1);
             // 
             // registrFormDuet
             // 
@@ -1085,6 +1086,8 @@
             this.Resize += new System.EventHandler(this.registrFormDuet_Resize);
             this.CommonProperties_groupBox.ResumeLayout(false);
             this.CommonProperties_groupBox.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.DuetTrainer_groupBox.ResumeLayout(false);
             this.DuetTrainer_groupBox.PerformLayout();
             this.OldTrainer_groupBox.ResumeLayout(false);
@@ -1093,8 +1096,6 @@
             this.FirstSportsman_groupBox.PerformLayout();
             this.SecondSportsman_groupBox.ResumeLayout(false);
             this.SecondSportsman_groupBox.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.Group_n_Number_groupBox.ResumeLayout(false);
             this.Group_n_Number_groupBox.PerformLayout();
             this.ResumeLayout(false);

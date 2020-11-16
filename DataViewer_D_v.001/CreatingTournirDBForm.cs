@@ -77,7 +77,7 @@ namespace DataViewer_D_v._001
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Групп
-                    com = new OleDbCommand("CREATE TABLE groups(Номер_Группы COUNTER, Название_Турнира CHAR(50), Время CHAR(5), Категория CHAR(50), Категории CHAR(50), Танцы CHAR(50), CONSTRAINT groups_pk PRIMARY KEY (Номер_Группы), CONSTRAINT fk_groups FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
+                    com = new OleDbCommand("CREATE TABLE groups(Номер_Группы COUNTER, Название_Турнира CHAR(50), Время CHAR(5), Категория CHAR(50), Категории CHAR(50), Танцы CHAR(50), Судьи CHAR(50), CONSTRAINT groups_pk PRIMARY KEY (Номер_Группы), CONSTRAINT fk_groups FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
                     com.ExecuteNonQuery();
 
                     //Создание Таблицы Категорий

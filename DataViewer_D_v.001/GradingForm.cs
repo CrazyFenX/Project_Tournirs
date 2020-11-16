@@ -150,7 +150,7 @@ namespace DataViewer_D_v._001
 
         private void toSumUpButton_Click(object sender, EventArgs e)
         {
-            int tempMark = 0;
+            double tempMark = 0;
             int counter = 0;
 
             for (int i = 0; i < tournir.groups[currentGroup].duetList.Count; i++)

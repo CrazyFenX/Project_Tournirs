@@ -9,7 +9,7 @@ namespace DataViewer_D_v._001
 {
     public class Duet
     {
-        public int mark = 0;
+        public double mark = 0;
         public Sportsman sportsman1 = new Sportsman();
         public Sportsman sportsman2 = new Sportsman();
 
@@ -48,7 +48,7 @@ namespace DataViewer_D_v._001
             this.number = Num;
             this.takeFromSNP(SNP1, 1);
             this.groupNumber = GroupNum;
-            this.type = "Соло";
+            this.type = "Солист";
         }
 
         public Duet(int Num, int GroupNum, string SNP1, string SNP2)

@@ -423,7 +423,16 @@ namespace DataViewer_D_v._001
             {
                 tournir = SecretaryController.TakeTournir(folderName);
                 for (int i = 0; i < tournir.groups.Count; i++)
+                {
                     groupNumber_comboBox.Items.Add(tournir.groups[i].number);
+                    MessageBox.Show("Категорий в группе " + (i + 1).ToString() + " " + tournir.groups[i].number.ToString());
+                    for (int j = 0; j < tournir.groups[i].CategoryList.Count; j++)
+                        if (!GroupAgeCategoryList.Contains(tournir.groups[i].CategoryList[j]))
+                        {
+                            MessageBox.Show(tournir.groups[i].CategoryList[j]);
+                            GroupAgeCategoryList.Add(tournir.groups[i].CategoryList[j]);
+                        }
+                }
             }
             catch (Exception ex)
             {
@@ -445,7 +454,7 @@ namespace DataViewer_D_v._001
 
                     GroupAgeCategoryList.Clear();
                     string retstr = "";
-                    MessageBox.Show(tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList.Count.ToString());
+                    //MessageBox.Show(tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList.Count.ToString());
                     for (int i = 0; i < tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList.Count; i++)
                     {
                         GroupAgeCategoryList.Add(tournir.groups[groupNumber_comboBox.SelectedIndex].CategoryList[i].Replace(" ", string.Empty));

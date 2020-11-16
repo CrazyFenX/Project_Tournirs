@@ -212,11 +212,11 @@ namespace DataViewer_D_v._001
 
             if (Path_textBox.Text != "")
             {
-                //Text = Convert.ToString((char)(65 + i)),
                 SecretaryController.insertInJudges(judge, Path_textBox.Text);
-                judge.Number = (ushort)(SecretaryController.TakeMax("judges", "Номер", Path_textBox.Text));
+                judge.Number = (ushort)(SecretaryController.TakeMax("Номер", "judges", Path_textBox.Text));
                 judge.judgeChar = (char)(64 + judge.Number);
                 tournir.judges.Add(judge);
+                MessageBox.Show("Новый судья: \n" + judge.Surname + "\n" + judge.Name + "\n" + judge.Patronymic + "\n" + judge.JudgeClass + "\n" + judge.Number + " " + judge.judgeChar + "\n" + "Успешно зарегистрирован!");
             }
             else
                 MessageBox.Show("Необходимо выбрать базу Турнира!");
@@ -272,16 +272,16 @@ namespace DataViewer_D_v._001
                     {
                         group_new.DancesList.Add(item.Text);
                         str += item.Text;
-                        MessageBox.Show(str);
                     }
+                //MessageBox.Show(str);
 
                 foreach (CheckBox item in CategoriesList)
                     if (item.Checked)
                     {
                         group_new.CategoryList.Add(item.Text);
                         str += item.Text;
-                        MessageBox.Show(str);
                     }
+                MessageBox.Show(str);
 
                 group_new.tournir_name = tournir.name;
                 group_new.name = categoryNameTextBox.Text;
@@ -303,7 +303,6 @@ namespace DataViewer_D_v._001
                         string testStr = "";
                         for (int i = 0; i < CategoriesList.Length; i++)
                         {
-                            testStr = "";
                             if (CategoriesList[i].Checked == true)
                             {
                                 switch (i)
@@ -618,78 +617,89 @@ namespace DataViewer_D_v._001
 
         private void judgeChessBbutton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                int N = tournir.judges.Count;
-                int M = tournir.groups.Count;
-                CheckBox[] tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
-
-                CheckBox checkBoxOfJudge = new CheckBox();
-                judgeChessPanel.Controls.Clear();
-
-                judgeChessCheckList = new List<CheckBox[]>();
-
-                judgeChessPanel.Visible = true;
-                int height = 45;
-
-                ToolTip t = new ToolTip();
-
-                Label new_label = new Label();
-
-                for (int i = 0; i < this.tournir.judges.Count; i++)
-                {
-                    judgeChessPanel.Controls.Add(new_label = new Label()
-                    {
-                        Text = tournir.judges[i].judgeChar.ToString(),
-                        Location = new Point(105 + 60 * i, 15),
-                        Size = new Size(30, 25),
-                        Font = new Font("", 12)
-                    });
-                    t.SetToolTip(new_label, tournir.judges[i].ToNSP());
-                }
-
-                foreach (GroupClass groupItem in tournir.groups)
-                {
-                    tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
-                    judgeChessPanel.Controls.Add(new_label = new Label()
-                    {
-                        Text = "Группа" + Convert.ToString(groupItem.number),
-                        Location = new Point(10, height),
-                        Size = new Size(90, 25),
-                        Font = new Font("", 12)
-                    });
-                    t.SetToolTip(new_label, groupItem.name);
-
-                    string retstr = "Группа " + groupItem.number.ToString() + "\n";
-
-                    int j = 0;
-                    for (int i = 0; i < this.tournir.judges.Count; i++)
-                    {
-                        judgeChessPanel.Controls.Add(checkBoxOfJudge = new CheckBox()
+            if (Path_textBox.Text != "")
+                if (tournir.groups.Count != 0)
+                    if (tournir.judges.Count != 0)
+                        try
                         {
-                            Location = new Point(105 + 60 * i, height),
-                            Size = new Size(20, 20),
-                            Font = new Font("", 12)
-                        });
+                            int N = tournir.judges.Count;
+                            int M = tournir.groups.Count;
+                            CheckBox[] tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
 
-                        checkBoxOfJudge.BringToFront();
-                        tempJudgeChessCheckList[i] = checkBoxOfJudge;
-                        retstr += groupItem.number.ToString() + " " + i.ToString() +  " " + tempJudgeChessCheckList[i].ToString(); 
-                        j++;
-                    }
-                    MessageBox.Show(retstr);
-                    judgeChessCheckList.Add(tempJudgeChessCheckList);
-                    height += 30;
-                }
+                            CheckBox checkBoxOfJudge = new CheckBox();
+                            judgeChessPanel.Controls.Clear();
 
-                judgeAllowButton.Visible = true;
-                judgeChessPanel.Visible = true;
-                judgeChessButton.Visible = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                            judgeChessCheckList = new List<CheckBox[]>();
+
+                            judgeChessPanel.Visible = true;
+                            judgeChessPanel.BringToFront();
+
+                            int height = 45;
+
+                            ToolTip t = new ToolTip();
+
+                            Label new_label = new Label();
+
+                            for (int i = 0; i < this.tournir.judges.Count; i++)
+                            {
+                                judgeChessPanel.Controls.Add(new_label = new Label()
+                                {
+                                    Text = tournir.judges[i].judgeChar.ToString(),
+                                    Location = new Point(105 + 60 * i, 15),
+                                    Size = new Size(30, 25),
+                                    Font = new Font("", 12)
+                                });
+                                t.SetToolTip(new_label, tournir.judges[i].ToNSP());
+                            }
+
+                            foreach (GroupClass groupItem in tournir.groups)
+                            {
+                                tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
+                                judgeChessPanel.Controls.Add(new_label = new Label()
+                                {
+                                    Text = "Группа" + Convert.ToString(groupItem.number),
+                                    Location = new Point(10, height),
+                                    Size = new Size(90, 25),
+                                    Font = new Font("", 12)
+                                });
+                                t.SetToolTip(new_label, groupItem.name);
+
+                                string retstr = "Группа " + groupItem.number.ToString() + "\n";
+
+                                int j = 0;
+                                for (int i = 0; i < this.tournir.judges.Count; i++)
+                                {
+                                    judgeChessPanel.Controls.Add(checkBoxOfJudge = new CheckBox()
+                                    {
+                                        Location = new Point(105 + 60 * i, height),
+                                        Size = new Size(20, 20),
+                                        Font = new Font("", 12)
+                                    });
+
+                                    checkBoxOfJudge.BringToFront();
+                                    tempJudgeChessCheckList[i] = checkBoxOfJudge;
+                                    //retstr += groupItem.number.ToString() + " " + i.ToString() + " " + tempJudgeChessCheckList[i].ToString();
+                                    j++;
+                                }
+                                //MessageBox.Show(retstr);
+                                judgeChessCheckList.Add(tempJudgeChessCheckList);
+                                height += 30;
+                            }
+
+                            judgeAllowButton.Visible = true;
+                            judgeChessPanel.Visible = true;
+                            judgeChessButton.Visible = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    else
+                        MessageBox.Show("Не зарегистрировано ниодного судьи!");
+                else
+                    MessageBox.Show("Не зарегистрированно ниодной группы!");
+            else
+                MessageBox.Show("База турнира не выбрана!");
         }
 
         private void judgeAllowButton_Click(object sender, EventArgs e)
@@ -702,27 +712,27 @@ namespace DataViewer_D_v._001
                 for (int i = 0; i < tournir.groups.Count; i++)
                 {
                     OleDbCommand command = new OleDbCommand();
-                    command = new OleDbCommand("", cn);
-                    command.CommandText = "UPDATE groups SET Судьи = '' WHERE Номер_Группы = @id";
-                    ////command.Parameters.AddWithValue("judge", "");
-                    command.Parameters.AddWithValue("id", i + 1);
-                    command.ExecuteNonQuery();
-                    tournir.groups[i].JudgeList.Count();
-                    ////retstr += "Группа " + tournir.groups[i].number.ToString();
+                    //command = new OleDbCommand("", cn);
+                    //command.CommandText = "SELECT Судьи FROM groups WHERE Номер_Группы = @id";
+                    //command.Parameters.AddWithValue("id", i + 1);
+                    //string existJudgeList = command.ExecuteScalar().ToString().Replace(" ", "");
+                    string existJudgeList = "";
+
+                    tournir.groups[i].JudgeList.Clear();
 
                     for (int j = 0; j < tournir.judges.Count; j++)
-                    {
                         if (judgeChessCheckList[i][j].Checked)
                         {
                             tournir.groups[i].JudgeList.Add(tournir.judges[j]);
-                            
-                            command = new OleDbCommand("", cn);
-                            command.CommandText = "UPDATE groups SET Судьи = @judge WHERE Номер_Группы = @id";
-                            command.Parameters.AddWithValue("judge", (j + 1) + ";");
-                            command.Parameters.AddWithValue("id", i + 1);
-                            command.ExecuteNonQuery();
+                            existJudgeList += (j + 1).ToString() + ";";
                         }
-                    }
+                    MessageBox.Show(existJudgeList);
+
+                    command = new OleDbCommand("", cn);
+                    command.CommandText = "UPDATE groups SET Судьи = @judge WHERE Номер_Группы = @id";
+                    command.Parameters.AddWithValue("judge", existJudgeList);
+                    command.Parameters.AddWithValue("id", i + 1);
+                    command.ExecuteNonQuery();
                 }
                 judgeAllowButton.Visible = false;
                 judgeChessPanel.Visible = false;

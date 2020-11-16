@@ -404,7 +404,7 @@ namespace DataViewer_D_v._001
             catch (Exception ex)
             {
                 //MessageBox.Show("Проблема при определении возраста спорсмена!\n" + ex.Message);
-                //MessageBox.Show("Возраст спортсмена не подходит ни одной категорий выбранной группы!\n" + ex.Message);
+                MessageBox.Show("Возраст спортсмена не подходит ни одной категорий выбранной группы!\n" + ex.Message);
                 return "0";
             }
         }

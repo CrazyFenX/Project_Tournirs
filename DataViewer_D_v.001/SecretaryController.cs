@@ -52,10 +52,9 @@ namespace DataViewer_D_v._001
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO participants(Номер, Номер_Книжки, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@Number, @BookNumber,@Surname,@Name,@Patronymic,@AgeCategory,@GroupNumber)";
+                command.CommandText = "INSERT INTO participants(Номер, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@Number, @Surname, @Name, @Patronymic, @AgeCategory, @GroupNumber)";
 
                 command.Parameters.AddWithValue("Number", sportsman.NumberInTournir);
-                command.Parameters.AddWithValue("BookNumber", sportsman.BookNumber);
                 command.Parameters.AddWithValue("Surname", sportsman.Surname);
                 command.Parameters.AddWithValue("Name", sportsman.Name);
                 command.Parameters.AddWithValue("Patronymic", sportsman.Patronymic);
@@ -123,7 +122,7 @@ namespace DataViewer_D_v._001
                 command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, ФИО1, Тип)" + "VALUES (@Number, @GroupNumber, @SNP, @Type)";
                 command.Parameters.AddWithValue("Number", number);
                 command.Parameters.AddWithValue("GroupNumber", groupNumber);
-                command.Parameters.AddWithValue("SNP", sportsman.Surname + sportsman.Name + sportsman.Patronymic);
+                command.Parameters.AddWithValue("SNP", sportsman.Surname + ";" + sportsman.Name + ";" + sportsman.Patronymic + ";");
                 command.Parameters.AddWithValue("Type", "Соло");
 
                 MessageBox.Show($"Новый Солист:\n{sportsman.BookNumber}\nГруппа: {groupNumber}");
@@ -137,7 +136,7 @@ namespace DataViewer_D_v._001
             myConnection.Close();
         }
 
-        public static void insertParticipantsInDuet(int number, Sportsman sportsman1, Sportsman sportsman2, int groupNumber, int setNumber, string path)
+        public static void insertParticipantsInDuet(int number, Sportsman sportsman1, Sportsman sportsman2, int groupNumber, string path)
         {
             try
             {
@@ -146,16 +145,16 @@ namespace DataViewer_D_v._001
                 myConnection.Open();
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
-                if (setNumber != -1)
+                if (groupNumber != -1)
                 {
-                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Захода, ФИО1, ФИО2, Тип)" + "VALUES (@Number, @GroupNumber, @SetNumber, @SNP1, @SNP2, @Type)";
+                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, ФИО1, ФИО2, Тип)" + "VALUES (@Number, @GroupNumber, @SNP1, @SNP2, @Type)";
                     //command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber1, @BookNumber2, @Type)";
 
                     command.Parameters.AddWithValue("Number", number);
                     command.Parameters.AddWithValue("GroupNumber", groupNumber);
-                    command.Parameters.AddWithValue("SetNumber", setNumber);
-                    command.Parameters.AddWithValue("@SNP1", sportsman1.Surname + sportsman1.Name + sportsman1.Patronymic);
-                    command.Parameters.AddWithValue("@SNP2", sportsman2.Surname + sportsman2.Name + sportsman2.Patronymic);
+                    //command.Parameters.AddWithValue("SetNumber", setNumber);
+                    command.Parameters.AddWithValue("@SNP1", sportsman1.Surname + ";" + sportsman1.Name + ";" + sportsman1.Patronymic + ";");
+                    command.Parameters.AddWithValue("@SNP2", sportsman2.Surname + ";" + sportsman2.Name + ";" + sportsman2.Patronymic + ";");
                     command.Parameters.AddWithValue("Type", "Пара");
                 }
                 else 
@@ -204,15 +203,14 @@ namespace DataViewer_D_v._001
             myConnection.Close();
         }
 
-
-        public static void insertTrainer(Trainer trainer, int bookNumber)
+        public static void insertTrainer(Trainer trainer, int Number)
             {
             OleDbCommand commandTrain = new OleDbCommand("", myConnection);
 
-            commandTrain.CommandText = "INSERT INTO Trainers(НомерКнижки, Код,Фамилия, Имя, Отчество)" + "VALUES (@bookNumber, @Pas,@Surname,@Name,@Patronymic)";
+            commandTrain.CommandText = "INSERT INTO Trainers(Номер, Код,Фамилия, Имя, Отчество)" + "VALUES (@Number, @Pas,@Surname,@Name,@Patronymic)";
 
             trainer.pasItendificate();
-            commandTrain.Parameters.AddWithValue("booknumber", bookNumber);
+            commandTrain.Parameters.AddWithValue("Number", Number);
             commandTrain.Parameters.AddWithValue("Pas", trainer.Pas);
             commandTrain.Parameters.AddWithValue("Surname", trainer.Surname);
             commandTrain.Parameters.AddWithValue("Name", trainer.Name);
@@ -416,7 +414,7 @@ namespace DataViewer_D_v._001
                 RetTournir.secretary = command6.ExecuteScalar().ToString();
                 RetTournir.registrator = command7.ExecuteScalar().ToString();
 
-                MessageBox.Show($"Турнир: {RetTournir.name}\nДата: {RetTournir.date}\nВремя: {RetTournir.time}\nМесто: {RetTournir.place}\nОрганизация: {RetTournir.organisation}\nСекретарь: {RetTournir.secretary}\nРегистратор: {RetTournir.registrator}");
+                //MessageBox.Show($"Турнир: {RetTournir.name}\nДата: {RetTournir.date}\nВремя: {RetTournir.time}\nМесто: {RetTournir.place}\nОрганизация: {RetTournir.organisation}\nСекретарь: {RetTournir.secretary}\nРегистратор: {RetTournir.registrator}");
                 //myConnection.Close();
             }
             catch (Exception ex)
@@ -449,11 +447,11 @@ namespace DataViewer_D_v._001
                     RetTournir.groups[i - 1].CategoryList = TakeCategory(RetTournir.groups[i - 1], cn);
                     RetTournir.groups[i - 1].DancesList = TakeDances(RetTournir.groups[i - 1], cn);
                     RetTournir.groups[i - 1].JudgeList = TakeJudges(RetTournir.groups[i - 1], cn);
-                    MessageBox.Show(RetTournir.groups[i - 1].show());
+                    //MessageBox.Show(RetTournir.groups[i - 1].show());
 
-                    MessageBox.Show("Вытягивание списка пар");
+                    //MessageBox.Show("Вытягивание списка пар");
                     RetTournir.groups[i - 1].duetList = TakeDuets(RetTournir.groups[i - 1], cn);
-                    MessageBox.Show(RetTournir.groups[i - 1].show());
+                    //MessageBox.Show(RetTournir.groups[i - 1].show());
                     i++;
                 }
             }
@@ -516,7 +514,7 @@ namespace DataViewer_D_v._001
                 }
                 else
                 {
-                    MessageBox.Show($"Не зарегистрировано ниодного судьи!");
+                    //MessageBox.Show($"Не зарегистрировано ниодного судьи!");
                 }
             }
             catch (Exception ex)
@@ -677,7 +675,7 @@ namespace DataViewer_D_v._001
                 command.Parameters.AddWithValue("id", input_group.number);
 
                 max = Convert.ToInt32(command.ExecuteScalar());
-                MessageBox.Show(max.ToString());
+                //MessageBox.Show(max.ToString());
 
                 for (int i = 0; i < max; i++)
                 {
@@ -731,7 +729,7 @@ namespace DataViewer_D_v._001
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Упс, что-то пошло не так при определении списка заходов\nError: " + ex.Message);
+                MessageBox.Show("Упс, что-то пошло не так при определении списка пар\nError: " + ex.Message);
             }
 
             myConnection.Close();
@@ -757,7 +755,7 @@ namespace DataViewer_D_v._001
 
                 judgesString = command.ExecuteScalar().ToString().Replace(" ", "");
                 judgesStringList = judgesString.Split(new char[] { ';' });
-                MessageBox.Show(judgesString);
+                //MessageBox.Show(judgesString);
 
                 judgeList = new List<Judge>();
 
@@ -766,7 +764,7 @@ namespace DataViewer_D_v._001
                     new_judge = new Judge();
                     int number = Convert.ToInt32(judgesStringList[i]);
 
-                    MessageBox.Show(number.ToString());
+                    //MessageBox.Show(number.ToString());
 
                     OleDbCommand command1 = new OleDbCommand("", myConnection);
 
@@ -791,14 +789,14 @@ namespace DataViewer_D_v._001
                     new_judge.Number = (ushort)number;
                     new_judge.judgeChar = (char)(64 + number);
 
-                    MessageBox.Show(new_judge.ToString());
+                    //MessageBox.Show(new_judge.ToString());
 
                     judgeList.Add(new_judge);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Упс, что-то пошло не так при определении списка заходов\nError: " + ex.Message);
+                MessageBox.Show("Упс, что-то пошло не так при определении списка судей\nError: " + ex.Message);
             }
 
             myConnection.Close();

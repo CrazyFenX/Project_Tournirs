@@ -32,6 +32,10 @@
             this.Path_textBox = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.backGradingButton = new System.Windows.Forms.Button();
+            this.sportSystemButton = new System.Windows.Forms.Button();
+            this.massSportButton = new System.Windows.Forms.Button();
+            this.gradingButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.setCountLabel = new System.Windows.Forms.Label();
             this.duetCountTextBox = new System.Windows.Forms.TextBox();
@@ -47,10 +51,6 @@
             this.reglament_Button = new System.Windows.Forms.Button();
             this.printDiplomsButton = new System.Windows.Forms.Button();
             this.tournirPreparingButton = new System.Windows.Forms.Button();
-            this.gradingButton = new System.Windows.Forms.Button();
-            this.sportSystemButton = new System.Windows.Forms.Button();
-            this.massSportButton = new System.Windows.Forms.Button();
-            this.backGradingButton = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -110,6 +110,65 @@
             this.groupBox3.Size = new System.Drawing.Size(623, 464);
             this.groupBox3.TabIndex = 41;
             this.groupBox3.TabStop = false;
+            // 
+            // backGradingButton
+            // 
+            this.backGradingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.backGradingButton.BackColor = System.Drawing.Color.Tomato;
+            this.backGradingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.backGradingButton.ForeColor = System.Drawing.Color.White;
+            this.backGradingButton.Location = new System.Drawing.Point(371, 222);
+            this.backGradingButton.Margin = new System.Windows.Forms.Padding(4);
+            this.backGradingButton.Name = "backGradingButton";
+            this.backGradingButton.Size = new System.Drawing.Size(233, 36);
+            this.backGradingButton.TabIndex = 52;
+            this.backGradingButton.Text = "назад";
+            this.backGradingButton.UseVisualStyleBackColor = false;
+            this.backGradingButton.Click += new System.EventHandler(this.backGradingButton_Click);
+            // 
+            // sportSystemButton
+            // 
+            this.sportSystemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.sportSystemButton.BackColor = System.Drawing.Color.Tomato;
+            this.sportSystemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.sportSystemButton.ForeColor = System.Drawing.Color.White;
+            this.sportSystemButton.Location = new System.Drawing.Point(479, 139);
+            this.sportSystemButton.Margin = new System.Windows.Forms.Padding(4);
+            this.sportSystemButton.Name = "sportSystemButton";
+            this.sportSystemButton.Size = new System.Drawing.Size(125, 84);
+            this.sportSystemButton.TabIndex = 47;
+            this.sportSystemButton.Text = "спортивная система";
+            this.sportSystemButton.UseVisualStyleBackColor = false;
+            // 
+            // massSportButton
+            // 
+            this.massSportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.massSportButton.BackColor = System.Drawing.Color.Tomato;
+            this.massSportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.massSportButton.ForeColor = System.Drawing.Color.White;
+            this.massSportButton.Location = new System.Drawing.Point(371, 139);
+            this.massSportButton.Margin = new System.Windows.Forms.Padding(4);
+            this.massSportButton.Name = "massSportButton";
+            this.massSportButton.Size = new System.Drawing.Size(109, 84);
+            this.massSportButton.TabIndex = 46;
+            this.massSportButton.Text = "массовый спорт";
+            this.massSportButton.UseVisualStyleBackColor = false;
+            this.massSportButton.Click += new System.EventHandler(this.massSportButton_Click);
+            // 
+            // gradingButton
+            // 
+            this.gradingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gradingButton.BackColor = System.Drawing.Color.Tomato;
+            this.gradingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.gradingButton.ForeColor = System.Drawing.Color.White;
+            this.gradingButton.Location = new System.Drawing.Point(371, 139);
+            this.gradingButton.Margin = new System.Windows.Forms.Padding(4);
+            this.gradingButton.Name = "gradingButton";
+            this.gradingButton.Size = new System.Drawing.Size(233, 119);
+            this.gradingButton.TabIndex = 51;
+            this.gradingButton.Text = "Выставление оценок";
+            this.gradingButton.UseVisualStyleBackColor = false;
+            this.gradingButton.Click += new System.EventHandler(this.gradingButton_Click);
             // 
             // label1
             // 
@@ -323,65 +382,6 @@
             this.tournirPreparingButton.Text = "Подготовка к турниру";
             this.tournirPreparingButton.UseVisualStyleBackColor = false;
             this.tournirPreparingButton.Click += new System.EventHandler(this.tournirPreparingButton_Click);
-            // 
-            // gradingButton
-            // 
-            this.gradingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gradingButton.BackColor = System.Drawing.Color.Tomato;
-            this.gradingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.gradingButton.ForeColor = System.Drawing.Color.White;
-            this.gradingButton.Location = new System.Drawing.Point(371, 139);
-            this.gradingButton.Margin = new System.Windows.Forms.Padding(4);
-            this.gradingButton.Name = "gradingButton";
-            this.gradingButton.Size = new System.Drawing.Size(233, 119);
-            this.gradingButton.TabIndex = 51;
-            this.gradingButton.Text = "Выставление оценок";
-            this.gradingButton.UseVisualStyleBackColor = false;
-            this.gradingButton.Click += new System.EventHandler(this.gradingButton_Click);
-            // 
-            // sportSystemButton
-            // 
-            this.sportSystemButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.sportSystemButton.BackColor = System.Drawing.Color.Tomato;
-            this.sportSystemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.sportSystemButton.ForeColor = System.Drawing.Color.White;
-            this.sportSystemButton.Location = new System.Drawing.Point(479, 139);
-            this.sportSystemButton.Margin = new System.Windows.Forms.Padding(4);
-            this.sportSystemButton.Name = "sportSystemButton";
-            this.sportSystemButton.Size = new System.Drawing.Size(125, 84);
-            this.sportSystemButton.TabIndex = 47;
-            this.sportSystemButton.Text = "спортивная система";
-            this.sportSystemButton.UseVisualStyleBackColor = false;
-            // 
-            // massSportButton
-            // 
-            this.massSportButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.massSportButton.BackColor = System.Drawing.Color.Tomato;
-            this.massSportButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.massSportButton.ForeColor = System.Drawing.Color.White;
-            this.massSportButton.Location = new System.Drawing.Point(371, 139);
-            this.massSportButton.Margin = new System.Windows.Forms.Padding(4);
-            this.massSportButton.Name = "massSportButton";
-            this.massSportButton.Size = new System.Drawing.Size(109, 84);
-            this.massSportButton.TabIndex = 46;
-            this.massSportButton.Text = "массовый спорт";
-            this.massSportButton.UseVisualStyleBackColor = false;
-            this.massSportButton.Click += new System.EventHandler(this.massSportButton_Click);
-            // 
-            // backGradingButton
-            // 
-            this.backGradingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.backGradingButton.BackColor = System.Drawing.Color.Tomato;
-            this.backGradingButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.backGradingButton.ForeColor = System.Drawing.Color.White;
-            this.backGradingButton.Location = new System.Drawing.Point(371, 222);
-            this.backGradingButton.Margin = new System.Windows.Forms.Padding(4);
-            this.backGradingButton.Name = "backGradingButton";
-            this.backGradingButton.Size = new System.Drawing.Size(233, 36);
-            this.backGradingButton.TabIndex = 52;
-            this.backGradingButton.Text = "назад";
-            this.backGradingButton.UseVisualStyleBackColor = false;
-            this.backGradingButton.Click += new System.EventHandler(this.backGradingButton_Click);
             // 
             // secretaryMainForm
             // 

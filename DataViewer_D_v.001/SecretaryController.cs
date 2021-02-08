@@ -4,8 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using System.Resources;
 using System.CodeDom;
 using System.Collections;
+
+//using iTextSharp;
+//using iTextSharp.text;
+//using System.IO;
+//using iTextSharp.text.pdf;
+//using System.Drawing;
 
 namespace DataViewer_D_v._001
 {
@@ -28,10 +35,12 @@ namespace DataViewer_D_v._001
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO judges(ФИО, Категория_Судейства)" + "VALUES (@SNP, @Category)";
+                command.CommandText = "INSERT INTO judges(ФИО, Категория_Судейства, Должность, Город)" + "VALUES (@SNP, @Category, @Pos, @City)";
 
-                command.Parameters.AddWithValue("SNP", judje.Surname + " " + judje.Name + " " + judje.Patronymic);
+                command.Parameters.AddWithValue("SNP", judje.Surname + ";" + judje.Name + ";" + judje.Patronymic + ";");
                 command.Parameters.AddWithValue("Category", judje.JudgeClass);
+                command.Parameters.AddWithValue("Pos", judje.position);
+                command.Parameters.AddWithValue("City", judje.City);
 
                 command.ExecuteNonQuery();
             }
@@ -46,22 +55,51 @@ namespace DataViewer_D_v._001
         {
             //try
             //{
-                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
-                myConnection = new OleDbConnection(connectString);
-                myConnection.Open();
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
 
-                OleDbCommand command = new OleDbCommand("", myConnection);
+            OleDbCommand command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO participants(Номер, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@Number, @Surname, @Name, @Patronymic, @AgeCategory, @GroupNumber)";
+            command.CommandText = "INSERT INTO participants(Номер, Номер_Пары, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@Number, @DuetNumber, @Surname, @Name, @Patronymic, @AgeCategory, @GroupNumber)";
 
-                command.Parameters.AddWithValue("Number", sportsman.NumberInTournir);
-                command.Parameters.AddWithValue("Surname", sportsman.Surname);
-                command.Parameters.AddWithValue("Name", sportsman.Name);
-                command.Parameters.AddWithValue("Patronymic", sportsman.Patronymic);
-                command.Parameters.AddWithValue("AgeCategory",sportsman.AgeCategory);
-                command.Parameters.AddWithValue("GroupNumber", sportsman.GroupNumber);
+            command.Parameters.AddWithValue("Number", sportsman.NumberInTournir);
+            command.Parameters.AddWithValue("DuetNumber", sportsman.DuetNumber);
+            command.Parameters.AddWithValue("Surname", sportsman.Surname);
+            command.Parameters.AddWithValue("Name", sportsman.Name);
+            command.Parameters.AddWithValue("Patronymic", sportsman.Patronymic);
+            command.Parameters.AddWithValue("AgeCategory", sportsman.AgeCategory);
+            command.Parameters.AddWithValue("GroupNumber", sportsman.GroupNumber);
 
-                command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Упс, что-то пошло не так...\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            myConnection.Close();
+        }
+
+        public static void insertInParticipants(Sportsman sportsman1, Sportsman sportsman2, string path)
+        {
+            //try
+            //{
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+
+            OleDbCommand command = new OleDbCommand("", myConnection);
+
+            command.CommandText = "INSERT INTO participants(Номер, Фамилия, Имя, Отчество, Категория, Номер_Группы)" + "VALUES (@Number, @Surname, @Name, @Patronymic, @AgeCategory, @GroupNumber)";
+
+            command.Parameters.AddWithValue("Number", sportsman1.NumberInTournir);
+            command.Parameters.AddWithValue("Surname", sportsman1.Surname);
+            command.Parameters.AddWithValue("Name", sportsman1.Name);
+            command.Parameters.AddWithValue("Patronymic", sportsman1.Patronymic);
+            command.Parameters.AddWithValue("AgeCategory", sportsman1.AgeCategory);
+            command.Parameters.AddWithValue("GroupNumber", sportsman1.GroupNumber);
+
+            command.ExecuteNonQuery();
             //}
             //catch (Exception ex)
             //{
@@ -113,21 +151,22 @@ namespace DataViewer_D_v._001
         {
             //try
             //{
-                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
-                myConnection = new OleDbConnection(connectString);
-                myConnection.Open();
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
 
-                command = new OleDbCommand("", myConnection);
+            command = new OleDbCommand("", myConnection);
 
-                command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, ФИО1, Тип)" + "VALUES (@Number, @GroupNumber, @SNP, @Type)";
-                command.Parameters.AddWithValue("Number", number);
-                command.Parameters.AddWithValue("GroupNumber", groupNumber);
-                command.Parameters.AddWithValue("SNP", sportsman.Surname + ";" + sportsman.Name + ";" + sportsman.Patronymic + ";");
-                command.Parameters.AddWithValue("Type", "Соло");
+            command.CommandText = "INSERT INTO duets(Номер, Номер_В_Группе, Номер_Группы, ФИО1, Тип)" + "VALUES (@Number, @NumberInGroup, @GroupNumber, @SNP, @Type)";
+            command.Parameters.AddWithValue("Number", number);
+            command.Parameters.AddWithValue("NumberInGroup", sportsman.NumberInGroup);
+            command.Parameters.AddWithValue("GroupNumber", groupNumber);
+            command.Parameters.AddWithValue("SNP", sportsman.Surname + ";" + sportsman.Name + ";" + sportsman.Patronymic + ";");
+            command.Parameters.AddWithValue("Type", "Соло");
 
-                MessageBox.Show($"Новый Солист:\n{sportsman.BookNumber}\nГруппа: {groupNumber}");
+            MessageBox.Show($"Новый Солист:\n{sportsman.BookNumber}\nГруппа: {groupNumber}");
 
-                command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             //}
             //catch (Exception ex)
             //{
@@ -147,25 +186,27 @@ namespace DataViewer_D_v._001
                 OleDbCommand command = new OleDbCommand("", myConnection);
                 if (groupNumber != -1)
                 {
-                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, ФИО1, ФИО2, Тип)" + "VALUES (@Number, @GroupNumber, @SNP1, @SNP2, @Type)";
+                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_В_Группе, ФИО1, ФИО2, Тип)" + "VALUES (@Number, @GroupNumber, @NumberInGroup, @SNP1, @SNP2, @Type)";
                     //command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber1, @BookNumber2, @Type)";
 
                     command.Parameters.AddWithValue("Number", number);
+                    //command.Parameters.AddWithValue("DuetNumber", sportsman1.DuetNumber);
                     command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                    command.Parameters.AddWithValue("NumberInGroup", sportsman1.NumberInGroup);
                     //command.Parameters.AddWithValue("SetNumber", setNumber);
                     command.Parameters.AddWithValue("@SNP1", sportsman1.Surname + ";" + sportsman1.Name + ";" + sportsman1.Patronymic + ";");
                     command.Parameters.AddWithValue("@SNP2", sportsman2.Surname + ";" + sportsman2.Name + ";" + sportsman2.Patronymic + ";");
                     command.Parameters.AddWithValue("Type", "Пара");
                 }
-                else 
+                else
                 {
-                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber1, @BookNumber2, @Type)";
+                    //command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber1, @BookNumber2, @Type)";
 
-                    command.Parameters.AddWithValue("Number", number);
-                    command.Parameters.AddWithValue("GroupNumber", groupNumber);
-                    command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
-                    command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
-                    command.Parameters.AddWithValue("Type", "Пара");
+                    //command.Parameters.AddWithValue("Number", number);
+                    //command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                    //command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
+                    //command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
+                    //command.Parameters.AddWithValue("Type", "Пара");
                 }
                 command.ExecuteNonQuery();
             }
@@ -186,13 +227,13 @@ namespace DataViewer_D_v._001
 
                 OleDbCommand command = new OleDbCommand("", myConnection);
 
-                    command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber1, @BookNumber2, @Type)";
+                command.CommandText = "INSERT INTO duets(Номер, Номер_Группы, Номер_Книжки1, Номер_Книжки2, Тип)" + "VALUES (@Number, @GroupNumber, @BookNumber1, @BookNumber2, @Type)";
 
-                    command.Parameters.AddWithValue("Number", number);
-                    command.Parameters.AddWithValue("GroupNumber", groupNumber);
-                    command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
-                    command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
-                    command.Parameters.AddWithValue("Type", "Пара");
+                command.Parameters.AddWithValue("Number", number);
+                command.Parameters.AddWithValue("GroupNumber", groupNumber);
+                command.Parameters.AddWithValue("BookNumber1", sportsman1.BookNumber);
+                command.Parameters.AddWithValue("BookNumber2", sportsman2.BookNumber);
+                command.Parameters.AddWithValue("Type", "Пара");
 
                 command.ExecuteNonQuery();
             }
@@ -204,7 +245,7 @@ namespace DataViewer_D_v._001
         }
 
         public static void insertTrainer(Trainer trainer, int Number)
-            {
+        {
             OleDbCommand commandTrain = new OleDbCommand("", myConnection);
 
             commandTrain.CommandText = "INSERT INTO Trainers(Номер, Код,Фамилия, Имя, Отчество)" + "VALUES (@Number, @Pas,@Surname,@Name,@Patronymic)";
@@ -382,6 +423,7 @@ namespace DataViewer_D_v._001
             OleDbCommand command5 = new OleDbCommand("", myConnection);
             OleDbCommand command6 = new OleDbCommand("", myConnection);
             OleDbCommand command7 = new OleDbCommand("", myConnection);
+            OleDbCommand command8 = new OleDbCommand("", myConnection);
 
             command1.CommandText = "SELECT Название FROM tournir WHERE ID = @Num";
             command1.Parameters.AddWithValue("Num", Num);
@@ -404,6 +446,10 @@ namespace DataViewer_D_v._001
             command7.CommandText = "SELECT ФИО_Регистратора FROM tournir WHERE ID = @Num";
             command7.Parameters.AddWithValue("Num", Num);
 
+            command8.CommandText = "SELECT Порядок FROM tournir WHERE ID = @Num";
+            command8.Parameters.AddWithValue("Num", Num);
+
+            int i;
             try
             {
                 RetTournir.name = command1.ExecuteScalar().ToString();
@@ -413,7 +459,17 @@ namespace DataViewer_D_v._001
                 RetTournir.organisation = command5.ExecuteScalar().ToString();
                 RetTournir.secretary = command6.ExecuteScalar().ToString();
                 RetTournir.registrator = command7.ExecuteScalar().ToString();
-
+                string[] tmpOrder = command8.ExecuteScalar().ToString().Replace(" ", "").Split(new char[] { ';' });
+                
+                string retstr = "";
+                MessageBox.Show("Len: " + tmpOrder.Length.ToString() + " " + tmpOrder[1]);
+                RetTournir.groupsOrder = new ushort[tmpOrder.Length - 1];
+                for (i = 0; i < tmpOrder.Length - 1; i++)
+                {
+                    RetTournir.groupsOrder[i] = (ushort)Convert.ToInt32(tmpOrder[i]);
+                    retstr += RetTournir.groupsOrder[i].ToString() + " ";
+                }
+                MessageBox.Show("Len: " + tmpOrder.Length.ToString() + " " + retstr);
                 //MessageBox.Show($"Турнир: {RetTournir.name}\nДата: {RetTournir.date}\nВремя: {RetTournir.time}\nМесто: {RetTournir.place}\nОрганизация: {RetTournir.organisation}\nСекретарь: {RetTournir.secretary}\nРегистратор: {RetTournir.registrator}");
                 //myConnection.Close();
             }
@@ -424,7 +480,7 @@ namespace DataViewer_D_v._001
 
             try
             {
-                int i = 1;
+                i = 1;
                 int k = 0;
                 string name = "";
 
@@ -444,8 +500,22 @@ namespace DataViewer_D_v._001
                     name = Convert.ToString(command.ExecuteScalar());
                     RetTournir.groups.Add(new GroupClass(i, RetTournir.name, name));
 
-                    RetTournir.groups[i - 1].CategoryList = TakeCategory(RetTournir.groups[i - 1], cn);
-                    RetTournir.groups[i - 1].DancesList = TakeDances(RetTournir.groups[i - 1], cn);
+                    command = new OleDbCommand("", myConnection);
+                    command.CommandText = "SELECT Категории FROM groups WHERE Номер_Группы = @id";
+                    command.Parameters.AddWithValue("id", i);
+                    string categoriesStr = Convert.ToString(command.ExecuteScalar()).Replace(" ", "");
+                    foreach (string strItem in categoriesStr.Split(new char[] { ';' }))
+                        if (strItem != "") RetTournir.groups[i - 1].CategoryList.Add(strItem);
+
+                    command = new OleDbCommand("", myConnection);
+                    command.CommandText = "SELECT Танцы FROM groups WHERE Номер_Группы = @id";
+                    command.Parameters.AddWithValue("id", i);
+                    string dancesStr = Convert.ToString(command.ExecuteScalar()).Replace(" ", "");
+                    foreach (string strItem in dancesStr.Split(new char[] { ';' }))
+                        if (strItem != "") RetTournir.groups[i - 1].DancesList.Add(strItem);
+                    //RetTournir.groups[i - 1].CategoryList = TakeCategory(RetTournir.groups[i - 1], cn);
+                    //RetTournir.groups[i - 1].DancesList = TakeDances(RetTournir.groups[i - 1], cn);
+
                     RetTournir.groups[i - 1].JudgeList = TakeJudges(RetTournir.groups[i - 1], cn);
                     //MessageBox.Show(RetTournir.groups[i - 1].show());
 
@@ -465,7 +535,7 @@ namespace DataViewer_D_v._001
                 myConnection = new OleDbConnection(connectString);
                 myConnection.Open();
 
-                BitArray checkArray =  Controller.GapCounter("Номер", "judges", myConnection);
+                BitArray checkArray = Controller.GapCounter("Номер", "judges", myConnection);
 
                 int i1 = 0;
                 int counter = 0;
@@ -497,9 +567,19 @@ namespace DataViewer_D_v._001
                                 command1.Parameters.AddWithValue("id", i1 + 1);
                                 command2 = new OleDbCommand("SELECT Категория_Судейства FROM judges WHERE Номер = @id", myConnection); //JudjeClass
                                 command2.Parameters.AddWithValue("id", i1 + 1);
+                                command3 = new OleDbCommand("SELECT Должность FROM judges WHERE Номер = @id", myConnection); //JudjePos
+                                command3.Parameters.AddWithValue("id", i1 + 1);
+                                command4 = new OleDbCommand("SELECT Город FROM judges WHERE Номер = @id", myConnection);
+                                command4.Parameters.AddWithValue("id", i1 + 1);
 
-                                judge_new.ToJudge(command1.ExecuteScalar().ToString());
-                                judge_new.JudgeClass = command2.ExecuteScalar().ToString();
+                                judge_new.ToJudge(command1.ExecuteScalar().ToString().Replace(" ", ""));
+
+                                //MessageBox.Show(judge_new.Surname + "\n" + judge_new.Name + "\n" + judge_new.Patronymic);
+
+                                judge_new.JudgeClass = command2.ExecuteScalar().ToString().Replace(" ", "");
+                                judge_new.position = command3.ExecuteScalar().ToString().Replace(" ", "");
+                                judge_new.City = command4.ExecuteScalar().ToString().Replace(" ", "");
+
                                 judge_new.Number = (ushort)(i1 + 1);
                                 judge_new.judgeChar = (char)(64 + judge_new.Number);
                                 RetTournir.judges.Add(judge_new);
@@ -510,6 +590,26 @@ namespace DataViewer_D_v._001
                                 counter++;
                             }
                         i1++;
+                    }
+
+                    command1 = new OleDbCommand("SELECT COUNT(Номер) FROM positions", myConnection);
+                    int countOfPositions = Convert.ToInt32(command1.ExecuteScalar().ToString());
+                    for (int h = 0; h < countOfPositions; h++)
+                    {
+                        Judge judge_new = new Judge();
+
+                        command1 = new OleDbCommand("SELECT ФИО FROM positions WHERE Номер = @id", myConnection); //NSP
+                        command1.Parameters.AddWithValue("id", h + 1);
+                        command3 = new OleDbCommand("SELECT Должность FROM positions WHERE Номер = @id", myConnection); //JudjePos
+                        command3.Parameters.AddWithValue("id", h + 1);
+                        command4 = new OleDbCommand("SELECT Город FROM positions WHERE Номер = @id", myConnection); //JudjePos
+                        command4.Parameters.AddWithValue("id", h + 1);
+
+                        judge_new.ToJudge(command1.ExecuteScalar().ToString().Replace(" ", ""));
+                        judge_new.position = command3.ExecuteScalar().ToString().Replace(" ", "");
+                        judge_new.City = command4.ExecuteScalar().ToString().Replace(" ", "");
+
+                        RetTournir.positionsList.Add(judge_new);
                     }
                 }
                 else
@@ -523,9 +623,10 @@ namespace DataViewer_D_v._001
             } //заполнение судей
 
             myConnection.Close();
-            RetTournir.Show();
+            //RetTournir.Show();
+            RetTournir.info2();
 
-            return RetTournir; 
+            return RetTournir;
         }
 
         public static void insertSet(SetClass setInput, string path)
@@ -606,42 +707,42 @@ namespace DataViewer_D_v._001
                     foreach (bool item in checkArray)
                     {
                         if (i <= max)
-                        if (checkArray[i-1])
-                        {
-                            command = new OleDbCommand("", myConnection);
-                            command.CommandText = "SELECT Категория FROM categories WHERE Номер_Группы = @num";
-                            command.Parameters.AddWithValue("id", i);
-                            command.Parameters.AddWithValue("num", input_group.number);
-
-                            OleDbDataReader reader = command.ExecuteReader();
-
-                            while (reader.Read())
+                            if (checkArray[i - 1])
                             {
-                                //if (reader["Номер_Книжки2"].ToString() != "")
-                                //{
-                                //    Sportsman sportsman1 = new Sportsman();
-                                //    Sportsman sportsman2 = new Sportsman();
-                                //    outStr += " ";
-                                //    Num1 = (Convert.ToInt32(reader["Номер_Книжки1"]));
-                                //    Num2 = (Convert.ToInt32(reader["Номер_Книжки2"]));
+                                command = new OleDbCommand("", myConnection);
+                                command.CommandText = "SELECT Категория FROM categories WHERE Номер_Группы = @num";
+                                command.Parameters.AddWithValue("id", i);
+                                command.Parameters.AddWithValue("num", input_group.number);
 
-                                //    sportsman1 = Controller.SearchByBookNumberShort(Num1);
-                                //    sportsman1.BookNumber = Num1;
-                                //    sportsman1.GroupNumber = i + 1;
-                                //    sportsman2 = Controller.SearchByBookNumberShort(Num2);
-                                //    sportsman2.BookNumber = Num2;
-                                //    sportsman2.GroupNumber = i + 1;
-                                //    DuetList_New.Add(new Duet(Convert.ToInt32(reader["Номер"]) - 1, i, sportsman1, sportsman2));
+                                OleDbDataReader reader = command.ExecuteReader();
 
-                                //    outStr += DuetList_New[j1].ToString() + "\n";
-                                //    j1++;
-                                //}
+                                while (reader.Read())
+                                {
+                                    //if (reader["Номер_Книжки2"].ToString() != "")
+                                    //{
+                                    //    Sportsman sportsman1 = new Sportsman();
+                                    //    Sportsman sportsman2 = new Sportsman();
+                                    //    outStr += " ";
+                                    //    Num1 = (Convert.ToInt32(reader["Номер_Книжки1"]));
+                                    //    Num2 = (Convert.ToInt32(reader["Номер_Книжки2"]));
+
+                                    //    sportsman1 = Controller.SearchByBookNumberShort(Num1);
+                                    //    sportsman1.BookNumber = Num1;
+                                    //    sportsman1.GroupNumber = i + 1;
+                                    //    sportsman2 = Controller.SearchByBookNumberShort(Num2);
+                                    //    sportsman2.BookNumber = Num2;
+                                    //    sportsman2.GroupNumber = i + 1;
+                                    //    DuetList_New.Add(new Duet(Convert.ToInt32(reader["Номер"]) - 1, i, sportsman1, sportsman2));
+
+                                    //    outStr += DuetList_New[j1].ToString() + "\n";
+                                    //    j1++;
+                                    //}
+                                }
                             }
-                        }
-                        else
-                        {
-                            counter++;
-                        }
+                            else
+                            {
+                                counter++;
+                            }
                         i++;
                     }
                 }
@@ -666,12 +767,12 @@ namespace DataViewer_D_v._001
             myConnection.Open();
 
             List<Duet> DuetList_New = new List<Duet>();
-            try
-            {
+            //try
+            //{
                 int max = 0;
 
                 command = new OleDbCommand("", myConnection);
-                command.CommandText = "SELECT Count(Номер) FROM duets WHERE Номер_Группы = @id";
+                command.CommandText = "SELECT Count(Номер_В_Группе) FROM duets WHERE Номер_Группы = @id";
                 command.Parameters.AddWithValue("id", input_group.number);
 
                 max = Convert.ToInt32(command.ExecuteScalar());
@@ -683,54 +784,114 @@ namespace DataViewer_D_v._001
                     string SNP1;
                     string SNP2;
                     int number;
+                    double mark;
                     Duet set_new = new Duet();
 
                     OleDbCommand command1 = new OleDbCommand("", myConnection);
                     OleDbCommand command2 = new OleDbCommand("", myConnection);
                     OleDbCommand command3 = new OleDbCommand("", myConnection);
                     OleDbCommand command4 = new OleDbCommand("", myConnection);
+                    OleDbCommand command5 = new OleDbCommand("", myConnection);
 
-                    command1.CommandText = "SELECT Номер FROM duets WHERE Номер_Группы = @num AND Номер = @id";
+                    command1.CommandText = "SELECT Номер FROM duets WHERE Номер_Группы = @num AND Номер_В_Группе = @id";
                     command1.Parameters.AddWithValue("num", input_group.number);
                     command1.Parameters.AddWithValue("id", i + 1);
                     number = Convert.ToInt32(command1.ExecuteScalar());
                     //MessageBox.Show(number.ToString());
 
                     command2 = new OleDbCommand("", myConnection);
-                    command2.CommandText = "SELECT Тип FROM duets WHERE Номер_Группы = @num AND Номер = @id";
+                    command2.CommandText = "SELECT Тип FROM duets WHERE Номер_Группы = @num AND Номер_В_Группе = @id";
                     command2.Parameters.AddWithValue("num", input_group.number);
                     command2.Parameters.AddWithValue("id", i + 1);
                     Type = command2.ExecuteScalar().ToString().Replace(" ", "");
                     //MessageBox.Show(Type);
 
+                    command2 = new OleDbCommand("", myConnection);
+                    command2.CommandText = "SELECT Счет FROM duets WHERE Номер_Группы = @num AND Номер_В_Группе = @id";
+                    command2.Parameters.AddWithValue("num", input_group.number);
+                    command2.Parameters.AddWithValue("id", i + 1);
+                    mark = Convert.ToDouble(command2.ExecuteScalar());
+                    //MessageBox.Show(mark.ToString());
+
+                    command2 = new OleDbCommand("", myConnection);
+                    command2.CommandText = "SELECT Оценки FROM duets WHERE Номер_Группы = @num AND Номер_В_Группе = @id";
+                    command2.Parameters.AddWithValue("num", input_group.number);
+                    command2.Parameters.AddWithValue("id", i + 1);
+                    List<List<int>> newMarksList = new List<List<int>>();
+                    if (command2.ExecuteScalar().ToString() != "")
+                    {
+                        string[] marksString = command2.ExecuteScalar().ToString().Replace(" ", "").Split(new char[] { ';' });
+                        int counter = 0;
+                        foreach (string itemStr in marksString)
+                        {
+                            if (itemStr != "")
+                            {
+                                string[] marksInDance = itemStr.Split(new char[] { ':' });
+                                newMarksList.Add(new List<int>(marksInDance.Length));
+                                foreach (string itemMark in marksInDance)
+                                {
+                                    newMarksList[counter].Add(Convert.ToInt32(itemMark));
+                                }
+                                counter++;
+                            }
+                        }
+                    }
                     command3 = new OleDbCommand("", myConnection);
-                    command3.CommandText = "SELECT ФИО1 FROM duets WHERE Номер_Группы = @num AND Номер = @id";
+                    command3.CommandText = "SELECT ФИО1 FROM duets WHERE Номер_Группы = @num AND Номер_В_Группе = @id";
                     command3.Parameters.AddWithValue("num", input_group.number);
                     command3.Parameters.AddWithValue("id", i + 1);
                     SNP1 = command3.ExecuteScalar().ToString().Replace(" ", "");
                     //SNP1 = command3.ExecuteScalar().ToString();
                     //MessageBox.Show(SNP1);
 
+                    command5 = new OleDbCommand("", myConnection);
+                    command5.CommandText = "SELECT COUNT(Номер_Пары) FROM trainers WHERE Номер_Пары = @id";
+                    //command3.Parameters.AddWithValue("num", input_group.number);
+                    command5.Parameters.AddWithValue("id", number);
+                    int countOfTrainers = Convert.ToInt32(command5.ExecuteScalar().ToString());
+                    List<Trainer> tmpListTrainers = new List<Trainer>(3);
+
+                    switch (countOfTrainers)
+                    {
+                        case 1:
+                            tmpListTrainers.Add(SecretaryController.TakeTrainer(number, input_group.number, "Старший", myConnection));
+                            break;
+                        case 2:
+                            tmpListTrainers.Add(SecretaryController.TakeTrainer(number, input_group.number, "Старший", myConnection));
+                            tmpListTrainers.Add(SecretaryController.TakeTrainer(number, input_group.number, "Первый", myConnection));
+                            break;
+                        case 3:
+                            tmpListTrainers.Add(SecretaryController.TakeTrainer(number, input_group.number, "Старший", myConnection));
+                            tmpListTrainers.Add(SecretaryController.TakeTrainer(number, input_group.number, "Первый", myConnection));
+                            tmpListTrainers.Add(SecretaryController.TakeTrainer(number, input_group.number, "Второй", myConnection));
+                            break;
+                    }
+
                     if (Type == "Пара")
-                        {
+                    {
                         command4 = new OleDbCommand("", myConnection);
-                        command4.CommandText = "SELECT ФИО2 FROM duets WHERE Номер_Группы = @num AND Номер = @id";
+                        command4.CommandText = "SELECT ФИО2 FROM duets WHERE Номер_Группы = @num AND Номер_В_Группе = @id";
                         command4.Parameters.AddWithValue("num", input_group.number);
                         command4.Parameters.AddWithValue("id", i + 1);
                         SNP2 = command4.ExecuteScalar().ToString().Replace(" ", "");
                         //MessageBox.Show(SNP2);
-                        set_new = new Duet(number, input_group.number, SNP1, SNP2);
+                        set_new = new Duet(number, i + 1, input_group.number, SNP1, SNP2, mark);
                     }
                     else
-                        set_new = new Duet(number, input_group.number, SNP1);
-
+                        set_new = new Duet(number, i + 1, input_group.number, SNP1, mark);
+                    set_new.trainers = tmpListTrainers;
+                    set_new.diplomPlace = getDiplomPlace(mark);
+                    set_new.judgeMarkList = newMarksList;
+                    getMarksSum(set_new);
+                    //MessageBox.Show(getDiplomPlase(mark));
+                    //MessageBox.Show(set_new.ToString());
                     DuetList_New.Add(set_new); //ДОРАБОТКА
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Упс, что-то пошло не так при определении списка пар\nError: " + ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Упс, что-то пошло не так при определении списка пар\nError: " + ex.Message);
+            //}
 
             myConnection.Close();
             return DuetList_New;
@@ -777,7 +938,7 @@ namespace DataViewer_D_v._001
                     command1.Parameters.AddWithValue("num", number);
                     string jcategory = command1.ExecuteScalar().ToString().Replace(" ", "");
 
-                    string[] jSNPList = jSNP.Split(new char[] { ' ' });
+                    string[] jSNPList = jSNP.Split(new char[] { ';' });
                     if (jSNPList.Length >= 3)
                     {
                         new_judge.Surname = jSNPList[0];
@@ -785,9 +946,15 @@ namespace DataViewer_D_v._001
                         new_judge.Patronymic = jSNPList[2];
                     }
 
+                    command1 = new OleDbCommand("", myConnection);
+                    command1.CommandText = "SELECT Город FROM judges WHERE Номер = @num";
+                    command1.Parameters.AddWithValue("num", number);
+                    string jcity = command1.ExecuteScalar().ToString().Replace(" ", "");
+
                     new_judge.JudgeClass = jcategory;
                     new_judge.Number = (ushort)number;
                     new_judge.judgeChar = (char)(64 + number);
+                    new_judge.City = jcity;
 
                     //MessageBox.Show(new_judge.ToString());
 
@@ -937,11 +1104,15 @@ namespace DataViewer_D_v._001
                 OleDbCommand command = new OleDbCommand("", myConnection);
                 command.CommandText = $"SELECT MAX({rowName}) FROM {tableName}";
 
-                max = Convert.ToInt32(command.ExecuteScalar().ToString());
+                if (command.ExecuteScalar() != DBNull.Value)
+                    max = Convert.ToInt32(command.ExecuteScalar());
+                else
+                    max = 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Упс, что-то пошло не так при определении максимального значения {rowName} из {tableName}\nError: " + ex.Message);
+                //MessageBox.Show($"Упс, что-то пошло не так при определении максимального значения {rowName} из {tableName}\nError: " + ex.Message);
+                max = 0;
             }
 
             myConnection.Close();
@@ -961,17 +1132,173 @@ namespace DataViewer_D_v._001
                 OleDbCommand command = new OleDbCommand("", myConnection);
                 command.CommandText = $"SELECT MAX({rowName}) FROM {tableName} WHERE {parametr} = {paramValue}";
 
-                max = Convert.ToInt32(command.ExecuteScalar().ToString());
+                if (command.ExecuteScalar() != DBNull.Value)
+                    max = Convert.ToInt32(command.ExecuteScalar());
+                else
+                    max = 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //MessageBox.Show($"Упс, что-то пошло не так при определении максимального значения {rowName} из {tableName}\nError: " + ex.Message);
                 max = 0;
             }
-
             myConnection.Close();
-
             return max;
+        }
+
+        public static Trainer TakeTrainer(int duetNum, int groupNum, string status, OleDbConnection cn)
+        {
+            //connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}";
+            //myConnection = new OleDbConnection(connectString);
+            //myConnection.Open();
+
+            Trainer tmpTrainer = new Trainer();
+            try
+            {
+                //OleDbCommand command = new OleDbCommand($"SELECT ФИО FROM trainers WHERE Номер_Группы = @num AND Номер_Пары = @id AND Категория = @Categ", cn);
+                OleDbCommand command = new OleDbCommand($"SELECT ФИО FROM trainers WHERE Номер_Пары = @id AND Категория = @Categ", cn);
+                //command.Parameters.AddWithValue("num", groupNum);
+                command.Parameters.AddWithValue("id", duetNum);
+                command.Parameters.AddWithValue("Categ", status);
+
+                string[] SNPstring = command.ExecuteScalar().ToString().Replace(" ", "").Split(new char[] { ';', ' ' });
+                tmpTrainer.Surname = SNPstring[0];
+                tmpTrainer.Name = SNPstring[1];
+                tmpTrainer.Patronymic = SNPstring[2];
+
+                tmpTrainer.Status = status;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Упс, что-то пошло не так при определении тренера {status} {duetNum} пары\nError: " + ex.Message);
+                
+            }
+
+            //myConnection.Close();
+
+            return tmpTrainer;
+        }
+
+
+        public static void UpdateDuetMark(Duet duetItem, string cn)
+        {
+            OleDbConnection con = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}");
+            con.Open();
+
+            OleDbCommand command = new OleDbCommand();
+            command = new OleDbCommand("", con);
+            command.CommandText = "UPDATE duets SET Счет = @mark WHERE Номер = @id";
+            command.Parameters.AddWithValue("mark", duetItem.mark);
+            command.Parameters.AddWithValue("id", duetItem.number);
+            command.ExecuteNonQuery();
+
+            string marksString = "";
+            foreach (List<int> itemList in duetItem.judgeMarkList)
+            {
+                for(int k = 0; k < itemList.Count; k++)
+                {
+                    marksString += itemList[k].ToString();
+                    if (k < itemList.Count - 1)
+                        marksString += ":";
+                }
+                marksString += ";";
+            }
+            MessageBox.Show(marksString);
+            command = new OleDbCommand("", con);
+            command.CommandText = "UPDATE duets SET Оценки = @markSum WHERE Номер = @id";
+            command.Parameters.AddWithValue("markSum", marksString);
+            command.Parameters.AddWithValue("id", duetItem.number);
+            command.ExecuteNonQuery();
+
+            command = new OleDbCommand("", con);
+            command.CommandText = "UPDATE participants SET Счет = @mark WHERE Номер = @id";
+            command.Parameters.AddWithValue("mark", duetItem.mark);
+            command.Parameters.AddWithValue("id", duetItem.number);
+            command.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public static void UpdateGroupsOrder(string orderString, string cn)
+        {
+            OleDbConnection con = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={cn}");
+            con.Open();
+
+            OleDbCommand command = new OleDbCommand();
+            command = new OleDbCommand("", con);
+            command.CommandText = "UPDATE tournir SET Порядок = @tmpOrder WHERE ID = @id";
+            command.Parameters.AddWithValue("tmpOrder", orderString);
+            command.Parameters.AddWithValue("id", 1);
+            command.ExecuteNonQuery();
+
+            con.Close();
+        }
+
+
+        public static string getDiplomPlace(double mark)
+        {
+            if (mark >= 4.5) return "Л1";
+            if (mark >= 4 && mark < 4.5) return "Л2";
+            if (mark >= 3.5 && mark < 4) return "Л3";
+            if (mark >= 3 && mark < 3.5) return "Д1";
+            if (mark >= 2.5 && mark < 3) return "Д2";
+            return "Д3";
+        }
+
+        public static void getMarksSum(Duet inputDuet)
+        {
+            foreach (List<int> itemList in inputDuet.judgeMarkList)
+                foreach (int item in itemList)
+                    inputDuet.markSum += item;
+        }
+
+        public static void insertTrainer(Trainer trainer,int duetNum ,string path)
+        {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+            OleDbCommand commandTrain = new OleDbCommand("", myConnection);
+
+            commandTrain.CommandText = "INSERT INTO trainers(Номер_Пары, ФИО, Категория)" + "VALUES (@Num, @SNP, @Category)";
+
+            trainer.pasItendificate();
+            commandTrain.Parameters.AddWithValue("Num", duetNum);
+            commandTrain.Parameters.AddWithValue("SNP", trainer.Surname + ";" + trainer.Name + ";" + trainer.Patronymic + ";");
+            commandTrain.Parameters.AddWithValue("Category", trainer.Status);
+
+            try
+            {
+                commandTrain.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                myConnection.Close();
+            }
+        }
+
+        public static void insertPosition(Judge judge, string path)
+        {
+            connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={path}";
+            myConnection = new OleDbConnection(connectString);
+            myConnection.Open();
+            OleDbCommand commandTrain = new OleDbCommand("", myConnection);
+
+            commandTrain.CommandText = "INSERT INTO positions(ФИО, Должность, Город)" + "VALUES (@SNP, @Posit, @City)";
+            commandTrain.Parameters.AddWithValue("SNP", judge.Surname + ";" + judge.Name + ";" + judge.Patronymic + ";");
+            commandTrain.Parameters.AddWithValue("Posit", judge.position);
+            commandTrain.Parameters.AddWithValue("City", judge.City);
+
+            try
+            {
+                commandTrain.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                myConnection.Close();
+            }
         }
     }
 }

@@ -105,7 +105,7 @@ namespace DataViewer_D_v._001
 
         private void configButton_Click(object sender, EventArgs e)
         {
-            this.tournir.Show();
+            this.tournir.info();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -133,29 +133,12 @@ namespace DataViewer_D_v._001
                 for (int i = 0; i < groupComboBoxList.Count; i++)
                 {
                     positionsList[i] = (ushort)(groupComboBoxList[i].SelectedIndex + 1);
-                    retstr += (groupComboBoxList[i].SelectedIndex + 1).ToString() + " ";
+                    retstr += (groupComboBoxList[i].SelectedIndex + 1).ToString() + ";";
                 }
                 MessageBox.Show(retstr);
                 tournir.groupsOrder = positionsList;
-                    //con = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={tournir.path}");
-                    //con.Open();
-                    //command = new OleDbCommand("", con);
-
-                //for (int i = 0; i < tournir.groups.Count; i++)
-                //{
-                //    HourOfTournir_comboBox = times_Comboboxes[i * 2];
-                //    MinutesOfTournir_comboBox = times_Comboboxes[i * 2 + 1];
-
-                //    this.tournir.groups[i].time = new TimeClass(HourOfTournir_comboBox.SelectedIndex, (MinutesOfTournir_comboBox.SelectedIndex) * 5);
-                //    MessageBox.Show(tournir.groups[i].time.ToString());
-
-                //    command = new OleDbCommand("", con);
-                //    command.CommandText = "UPDATE groups SET Время = @time WHERE Номер_Группы = @id";
-                //    command.Parameters.AddWithValue("time", tournir.groups[i].time.ToString());
-                //    command.Parameters.AddWithValue("id", i + 1);
-
-                //    command.ExecuteNonQuery();
-                //}
+                SecretaryController.UpdateGroupsOrder(retstr, previousForm.Path_textBox.Text);
+                    
             }
             catch (Exception ex)
             {

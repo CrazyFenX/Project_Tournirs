@@ -13,25 +13,20 @@ namespace DataViewer_D_v._001
         public string Surname;
         public string Patronymic;
 
-        public int Status; // 1,2 (1 - older, 2 - second)
+        public string Status; // 1,2 (1 - older, 2 - second)
 
         public Trainer()
         { 
             //pass
         }
 
-        public Trainer(string name, string surname, string patronymic, int status)
+        public Trainer(string name, string surname, string patronymic, string status)
         {
             this.Name = name;
             this.Surname = surname;
             this.Patronymic = patronymic;
-            if (status > 2 || status < 1)
-            {
-                MessageBox.Show("Некоректный статус тренера!");
-            }
-            else
-                this.Status = status;
-            MessageBox.Show($"Новый тренер: {this.Name} {this.Surname} {this.Status.ToString()}");
+            this.Status = status;
+            MessageBox.Show($"Новый тренер: {this.Name} {this.Surname} {this.Status}");
 
         }
 
@@ -54,11 +49,9 @@ namespace DataViewer_D_v._001
             MessageBox.Show(this.Pas);
         }
 
-        public string ShowStatus()
+        public override string ToString()
         {
-            if (this.Status == 1)
-            return "Старший";
-            return "Младший";
+            return Surname + " " + Name + " " + Patronymic + " " + Status;
         }
     }
 }

@@ -24,6 +24,11 @@ namespace DataViewer_D_v._001
 
         public string folderName;
 
+        bool NewDanceClicked;
+        bool positionsGroupBoxClicked;
+
+        public List<CheckBox> checkBoxPositions = new List<CheckBox>();
+
         private List<Label> groupLabelList = new List<Label>();
         private List<CheckBox[]> judgeChessCheckList = new List<CheckBox[]>();
         //public CheckBox[] judgeChessCheckList = new CheckBox[0, 0];
@@ -32,8 +37,8 @@ namespace DataViewer_D_v._001
         {
             InitializeComponent();
             //tournir = new TournirClass();
-            tournir = secretaryMainForm.tournir;
             this.secretaryMainForm = secretaryMainForm;
+            tournir = secretaryMainForm.tournir;
 
             judgeGroupBox.Visible = false;
             Categoriess_groupBox.Visible = false;
@@ -49,6 +54,18 @@ namespace DataViewer_D_v._001
             BackSecond_button.Visible = false;
 
             judgeChessPanel.Visible = false;
+
+            NewDanceGroupBox.Visible = false;
+            NewDanceClicked = false;
+
+            positionsGroupBox.Visible = false;
+            positionsGroupBoxClicked = false;
+
+            checkBoxPositions.Add(GScheckBox);
+            checkBoxPositions.Add(ZGScheckBox);
+            checkBoxPositions.Add(GCKcheckBox);
+            checkBoxPositions.Add(PDSKcheckBox);
+            checkBoxPositions.Add(SPUcheckBox);
         }
 
         public secretaryForm()
@@ -57,13 +74,13 @@ namespace DataViewer_D_v._001
             tournir = new TournirClass();
 
             CreateGroup_button.Visible = true;
-            //CreateSet_button.Visible = true;
 
             CreateGroupSecond_button.Visible = false;
             Categoriess_groupBox.Visible = false;
             label_NumberOfGroup.Visible = false;
             NumberOfGroup_textBox.Visible = false;
             BackSecond_button.Visible = false;
+
         }
 
         private void CreateNewTournirButton_Click(object sender, EventArgs e)
@@ -149,11 +166,14 @@ namespace DataViewer_D_v._001
         private void secretaryForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.secretaryMainForm.Enabled = true;
+            //if (this.secretaryMainForm.Path_textBox.Text != "")
+            //    this.secretaryMainForm.tournir = SecretaryController.TakeTournir(Path_textBox.Text);
             this.Hide();
         }
 
         private void secretaryForm_Load(object sender, EventArgs e)
         {
+
 
         }
 
@@ -209,14 +229,52 @@ namespace DataViewer_D_v._001
             judge.Name = JudgeName_textBox.Text;
             judge.Patronymic = JudgePatronymic_textBox.Text;
             judge.JudgeClass = JudgeClass_textBox.Text;
+            judge.City = city_textBox.Text;
+            judge.position = "С";
 
             if (Path_textBox.Text != "")
             {
-                SecretaryController.insertInJudges(judge, Path_textBox.Text);
+                bool positionExist = false;
+                foreach (CheckBox checkItem in checkBoxPositions)
+                    if(checkItem.Checked)
+                        switch (checkBoxPositions.IndexOf(checkItem))
+                        {
+                            case 0:
+                                judge.position = "ГС";
+                                SecretaryController.insertPosition(judge, Path_textBox.Text);
+                                break;
+                            case 1:
+                                judge.position = "ЗГС";
+                                SecretaryController.insertPosition(judge, Path_textBox.Text);
+                                break;
+                            case 2:
+                                judge.position = "ГСК";
+                                positionExist = true;
+                                break;
+                            case 3:
+                                judge.position = "ПДСК";
+                                positionExist = true;
+                                break;
+                            case 4:
+                                judge.position = "СПУ";
+                                positionExist = true;
+                                break;
+                        }
+                if(positionExist) SecretaryController.insertPosition(judge, Path_textBox.Text);
+                else SecretaryController.insertInJudges(judge, Path_textBox.Text);
+
                 judge.Number = (ushort)(SecretaryController.TakeMax("Номер", "judges", Path_textBox.Text));
                 judge.judgeChar = (char)(64 + judge.Number);
                 tournir.judges.Add(judge);
-                MessageBox.Show("Новый судья: \n" + judge.Surname + "\n" + judge.Name + "\n" + judge.Patronymic + "\n" + judge.JudgeClass + "\n" + judge.Number + " " + judge.judgeChar + "\n" + "Успешно зарегистрирован!");
+                MessageBox.Show("Новый судья: \n" + judge.ToString() + "\n" + "Успешно зарегистрирован!");
+                
+                JudgeSurname_textBox.Text = "";
+                JudgeName_textBox.Text = "";
+                JudgePatronymic_textBox.Text = "";
+                JudgeClass_textBox.Text = "";
+                city_textBox.Text = "";
+
+                foreach (CheckBox checkItem in checkBoxPositions) checkItem.Checked = false;
             }
             else
                 MessageBox.Show("Необходимо выбрать базу Турнира!");
@@ -271,8 +329,9 @@ namespace DataViewer_D_v._001
                     if (item.Checked)
                     {
                         group_new.DancesList.Add(item.Text);
-                        str += item.Text;
+                        str += item.Text += " ";
                     }
+                str += "\n";
                 //MessageBox.Show(str);
 
                 foreach (CheckBox item in CategoriesList)
@@ -294,14 +353,15 @@ namespace DataViewer_D_v._001
                         cn.Open();
                         OleDbCommand com1 = new OleDbCommand();
                         OleDbCommand com2 = new OleDbCommand();
-
+                        
+                        int i;
                         com1 = new OleDbCommand("INSERT INTO groups(Название_Турнира, Номер_Группы, Категория, Категории, Танцы)" + "VALUES (@tournir_name, @group_number, @category, @categories, @dances)", cn);
 
                         com1.Parameters.AddWithValue("tournir_name", group_new.tournir_name);
                         com1.Parameters.AddWithValue("group_number", group_new.number);
                         com1.Parameters.AddWithValue("category", group_new.name);
                         string testStr = "";
-                        for (int i = 0; i < CategoriesList.Length; i++)
+                        for (i = 0; i < CategoriesList.Length; i++)
                         {
                             if (CategoriesList[i].Checked == true)
                             {
@@ -336,7 +396,9 @@ namespace DataViewer_D_v._001
                                         group_new.CategoryList.Add("Ю-2");
                                         break;
                                     case 7:
-                                        testStr += "Вз;";
+                                        testStr += "М;М2;Вз;";
+                                        group_new.CategoryList.Add("М");
+                                        group_new.CategoryList.Add("М2");
                                         group_new.CategoryList.Add("Вз");
                                         break;
                                     default:
@@ -345,11 +407,11 @@ namespace DataViewer_D_v._001
                                         break;
                                 }
                             }
-                        }
+                        } //Категории
                         com1.Parameters.AddWithValue("categories", testStr);
 
                         string testStr1 = "";
-                        for (int i = 0; i < DancesList.Length; i++)
+                        for (i = 0; i < DancesList.Length; i++)
                         {
                             if (DancesList[i].Checked == true)
                             {
@@ -397,6 +459,31 @@ namespace DataViewer_D_v._001
                                         break;
                                 }
                             }
+                        } //Танцы
+                        if (NewDanceTextBox1.Text != "")
+                        {
+                            testStr1 += NewDanceTextBox1.Text + ";";
+                            group_new.DancesList.Add(NewDanceTextBox1.Text);
+                        }
+                        if (NewDanceTextBox2.Text != "")
+                        {
+                            testStr1 += NewDanceTextBox2.Text + ";";
+                            group_new.DancesList.Add(NewDanceTextBox2.Text);
+                        }
+                        if (NewDanceTextBox3.Text != "")
+                        {
+                            testStr1 += NewDanceTextBox3.Text + ";";
+                            group_new.DancesList.Add(NewDanceTextBox3.Text);
+                        }
+                        if (NewDanceTextBox4.Text != "")
+                        {
+                            testStr1 += NewDanceTextBox4.Text + ";";
+                            group_new.DancesList.Add(NewDanceTextBox4.Text);
+                        }
+                        if (NewDanceTextBox5.Text != "")
+                        {
+                            testStr1 += NewDanceTextBox5.Text + ";";
+                            group_new.DancesList.Add(NewDanceTextBox5.Text);
                         }
                         com1.Parameters.AddWithValue("dances", testStr1);
 
@@ -410,108 +497,173 @@ namespace DataViewer_D_v._001
                             MessageBox.Show($"Возникла непредвиденная проблема при обращении к базе:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
-                        for (int i = 0; i < CategoriesList.Length; i++)
-                        {
-                            com2 = new OleDbCommand("INSERT INTO categories(Номер, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)", cn);
-                            com2.Parameters.AddWithValue("number", i + 1);
-                            com2.Parameters.AddWithValue("group_number", group_new.number);
+                        NewDanceTextBox1.Text = "";
+                        NewDanceTextBox2.Text = "";
+                        NewDanceTextBox3.Text = "";
+                        NewDanceTextBox4.Text = "";
+                        NewDanceTextBox5.Text = "";
 
-                            if (CategoriesList[i].Checked == true)
-                            {
-                                switch (i)
-                                {
-                                    case 0:
-                                        com2.Parameters.AddWithValue("category", "Д-0");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 1:
-                                        com2.Parameters.AddWithValue("category", "Д-1");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 2:
-                                        com2.Parameters.AddWithValue("category", "Д-2");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 3:
-                                        com2.Parameters.AddWithValue("category", "М");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 4:
-                                        com2.Parameters.AddWithValue("category", "М-2");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 5:
-                                        com2.Parameters.AddWithValue("category", "Ю-1");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 6:
-                                        com2.Parameters.AddWithValue("category", "Ю-2");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 7:
-                                        com2.Parameters.AddWithValue("category", "Вз");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    default:
-                                        com2.Parameters.AddWithValue("category", "Другая");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                }
-                            }
-                        }
+                        foreach (CheckBox cbitem in DancesList)
+                            cbitem.Checked = false;
+                        foreach (CheckBox cbitem in CategoriesList)
+                            cbitem.Checked = false;
 
-                        for (int i = 0; i < DancesList.Length; i++)
-                        {
-                            com2 = new OleDbCommand("INSERT INTO dances(Номер_Группы, Танец)" + "VALUES (@group_number, @dance)", cn);
-                            com2.Parameters.AddWithValue("group_number", group_new.number);
+                        /////Запись В Категории
+                        //for (i = 0; i < CategoriesList.Length; i++)
+                        //{
+                        //    com2 = new OleDbCommand("INSERT INTO categories(Номер, Номер_Группы, Категория)" + "VALUES (@number, @group_number, @category)", cn);
+                        //    com2.Parameters.AddWithValue("group_number", group_new.number);
 
-                            if (DancesList[i].Checked == true)
-                            {
-                                switch (i)
-                                {
-                                    case 0:
-                                        com2.Parameters.AddWithValue("dance", "W");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 1:
-                                        com2.Parameters.AddWithValue("dance", "V");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 2:
-                                        com2.Parameters.AddWithValue("dance", "T");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 3:
-                                        com2.Parameters.AddWithValue("dance", "F");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 4:
-                                        com2.Parameters.AddWithValue("dance", "Q");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 5:
-                                        com2.Parameters.AddWithValue("dance", "S");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 6:
-                                        com2.Parameters.AddWithValue("dance", "Ch");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 7:
-                                        com2.Parameters.AddWithValue("dance", "R");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 8:
-                                        com2.Parameters.AddWithValue("dance", "P");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                    case 9:
-                                        com2.Parameters.AddWithValue("dance", "J");
-                                        com2.ExecuteNonQuery();
-                                        break;
-                                }
-                            }
-                        }
+                        //    if (CategoriesList[i].Checked == true)
+                        //    {
+                        //        switch (i)
+                        //        {
+                        //            case 0:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "Д-0");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 1:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "Д-1");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 2:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "Д-2");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 3:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "М");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 4:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "М-2");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 5:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "Ю-1");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 6:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "Ю-2");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 7:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "Вз");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            default:
+                        //                com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "categories", "Номер_Группы", group_new.number, folderName) + 1);
+                        //                com2.Parameters.AddWithValue("category", "Другая");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //        }
+                        //    }
+                        //}
+
+                        /////Запись В Танцы
+                        //for (i = 0; i < DancesList.Length; i++)
+                        //{
+                        //    com2 = new OleDbCommand("INSERT INTO dances(Номер, Номер_Группы, Танец)" + "VALUES (@number, @group_number, @dance)", cn);
+                        //    //com2 = new OleDbCommand("INSERT INTO dances(Номер_Группы, Танец)" + "VALUES (@group_number, @dance)", cn);
+                        //    //com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "dances", "Номер_Группы", group_new.number, folderName) + 1);
+                        //    com2.Parameters.AddWithValue("group_number", group_new.number);
+                        //    com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "dances", "Номер_Группы", group_new.number, folderName) + 1);
+
+                        //    if (DancesList[i].Checked == true)
+                        //    {
+                        //        switch (i)
+                        //        {
+                        //            case 0:
+                        //                com2.Parameters.AddWithValue("dance", "W");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 1:
+                        //                com2.Parameters.AddWithValue("dance", "V");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 2:
+                        //                com2.Parameters.AddWithValue("dance", "T");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 3:
+                        //                com2.Parameters.AddWithValue("dance", "F");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 4:
+                        //                com2.Parameters.AddWithValue("dance", "Q");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 5:
+                        //                com2.Parameters.AddWithValue("dance", "S");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 6:
+                        //                com2.Parameters.AddWithValue("dance", "Ch");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 7:
+                        //                com2.Parameters.AddWithValue("dance", "R");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 8:
+                        //                com2.Parameters.AddWithValue("dance", "P");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //            case 9:
+                        //                com2.Parameters.AddWithValue("dance", "J");
+                        //                com2.ExecuteNonQuery();
+                        //                break;
+                        //        }
+                        //    }
+                        //}
+                        ////com2 = new OleDbCommand("INSERT INTO dances(Номер, Номер_Группы, Танец)" + "VALUES (@number, @group_number, @dance)", cn);
+                        //com2 = new OleDbCommand("INSERT INTO dances(Номер, Номер_Группы, Танец)" + "VALUES (@number, @group_number, @dance)", cn);
+                        //if (NewDanceTextBox1.Text != "")
+                        //{
+                        //    com2.Parameters.AddWithValue("group_number", group_new.number);
+                        //    com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "dances", "Номер_Группы", group_new.number, folderName) + 1);
+                        //    com2.Parameters.AddWithValue("dance", NewDanceTextBox1.Text);
+                        //    com2.ExecuteNonQuery();
+                        //}
+                        //com2 = new OleDbCommand("INSERT INTO dances(Номер, Номер_Группы, Танец)" + "VALUES (@number, @group_number, @dance)", cn);
+                        //if (NewDanceTextBox2.Text != "")
+                        //{
+                        //    com2.Parameters.AddWithValue("group_number", group_new.number);
+                        //    com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "dances", "Номер_Группы", group_new.number, folderName) + 1);
+                        //    com2.Parameters.AddWithValue("dance", NewDanceTextBox1.Text);
+                        //    com2.ExecuteNonQuery();
+                        //}
+                        //com2 = new OleDbCommand("INSERT INTO dances(Номер, Номер_Группы, Танец)" + "VALUES (@number, @group_number, @dance)", cn);
+                        //if (NewDanceTextBox3.Text != "")
+                        //{
+                        //    com2.Parameters.AddWithValue("group_number", group_new.number);
+                        //    com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "dances", "Номер_Группы", group_new.number, folderName) + 1);
+                        //    com2.Parameters.AddWithValue("dance", NewDanceTextBox1.Text);
+                        //    com2.ExecuteNonQuery();
+                        //}
+                        //com2 = new OleDbCommand("INSERT INTO dances(Номер, Номер_Группы, Танец)" + "VALUES (@number, @group_number, @dance)", cn);
+                        //if (NewDanceTextBox4.Text != "")
+                        //{
+                        //    com2.Parameters.AddWithValue("group_number", group_new.number);
+                        //    com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "dances", "Номер_Группы", group_new.number, folderName) + 1);
+                        //    com2.Parameters.AddWithValue("dance", NewDanceTextBox1.Text);
+                        //    com2.ExecuteNonQuery();
+                        //}
+                        //com2 = new OleDbCommand("INSERT INTO dances(Номер, Номер_Группы, Танец)" + "VALUES (@number, @group_number, @dance)", cn);
+                        //if (NewDanceTextBox5.Text != "")
+                        //{
+                        //    com2.Parameters.AddWithValue("group_number", group_new.number);
+                        //    com2.Parameters.AddWithValue("number", SecretaryController.TakeMax("Номер", "dances", "Номер_Группы", group_new.number, folderName) + 1);
+                        //    com2.Parameters.AddWithValue("dance", NewDanceTextBox1.Text);
+                        //    com2.ExecuteNonQuery();
+                        //}
 
                         NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
                         MessageBox.Show("Новая группа успешно создана!\nУказаны категории: " + testStr);
@@ -582,7 +734,8 @@ namespace DataViewer_D_v._001
         private void configButton_Click(object sender, EventArgs e)
         {
             if (Path_textBox.Text != "")
-                tournir.Show();
+                //tournir.Show();
+                tournir.info2();
             else
                 MessageBox.Show("Сперва необходимо выбрать базу турнира!");
         }
@@ -620,9 +773,10 @@ namespace DataViewer_D_v._001
             if (Path_textBox.Text != "")
                 if (tournir.groups.Count != 0)
                     if (tournir.judges.Count != 0)
+                    {
                         try
                         {
-                            int N = tournir.judges.Count;
+                                int N = tournir.judges.Count;
                             int M = tournir.groups.Count;
                             CheckBox[] tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
 
@@ -645,11 +799,11 @@ namespace DataViewer_D_v._001
                                 judgeChessPanel.Controls.Add(new_label = new Label()
                                 {
                                     Text = tournir.judges[i].judgeChar.ToString(),
-                                    Location = new Point(105 + 60 * i, 15),
+                                    Location = new Point(190 + 60 * i, 15),
                                     Size = new Size(30, 25),
                                     Font = new Font("", 12)
                                 });
-                                t.SetToolTip(new_label, tournir.judges[i].ToNSP());
+                                t.SetToolTip(new_label, tournir.judges[i].Surname + " " + tournir.judges[i].Name + " " + tournir.judges[i].Patronymic + " " + tournir.judges[i].JudgeClass + " " + tournir.judges[i].City);
                             }
 
                             foreach (GroupClass groupItem in tournir.groups)
@@ -657,9 +811,10 @@ namespace DataViewer_D_v._001
                                 tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
                                 judgeChessPanel.Controls.Add(new_label = new Label()
                                 {
-                                    Text = "Группа" + Convert.ToString(groupItem.number),
+                                    //Text = "Группа" + Convert.ToString(groupItem.number),
+                                    Text = groupItem.name.Substring(0, 15) + "... (" + groupItem.number.ToString() + ")",
                                     Location = new Point(10, height),
-                                    Size = new Size(90, 25),
+                                    Size = new Size(185, 25),
                                     Font = new Font("", 12)
                                 });
                                 t.SetToolTip(new_label, groupItem.name);
@@ -667,11 +822,11 @@ namespace DataViewer_D_v._001
                                 string retstr = "Группа " + groupItem.number.ToString() + "\n";
 
                                 int j = 0;
-                                for (int i = 0; i < this.tournir.judges.Count; i++)
+                                for (int i = 0; i < this.tournir.judges.Count - 1; i++)
                                 {
                                     judgeChessPanel.Controls.Add(checkBoxOfJudge = new CheckBox()
                                     {
-                                        Location = new Point(105 + 60 * i, height),
+                                        Location = new Point(195 + 60 * i, height),
                                         Size = new Size(20, 20),
                                         Font = new Font("", 12)
                                     });
@@ -694,6 +849,7 @@ namespace DataViewer_D_v._001
                         {
                             MessageBox.Show(ex.Message);
                         }
+                    }
                     else
                         MessageBox.Show("Не зарегистрировано ниодного судьи!");
                 else
@@ -767,6 +923,75 @@ namespace DataViewer_D_v._001
                 }
             }
             MessageBox.Show(retstr);
+        }
+
+        private void NewDanceButton_Click(object sender, EventArgs e)
+        {
+            if (!NewDanceClicked)
+            {
+                NewDanceGroupBox.Visible = true;
+                NewDanceClicked = true;
+                NewDanceButton.Text = "▲";
+            }
+            else
+            {
+                NewDanceGroupBox.Visible = false;
+                NewDanceClicked = false;
+                NewDanceButton.Text = "+";
+            }
+        }
+
+        private void positionsButton_Click(object sender, EventArgs e)
+        {
+
+            if (!positionsGroupBoxClicked)
+            {
+                positionsGroupBox.Visible = true;
+                positionsGroupBoxClicked = true;
+                positionsButton.Text = "▲";
+            }
+            else
+            {
+                positionsGroupBox.Visible = false;
+                positionsGroupBoxClicked = false;
+                positionsButton.Text = "+";
+            }
+        }
+
+        private void GScheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (GScheckBox.Checked) checkOtherCheckBoxes();
+        }
+
+        private void ZGScheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ZGScheckBox.Checked) checkOtherCheckBoxes();
+        }
+
+        private void GCKcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (GCKcheckBox.Checked) checkOtherCheckBoxes();
+        }
+
+        private void PDSKcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (PDSKcheckBox.Checked) checkOtherCheckBoxes();
+        }
+
+        private void SPUcheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (SPUcheckBox.Checked) checkOtherCheckBoxes();
+        }
+
+        private void checkOtherCheckBoxes()
+        {
+            //foreach (CheckBox checkItem in checkBoxPositions)
+            //    if (checkItem.Checked) checkItem.Checked = false;
+        }
+
+        private void judgeChessPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

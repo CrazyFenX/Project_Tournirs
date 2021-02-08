@@ -7,7 +7,7 @@ namespace DataViewer_D_v._001
 {
     public class sortController
     {
-        static void Swap(DuetInTour x, DuetInTour y)
+        static void Swap(Duet x, Duet y)
         {
             var t = x;
             x = y;
@@ -15,25 +15,24 @@ namespace DataViewer_D_v._001
         }
 
         //метод возвращающий индекс опорного элемента
-        static int Partition(List<DuetInTour> array, int minIndex, int maxIndex)
+        static int Partition(List<Duet> array, int minIndex, int maxIndex)
         {
-            var pivot = minIndex - 1;
+            var privot = minIndex - 1;
             for (var i = minIndex; i < maxIndex; i++)
             {
                 if (array[i].mark < array[maxIndex].mark)
                 {
-                    pivot++;
-                    Swap(array[pivot], array[i]);
+                    privot++;
+                    Swap(array[privot], array[i]);
                 }
             }
-
-            pivot++;
-            Swap( array[pivot], array[maxIndex]);
-            return pivot;
+            privot++;
+            Swap(array[privot], array[maxIndex]);
+            return privot;
         }
 
         //быстрая сортировка
-        static List<DuetInTour> QuickSort(List<DuetInTour> array, int minIndex, int maxIndex)
+        static List<Duet> QuickSort(List<Duet> array, int minIndex, int maxIndex)
         {
             if (minIndex >= maxIndex)
             {
@@ -47,15 +46,13 @@ namespace DataViewer_D_v._001
             return array;
         }
 
-        public static List<DuetInTour> QuickSort(List<DuetInTour> array)
+        public static List<Duet> QuickSort(List<Duet> array)
         {
             return QuickSort(array, 0, array.Count - 1);
         }
 
-
         ///////////////////////////////////
-
-        public int Compare(DuetInTour o1, DuetInTour o2)
+        public int Compare(Duet o1, Duet o2)
         {
             if (o1.mark > o2.mark)
             {

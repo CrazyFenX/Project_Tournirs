@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>DataViewer_D_v._001</RootNamespace>
     <AssemblyName>DataViewer_D_v.001</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,6 +53,12 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -65,16 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgeCategoryClass.cs" />
-    <Compile Include="BD1DataSet.cs">
-      <DependentUpon>BD1DataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
-    <Compile Include="BD1DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BD1DataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
     <Compile Include="CheckBoxForDuets.cs" />
     <Compile Include="ComboBoxForEndingTour.cs" />
     <Compile Include="Controller.cs" />
@@ -103,6 +100,7 @@
     <Compile Include="DataViewerSecretary.Designer.cs">
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
     </Compile>
+    <Compile Include="DiplomClass.cs" />
     <Compile Include="Duet.cs" />
     <Compile Include="DuetInTour.cs" />
     <Compile Include="duetInTourComparer.cs" />
@@ -121,45 +119,9 @@
     <Compile Include="GroupClass.cs" />
     <Compile Include="GroupInTour.cs" />
     <Compile Include="HoldingMarker.cs" />
-    <Compile Include="HoldingTournament.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HoldingTournament.Designer.cs">
-      <DependentUpon>HoldingTournament.cs</DependentUpon>
-    </Compile>
     <Compile Include="Judge.cs" />
     <Compile Include="MyDate.cs" />
-    <Compile Include="PeopleDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PeopleDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="PeopleDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="PeopleDataSet2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="PeopleDataSet3.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PeopleDataSet3.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="PeopleDataSetLast.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PeopleDataSetLast.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="PeopleDataSetLastLast.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>PeopleDataSetLastLast.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Querry.cs" />
+    <Compile Include="pdf_controller.cs" />
     <Compile Include="registrFormDuet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,9 +182,6 @@
     <EmbeddedResource Include="GradingForm.resx">
       <DependentUpon>GradingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HoldingTournament.resx">
-      <DependentUpon>HoldingTournament.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="registrFormDuet.resx">
       <DependentUpon>registrFormDuet.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,91 +202,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="registrFormSolo.resx">
       <DependentUpon>registrFormSolo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="BD1DataSet.xsc">
-      <DependentUpon>BD1DataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="BD1DataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BD1DataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="BD1DataSet.xss">
-      <DependentUpon>BD1DataSet.xsd</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="PeopleDataSet.xsc">
-      <DependentUpon>PeopleDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PeopleDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PeopleDataSet.xss">
-      <DependentUpon>PeopleDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSet1.xsc">
-      <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSet1.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PeopleDataSet1.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PeopleDataSet1.xss">
-      <DependentUpon>PeopleDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSet2.xsc">
-      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSet2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PeopleDataSet2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PeopleDataSet2.xss">
-      <DependentUpon>PeopleDataSet2.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSet3.xsc">
-      <DependentUpon>PeopleDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSet3.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PeopleDataSet3.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PeopleDataSet3.xss">
-      <DependentUpon>PeopleDataSet3.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSetLast.xsc">
-      <DependentUpon>PeopleDataSetLast.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSetLast.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PeopleDataSetLast.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PeopleDataSetLast.xss">
-      <DependentUpon>PeopleDataSetLast.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSetLastLast.xsc">
-      <DependentUpon>PeopleDataSetLastLast.xsd</DependentUpon>
-    </None>
-    <None Include="PeopleDataSetLastLast.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PeopleDataSetLastLast.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="PeopleDataSetLastLast.xss">
-      <DependentUpon>PeopleDataSetLastLast.xsd</DependentUpon>
-    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -348,10 +229,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="BD1.mdb" />
-    <Content Include="People.mdb" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

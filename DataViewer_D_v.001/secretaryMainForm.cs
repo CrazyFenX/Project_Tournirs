@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace DataViewer_D_v._001
 {
     public partial class secretaryMainForm : Form
@@ -31,6 +32,18 @@ namespace DataViewer_D_v._001
             massSportButton.Visible = false;
             sportSystemButton.Visible = false;
             backGradingButton.Visible = false;
+
+            setCountTextBox.Visible = false;
+            setCountLabel.Visible = false;
+
+            duetCountTextBox.Visible = false;
+            duetCountLabel.Visible = false;
+            startToutnamentButton.Visible = false;
+            formSetsButton.Visible = false;
+
+            printButton.Visible = false;
+            resultsButton.Visible = false;
+            printDiplomsButton.Visible = false;
         }
 
         private void secretaryMainForm_Load(object sender, EventArgs e)
@@ -102,7 +115,7 @@ namespace DataViewer_D_v._001
 
         private void configButton_Click(object sender, EventArgs e)
         {
-            this.tournir.Show();
+            this.tournir.info2();
         }
 
         private void formingSets_button_Click(object sender, EventArgs e)
@@ -330,7 +343,7 @@ namespace DataViewer_D_v._001
             //}
             //catch (Exception ex)
             //{
-            //    MessageBox.Show(ex.Message);
+                //MessageBox.Show("Ошибка при работе с базой турнира!\n" + ex.Message);
             //}
         }
 
@@ -349,10 +362,7 @@ namespace DataViewer_D_v._001
         {
             if (Path_textBox.Text != "")
             {
-                HoldingTournament holdingToutnamentForm = new HoldingTournament(this);
-
                 this.Enabled = false;
-                holdingToutnamentForm.Show();
             }
             else
                 MessageBox.Show("Сперва нужно выбрать базу турнира!");
@@ -408,10 +418,46 @@ namespace DataViewer_D_v._001
 
         private void massSportButton_Click(object sender, EventArgs e)
         {
-            GradingForm holdingToutnamentForm = new GradingForm(this);
+            if (tournir.groupsOrder.Length > 0)
+            {
+                GradingForm holdingToutnamentForm = new GradingForm(this);
 
-            this.Enabled = false;
-            holdingToutnamentForm.Show();
+                this.Enabled = false;
+                holdingToutnamentForm.Show();
+            }
+            else
+                MessageBox.Show("Сперва сформируйте регламент");
+        }
+
+        private void resultsButton_Click(object sender, EventArgs e)
+        {
+            if (Path_textBox.Text != "")
+            {
+                foreach (GroupClass groupItem in tournir.groups)
+                {
+                    //string retstr = "";
+                    //foreach (Duet duetItem in groupItem.duetList)
+                    //    retstr += duetItem.ToString();
+                    //MessageBox.Show(retstr);
+
+                    //groupItem.sortDuetList = sortController.QuickSort(groupItem.duetList);
+
+                    //retstr = "";
+                    //foreach (Duet duetItem in groupItem.sortDuetList)
+                    //    retstr += duetItem.ToString();
+                    //MessageBox.Show(retstr);
+
+                    pdf_controller.getResultsPDF(tournir, groupItem);
+                    printButton.Visible = true;
+                }
+            }
+            else
+                MessageBox.Show("Выберите базу турнира");
+        }
+
+        private void printDiplomsButton_Click(object sender, EventArgs e)
+        {
+            pdf_controller.getDiplomsPDF();
         }
     }
 }

@@ -38,6 +38,15 @@
             this.judgeListButton = new System.Windows.Forms.Button();
             this.judgeChessButton = new System.Windows.Forms.Button();
             this.judgeGroupBox = new System.Windows.Forms.GroupBox();
+            this.positionsGroupBox = new System.Windows.Forms.GroupBox();
+            this.SPUcheckBox = new System.Windows.Forms.CheckBox();
+            this.PDSKcheckBox = new System.Windows.Forms.CheckBox();
+            this.GCKcheckBox = new System.Windows.Forms.CheckBox();
+            this.ZGScheckBox = new System.Windows.Forms.CheckBox();
+            this.GScheckBox = new System.Windows.Forms.CheckBox();
+            this.positionsButton = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.city_textBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,7 +58,18 @@
             this.JudgePatronymic_textBox = new System.Windows.Forms.TextBox();
             this.JudgeName_textBox = new System.Windows.Forms.TextBox();
             this.Categoriess_groupBox = new System.Windows.Forms.GroupBox();
-            this.judgeChessPanel = new System.Windows.Forms.Panel();
+            this.NewDanceGroupBox = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.NewDanceTextBox5 = new System.Windows.Forms.TextBox();
+            this.NewDanceTextBox4 = new System.Windows.Forms.TextBox();
+            this.NewDanceTextBox3 = new System.Windows.Forms.TextBox();
+            this.NewDanceTextBox2 = new System.Windows.Forms.TextBox();
+            this.NewDanceTextBox1 = new System.Windows.Forms.TextBox();
+            this.NewDanceButton = new System.Windows.Forms.Button();
             this.P_dance_checkBox = new System.Windows.Forms.CheckBox();
             this.J_dance_checkBox = new System.Windows.Forms.CheckBox();
             this.W_dance_checkBox = new System.Windows.Forms.CheckBox();
@@ -75,6 +95,7 @@
             this.Vz_checkBox = new System.Windows.Forms.CheckBox();
             this.D1_checkBox = new System.Windows.Forms.CheckBox();
             this.M2_checkBox = new System.Windows.Forms.CheckBox();
+            this.judgeChessPanel = new System.Windows.Forms.Panel();
             this.CreateGroup_button = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.showJudgeRegButton = new System.Windows.Forms.Button();
@@ -82,7 +103,9 @@
             this.judgeAllowButton = new System.Windows.Forms.Button();
             this.judgeInGroupButton = new System.Windows.Forms.Button();
             this.judgeGroupBox.SuspendLayout();
+            this.positionsGroupBox.SuspendLayout();
             this.Categoriess_groupBox.SuspendLayout();
+            this.NewDanceGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,7 +115,8 @@
             this.CreateNewTournirButton.BackColor = System.Drawing.Color.Tomato;
             this.CreateNewTournirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateNewTournirButton.ForeColor = System.Drawing.Color.White;
-            this.CreateNewTournirButton.Location = new System.Drawing.Point(780, 34);
+            this.CreateNewTournirButton.Location = new System.Drawing.Point(896, 34);
+            this.CreateNewTournirButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateNewTournirButton.Name = "CreateNewTournirButton";
             this.CreateNewTournirButton.Size = new System.Drawing.Size(200, 78);
             this.CreateNewTournirButton.TabIndex = 0;
@@ -106,7 +130,8 @@
             this.backbutton.BackColor = System.Drawing.Color.Tomato;
             this.backbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backbutton.ForeColor = System.Drawing.Color.White;
-            this.backbutton.Location = new System.Drawing.Point(777, 495);
+            this.backbutton.Location = new System.Drawing.Point(894, 542);
+            this.backbutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.backbutton.Name = "backbutton";
             this.backbutton.Size = new System.Drawing.Size(200, 64);
             this.backbutton.TabIndex = 1;
@@ -119,9 +144,10 @@
             this.Path_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Path_textBox.Enabled = false;
-            this.Path_textBox.Location = new System.Drawing.Point(13, 461);
+            this.Path_textBox.Location = new System.Drawing.Point(13, 509);
+            this.Path_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Path_textBox.Name = "Path_textBox";
-            this.Path_textBox.Size = new System.Drawing.Size(760, 22);
+            this.Path_textBox.Size = new System.Drawing.Size(876, 22);
             this.Path_textBox.TabIndex = 2;
             this.Path_textBox.TextChanged += new System.EventHandler(this.Path_textBox_TextChanged);
             // 
@@ -131,7 +157,8 @@
             this.OpenBase_button.BackColor = System.Drawing.Color.Tomato;
             this.OpenBase_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.OpenBase_button.ForeColor = System.Drawing.Color.White;
-            this.OpenBase_button.Location = new System.Drawing.Point(780, 120);
+            this.OpenBase_button.Location = new System.Drawing.Point(896, 121);
+            this.OpenBase_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.OpenBase_button.Name = "OpenBase_button";
             this.OpenBase_button.Size = new System.Drawing.Size(200, 78);
             this.OpenBase_button.TabIndex = 3;
@@ -145,7 +172,8 @@
             this.Delete_button.BackColor = System.Drawing.Color.Tomato;
             this.Delete_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Delete_button.ForeColor = System.Drawing.Color.White;
-            this.Delete_button.Location = new System.Drawing.Point(780, 204);
+            this.Delete_button.Location = new System.Drawing.Point(896, 204);
+            this.Delete_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Delete_button.Name = "Delete_button";
             this.Delete_button.Size = new System.Drawing.Size(200, 78);
             this.Delete_button.TabIndex = 4;
@@ -159,7 +187,8 @@
             this.Browse_button.BackColor = System.Drawing.Color.Tomato;
             this.Browse_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Browse_button.ForeColor = System.Drawing.Color.White;
-            this.Browse_button.Location = new System.Drawing.Point(777, 456);
+            this.Browse_button.Location = new System.Drawing.Point(894, 503);
+            this.Browse_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Browse_button.Name = "Browse_button";
             this.Browse_button.Size = new System.Drawing.Size(200, 33);
             this.Browse_button.TabIndex = 5;
@@ -177,7 +206,7 @@
             this.judgeListButton.BackColor = System.Drawing.Color.Tomato;
             this.judgeListButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.judgeListButton.ForeColor = System.Drawing.Color.White;
-            this.judgeListButton.Location = new System.Drawing.Point(247, 495);
+            this.judgeListButton.Location = new System.Drawing.Point(247, 542);
             this.judgeListButton.Margin = new System.Windows.Forms.Padding(4);
             this.judgeListButton.Name = "judgeListButton";
             this.judgeListButton.Size = new System.Drawing.Size(169, 64);
@@ -192,7 +221,7 @@
             this.judgeChessButton.BackColor = System.Drawing.Color.Tomato;
             this.judgeChessButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.judgeChessButton.ForeColor = System.Drawing.Color.White;
-            this.judgeChessButton.Location = new System.Drawing.Point(13, 495);
+            this.judgeChessButton.Location = new System.Drawing.Point(13, 542);
             this.judgeChessButton.Margin = new System.Windows.Forms.Padding(4);
             this.judgeChessButton.Name = "judgeChessButton";
             this.judgeChessButton.Size = new System.Drawing.Size(227, 64);
@@ -205,6 +234,10 @@
             // 
             this.judgeGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.judgeGroupBox.Controls.Add(this.positionsGroupBox);
+            this.judgeGroupBox.Controls.Add(this.positionsButton);
+            this.judgeGroupBox.Controls.Add(this.label6);
+            this.judgeGroupBox.Controls.Add(this.city_textBox);
             this.judgeGroupBox.Controls.Add(this.label5);
             this.judgeGroupBox.Controls.Add(this.label4);
             this.judgeGroupBox.Controls.Add(this.label3);
@@ -216,30 +249,137 @@
             this.judgeGroupBox.Controls.Add(this.JudgePatronymic_textBox);
             this.judgeGroupBox.Controls.Add(this.JudgeName_textBox);
             this.judgeGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.judgeGroupBox.Location = new System.Drawing.Point(232, 21);
+            this.judgeGroupBox.Location = new System.Drawing.Point(234, 22);
             this.judgeGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.judgeGroupBox.Name = "judgeGroupBox";
             this.judgeGroupBox.Padding = new System.Windows.Forms.Padding(4);
-            this.judgeGroupBox.Size = new System.Drawing.Size(347, 319);
+            this.judgeGroupBox.Size = new System.Drawing.Size(367, 371);
             this.judgeGroupBox.TabIndex = 7;
             this.judgeGroupBox.TabStop = false;
             this.judgeGroupBox.Text = "Новый судья";
+            // 
+            // positionsGroupBox
+            // 
+            this.positionsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.positionsGroupBox.Controls.Add(this.SPUcheckBox);
+            this.positionsGroupBox.Controls.Add(this.PDSKcheckBox);
+            this.positionsGroupBox.Controls.Add(this.GCKcheckBox);
+            this.positionsGroupBox.Controls.Add(this.ZGScheckBox);
+            this.positionsGroupBox.Controls.Add(this.GScheckBox);
+            this.positionsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.positionsGroupBox.Location = new System.Drawing.Point(128, 64);
+            this.positionsGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.positionsGroupBox.Name = "positionsGroupBox";
+            this.positionsGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.positionsGroupBox.Size = new System.Drawing.Size(232, 218);
+            this.positionsGroupBox.TabIndex = 37;
+            this.positionsGroupBox.TabStop = false;
+            this.positionsGroupBox.Text = "Добавить должность";
+            // 
+            // SPUcheckBox
+            // 
+            this.SPUcheckBox.AutoSize = true;
+            this.SPUcheckBox.Location = new System.Drawing.Point(17, 161);
+            this.SPUcheckBox.Name = "SPUcheckBox";
+            this.SPUcheckBox.Size = new System.Drawing.Size(55, 21);
+            this.SPUcheckBox.TabIndex = 4;
+            this.SPUcheckBox.Text = "СПУ";
+            this.SPUcheckBox.UseVisualStyleBackColor = true;
+            this.SPUcheckBox.CheckedChanged += new System.EventHandler(this.SPUcheckBox_CheckedChanged);
+            // 
+            // PDSKcheckBox
+            // 
+            this.PDSKcheckBox.AutoSize = true;
+            this.PDSKcheckBox.Location = new System.Drawing.Point(17, 131);
+            this.PDSKcheckBox.Name = "PDSKcheckBox";
+            this.PDSKcheckBox.Size = new System.Drawing.Size(66, 21);
+            this.PDSKcheckBox.TabIndex = 3;
+            this.PDSKcheckBox.Text = "ПДСК";
+            this.PDSKcheckBox.UseVisualStyleBackColor = true;
+            this.PDSKcheckBox.CheckedChanged += new System.EventHandler(this.PDSKcheckBox_CheckedChanged);
+            // 
+            // GCKcheckBox
+            // 
+            this.GCKcheckBox.AutoSize = true;
+            this.GCKcheckBox.Location = new System.Drawing.Point(17, 96);
+            this.GCKcheckBox.Name = "GCKcheckBox";
+            this.GCKcheckBox.Size = new System.Drawing.Size(53, 21);
+            this.GCKcheckBox.TabIndex = 2;
+            this.GCKcheckBox.Text = "ГСК";
+            this.GCKcheckBox.UseVisualStyleBackColor = true;
+            this.GCKcheckBox.CheckedChanged += new System.EventHandler(this.GCKcheckBox_CheckedChanged);
+            // 
+            // ZGScheckBox
+            // 
+            this.ZGScheckBox.AutoSize = true;
+            this.ZGScheckBox.Location = new System.Drawing.Point(17, 61);
+            this.ZGScheckBox.Name = "ZGScheckBox";
+            this.ZGScheckBox.Size = new System.Drawing.Size(53, 21);
+            this.ZGScheckBox.TabIndex = 1;
+            this.ZGScheckBox.Text = "ЗГС";
+            this.ZGScheckBox.UseVisualStyleBackColor = true;
+            this.ZGScheckBox.CheckedChanged += new System.EventHandler(this.ZGScheckBox_CheckedChanged);
+            // 
+            // GScheckBox
+            // 
+            this.GScheckBox.AutoSize = true;
+            this.GScheckBox.Location = new System.Drawing.Point(17, 26);
+            this.GScheckBox.Name = "GScheckBox";
+            this.GScheckBox.Size = new System.Drawing.Size(44, 21);
+            this.GScheckBox.TabIndex = 0;
+            this.GScheckBox.Text = "ГС";
+            this.GScheckBox.UseVisualStyleBackColor = true;
+            this.GScheckBox.CheckedChanged += new System.EventHandler(this.GScheckBox_CheckedChanged);
+            // 
+            // positionsButton
+            // 
+            this.positionsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.positionsButton.BackColor = System.Drawing.Color.Tomato;
+            this.positionsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.positionsButton.ForeColor = System.Drawing.Color.White;
+            this.positionsButton.Location = new System.Drawing.Point(128, 27);
+            this.positionsButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.positionsButton.Name = "positionsButton";
+            this.positionsButton.Size = new System.Drawing.Size(43, 37);
+            this.positionsButton.TabIndex = 36;
+            this.positionsButton.Text = "+";
+            this.positionsButton.UseVisualStyleBackColor = false;
+            this.positionsButton.Click += new System.EventHandler(this.positionsButton_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 234);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 20);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Город";
+            // 
+            // city_textBox
+            // 
+            this.city_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.city_textBox.Location = new System.Drawing.Point(131, 231);
+            this.city_textBox.Margin = new System.Windows.Forms.Padding(4);
+            this.city_textBox.Name = "city_textBox";
+            this.city_textBox.Size = new System.Drawing.Size(221, 26);
+            this.city_textBox.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(7, 196);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 25);
+            this.label5.Size = new System.Drawing.Size(89, 20);
             this.label5.TabIndex = 38;
-            this.label5.Text = "Класс";
+            this.label5.Text = "Категория";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(8, 146);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 25);
+            this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 37;
             this.label4.Text = "Отчество";
             // 
@@ -248,7 +388,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(8, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 25);
+            this.label3.Size = new System.Drawing.Size(40, 20);
             this.label3.TabIndex = 36;
             this.label3.Text = "Имя";
             // 
@@ -257,16 +397,17 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 25);
+            this.label2.Size = new System.Drawing.Size(81, 20);
             this.label2.TabIndex = 35;
             this.label2.Text = "Фамилия";
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(310, 26);
+            this.button1.Location = new System.Drawing.Point(333, 27);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(27, 28);
             this.button1.TabIndex = 34;
@@ -280,56 +421,63 @@
             this.Registr_button.BackColor = System.Drawing.Color.Tomato;
             this.Registr_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Registr_button.ForeColor = System.Drawing.Color.White;
-            this.Registr_button.Location = new System.Drawing.Point(117, 245);
+            this.Registr_button.Location = new System.Drawing.Point(72, 291);
             this.Registr_button.Margin = new System.Windows.Forms.Padding(4);
             this.Registr_button.Name = "Registr_button";
-            this.Registr_button.Size = new System.Drawing.Size(221, 63);
-            this.Registr_button.TabIndex = 5;
+            this.Registr_button.Size = new System.Drawing.Size(288, 63);
+            this.Registr_button.TabIndex = 6;
             this.Registr_button.Text = "Зарегистрировать";
             this.Registr_button.UseVisualStyleBackColor = false;
             this.Registr_button.Click += new System.EventHandler(this.registr_button_Click);
             // 
             // JudgeClass_textBox
             // 
-            this.JudgeClass_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.JudgeClass_textBox.Location = new System.Drawing.Point(118, 193);
+            this.JudgeClass_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.JudgeClass_textBox.Location = new System.Drawing.Point(131, 193);
             this.JudgeClass_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeClass_textBox.Name = "JudgeClass_textBox";
-            this.JudgeClass_textBox.Size = new System.Drawing.Size(214, 30);
-            this.JudgeClass_textBox.TabIndex = 3;
+            this.JudgeClass_textBox.Size = new System.Drawing.Size(221, 26);
+            this.JudgeClass_textBox.TabIndex = 4;
             // 
             // JudgeSurname_textBox
             // 
-            this.JudgeSurname_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.JudgeSurname_textBox.Location = new System.Drawing.Point(118, 65);
+            this.JudgeSurname_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.JudgeSurname_textBox.Location = new System.Drawing.Point(131, 65);
             this.JudgeSurname_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeSurname_textBox.Name = "JudgeSurname_textBox";
-            this.JudgeSurname_textBox.Size = new System.Drawing.Size(214, 30);
-            this.JudgeSurname_textBox.TabIndex = 2;
+            this.JudgeSurname_textBox.Size = new System.Drawing.Size(221, 26);
+            this.JudgeSurname_textBox.TabIndex = 1;
             // 
             // JudgePatronymic_textBox
             // 
-            this.JudgePatronymic_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.JudgePatronymic_textBox.Location = new System.Drawing.Point(118, 143);
+            this.JudgePatronymic_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.JudgePatronymic_textBox.Location = new System.Drawing.Point(131, 143);
             this.JudgePatronymic_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgePatronymic_textBox.Name = "JudgePatronymic_textBox";
-            this.JudgePatronymic_textBox.Size = new System.Drawing.Size(214, 30);
-            this.JudgePatronymic_textBox.TabIndex = 1;
+            this.JudgePatronymic_textBox.Size = new System.Drawing.Size(221, 26);
+            this.JudgePatronymic_textBox.TabIndex = 3;
             // 
             // JudgeName_textBox
             // 
-            this.JudgeName_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.JudgeName_textBox.Location = new System.Drawing.Point(118, 104);
+            this.JudgeName_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.JudgeName_textBox.Location = new System.Drawing.Point(131, 103);
             this.JudgeName_textBox.Margin = new System.Windows.Forms.Padding(4);
             this.JudgeName_textBox.Name = "JudgeName_textBox";
-            this.JudgeName_textBox.Size = new System.Drawing.Size(214, 30);
-            this.JudgeName_textBox.TabIndex = 0;
+            this.JudgeName_textBox.Size = new System.Drawing.Size(221, 26);
+            this.JudgeName_textBox.TabIndex = 2;
             // 
             // Categoriess_groupBox
             // 
             this.Categoriess_groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Categoriess_groupBox.Controls.Add(this.judgeChessPanel);
+            this.Categoriess_groupBox.Controls.Add(this.NewDanceGroupBox);
+            this.Categoriess_groupBox.Controls.Add(this.NewDanceButton);
             this.Categoriess_groupBox.Controls.Add(this.P_dance_checkBox);
             this.Categoriess_groupBox.Controls.Add(this.J_dance_checkBox);
             this.Categoriess_groupBox.Controls.Add(this.W_dance_checkBox);
@@ -356,29 +504,161 @@
             this.Categoriess_groupBox.Controls.Add(this.D1_checkBox);
             this.Categoriess_groupBox.Controls.Add(this.M2_checkBox);
             this.Categoriess_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Categoriess_groupBox.Location = new System.Drawing.Point(6, 19);
+            this.Categoriess_groupBox.Location = new System.Drawing.Point(6, 20);
+            this.Categoriess_groupBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Categoriess_groupBox.Name = "Categoriess_groupBox";
-            this.Categoriess_groupBox.Size = new System.Drawing.Size(747, 411);
+            this.Categoriess_groupBox.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Categoriess_groupBox.Size = new System.Drawing.Size(863, 457);
             this.Categoriess_groupBox.TabIndex = 18;
             this.Categoriess_groupBox.TabStop = false;
             this.Categoriess_groupBox.Text = "Категории";
             // 
-            // judgeChessPanel
+            // NewDanceGroupBox
             // 
-            this.judgeChessPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.judgeChessPanel.Location = new System.Drawing.Point(6, 19);
-            this.judgeChessPanel.Name = "judgeChessPanel";
-            this.judgeChessPanel.Size = new System.Drawing.Size(747, 405);
-            this.judgeChessPanel.TabIndex = 34;
+            this.NewDanceGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewDanceGroupBox.Controls.Add(this.label11);
+            this.NewDanceGroupBox.Controls.Add(this.label10);
+            this.NewDanceGroupBox.Controls.Add(this.label9);
+            this.NewDanceGroupBox.Controls.Add(this.label8);
+            this.NewDanceGroupBox.Controls.Add(this.label7);
+            this.NewDanceGroupBox.Controls.Add(this.NewDanceTextBox5);
+            this.NewDanceGroupBox.Controls.Add(this.NewDanceTextBox4);
+            this.NewDanceGroupBox.Controls.Add(this.NewDanceTextBox3);
+            this.NewDanceGroupBox.Controls.Add(this.NewDanceTextBox2);
+            this.NewDanceGroupBox.Controls.Add(this.NewDanceTextBox1);
+            this.NewDanceGroupBox.Location = new System.Drawing.Point(612, 145);
+            this.NewDanceGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.NewDanceGroupBox.Name = "NewDanceGroupBox";
+            this.NewDanceGroupBox.Padding = new System.Windows.Forms.Padding(4);
+            this.NewDanceGroupBox.Size = new System.Drawing.Size(244, 218);
+            this.NewDanceGroupBox.TabIndex = 35;
+            this.NewDanceGroupBox.TabStop = false;
+            this.NewDanceGroupBox.Text = "Добавить танцы";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(8, 165);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(57, 17);
+            this.label11.TabIndex = 44;
+            this.label11.Text = "Танец5";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 100);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(57, 17);
+            this.label10.TabIndex = 43;
+            this.label10.Text = "Танец3";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 132);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 17);
+            this.label9.TabIndex = 43;
+            this.label9.Text = "Танец4";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 65);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(57, 17);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "Танец2";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(8, 32);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 17);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "Танец1";
+            // 
+            // NewDanceTextBox5
+            // 
+            this.NewDanceTextBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewDanceTextBox5.Location = new System.Drawing.Point(91, 161);
+            this.NewDanceTextBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewDanceTextBox5.Name = "NewDanceTextBox5";
+            this.NewDanceTextBox5.Size = new System.Drawing.Size(145, 23);
+            this.NewDanceTextBox5.TabIndex = 40;
+            // 
+            // NewDanceTextBox4
+            // 
+            this.NewDanceTextBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewDanceTextBox4.Location = new System.Drawing.Point(91, 128);
+            this.NewDanceTextBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewDanceTextBox4.Name = "NewDanceTextBox4";
+            this.NewDanceTextBox4.Size = new System.Drawing.Size(145, 23);
+            this.NewDanceTextBox4.TabIndex = 39;
+            // 
+            // NewDanceTextBox3
+            // 
+            this.NewDanceTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewDanceTextBox3.Location = new System.Drawing.Point(91, 95);
+            this.NewDanceTextBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewDanceTextBox3.Name = "NewDanceTextBox3";
+            this.NewDanceTextBox3.Size = new System.Drawing.Size(145, 23);
+            this.NewDanceTextBox3.TabIndex = 38;
+            // 
+            // NewDanceTextBox2
+            // 
+            this.NewDanceTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewDanceTextBox2.Location = new System.Drawing.Point(91, 62);
+            this.NewDanceTextBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewDanceTextBox2.Name = "NewDanceTextBox2";
+            this.NewDanceTextBox2.Size = new System.Drawing.Size(145, 23);
+            this.NewDanceTextBox2.TabIndex = 37;
+            // 
+            // NewDanceTextBox1
+            // 
+            this.NewDanceTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewDanceTextBox1.Location = new System.Drawing.Point(91, 28);
+            this.NewDanceTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewDanceTextBox1.Name = "NewDanceTextBox1";
+            this.NewDanceTextBox1.Size = new System.Drawing.Size(145, 23);
+            this.NewDanceTextBox1.TabIndex = 36;
+            // 
+            // NewDanceButton
+            // 
+            this.NewDanceButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NewDanceButton.BackColor = System.Drawing.Color.Tomato;
+            this.NewDanceButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NewDanceButton.ForeColor = System.Drawing.Color.White;
+            this.NewDanceButton.Location = new System.Drawing.Point(568, 153);
+            this.NewDanceButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.NewDanceButton.Name = "NewDanceButton";
+            this.NewDanceButton.Size = new System.Drawing.Size(43, 37);
+            this.NewDanceButton.TabIndex = 16;
+            this.NewDanceButton.Text = "+";
+            this.NewDanceButton.UseVisualStyleBackColor = false;
+            this.NewDanceButton.Click += new System.EventHandler(this.NewDanceButton_Click);
             // 
             // P_dance_checkBox
             // 
             this.P_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.P_dance_checkBox.AutoSize = true;
             this.P_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.P_dance_checkBox.Location = new System.Drawing.Point(340, 205);
+            this.P_dance_checkBox.Location = new System.Drawing.Point(340, 201);
+            this.P_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.P_dance_checkBox.Name = "P_dance_checkBox";
-            this.P_dance_checkBox.Size = new System.Drawing.Size(67, 29);
+            this.P_dance_checkBox.Size = new System.Drawing.Size(54, 24);
             this.P_dance_checkBox.TabIndex = 33;
             this.P_dance_checkBox.Text = "П/P";
             this.P_dance_checkBox.UseVisualStyleBackColor = true;
@@ -388,9 +668,10 @@
             this.J_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.J_dance_checkBox.AutoSize = true;
             this.J_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.J_dance_checkBox.Location = new System.Drawing.Point(456, 205);
+            this.J_dance_checkBox.Location = new System.Drawing.Point(456, 201);
+            this.J_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.J_dance_checkBox.Name = "J_dance_checkBox";
-            this.J_dance_checkBox.Size = new System.Drawing.Size(68, 29);
+            this.J_dance_checkBox.Size = new System.Drawing.Size(52, 24);
             this.J_dance_checkBox.TabIndex = 32;
             this.J_dance_checkBox.Text = "Д/J";
             this.J_dance_checkBox.UseVisualStyleBackColor = true;
@@ -400,9 +681,10 @@
             this.W_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.W_dance_checkBox.AutoSize = true;
             this.W_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.W_dance_checkBox.Location = new System.Drawing.Point(15, 157);
+            this.W_dance_checkBox.Location = new System.Drawing.Point(15, 153);
+            this.W_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.W_dance_checkBox.Name = "W_dance_checkBox";
-            this.W_dance_checkBox.Size = new System.Drawing.Size(88, 29);
+            this.W_dance_checkBox.Size = new System.Drawing.Size(71, 24);
             this.W_dance_checkBox.TabIndex = 24;
             this.W_dance_checkBox.Text = "МВ/W";
             this.W_dance_checkBox.UseVisualStyleBackColor = true;
@@ -412,9 +694,10 @@
             this.S_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.S_dance_checkBox.AutoSize = true;
             this.S_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.S_dance_checkBox.Location = new System.Drawing.Point(15, 205);
+            this.S_dance_checkBox.Location = new System.Drawing.Point(15, 201);
+            this.S_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.S_dance_checkBox.Name = "S_dance_checkBox";
-            this.S_dance_checkBox.Size = new System.Drawing.Size(67, 29);
+            this.S_dance_checkBox.Size = new System.Drawing.Size(54, 24);
             this.S_dance_checkBox.TabIndex = 31;
             this.S_dance_checkBox.Text = "С/S";
             this.S_dance_checkBox.UseVisualStyleBackColor = true;
@@ -424,9 +707,10 @@
             this.F_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.F_dance_checkBox.AutoSize = true;
             this.F_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.F_dance_checkBox.Location = new System.Drawing.Point(340, 157);
+            this.F_dance_checkBox.Location = new System.Drawing.Point(340, 153);
+            this.F_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.F_dance_checkBox.Name = "F_dance_checkBox";
-            this.F_dance_checkBox.Size = new System.Drawing.Size(87, 29);
+            this.F_dance_checkBox.Size = new System.Drawing.Size(70, 24);
             this.F_dance_checkBox.TabIndex = 25;
             this.F_dance_checkBox.Text = "МФ/F";
             this.F_dance_checkBox.UseVisualStyleBackColor = true;
@@ -436,9 +720,10 @@
             this.T_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.T_dance_checkBox.AutoSize = true;
             this.T_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.T_dance_checkBox.Location = new System.Drawing.Point(235, 157);
+            this.T_dance_checkBox.Location = new System.Drawing.Point(235, 153);
+            this.T_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.T_dance_checkBox.Name = "T_dance_checkBox";
-            this.T_dance_checkBox.Size = new System.Drawing.Size(47, 29);
+            this.T_dance_checkBox.Size = new System.Drawing.Size(37, 24);
             this.T_dance_checkBox.TabIndex = 30;
             this.T_dance_checkBox.Text = "T";
             this.T_dance_checkBox.UseVisualStyleBackColor = true;
@@ -448,9 +733,10 @@
             this.Q_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Q_dance_checkBox.AutoSize = true;
             this.Q_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Q_dance_checkBox.Location = new System.Drawing.Point(456, 157);
+            this.Q_dance_checkBox.Location = new System.Drawing.Point(456, 153);
+            this.Q_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Q_dance_checkBox.Name = "Q_dance_checkBox";
-            this.Q_dance_checkBox.Size = new System.Drawing.Size(68, 29);
+            this.Q_dance_checkBox.Size = new System.Drawing.Size(54, 24);
             this.Q_dance_checkBox.TabIndex = 26;
             this.Q_dance_checkBox.Text = "К/Q";
             this.Q_dance_checkBox.UseVisualStyleBackColor = true;
@@ -460,9 +746,10 @@
             this.Ch_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Ch_dance_checkBox.AutoSize = true;
             this.Ch_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Ch_dance_checkBox.Location = new System.Drawing.Point(124, 205);
+            this.Ch_dance_checkBox.Location = new System.Drawing.Point(124, 201);
+            this.Ch_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Ch_dance_checkBox.Name = "Ch_dance_checkBox";
-            this.Ch_dance_checkBox.Size = new System.Drawing.Size(79, 29);
+            this.Ch_dance_checkBox.Size = new System.Drawing.Size(64, 24);
             this.Ch_dance_checkBox.TabIndex = 29;
             this.Ch_dance_checkBox.Text = "Ч/Ch";
             this.Ch_dance_checkBox.UseVisualStyleBackColor = true;
@@ -472,9 +759,10 @@
             this.V_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.V_dance_checkBox.AutoSize = true;
             this.V_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.V_dance_checkBox.Location = new System.Drawing.Point(124, 156);
+            this.V_dance_checkBox.Location = new System.Drawing.Point(124, 151);
+            this.V_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.V_dance_checkBox.Name = "V_dance_checkBox";
-            this.V_dance_checkBox.Size = new System.Drawing.Size(78, 29);
+            this.V_dance_checkBox.Size = new System.Drawing.Size(65, 24);
             this.V_dance_checkBox.TabIndex = 27;
             this.V_dance_checkBox.Text = "ВВ/V";
             this.V_dance_checkBox.UseVisualStyleBackColor = true;
@@ -484,9 +772,10 @@
             this.R_dance_checkBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.R_dance_checkBox.AutoSize = true;
             this.R_dance_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.R_dance_checkBox.Location = new System.Drawing.Point(235, 205);
+            this.R_dance_checkBox.Location = new System.Drawing.Point(235, 201);
+            this.R_dance_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.R_dance_checkBox.Name = "R_dance_checkBox";
-            this.R_dance_checkBox.Size = new System.Drawing.Size(65, 29);
+            this.R_dance_checkBox.Size = new System.Drawing.Size(54, 24);
             this.R_dance_checkBox.TabIndex = 28;
             this.R_dance_checkBox.Text = "Р/R";
             this.R_dance_checkBox.UseVisualStyleBackColor = true;
@@ -495,12 +784,13 @@
             // 
             this.categoryNameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.categoryNameTextBox.Location = new System.Drawing.Point(167, 88);
+            this.categoryNameTextBox.Location = new System.Drawing.Point(167, 89);
+            this.categoryNameTextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.categoryNameTextBox.Multiline = true;
             this.categoryNameTextBox.Name = "categoryNameTextBox";
             this.categoryNameTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.categoryNameTextBox.Size = new System.Drawing.Size(387, 27);
-            this.categoryNameTextBox.TabIndex = 23;
+            this.categoryNameTextBox.Size = new System.Drawing.Size(492, 27);
+            this.categoryNameTextBox.TabIndex = 8;
             // 
             // label1
             // 
@@ -508,9 +798,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(8, 88);
+            this.label1.Location = new System.Drawing.Point(8, 89);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 25);
+            this.label1.Size = new System.Drawing.Size(89, 20);
             this.label1.TabIndex = 22;
             this.label1.Text = "Категория";
             // 
@@ -519,9 +809,10 @@
             this.other_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.other_checkBox.AutoSize = true;
             this.other_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.other_checkBox.Location = new System.Drawing.Point(340, 364);
+            this.other_checkBox.Location = new System.Drawing.Point(456, 331);
+            this.other_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.other_checkBox.Name = "other_checkBox";
-            this.other_checkBox.Size = new System.Drawing.Size(161, 29);
+            this.other_checkBox.Size = new System.Drawing.Size(131, 24);
             this.other_checkBox.TabIndex = 21;
             this.other_checkBox.Text = "Иной возраст";
             this.other_checkBox.UseVisualStyleBackColor = true;
@@ -531,7 +822,8 @@
             this.BackSecond_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BackSecond_button.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.BackSecond_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BackSecond_button.Location = new System.Drawing.Point(582, 343);
+            this.BackSecond_button.Location = new System.Drawing.Point(699, 385);
+            this.BackSecond_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.BackSecond_button.Name = "BackSecond_button";
             this.BackSecond_button.Size = new System.Drawing.Size(159, 50);
             this.BackSecond_button.TabIndex = 20;
@@ -544,9 +836,10 @@
             this.D0_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.D0_checkBox.AutoSize = true;
             this.D0_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.D0_checkBox.Location = new System.Drawing.Point(15, 297);
+            this.D0_checkBox.Location = new System.Drawing.Point(15, 331);
+            this.D0_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.D0_checkBox.Name = "D0_checkBox";
-            this.D0_checkBox.Size = new System.Drawing.Size(63, 29);
+            this.D0_checkBox.Size = new System.Drawing.Size(51, 24);
             this.D0_checkBox.TabIndex = 3;
             this.D0_checkBox.Text = "0-7";
             this.D0_checkBox.UseVisualStyleBackColor = true;
@@ -556,9 +849,10 @@
             this.CreateGroupSecond_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateGroupSecond_button.BackColor = System.Drawing.SystemColors.Highlight;
             this.CreateGroupSecond_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreateGroupSecond_button.Location = new System.Drawing.Point(575, 51);
+            this.CreateGroupSecond_button.Location = new System.Drawing.Point(666, 50);
+            this.CreateGroupSecond_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateGroupSecond_button.Name = "CreateGroupSecond_button";
-            this.CreateGroupSecond_button.Size = new System.Drawing.Size(159, 95);
+            this.CreateGroupSecond_button.Size = new System.Drawing.Size(184, 95);
             this.CreateGroupSecond_button.TabIndex = 19;
             this.CreateGroupSecond_button.Text = "Create!";
             this.CreateGroupSecond_button.UseVisualStyleBackColor = false;
@@ -569,9 +863,10 @@
             this.U1_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.U1_checkBox.AutoSize = true;
             this.U1_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.U1_checkBox.Location = new System.Drawing.Point(340, 297);
+            this.U1_checkBox.Location = new System.Drawing.Point(340, 331);
+            this.U1_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.U1_checkBox.Name = "U1_checkBox";
-            this.U1_checkBox.Size = new System.Drawing.Size(95, 29);
+            this.U1_checkBox.Size = new System.Drawing.Size(77, 24);
             this.U1_checkBox.TabIndex = 12;
             this.U1_checkBox.Text = "12 - 13";
             this.U1_checkBox.UseVisualStyleBackColor = true;
@@ -581,19 +876,21 @@
             this.M_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.M_checkBox.AutoSize = true;
             this.M_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.M_checkBox.Location = new System.Drawing.Point(124, 332);
+            this.M_checkBox.Location = new System.Drawing.Point(124, 367);
+            this.M_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.M_checkBox.Name = "M_checkBox";
-            this.M_checkBox.Size = new System.Drawing.Size(95, 29);
+            this.M_checkBox.Size = new System.Drawing.Size(77, 24);
             this.M_checkBox.TabIndex = 6;
             this.M_checkBox.Text = "16 - 18";
             this.M_checkBox.UseVisualStyleBackColor = true;
             // 
             // NumberOfGroup_textBox
             // 
-            this.NumberOfGroup_textBox.Location = new System.Drawing.Point(167, 56);
+            this.NumberOfGroup_textBox.Location = new System.Drawing.Point(167, 57);
+            this.NumberOfGroup_textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NumberOfGroup_textBox.Name = "NumberOfGroup_textBox";
-            this.NumberOfGroup_textBox.Size = new System.Drawing.Size(115, 26);
-            this.NumberOfGroup_textBox.TabIndex = 17;
+            this.NumberOfGroup_textBox.Size = new System.Drawing.Size(115, 23);
+            this.NumberOfGroup_textBox.TabIndex = 7;
             // 
             // label_NumberOfGroup
             // 
@@ -603,7 +900,7 @@
             this.label_NumberOfGroup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_NumberOfGroup.Location = new System.Drawing.Point(8, 55);
             this.label_NumberOfGroup.Name = "label_NumberOfGroup";
-            this.label_NumberOfGroup.Size = new System.Drawing.Size(144, 25);
+            this.label_NumberOfGroup.Size = new System.Drawing.Size(115, 20);
             this.label_NumberOfGroup.TabIndex = 16;
             this.label_NumberOfGroup.Text = "Номер группы";
             // 
@@ -612,9 +909,10 @@
             this.U2_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.U2_checkBox.AutoSize = true;
             this.U2_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.U2_checkBox.Location = new System.Drawing.Point(15, 336);
+            this.U2_checkBox.Location = new System.Drawing.Point(15, 371);
+            this.U2_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.U2_checkBox.Name = "U2_checkBox";
-            this.U2_checkBox.Size = new System.Drawing.Size(95, 29);
+            this.U2_checkBox.Size = new System.Drawing.Size(77, 24);
             this.U2_checkBox.TabIndex = 11;
             this.U2_checkBox.Text = "14 - 15";
             this.U2_checkBox.UseVisualStyleBackColor = true;
@@ -624,9 +922,10 @@
             this.D2_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.D2_checkBox.AutoSize = true;
             this.D2_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.D2_checkBox.Location = new System.Drawing.Point(232, 297);
+            this.D2_checkBox.Location = new System.Drawing.Point(232, 331);
+            this.D2_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.D2_checkBox.Name = "D2_checkBox";
-            this.D2_checkBox.Size = new System.Drawing.Size(85, 29);
+            this.D2_checkBox.Size = new System.Drawing.Size(69, 24);
             this.D2_checkBox.TabIndex = 7;
             this.D2_checkBox.Text = "10-11";
             this.D2_checkBox.UseVisualStyleBackColor = true;
@@ -636,11 +935,12 @@
             this.Vz_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Vz_checkBox.AutoSize = true;
             this.Vz_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Vz_checkBox.Location = new System.Drawing.Point(340, 332);
+            this.Vz_checkBox.Location = new System.Drawing.Point(340, 367);
+            this.Vz_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Vz_checkBox.Name = "Vz_checkBox";
-            this.Vz_checkBox.Size = new System.Drawing.Size(133, 29);
+            this.Vz_checkBox.Size = new System.Drawing.Size(109, 24);
             this.Vz_checkBox.TabIndex = 10;
-            this.Vz_checkBox.Text = "22 и более";
+            this.Vz_checkBox.Text = "16 и более";
             this.Vz_checkBox.UseVisualStyleBackColor = true;
             // 
             // D1_checkBox
@@ -648,9 +948,10 @@
             this.D1_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.D1_checkBox.AutoSize = true;
             this.D1_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.D1_checkBox.Location = new System.Drawing.Point(124, 297);
+            this.D1_checkBox.Location = new System.Drawing.Point(124, 331);
+            this.D1_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.D1_checkBox.Name = "D1_checkBox";
-            this.D1_checkBox.Size = new System.Drawing.Size(63, 29);
+            this.D1_checkBox.Size = new System.Drawing.Size(51, 24);
             this.D1_checkBox.TabIndex = 8;
             this.D1_checkBox.Text = "8-9";
             this.D1_checkBox.UseVisualStyleBackColor = true;
@@ -660,12 +961,27 @@
             this.M2_checkBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.M2_checkBox.AutoSize = true;
             this.M2_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.M2_checkBox.Location = new System.Drawing.Point(232, 332);
+            this.M2_checkBox.Location = new System.Drawing.Point(232, 367);
+            this.M2_checkBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.M2_checkBox.Name = "M2_checkBox";
-            this.M2_checkBox.Size = new System.Drawing.Size(95, 29);
+            this.M2_checkBox.Size = new System.Drawing.Size(77, 24);
             this.M2_checkBox.TabIndex = 9;
             this.M2_checkBox.Text = "19 - 21";
             this.M2_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // judgeChessPanel
+            // 
+            this.judgeChessPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.judgeChessPanel.AutoScroll = true;
+            this.judgeChessPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.judgeChessPanel.Location = new System.Drawing.Point(0, 1);
+            this.judgeChessPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.judgeChessPanel.Name = "judgeChessPanel";
+            this.judgeChessPanel.Size = new System.Drawing.Size(863, 456);
+            this.judgeChessPanel.TabIndex = 34;
+            this.judgeChessPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.judgeChessPanel_Paint);
             // 
             // CreateGroup_button
             // 
@@ -673,6 +989,7 @@
             this.CreateGroup_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateGroup_button.ForeColor = System.Drawing.Color.White;
             this.CreateGroup_button.Location = new System.Drawing.Point(15, 21);
+            this.CreateGroup_button.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CreateGroup_button.Name = "CreateGroup_button";
             this.CreateGroup_button.Size = new System.Drawing.Size(212, 85);
             this.CreateGroup_button.TabIndex = 8;
@@ -685,15 +1002,16 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.judgeChessPanel);
             this.groupBox2.Controls.Add(this.Categoriess_groupBox);
             this.groupBox2.Controls.Add(this.CreateGroup_button);
             this.groupBox2.Controls.Add(this.judgeGroupBox);
             this.groupBox2.Controls.Add(this.showJudgeRegButton);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 13);
+            this.groupBox2.Location = new System.Drawing.Point(13, 12);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(762, 436);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(879, 483);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Формирование";
@@ -704,6 +1022,7 @@
             this.showJudgeRegButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.showJudgeRegButton.ForeColor = System.Drawing.Color.White;
             this.showJudgeRegButton.Location = new System.Drawing.Point(232, 21);
+            this.showJudgeRegButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.showJudgeRegButton.Name = "showJudgeRegButton";
             this.showJudgeRegButton.Size = new System.Drawing.Size(172, 85);
             this.showJudgeRegButton.TabIndex = 19;
@@ -717,7 +1036,7 @@
             this.configButton.BackColor = System.Drawing.Color.Tomato;
             this.configButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.configButton.ForeColor = System.Drawing.Color.White;
-            this.configButton.Location = new System.Drawing.Point(613, 495);
+            this.configButton.Location = new System.Drawing.Point(730, 542);
             this.configButton.Margin = new System.Windows.Forms.Padding(4);
             this.configButton.Name = "configButton";
             this.configButton.Size = new System.Drawing.Size(161, 64);
@@ -732,10 +1051,10 @@
             this.judgeAllowButton.BackColor = System.Drawing.Color.Tomato;
             this.judgeAllowButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.judgeAllowButton.ForeColor = System.Drawing.Color.White;
-            this.judgeAllowButton.Location = new System.Drawing.Point(14, 495);
+            this.judgeAllowButton.Location = new System.Drawing.Point(13, 542);
             this.judgeAllowButton.Margin = new System.Windows.Forms.Padding(4);
             this.judgeAllowButton.Name = "judgeAllowButton";
-            this.judgeAllowButton.Size = new System.Drawing.Size(226, 64);
+            this.judgeAllowButton.Size = new System.Drawing.Size(227, 64);
             this.judgeAllowButton.TabIndex = 14;
             this.judgeAllowButton.Text = "Принять";
             this.judgeAllowButton.UseVisualStyleBackColor = false;
@@ -747,7 +1066,7 @@
             this.judgeInGroupButton.BackColor = System.Drawing.Color.Tomato;
             this.judgeInGroupButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.judgeInGroupButton.ForeColor = System.Drawing.Color.White;
-            this.judgeInGroupButton.Location = new System.Drawing.Point(424, 495);
+            this.judgeInGroupButton.Location = new System.Drawing.Point(424, 542);
             this.judgeInGroupButton.Margin = new System.Windows.Forms.Padding(4);
             this.judgeInGroupButton.Name = "judgeInGroupButton";
             this.judgeInGroupButton.Size = new System.Drawing.Size(169, 64);
@@ -761,7 +1080,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
-            this.ClientSize = new System.Drawing.Size(992, 569);
+            this.ClientSize = new System.Drawing.Size(1108, 616);
             this.Controls.Add(this.judgeInGroupButton);
             this.Controls.Add(this.judgeChessButton);
             this.Controls.Add(this.judgeAllowButton);
@@ -770,10 +1089,11 @@
             this.Controls.Add(this.judgeListButton);
             this.Controls.Add(this.Browse_button);
             this.Controls.Add(this.Delete_button);
-            this.Controls.Add(this.OpenBase_button);
             this.Controls.Add(this.Path_textBox);
             this.Controls.Add(this.backbutton);
             this.Controls.Add(this.CreateNewTournirButton);
+            this.Controls.Add(this.OpenBase_button);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "secretaryForm";
             this.Text = "secretaryForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.secretaryForm_FormClosing);
@@ -781,8 +1101,12 @@
             this.Resize += new System.EventHandler(this.secretaryForm_Resize);
             this.judgeGroupBox.ResumeLayout(false);
             this.judgeGroupBox.PerformLayout();
+            this.positionsGroupBox.ResumeLayout(false);
+            this.positionsGroupBox.PerformLayout();
             this.Categoriess_groupBox.ResumeLayout(false);
             this.Categoriess_groupBox.PerformLayout();
+            this.NewDanceGroupBox.ResumeLayout(false);
+            this.NewDanceGroupBox.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -844,5 +1168,26 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox city_textBox;
+        private System.Windows.Forms.GroupBox NewDanceGroupBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox NewDanceTextBox5;
+        private System.Windows.Forms.TextBox NewDanceTextBox4;
+        private System.Windows.Forms.TextBox NewDanceTextBox3;
+        private System.Windows.Forms.TextBox NewDanceTextBox2;
+        private System.Windows.Forms.TextBox NewDanceTextBox1;
+        private System.Windows.Forms.Button NewDanceButton;
+        private System.Windows.Forms.GroupBox positionsGroupBox;
+        private System.Windows.Forms.Button positionsButton;
+        private System.Windows.Forms.CheckBox SPUcheckBox;
+        private System.Windows.Forms.CheckBox PDSKcheckBox;
+        private System.Windows.Forms.CheckBox GCKcheckBox;
+        private System.Windows.Forms.CheckBox ZGScheckBox;
+        private System.Windows.Forms.CheckBox GScheckBox;
     }
 }

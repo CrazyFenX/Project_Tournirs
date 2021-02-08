@@ -19,7 +19,10 @@ namespace DataViewer_D_v._001
 
         public int GroupNumber;
         public int SetNumber;
+        public int DuetNumber;
+
         public int NumberInTournir;
+        public int NumberInGroup;
 
         public string ClubName;
         public string City;

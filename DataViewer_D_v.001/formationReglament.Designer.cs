@@ -35,6 +35,7 @@
             this.timeTournirLabel = new System.Windows.Forms.Label();
             this.saveButton = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label1 = new System.Windows.Forms.Label();
             this.formation_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,9 +45,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelOfElements.AutoScroll = true;
-            this.panelOfElements.Location = new System.Drawing.Point(0, 11);
+            this.panelOfElements.Location = new System.Drawing.Point(0, 0);
             this.panelOfElements.Name = "panelOfElements";
-            this.panelOfElements.Size = new System.Drawing.Size(686, 517);
+            this.panelOfElements.Size = new System.Drawing.Size(686, 468);
             this.panelOfElements.TabIndex = 12;
             // 
             // backButton
@@ -67,9 +68,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.formation_groupBox.Controls.Add(this.panelOfElements);
-            this.formation_groupBox.Location = new System.Drawing.Point(12, 12);
+            this.formation_groupBox.Location = new System.Drawing.Point(12, 72);
             this.formation_groupBox.Name = "formation_groupBox";
-            this.formation_groupBox.Size = new System.Drawing.Size(686, 528);
+            this.formation_groupBox.Size = new System.Drawing.Size(686, 468);
             this.formation_groupBox.TabIndex = 13;
             this.formation_groupBox.TabStop = false;
             // 
@@ -114,11 +115,23 @@
             this.saveButton.UseVisualStyleBackColor = false;
             this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(36, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(285, 30);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Задайте порядок групп:";
+            // 
             // formationReglament
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1003, 553);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.timeTournirLabel);
             this.Controls.Add(this.configButton);
@@ -143,5 +156,6 @@
         private System.Windows.Forms.Label timeTournirLabel;
         private System.Windows.Forms.Button saveButton;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label1;
     }
 }

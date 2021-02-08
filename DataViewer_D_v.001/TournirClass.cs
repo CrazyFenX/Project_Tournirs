@@ -20,6 +20,9 @@ namespace DataViewer_D_v._001
         public List<GroupClass> groups = new List<GroupClass>();
         public string registrator;
         public string secretary;
+
+        public List<Judge> positionsList = new List<Judge>(); 
+
         public List<Judge> judges = new List<Judge>();//Продумать
         public string path;
 
@@ -63,6 +66,57 @@ namespace DataViewer_D_v._001
                 result += "\n";
             }
 
+            foreach (GroupClass group in this.groups)
+            {
+                result += group.ToString();
+                result += "\n Танцы \n";
+                foreach (string dance in group.DancesList)
+                {
+                    result += dance;
+                    result += "\n";
+                }
+                result += "\n Категории \n";
+                foreach (string category in group.CategoryList)
+                {
+                    result += category.ToString();
+                    result += "\n";
+                }
+                result += "\n Судьи \n";
+                foreach (Judge jud in group.JudgeList)
+                {
+                    result += jud.ToString();
+                    result += "\n";
+                }
+                result += "\n Пары \n";
+                foreach (Duet duet in group.duetList)
+                {
+                    result += duet.ToString();
+                    result += "\n";
+                }
+            }
+
+            MessageBox.Show(result);
+        }
+
+        public void info()
+        {
+            string result = "";
+
+            result += this.name;
+            result += "\n";
+
+            result += this.date.ToString();
+            result += "\n";
+
+            result += this.time.ToString();
+            result += "\n";
+
+            result += this.place;
+            result += "\n";
+
+            result += this.organisation;
+            result += "\n";
+
             result += this.registrator;
             result += "\n";
 
@@ -71,17 +125,79 @@ namespace DataViewer_D_v._001
 
             foreach (GroupClass group in this.groups)
             {
-                result += group.ToString();
                 result += "\n";
-                foreach (Judge jud in group.JudgeList)
+                result += group.ToString();
+                result += "\n Танцы: ";
+                foreach (string dance in group.DancesList)
                 {
-                    result += jud.ToString();
-                    result += "\n";
+                    result += dance + " ";
                 }
+                result += "   Категории: ";
+                foreach (string category in group.CategoryList)
+                {
+                    result += category.ToString() + " ";
+                }
+                result += "   Пар в группе: ";
+                result += group.duetList.Count().ToString();
+                result += "\n";
             }
 
             MessageBox.Show(result);
         }
 
+        public void info2()
+        {
+            string result = "";
+
+            result += this.name;
+            result += "\n";
+
+            result += this.date.ToString();
+            result += "\n";
+
+            result += this.time.ToString();
+            result += "\n";
+
+            result += this.place;
+            result += "\n";
+
+            result += this.organisation;
+            result += "\n";
+
+            result += "\n Судьи: ";
+            foreach (Judge judge in judges)
+            {
+                result += judge.ToString() + "\n";
+            }
+
+            result += "\n Должности: ";
+            foreach (Judge jitem in positionsList)
+            {
+                result += jitem.ToShortString();
+                result += "\n";
+            }
+
+            foreach (GroupClass group in this.groups)
+            {
+                result += "\n";
+                result += group.ToString();
+                result += "\n Танцы: ";
+                foreach (string dance in group.DancesList)
+                {
+                    result += dance + " ";
+                }
+                result += "   Категории: ";
+                foreach (string category in group.CategoryList)
+                {
+                    result += category.ToString() + " ";
+                }
+
+                result += "   Пар в группе: ";
+                result += group.duetList.Count().ToString();
+                result += "\n";
+            }
+
+            MessageBox.Show(result);
+        }
     }
 }

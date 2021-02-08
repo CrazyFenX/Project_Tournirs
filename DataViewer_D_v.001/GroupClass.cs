@@ -16,6 +16,8 @@ namespace DataViewer_D_v._001
         public List<AgeCategoryClass> AgeCategoryClassList = new List<AgeCategoryClass>();
 
         public List<Duet> duetList = new List<Duet>();
+        public List<Duet> sortDuetList = new List<Duet>();
+
         //public List<danceClass> DanceClass = new List<danceClass>();
         public List<string> DancesList = new List<string>();
 
@@ -45,7 +47,7 @@ namespace DataViewer_D_v._001
 
         public override string ToString()
         {
-            return "Группа номер " + Convert.ToString(this.number) + " в " + Convert.ToString(this.tournir_name);
+            return "Группа " + Convert.ToString(this.number) + " " + this.name;
         }
 
         public string show()

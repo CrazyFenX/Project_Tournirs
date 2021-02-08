@@ -41,11 +41,10 @@
             this.спортивныйКлассDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.разрядDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.тренераDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sportsmansBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.sportsmansBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.peopleDataSet2BindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet2 = new DataViewer_D_v._001.PeopleDataSet2();
             this.sportsmansBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSetLastLast = new DataViewer_D_v._001.PeopleDataSetLastLast();
             this.DataView_bindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -59,8 +58,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Update_button = new System.Windows.Forms.Button();
-            this.sportmansTableAdapter = new DataViewer_D_v._001.BD1DataSetTableAdapters.SportmansTableAdapter();
-            this.sportsmansTableAdapter = new DataViewer_D_v._001.PeopleDataSetTableAdapters.SportsmansTableAdapter();
             this.showSports_button = new System.Windows.Forms.Button();
             this.showTrainers_button = new System.Windows.Forms.Button();
             this.dataGridView_trainers = new System.Windows.Forms.DataGridView();
@@ -69,41 +66,28 @@
             this.фамилияDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.имяDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.отчествоDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.trainersBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.trainersBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.trainersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.trainersTableAdapter = new DataViewer_D_v._001.PeopleDataSetLastTableAdapters.TrainersTableAdapter();
-            this.sportsmansTableAdapter1 = new DataViewer_D_v._001.PeopleDataSetLastLastTableAdapters.SportsmansTableAdapter();
-            this.trainersTableAdapter1 = new DataViewer_D_v._001.PeopleDataSetLastLastTableAdapters.TrainersTableAdapter();
-            this.sportsmansTableAdapter2 = new DataViewer_D_v._001.PeopleDataSetLastTableAdapters.SportsmansTableAdapter();
             this.peopleDataSet2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.peopleDataSet2BindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sportsmansTableAdapter3 = new DataViewer_D_v._001.PeopleDataSet2TableAdapters.SportsmansTableAdapter();
-            this.trainersTableAdapter2 = new DataViewer_D_v._001.PeopleDataSet2TableAdapters.TrainersTableAdapter();
             this.sportsmansBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.trainersBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.peopleDataSet3 = new DataViewer_D_v._001.PeopleDataSet3();
-            this.sportsmansBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.sportsmansTableAdapter4 = new DataViewer_D_v._001.PeopleDataSet3TableAdapters.SportsmansTableAdapter();
-            this.trainersBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.trainersTableAdapter3 = new DataViewer_D_v._001.PeopleDataSet3TableAdapters.TrainersTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_sportsmen)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetLastLast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataView_bindingNavigator)).BeginInit();
             this.DataView_bindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_trainers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource3)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView_sportsmen
@@ -213,6 +197,10 @@
             this.тренераDataGridViewTextBoxColumn.Name = "тренераDataGridViewTextBoxColumn";
             this.тренераDataGridViewTextBoxColumn.Width = 125;
             // 
+            // sportsmansBindingSource3
+            // 
+            this.sportsmansBindingSource3.DataMember = "Sportsmans";
+            // 
             // sportsmansBindingSource1
             // 
             this.sportsmansBindingSource1.DataMember = "Sportsmans";
@@ -220,23 +208,16 @@
             // 
             // peopleDataSet2BindingSource2
             // 
-            this.peopleDataSet2BindingSource2.DataSource = this.peopleDataSet2;
             this.peopleDataSet2BindingSource2.Position = 0;
             // 
             // peopleDataSet2
             // 
-            this.peopleDataSet2.DataSetName = "PeopleDataSet2";
-            this.peopleDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // sportsmansBindingSource
             // 
             this.sportsmansBindingSource.DataMember = "Sportsmans";
-            this.sportsmansBindingSource.DataSource = this.peopleDataSetLastLast;
             // 
             // peopleDataSetLastLast
-            // 
-            this.peopleDataSetLastLast.DataSetName = "PeopleDataSetLastLast";
-            this.peopleDataSetLastLast.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // DataView_bindingNavigator
             // 
@@ -263,7 +244,7 @@
             this.DataView_bindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.DataView_bindingNavigator.Name = "DataView_bindingNavigator";
             this.DataView_bindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.DataView_bindingNavigator.Size = new System.Drawing.Size(823, 27);
+            this.DataView_bindingNavigator.Size = new System.Drawing.Size(1029, 39);
             this.DataView_bindingNavigator.TabIndex = 1;
             this.DataView_bindingNavigator.Text = "bindingNavigator1";
             // 
@@ -273,13 +254,13 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 24);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 36);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
             // 
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(55, 24);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(55, 36);
             this.bindingNavigatorCountItem.Text = "для {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Общее число элементов";
             // 
@@ -289,7 +270,7 @@
             this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
             this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
             this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 24);
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(29, 36);
             this.bindingNavigatorDeleteItem.Text = "Удалить";
             // 
             // bindingNavigatorMoveFirstItem
@@ -298,7 +279,7 @@
             this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
             this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
             this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 24);
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(29, 36);
             this.bindingNavigatorMoveFirstItem.Text = "Переместить в начало";
             // 
             // bindingNavigatorMovePreviousItem
@@ -307,13 +288,13 @@
             this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
             this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
             this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 24);
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(29, 36);
             this.bindingNavigatorMovePreviousItem.Text = "Переместить назад";
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 27);
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 39);
             // 
             // bindingNavigatorPositionItem
             // 
@@ -328,7 +309,7 @@
             // bindingNavigatorSeparator1
             // 
             this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -336,7 +317,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 24);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(29, 36);
             this.bindingNavigatorMoveNextItem.Text = "Переместить вперед";
             // 
             // bindingNavigatorMoveLastItem
@@ -345,13 +326,13 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 24);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(29, 36);
             this.bindingNavigatorMoveLastItem.Text = "Переместить в конец";
             // 
             // bindingNavigatorSeparator2
             // 
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // Update_button
             // 
@@ -367,11 +348,9 @@
             // 
             // sportmansTableAdapter
             // 
-            this.sportmansTableAdapter.ClearBeforeFill = true;
             // 
             // sportsmansTableAdapter
             // 
-            this.sportsmansTableAdapter.ClearBeforeFill = true;
             // 
             // showSports_button
             // 
@@ -457,6 +436,10 @@
             this.отчествоDataGridViewTextBoxColumn1.Name = "отчествоDataGridViewTextBoxColumn1";
             this.отчествоDataGridViewTextBoxColumn1.Width = 125;
             // 
+            // trainersBindingSource3
+            // 
+            this.trainersBindingSource3.DataMember = "Trainers";
+            // 
             // trainersBindingSource1
             // 
             this.trainersBindingSource1.DataMember = "Trainers";
@@ -465,41 +448,17 @@
             // trainersBindingSource
             // 
             this.trainersBindingSource.DataMember = "Trainers";
-            this.trainersBindingSource.DataSource = this.peopleDataSetLastLast;
-            // 
-            // trainersTableAdapter
-            // 
-            this.trainersTableAdapter.ClearBeforeFill = true;
-            // 
-            // sportsmansTableAdapter1
-            // 
-            this.sportsmansTableAdapter1.ClearBeforeFill = true;
-            // 
-            // trainersTableAdapter1
-            // 
-            this.trainersTableAdapter1.ClearBeforeFill = true;
-            // 
-            // sportsmansTableAdapter2
-            // 
-            this.sportsmansTableAdapter2.ClearBeforeFill = true;
             // 
             // peopleDataSet2BindingSource
             // 
-            this.peopleDataSet2BindingSource.DataSource = this.peopleDataSet2;
             this.peopleDataSet2BindingSource.Position = 0;
             // 
             // peopleDataSet2BindingSource1
             // 
-            this.peopleDataSet2BindingSource1.DataSource = this.peopleDataSet2;
             this.peopleDataSet2BindingSource1.Position = 0;
             // 
             // sportsmansTableAdapter3
             // 
-            this.sportsmansTableAdapter3.ClearBeforeFill = true;
-            // 
-            // trainersTableAdapter2
-            // 
-            this.trainersTableAdapter2.ClearBeforeFill = true;
             // 
             // sportsmansBindingSource2
             // 
@@ -511,28 +470,6 @@
             this.trainersBindingSource2.DataMember = "Trainers";
             this.trainersBindingSource2.DataSource = this.peopleDataSet2BindingSource2;
             // 
-            // peopleDataSet3
-            // 
-            this.peopleDataSet3.DataSetName = "PeopleDataSet3";
-            this.peopleDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // sportsmansBindingSource3
-            // 
-            this.sportsmansBindingSource3.DataMember = "Sportsmans";
-            this.sportsmansBindingSource3.DataSource = this.peopleDataSet3;
-            // 
-            // sportsmansTableAdapter4
-            // 
-            this.sportsmansTableAdapter4.ClearBeforeFill = true;
-            // 
-            // trainersBindingSource3
-            // 
-            this.trainersBindingSource3.DataMember = "Trainers";
-            this.trainersBindingSource3.DataSource = this.peopleDataSet3;
-            // 
-            // trainersTableAdapter3
-            // 
-            this.trainersTableAdapter3.ClearBeforeFill = true;
             // 
             // DataBasaViewer
             // 
@@ -550,24 +487,21 @@
             this.Text = "DataBasaViewer";
             this.Load += new System.EventHandler(this.DataBasaViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_sportsmen)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSetLastLast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataView_bindingNavigator)).EndInit();
             this.DataView_bindingNavigator.ResumeLayout(false);
             this.DataView_bindingNavigator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_trainers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet2BindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peopleDataSet3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sportsmansBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trainersBindingSource3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -589,24 +523,15 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.Button Update_button;
-        private BD1DataSetTableAdapters.SportmansTableAdapter sportmansTableAdapter;
-        private PeopleDataSetTableAdapters.SportsmansTableAdapter sportsmansTableAdapter;
         private System.Windows.Forms.Button showSports_button;
         private System.Windows.Forms.Button showTrainers_button;
         private System.Windows.Forms.DataGridView dataGridView_trainers;
-        private PeopleDataSetLastTableAdapters.TrainersTableAdapter trainersTableAdapter;
-        private PeopleDataSetLastLastTableAdapters.SportsmansTableAdapter sportsmansTableAdapter1;
-        private PeopleDataSetLastLastTableAdapters.TrainersTableAdapter trainersTableAdapter1;
-        private PeopleDataSetLastTableAdapters.SportsmansTableAdapter sportsmansTableAdapter2;
-        private PeopleDataSetLastLast peopleDataSetLastLast;
         private System.Windows.Forms.BindingSource sportsmansBindingSource;
         private System.Windows.Forms.BindingSource trainersBindingSource;
         private System.Windows.Forms.BindingSource peopleDataSet2BindingSource;
-        private PeopleDataSet2 peopleDataSet2;
         private System.Windows.Forms.BindingSource peopleDataSet2BindingSource1;
         private System.Windows.Forms.BindingSource peopleDataSet2BindingSource2;
         private System.Windows.Forms.BindingSource sportsmansBindingSource1;
-        private PeopleDataSet2TableAdapters.SportsmansTableAdapter sportsmansTableAdapter3;
         private System.Windows.Forms.DataGridViewTextBoxColumn номерКнижкиDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn фамилияDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn имяDataGridViewTextBoxColumn;
@@ -618,7 +543,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn разрядDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn тренераDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource trainersBindingSource1;
-        private PeopleDataSet2TableAdapters.TrainersTableAdapter trainersTableAdapter2;
         private System.Windows.Forms.DataGridViewTextBoxColumn номерКнижкиDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn кодDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn фамилияDataGridViewTextBoxColumn1;
@@ -626,10 +550,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn отчествоDataGridViewTextBoxColumn1;
         private System.Windows.Forms.BindingSource sportsmansBindingSource2;
         private System.Windows.Forms.BindingSource trainersBindingSource2;
-        private PeopleDataSet3 peopleDataSet3;
         private System.Windows.Forms.BindingSource sportsmansBindingSource3;
-        private PeopleDataSet3TableAdapters.SportsmansTableAdapter sportsmansTableAdapter4;
         private System.Windows.Forms.BindingSource trainersBindingSource3;
-        private PeopleDataSet3TableAdapters.TrainersTableAdapter trainersTableAdapter3;
     }
 }

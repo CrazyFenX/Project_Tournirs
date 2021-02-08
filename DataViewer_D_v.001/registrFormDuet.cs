@@ -23,6 +23,8 @@ namespace DataViewer_D_v._001
 
         string folderName;
 
+        int participantNumber = 0;
+
         TournirClass tournir = new TournirClass();
 
         public registrFormDuet()
@@ -119,13 +121,31 @@ namespace DataViewer_D_v._001
                 sportsman_first.BookNumber = 0;
                 sportsman_second.BookNumber = 0;
 
+
+                participantNumber = (SecretaryController.TakeMax("Номер", "participants", Path_textBox.Text) + 1);
+                sportsman_first.NumberInTournir = participantNumber;
+                sportsman_second.NumberInTournir = participantNumber + 1;
+
+                sportsman_first.GroupNumber = Convert.ToInt32(groupNumber_comboBox.Text);
+                sportsman_second.GroupNumber = Convert.ToInt32(groupNumber_comboBox.Text);
+
+                sportsman_first.DuetNumber = Convert.ToInt32(duetNumber_textBox.Text);
+                sportsman_second.DuetNumber = Convert.ToInt32(duetNumber_textBox.Text);
+
+                sportsman_first.NumberInGroup = SecretaryController.TakeMax("Номер_В_Группе","duets", "Номер_Группы", sportsman_first.GroupNumber,  Path_textBox.Text) + 1;//Convert.ToInt32(duetNumber_textBox.Text);
+                //sportsman_second.NumberInGroup = SecretaryController.TakeMax("Номер_В_Группе", "duets", "Номер_Группы", sportsman_second.GroupNumber, Path_textBox.Text);//Convert.ToInt32(duetNumber_textBox.Text);
+                sportsman_second.NumberInGroup = sportsman_first.NumberInGroup + 1;
+                //MessageBox.Show("Номер группы: ");
+
                 sportsman_first.ClubName = ClubName_textBox.Text;
                 sportsman_first.City = City_textBox.Text;
                 sportsman_second.ClubName = ClubName_textBox.Text;
                 sportsman_second.City = City_textBox.Text;
 
-                sportsman_first.OlderTrainer = new Trainer(NameOfOldTrainer_textBox.Text, SurnameOfOldTrainer_textBox.Text, PatronymicOfOldTrainer_textBox.Text, 1);
-                sportsman_second.OlderTrainer = new Trainer(NameOfOldTrainer_textBox.Text, SurnameOfOldTrainer_textBox.Text, PatronymicOfOldTrainer_textBox.Text, 1);
+                sportsman_first.OlderTrainer = new Trainer(NameOfOldTrainer_textBox.Text, SurnameOfOldTrainer_textBox.Text, PatronymicOfOldTrainer_textBox.Text, "Старший");
+                sportsman_first.FirstTrainer = new Trainer(NameOfDuetTrainer1_textBox.Text, SurnameOfDuetTrainer1_textBox.Text, PatronymicOfDuetTrainer1_textBox.Text, "Первый");
+                if (DuetTrainer2_checkBox.Checked)
+                    sportsman_first.SecondTrainer = new Trainer(NameOfDuetTrainer2_textBox.Text, SurnameOfDuetTrainer2_textBox.Text, PatronymicOfDuetTrainer2_textBox.Text, "Второй");
 
                 sportsman_first.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategoryList);
 
@@ -142,25 +162,67 @@ namespace DataViewer_D_v._001
                 //    Controller.insertInSportDB(sportsman_first);
                 //    Controller.insertInSportDB(sportsman_second);
                 //
-                //    Controller.insertTrainer(sportsman_first.OlderTrainer, sportsman_first.BookNumber);
                 //}
+
+                SecretaryController.insertTrainer(sportsman_first.OlderTrainer, sportsman_first.DuetNumber, Path_textBox.Text);
+                SecretaryController.insertTrainer(sportsman_first.FirstTrainer, sportsman_first.DuetNumber, Path_textBox.Text);
+                if (DuetTrainer2_checkBox.Checked)
+                    SecretaryController.insertTrainer(sportsman_first.SecondTrainer, sportsman_first.DuetNumber, Path_textBox.Text);
 
                 SecretaryController.insertInParticipants(sportsman_first, Path_textBox.Text);
                 SecretaryController.insertInParticipants(sportsman_second, Path_textBox.Text);
 
                 SecretaryController.insertParticipantsInDuet(Convert.ToInt32(duetNumber_textBox.Text), sportsman_first, sportsman_second, Convert.ToInt32(groupNumber_comboBox.Text), Path_textBox.Text);
+
+                duetNumber_textBox.Text = (Convert.ToInt32(duetNumber_textBox.Text) + 1).ToString();
+                clearAllBoxes();
             }
             else
                 MessageBox.Show("Не все необходимые поля заполнены!");
         }
 
+        public void clearAllBoxes()
+        {
+            Name1textBox.Text = "";
+            Surname1textBox.Text = "";
+            Patronymic1textBox.Text = "";
+
+            DayOfBirth1_comboBox.SelectedIndex = -1;
+            MounthOfBirth1_comboBox.SelectedIndex = -1;
+            YearOfBirth1_comboBox.SelectedIndex = -1;
+
+            Name2textBox.Text = "";
+            Surname2textBox.Text = "";
+            Patronymic2textBox.Text = "";
+
+            DayOfBirth2_comboBox.SelectedIndex = -1; 
+            MounthOfBirth2_comboBox.SelectedIndex = -1;
+            YearOfBirth2_comboBox.SelectedIndex = -1;
+
+            ClubName_textBox.Text = "";
+            NameOfOldTrainer_textBox.Text = "";
+            SurnameOfOldTrainer_textBox.Text = "";
+            PatronymicOfOldTrainer_textBox.Text = "";
+            City_textBox.Text = "";
+
+            SurnameOfDuetTrainer1_textBox.Text = "";
+            NameOfDuetTrainer1_textBox.Text = "";
+            PatronymicOfDuetTrainer1_textBox.Text = "";
+            SurnameOfDuetTrainer2_textBox.Text = "";
+            NameOfDuetTrainer2_textBox.Text = "";
+            PatronymicOfDuetTrainer2_textBox.Text = "";
+        }
         public bool checkAllBoxes()
         {
             if (Name1textBox.Text != "" && Surname1textBox.Text != "" && Patronymic1textBox.Text != "" &&
                 ClubName_textBox.Text != "" && NameOfOldTrainer_textBox.Text != "" && SurnameOfOldTrainer_textBox.Text != "" &&
                 City_textBox.Text != "" && DayOfBirth1_comboBox.SelectedIndex != -1 && MounthOfBirth1_comboBox.SelectedIndex != -1 &&
                 YearOfBirth1_comboBox.SelectedIndex != -1 && Name2textBox.Text != "" && Surname2textBox.Text != "" && Patronymic2textBox.Text != ""
-                && DayOfBirth2_comboBox.SelectedIndex != -1 && MounthOfBirth2_comboBox.SelectedIndex != -1 && YearOfBirth2_comboBox.SelectedIndex != -1)
+                && DayOfBirth2_comboBox.SelectedIndex != -1 && MounthOfBirth2_comboBox.SelectedIndex != -1 && YearOfBirth2_comboBox.SelectedIndex != -1
+                && NameOfOldTrainer_textBox.Text != "" && SurnameOfOldTrainer_textBox.Text != "" && PatronymicOfOldTrainer_textBox.Text != ""
+                && SurnameOfDuetTrainer1_textBox.Text != "" && NameOfDuetTrainer1_textBox.Text != "" && PatronymicOfDuetTrainer1_textBox.Text != ""
+                && ((DuetTrainer2_checkBox.Checked && (SurnameOfDuetTrainer2_textBox.Text != "" && NameOfDuetTrainer2_textBox.Text != "" && PatronymicOfDuetTrainer2_textBox.Text != "")) || !DuetTrainer2_checkBox.Checked)
+                )
                 return true;
             return false;
         }
@@ -180,23 +242,32 @@ namespace DataViewer_D_v._001
         private void DayOfBirth1_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             /////Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox, CategoryOfDancing_comboBox);
-            sportsman_first.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, GroupAgeCategoryList);
-            Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_first.AgeCategory), SportClass1_comboBox);
-            MessageBox.Show(sportsman_first.AgeCategory);
+            if (DayOfBirth1_comboBox.SelectedIndex != -1 && MounthOfBirth1_comboBox.SelectedIndex != -1 && YearOfBirth1_comboBox.SelectedIndex != -1)
+            {
+                sportsman_first.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, GroupAgeCategoryList);
+                Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_first.AgeCategory), SportClass1_comboBox);
+            }
+            //MessageBox.Show(sportsman_first.AgeCategory);
         }
 
         private void MounthOfBirth1_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             /////Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox, CategoryOfDancing_comboBox);
-            sportsman_first.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, GroupAgeCategoryList);
-            Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_first.AgeCategory), SportClass1_comboBox);
+            if (DayOfBirth1_comboBox.SelectedIndex != -1 && MounthOfBirth1_comboBox.SelectedIndex != -1 && YearOfBirth1_comboBox.SelectedIndex != -1)
+            {
+                sportsman_first.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, GroupAgeCategoryList);
+                Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_first.AgeCategory), SportClass1_comboBox);
+            }
         }
 
         private void YearOfBirth1_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             /////Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, AgeCategory1_comboBox, CategoryOfDancing_comboBox);
-            sportsman_first.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, GroupAgeCategoryList);
-            Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_first.AgeCategory), SportClass1_comboBox);
+            if (DayOfBirth1_comboBox.SelectedIndex != -1 && MounthOfBirth1_comboBox.SelectedIndex != -1 && YearOfBirth1_comboBox.SelectedIndex != -1)
+            {
+                sportsman_first.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth1_comboBox, MounthOfBirth1_comboBox, YearOfBirth1_comboBox, GroupAgeCategoryList);
+                Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_first.AgeCategory), SportClass1_comboBox);
+            }
         }
         /////////////////////////////////////////////////////////////
 
@@ -204,23 +275,32 @@ namespace DataViewer_D_v._001
         private void DayOfBirth2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             /////Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox, CategoryOfDancing_comboBox);
-            sportsman_second.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, GroupAgeCategoryList);
-            MessageBox.Show(sportsman_second.AgeCategory);
-            Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_second.AgeCategory), SportClass1_comboBox);
+            if (DayOfBirth2_comboBox.SelectedIndex != -1 && MounthOfBirth2_comboBox.SelectedIndex != -1 && YearOfBirth2_comboBox.SelectedIndex != -1)
+            {
+                sportsman_second.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, GroupAgeCategoryList);
+                //MessageBox.Show(sportsman_second.AgeCategory);
+                Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_second.AgeCategory), SportClass2_comboBox);
+            }
         }
 
         private void MounthOfBirth2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             /////Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox, CategoryOfDancing_comboBox);
-            sportsman_second.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, GroupAgeCategoryList);
-            Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_second.AgeCategory), SportClass1_comboBox);
+            if (DayOfBirth2_comboBox.SelectedIndex != -1 && MounthOfBirth2_comboBox.SelectedIndex != -1 && YearOfBirth2_comboBox.SelectedIndex != -1)
+            {
+                sportsman_second.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, GroupAgeCategoryList);
+                Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_second.AgeCategory), SportClass2_comboBox);
+            }
         }
 
         private void YearOfBirth2_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             /////Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, AgeCategory2_comboBox, CategoryOfDancing_comboBox);
-            sportsman_second.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, GroupAgeCategoryList);
-            Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_second.AgeCategory), SportClass1_comboBox);
+            if (DayOfBirth2_comboBox.SelectedIndex != -1 && MounthOfBirth2_comboBox.SelectedIndex != -1 && YearOfBirth2_comboBox.SelectedIndex != -1)
+            {
+                sportsman_second.AgeCategory = Controller.AgeCategoryAutoFill(DayOfBirth2_comboBox, MounthOfBirth2_comboBox, YearOfBirth2_comboBox, GroupAgeCategoryList);
+                Controller.takeSportClassSet(AgeCategoryList.IndexOf(sportsman_second.AgeCategory), SportClass2_comboBox);
+            }
         }
         /////////////////////////////////////////////////////////////
 
@@ -356,9 +436,9 @@ namespace DataViewer_D_v._001
             ClubName_textBox.Text = sportsman_second.ClubName;
             City_textBox.Text = sportsman_second.City;
 
-            SurnameOfDuetTrainer_textBox.Text = sportsman_second.OlderTrainer.Surname;
-            NameOfDuetTrainer_textBox.Text = sportsman_second.OlderTrainer.Name;
-            PatronymicOfDuetTrainer_textBox.Text = sportsman_second.OlderTrainer.Patronymic;
+            SurnameOfDuetTrainer1_textBox.Text = sportsman_second.OlderTrainer.Surname;
+            NameOfDuetTrainer1_textBox.Text = sportsman_second.OlderTrainer.Name;
+            PatronymicOfDuetTrainer1_textBox.Text = sportsman_second.OlderTrainer.Patronymic;
 
             switch (sportsman_second.SportCategory)
             {
@@ -615,8 +695,9 @@ namespace DataViewer_D_v._001
                     SecretaryController.myConnection.Open();
                     duetNumber_textBox.Text = "";
 
-                    //duetNumber_textBox.Text = (SecretaryController.TakeMax("Номер", "duets", Path_textBox.Text) + 1).ToString();
-                    duetNumber_textBox.Text = (SecretaryController.TakeMax("Номер", "duets", "Номер_Группы", groupNumber_comboBox.SelectedIndex + 1, Path_textBox.Text) + 1).ToString();
+                    duetNumber_textBox.Text = (SecretaryController.TakeMax("Номер", "duets", Path_textBox.Text) + 1).ToString();
+                    //duetNumber_textBox.Text = (SecretaryController.TakeMax("Номер", "participants", "Номер_Группы", groupNumber_comboBox.SelectedIndex + 1, Path_textBox.Text) + 1).ToString();
+                    participantNumber = (SecretaryController.TakeMax("Номер_Пары", "participants", Path_textBox.Text) + 1);
 
                     GroupAgeCategoryList.Clear();
                     string retstr = "";
@@ -634,6 +715,11 @@ namespace DataViewer_D_v._001
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

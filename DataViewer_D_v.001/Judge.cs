@@ -15,6 +15,8 @@ namespace DataViewer_D_v._001
         public string Patronymic;
 
         public string JudgeClass;
+        public string position;
+        public string City;
 
         //public ushort number;
         public char judgeChar;
@@ -24,7 +26,7 @@ namespace DataViewer_D_v._001
         
         }
 
-        public Judge(int number, string name, string surname, string patronymic, string judjeClass)
+        public Judge(int number, string surname, string name,  string patronymic, string judjeClass)
         {
             this.Number = (ushort)number;
             this.Name = name;
@@ -32,54 +34,32 @@ namespace DataViewer_D_v._001
             this.Patronymic = patronymic;
         }
 
-        public Judge(string Name, string Surname, string Patronymic, string judjeClass)
-        {
+        //public Judge(string Name, string Surname, string Patronymic, string judjeClass)
+        //{
 
+        //}
+
+        public string ToSNP()
+        {
+            return this.Surname + " " + this.Name + " " + this.Patronymic;
         }
 
-        public string ToNSP()
+        public void ToJudge(string SNP)
         {
-            return this.Name + " " + this.Surname + " " + this.Patronymic;
-        }
-
-        public void ToJudge(string NSP)
-        {
-            string name = "";
-            string surname = "";
-            string patronymic = "";
-
-            int i = 0;
-                while (NSP[i] != ' ' && i <= NSP.Length)
-                {
-                    name += NSP[i];
-                    i++;
-                }
-                //MessageBox.Show(name);
-                i++;
-
-                while (NSP[i] != ' ' && i <= NSP.Length)
-                {
-                    surname += NSP[i];
-                    i++;
-                }
-                //MessageBox.Show(surname);
-                i++;
-
-                while (NSP[i] != ' ' && i <= NSP.Length)
-                {
-                    patronymic += NSP[i];
-                    i++;
-                }
-                //MessageBox.Show(patronymic);
-
-            this.Name = name;
-            this.Surname = surname;
-            this.Patronymic = patronymic;
+            string[] SNPList = SNP.Split(new char[] { ';' });
+            this.Surname = SNPList[0];
+            this.Name = SNPList[1];
+            this.Patronymic = SNPList[2];
         }
 
         public override string ToString()
         {
-            return this.Name + " " + this.Surname + " " + this.Patronymic + " " + this.Number.ToString() + " " + this.judgeChar;
+            return Surname + " " + Name + " " + Patronymic + " " + JudgeClass + " " + Number + " " + judgeChar + " Должность: " + position;
+        }
+
+        public string ToShortString()
+        {
+            return Surname + " " + Name + " " + Patronymic + " " + "Должность: " + position;
         }
     }
 }

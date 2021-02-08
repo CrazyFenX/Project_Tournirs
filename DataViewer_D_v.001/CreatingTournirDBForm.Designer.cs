@@ -57,7 +57,7 @@
             this.Browse_button.Location = new System.Drawing.Point(651, 12);
             this.Browse_button.Name = "Browse_button";
             this.Browse_button.Size = new System.Drawing.Size(105, 62);
-            this.Browse_button.TabIndex = 0;
+            this.Browse_button.TabIndex = 9;
             this.Browse_button.Text = "Browse";
             this.Browse_button.UseVisualStyleBackColor = true;
             this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
@@ -70,7 +70,7 @@
             this.Path_textBox.Location = new System.Drawing.Point(123, 12);
             this.Path_textBox.Name = "Path_textBox";
             this.Path_textBox.Size = new System.Drawing.Size(522, 30);
-            this.Path_textBox.TabIndex = 1;
+            this.Path_textBox.TabIndex = 0;
             // 
             // Name_textBox
             // 
@@ -80,7 +80,7 @@
             this.Name_textBox.Location = new System.Drawing.Point(206, 54);
             this.Name_textBox.Name = "Name_textBox";
             this.Name_textBox.Size = new System.Drawing.Size(439, 30);
-            this.Name_textBox.TabIndex = 2;
+            this.Name_textBox.TabIndex = 1;
             this.Name_textBox.Text = "Турнир4";
             // 
             // Label_name
@@ -90,7 +90,7 @@
             this.Label_name.Location = new System.Drawing.Point(23, 57);
             this.Label_name.Name = "Label_name";
             this.Label_name.Size = new System.Drawing.Size(99, 25);
-            this.Label_name.TabIndex = 4;
+            this.Label_name.TabIndex = 13;
             this.Label_name.Text = "Название";
             // 
             // Label_path
@@ -100,7 +100,7 @@
             this.Label_path.Location = new System.Drawing.Point(23, 20);
             this.Label_path.Name = "Label_path";
             this.Label_path.Size = new System.Drawing.Size(57, 25);
-            this.Label_path.TabIndex = 5;
+            this.Label_path.TabIndex = 12;
             this.Label_path.Text = "Путь";
             // 
             // Create_button
@@ -111,7 +111,7 @@
             this.Create_button.Location = new System.Drawing.Point(651, 81);
             this.Create_button.Name = "Create_button";
             this.Create_button.Size = new System.Drawing.Size(105, 62);
-            this.Create_button.TabIndex = 6;
+            this.Create_button.TabIndex = 10;
             this.Create_button.Text = "Create";
             this.Create_button.UseVisualStyleBackColor = false;
             this.Create_button.Click += new System.EventHandler(this.Create_button_Click);
@@ -123,7 +123,7 @@
             this.Back_button.Location = new System.Drawing.Point(651, 325);
             this.Back_button.Name = "Back_button";
             this.Back_button.Size = new System.Drawing.Size(105, 47);
-            this.Back_button.TabIndex = 7;
+            this.Back_button.TabIndex = 11;
             this.Back_button.Text = "Back";
             this.Back_button.UseVisualStyleBackColor = true;
             this.Back_button.Click += new System.EventHandler(this.Back_button_Click);
@@ -136,7 +136,7 @@
             this.label1.Location = new System.Drawing.Point(22, 114);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(176, 25);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 14;
             this.label1.Text = "Дата проведения";
             // 
             // label2
@@ -147,7 +147,7 @@
             this.label2.Location = new System.Drawing.Point(22, 157);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(189, 25);
-            this.label2.TabIndex = 11;
+            this.label2.TabIndex = 15;
             this.label2.Text = "Время проведения";
             // 
             // label3
@@ -158,7 +158,7 @@
             this.label3.Location = new System.Drawing.Point(22, 213);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(187, 25);
-            this.label3.TabIndex = 13;
+            this.label3.TabIndex = 16;
             this.label3.Text = "Место проведения";
             // 
             // CityOfTournir_textBox
@@ -170,7 +170,7 @@
             this.CityOfTournir_textBox.Multiline = true;
             this.CityOfTournir_textBox.Name = "CityOfTournir_textBox";
             this.CityOfTournir_textBox.Size = new System.Drawing.Size(617, 66);
-            this.CityOfTournir_textBox.TabIndex = 12;
+            this.CityOfTournir_textBox.TabIndex = 2;
             this.CityOfTournir_textBox.Text = "Новосибирск";
             // 
             // MounthOfTournir_comboBox
@@ -194,7 +194,7 @@
             this.MounthOfTournir_comboBox.Location = new System.Drawing.Point(328, 110);
             this.MounthOfTournir_comboBox.Name = "MounthOfTournir_comboBox";
             this.MounthOfTournir_comboBox.Size = new System.Drawing.Size(98, 33);
-            this.MounthOfTournir_comboBox.TabIndex = 17;
+            this.MounthOfTournir_comboBox.TabIndex = 5;
             this.MounthOfTournir_comboBox.Text = "месяц";
             // 
             // DayOfTournir_comboBox
@@ -237,7 +237,7 @@
             this.DayOfTournir_comboBox.Location = new System.Drawing.Point(227, 111);
             this.DayOfTournir_comboBox.Name = "DayOfTournir_comboBox";
             this.DayOfTournir_comboBox.Size = new System.Drawing.Size(77, 33);
-            this.DayOfTournir_comboBox.TabIndex = 16;
+            this.DayOfTournir_comboBox.TabIndex = 4;
             this.DayOfTournir_comboBox.Text = "день";
             // 
             // MinutesTournirStart_comboBox
@@ -261,7 +261,7 @@
             this.MinutesTournirStart_comboBox.Location = new System.Drawing.Point(348, 154);
             this.MinutesTournirStart_comboBox.Name = "MinutesTournirStart_comboBox";
             this.MinutesTournirStart_comboBox.Size = new System.Drawing.Size(105, 33);
-            this.MinutesTournirStart_comboBox.TabIndex = 20;
+            this.MinutesTournirStart_comboBox.TabIndex = 8;
             this.MinutesTournirStart_comboBox.Text = "минуты";
             // 
             // HourTournirStart_comboBox
@@ -297,7 +297,7 @@
             this.HourTournirStart_comboBox.Location = new System.Drawing.Point(250, 154);
             this.HourTournirStart_comboBox.Name = "HourTournirStart_comboBox";
             this.HourTournirStart_comboBox.Size = new System.Drawing.Size(71, 33);
-            this.HourTournirStart_comboBox.TabIndex = 19;
+            this.HourTournirStart_comboBox.TabIndex = 7;
             this.HourTournirStart_comboBox.Text = "час";
             // 
             // label4
@@ -319,7 +319,7 @@
             this.label5.Location = new System.Drawing.Point(23, 339);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(133, 25);
-            this.label5.TabIndex = 23;
+            this.label5.TabIndex = 17;
             this.label5.Text = "Организация";
             // 
             // OrganisationOfTournir_textBox
@@ -330,7 +330,7 @@
             this.OrganisationOfTournir_textBox.Location = new System.Drawing.Point(194, 334);
             this.OrganisationOfTournir_textBox.Name = "OrganisationOfTournir_textBox";
             this.OrganisationOfTournir_textBox.Size = new System.Drawing.Size(450, 30);
-            this.OrganisationOfTournir_textBox.TabIndex = 22;
+            this.OrganisationOfTournir_textBox.TabIndex = 3;
             this.OrganisationOfTournir_textBox.Text = "ООО СтройГаз";
             // 
             // YearOfTournir_textBox
@@ -340,7 +340,7 @@
             this.YearOfTournir_textBox.Location = new System.Drawing.Point(447, 111);
             this.YearOfTournir_textBox.Name = "YearOfTournir_textBox";
             this.YearOfTournir_textBox.Size = new System.Drawing.Size(99, 32);
-            this.YearOfTournir_textBox.TabIndex = 24;
+            this.YearOfTournir_textBox.TabIndex = 6;
             this.YearOfTournir_textBox.Text = "2020";
             // 
             // CreatingTournirDBForm

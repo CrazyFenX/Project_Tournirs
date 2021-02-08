@@ -358,13 +358,18 @@ namespace DataViewer_D_v._001
 
                     DateTime birthDate = new DateTime(Convert.ToInt16(2020 - YearOfBirth_comboBox.SelectedIndex), Convert.ToInt16(MounthOfBirth_comboBox.SelectedIndex + 1), Convert.ToInt16(DayOfBirth_comboBox.SelectedIndex + 1));
 
-                    //MessageBox.Show("Сейчас " + cureDate.ToString());
+                    //MessageBox.Show("Сейчас " + cureDate.ToShortDateString());
                     //MessageBox.Show("Дата рожд. " + birthDate.ToShortDateString());
-                    DateTime differ = new DateTime((cureDate - birthDate).Ticks);
+                    //DateTime differ = new DateTime((cureDate - birthDate).Ticks);
+                    //differ = new DateTime(differ.Year, differ.Month, differ.Day);
 
-                    //MessageBox.Show(differ.Year.ToString());
+                    var age = DateTime.Now.Year - birthDate.Year;
+                    if (DateTime.Now.DayOfYear < birthDate.DayOfYear) //на случай, если день рождения уже прошёл
+                        age++;
+                   // MessageBox.Show(differ.ToShortDateString());
+                    //MessageBox.Show(age.ToString());
 
-                    switch (differ.Year)
+                    switch (age)
                     {
                         case 0:
                         case 1:
@@ -510,28 +515,28 @@ namespace DataViewer_D_v._001
             switch (index)
             {
                 case 0:
-                    second.Items.Add("H");
+                    second.Items.AddRange(new object[] { "H", "-" });
                     break;
                 case 1:
-                    second.Items.AddRange(new object[] {"H", "E", "D" });
+                    second.Items.AddRange(new object[] {"H", "E", "D", "-" });
                     break;
                 case 2:
-                    second.Items.AddRange(new object[] { "H", "E", "D", "C" });
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "-" });
                     break;
                 case 3:
-                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B" });
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "-" });
                     break;
                 case 4:
-                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A" });
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "-" });
                     break;
                 case 5:
-                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S" });
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S", "-" });
                     break;
                 case 6:
-                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S", "M" });
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S", "M", "-" });
                     break;
                 case 7:
-                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S", "M" });
+                    second.Items.AddRange(new object[] { "H", "E", "D", "C", "B", "A", "S", "M", "-" });
                     break;
                 default:
                     second.Items.Clear();

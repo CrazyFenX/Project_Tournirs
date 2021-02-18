@@ -28,21 +28,21 @@ namespace DataViewer_D_v._001
             this.CategoryList = new List<string>();
         }
 
-        public GroupClass(int Number, string Tournir_Name)
+        public GroupClass(int Number, string Tournir_Name): this()
         {
             this.number = Number;
             this.tournir_name = Tournir_Name;
-            this.SetList = new List<SetClass>();
-            this.CategoryList = new List<string>();
+            //this.SetList = new List<SetClass>();
+            //this.CategoryList = new List<string>();
         }
 
-        public GroupClass(int Number, string Tournir_Name, string GroupName)
+        public GroupClass(int Number, string Tournir_Name, string GroupName): this(Number, Tournir_Name)
         {
-            this.number = Number;
-            this.tournir_name = Tournir_Name;
+            //this.number = Number;
+            //this.tournir_name = Tournir_Name;
             this.name = GroupName;
-            this.SetList = new List<SetClass>();
-            this.CategoryList = new List<string>();
+            //this.SetList = new List<SetClass>();
+            //this.CategoryList = new List<string>();
         }
 
         public override string ToString()

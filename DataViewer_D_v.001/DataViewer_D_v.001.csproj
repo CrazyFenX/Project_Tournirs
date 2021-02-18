@@ -56,6 +56,10 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\Microsoft.NET\assembly\GAC_MSIL\DocumentFormat.OpenXml\v4.0_2.5.5631.0__31bf3856ad364e35\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
@@ -69,10 +73,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsBase.4.6.1055.0\lib\WindowsBase.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgeCategoryClass.cs" />
-    <Compile Include="CheckBoxForDuets.cs" />
     <Compile Include="ComboBoxForEndingTour.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="CreatingGroup.cs">
@@ -122,6 +128,7 @@
     <Compile Include="Judge.cs" />
     <Compile Include="MyDate.cs" />
     <Compile Include="pdf_controller.cs" />
+    <Compile Include="printing_controller.cs" />
     <Compile Include="registrFormDuet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,10 +167,10 @@
       <DependentUpon>registrFormSolo.cs</DependentUpon>
     </Compile>
     <Compile Include="TimeClass.cs" />
-    <Compile Include="Tour.cs" />
     <Compile Include="TournirClass.cs" />
     <Compile Include="tournirResultComboBox.cs" />
     <Compile Include="Trainer.cs" />
+    <Compile Include="Word_Controller.cs" />
     <EmbeddedResource Include="CreatingGroup.resx">
       <DependentUpon>CreatingGroup.cs</DependentUpon>
     </EmbeddedResource>

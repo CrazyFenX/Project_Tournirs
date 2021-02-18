@@ -98,6 +98,10 @@
             this.Label_DuetNumber = new System.Windows.Forms.Label();
             this.Label_GroupNumber = new System.Windows.Forms.Label();
             this.groupNumber_comboBox = new System.Windows.Forms.ComboBox();
+            this.printNumberGroupBox = new System.Windows.Forms.GroupBox();
+            this.checkBoxPrintNumber = new System.Windows.Forms.CheckBox();
+            this.advCheckBox = new System.Windows.Forms.CheckBox();
+            this.advTextBox = new System.Windows.Forms.TextBox();
             this.CommonProperties_groupBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.DuetTrainer_groupBox.SuspendLayout();
@@ -105,6 +109,7 @@
             this.FirstSportsman_groupBox.SuspendLayout();
             this.SecondSportsman_groupBox.SuspendLayout();
             this.Group_n_Number_groupBox.SuspendLayout();
+            this.printNumberGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // openDataBasaButton
@@ -114,9 +119,10 @@
             this.openDataBasaButton.Enabled = false;
             this.openDataBasaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.openDataBasaButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openDataBasaButton.Location = new System.Drawing.Point(1030, 70);
+            this.openDataBasaButton.Location = new System.Drawing.Point(708, 57);
+            this.openDataBasaButton.Margin = new System.Windows.Forms.Padding(2);
             this.openDataBasaButton.Name = "openDataBasaButton";
-            this.openDataBasaButton.Size = new System.Drawing.Size(226, 47);
+            this.openDataBasaButton.Size = new System.Drawing.Size(170, 38);
             this.openDataBasaButton.TabIndex = 29;
             this.openDataBasaButton.Text = "Открыть базу";
             this.openDataBasaButton.UseVisualStyleBackColor = false;
@@ -128,9 +134,10 @@
             this.backButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.backButton.Location = new System.Drawing.Point(1066, 695);
+            this.backButton.Location = new System.Drawing.Point(736, 565);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(183, 47);
+            this.backButton.Size = new System.Drawing.Size(137, 38);
             this.backButton.TabIndex = 28;
             this.backButton.Text = "Назад";
             this.backButton.UseVisualStyleBackColor = false;
@@ -148,9 +155,11 @@
             this.CommonProperties_groupBox.Controls.Add(this.DuetTrainer_groupBox);
             this.CommonProperties_groupBox.Controls.Add(this.OldTrainer_groupBox);
             this.CommonProperties_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CommonProperties_groupBox.Location = new System.Drawing.Point(12, 406);
+            this.CommonProperties_groupBox.Location = new System.Drawing.Point(9, 330);
+            this.CommonProperties_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.CommonProperties_groupBox.Name = "CommonProperties_groupBox";
-            this.CommonProperties_groupBox.Size = new System.Drawing.Size(1012, 302);
+            this.CommonProperties_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.CommonProperties_groupBox.Size = new System.Drawing.Size(695, 245);
             this.CommonProperties_groupBox.TabIndex = 27;
             this.CommonProperties_groupBox.TabStop = false;
             this.CommonProperties_groupBox.Text = "Общее";
@@ -165,9 +174,11 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.SurnameOfDuetTrainer2_textBox);
             this.groupBox1.Controls.Add(this.NameOfDuetTrainer2_textBox);
-            this.groupBox1.Location = new System.Drawing.Point(647, 67);
+            this.groupBox1.Location = new System.Drawing.Point(483, 54);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(264, 220);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(198, 179);
             this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Второй тренер пары";
@@ -175,9 +186,10 @@
             // DuetTrainer2_checkBox
             // 
             this.DuetTrainer2_checkBox.AutoSize = true;
-            this.DuetTrainer2_checkBox.Location = new System.Drawing.Point(232, 20);
+            this.DuetTrainer2_checkBox.Location = new System.Drawing.Point(174, 16);
+            this.DuetTrainer2_checkBox.Margin = new System.Windows.Forms.Padding(2);
             this.DuetTrainer2_checkBox.Name = "DuetTrainer2_checkBox";
-            this.DuetTrainer2_checkBox.Size = new System.Drawing.Size(18, 17);
+            this.DuetTrainer2_checkBox.Size = new System.Drawing.Size(15, 14);
             this.DuetTrainer2_checkBox.TabIndex = 27;
             this.DuetTrainer2_checkBox.UseVisualStyleBackColor = true;
             // 
@@ -185,9 +197,10 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 144);
+            this.label1.Location = new System.Drawing.Point(10, 117);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 18;
             this.label1.Text = "Отчество";
             // 
@@ -195,78 +208,86 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 50);
+            this.label2.Location = new System.Drawing.Point(10, 41);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 20);
+            this.label2.Size = new System.Drawing.Size(70, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "Фамилия";
             // 
             // PatronymicOfDuetTrainer2_textBox
             // 
             this.PatronymicOfDuetTrainer2_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PatronymicOfDuetTrainer2_textBox.Location = new System.Drawing.Point(133, 141);
+            this.PatronymicOfDuetTrainer2_textBox.Location = new System.Drawing.Point(100, 115);
+            this.PatronymicOfDuetTrainer2_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.PatronymicOfDuetTrainer2_textBox.Name = "PatronymicOfDuetTrainer2_textBox";
-            this.PatronymicOfDuetTrainer2_textBox.Size = new System.Drawing.Size(117, 26);
+            this.PatronymicOfDuetTrainer2_textBox.Size = new System.Drawing.Size(89, 23);
             this.PatronymicOfDuetTrainer2_textBox.TabIndex = 28;
             // 
             // label3
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 97);
+            this.label3.Location = new System.Drawing.Point(10, 79);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 20);
+            this.label3.Size = new System.Drawing.Size(35, 17);
             this.label3.TabIndex = 13;
             this.label3.Text = "Имя";
             // 
             // SurnameOfDuetTrainer2_textBox
             // 
             this.SurnameOfDuetTrainer2_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SurnameOfDuetTrainer2_textBox.Location = new System.Drawing.Point(133, 47);
+            this.SurnameOfDuetTrainer2_textBox.Location = new System.Drawing.Point(100, 38);
+            this.SurnameOfDuetTrainer2_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.SurnameOfDuetTrainer2_textBox.Name = "SurnameOfDuetTrainer2_textBox";
-            this.SurnameOfDuetTrainer2_textBox.Size = new System.Drawing.Size(117, 26);
+            this.SurnameOfDuetTrainer2_textBox.Size = new System.Drawing.Size(89, 23);
             this.SurnameOfDuetTrainer2_textBox.TabIndex = 26;
-            this.SurnameOfDuetTrainer2_textBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // NameOfDuetTrainer2_textBox
             // 
             this.NameOfDuetTrainer2_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.NameOfDuetTrainer2_textBox.Location = new System.Drawing.Point(133, 94);
+            this.NameOfDuetTrainer2_textBox.Location = new System.Drawing.Point(100, 76);
+            this.NameOfDuetTrainer2_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.NameOfDuetTrainer2_textBox.Name = "NameOfDuetTrainer2_textBox";
-            this.NameOfDuetTrainer2_textBox.Size = new System.Drawing.Size(117, 26);
+            this.NameOfDuetTrainer2_textBox.Size = new System.Drawing.Size(89, 23);
             this.NameOfDuetTrainer2_textBox.TabIndex = 27;
             // 
             // Label_City
             // 
             this.Label_City.AutoSize = true;
-            this.Label_City.Location = new System.Drawing.Point(428, 31);
+            this.Label_City.Location = new System.Drawing.Point(321, 25);
+            this.Label_City.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_City.Name = "Label_City";
-            this.Label_City.Size = new System.Drawing.Size(61, 20);
+            this.Label_City.Size = new System.Drawing.Size(48, 17);
             this.Label_City.TabIndex = 28;
             this.Label_City.Text = "Город";
             // 
             // City_textBox
             // 
-            this.City_textBox.Location = new System.Drawing.Point(510, 28);
+            this.City_textBox.Location = new System.Drawing.Point(382, 23);
+            this.City_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.City_textBox.Name = "City_textBox";
-            this.City_textBox.Size = new System.Drawing.Size(210, 26);
+            this.City_textBox.Size = new System.Drawing.Size(158, 23);
             this.City_textBox.TabIndex = 19;
             this.City_textBox.Text = "Бийск";
             // 
             // Label_ClubName
             // 
             this.Label_ClubName.AutoSize = true;
-            this.Label_ClubName.Location = new System.Drawing.Point(11, 25);
+            this.Label_ClubName.Location = new System.Drawing.Point(8, 20);
+            this.Label_ClubName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_ClubName.Name = "Label_ClubName";
-            this.Label_ClubName.Size = new System.Drawing.Size(143, 20);
+            this.Label_ClubName.Size = new System.Drawing.Size(114, 17);
             this.Label_ClubName.TabIndex = 13;
             this.Label_ClubName.Text = "Название клуба";
             // 
             // ClubName_textBox
             // 
-            this.ClubName_textBox.Location = new System.Drawing.Point(186, 25);
+            this.ClubName_textBox.Location = new System.Drawing.Point(140, 20);
+            this.ClubName_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.ClubName_textBox.Name = "ClubName_textBox";
-            this.ClubName_textBox.Size = new System.Drawing.Size(151, 26);
+            this.ClubName_textBox.Size = new System.Drawing.Size(114, 23);
             this.ClubName_textBox.TabIndex = 18;
             this.ClubName_textBox.Text = "ИндиГо";
             // 
@@ -279,9 +300,11 @@
             this.DuetTrainer_groupBox.Controls.Add(this.Label_NameOfDuetTrainer);
             this.DuetTrainer_groupBox.Controls.Add(this.SurnameOfDuetTrainer1_textBox);
             this.DuetTrainer_groupBox.Controls.Add(this.NameOfDuetTrainer1_textBox);
-            this.DuetTrainer_groupBox.Location = new System.Drawing.Point(331, 67);
+            this.DuetTrainer_groupBox.Location = new System.Drawing.Point(246, 54);
+            this.DuetTrainer_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.DuetTrainer_groupBox.Name = "DuetTrainer_groupBox";
-            this.DuetTrainer_groupBox.Size = new System.Drawing.Size(264, 220);
+            this.DuetTrainer_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.DuetTrainer_groupBox.Size = new System.Drawing.Size(198, 179);
             this.DuetTrainer_groupBox.TabIndex = 26;
             this.DuetTrainer_groupBox.TabStop = false;
             this.DuetTrainer_groupBox.Text = "Тренер пары";
@@ -290,9 +313,10 @@
             // 
             this.Label_PatronymicOfDuetTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_PatronymicOfDuetTrainer.AutoSize = true;
-            this.Label_PatronymicOfDuetTrainer.Location = new System.Drawing.Point(14, 144);
+            this.Label_PatronymicOfDuetTrainer.Location = new System.Drawing.Point(10, 117);
+            this.Label_PatronymicOfDuetTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_PatronymicOfDuetTrainer.Name = "Label_PatronymicOfDuetTrainer";
-            this.Label_PatronymicOfDuetTrainer.Size = new System.Drawing.Size(91, 20);
+            this.Label_PatronymicOfDuetTrainer.Size = new System.Drawing.Size(71, 17);
             this.Label_PatronymicOfDuetTrainer.TabIndex = 18;
             this.Label_PatronymicOfDuetTrainer.Text = "Отчество";
             // 
@@ -300,44 +324,49 @@
             // 
             this.Label_SurnameOfDuetTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_SurnameOfDuetTrainer.AutoSize = true;
-            this.Label_SurnameOfDuetTrainer.Location = new System.Drawing.Point(14, 50);
+            this.Label_SurnameOfDuetTrainer.Location = new System.Drawing.Point(10, 41);
+            this.Label_SurnameOfDuetTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SurnameOfDuetTrainer.Name = "Label_SurnameOfDuetTrainer";
-            this.Label_SurnameOfDuetTrainer.Size = new System.Drawing.Size(87, 20);
+            this.Label_SurnameOfDuetTrainer.Size = new System.Drawing.Size(70, 17);
             this.Label_SurnameOfDuetTrainer.TabIndex = 14;
             this.Label_SurnameOfDuetTrainer.Text = "Фамилия";
             // 
             // PatronymicOfDuetTrainer1_textBox
             // 
             this.PatronymicOfDuetTrainer1_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PatronymicOfDuetTrainer1_textBox.Location = new System.Drawing.Point(133, 141);
+            this.PatronymicOfDuetTrainer1_textBox.Location = new System.Drawing.Point(100, 115);
+            this.PatronymicOfDuetTrainer1_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.PatronymicOfDuetTrainer1_textBox.Name = "PatronymicOfDuetTrainer1_textBox";
-            this.PatronymicOfDuetTrainer1_textBox.Size = new System.Drawing.Size(117, 26);
+            this.PatronymicOfDuetTrainer1_textBox.Size = new System.Drawing.Size(89, 23);
             this.PatronymicOfDuetTrainer1_textBox.TabIndex = 25;
             // 
             // Label_NameOfDuetTrainer
             // 
             this.Label_NameOfDuetTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_NameOfDuetTrainer.AutoSize = true;
-            this.Label_NameOfDuetTrainer.Location = new System.Drawing.Point(14, 97);
+            this.Label_NameOfDuetTrainer.Location = new System.Drawing.Point(10, 79);
+            this.Label_NameOfDuetTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_NameOfDuetTrainer.Name = "Label_NameOfDuetTrainer";
-            this.Label_NameOfDuetTrainer.Size = new System.Drawing.Size(42, 20);
+            this.Label_NameOfDuetTrainer.Size = new System.Drawing.Size(35, 17);
             this.Label_NameOfDuetTrainer.TabIndex = 13;
             this.Label_NameOfDuetTrainer.Text = "Имя";
             // 
             // SurnameOfDuetTrainer1_textBox
             // 
             this.SurnameOfDuetTrainer1_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SurnameOfDuetTrainer1_textBox.Location = new System.Drawing.Point(133, 47);
+            this.SurnameOfDuetTrainer1_textBox.Location = new System.Drawing.Point(100, 38);
+            this.SurnameOfDuetTrainer1_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.SurnameOfDuetTrainer1_textBox.Name = "SurnameOfDuetTrainer1_textBox";
-            this.SurnameOfDuetTrainer1_textBox.Size = new System.Drawing.Size(117, 26);
+            this.SurnameOfDuetTrainer1_textBox.Size = new System.Drawing.Size(89, 23);
             this.SurnameOfDuetTrainer1_textBox.TabIndex = 23;
             // 
             // NameOfDuetTrainer1_textBox
             // 
             this.NameOfDuetTrainer1_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.NameOfDuetTrainer1_textBox.Location = new System.Drawing.Point(133, 94);
+            this.NameOfDuetTrainer1_textBox.Location = new System.Drawing.Point(100, 76);
+            this.NameOfDuetTrainer1_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.NameOfDuetTrainer1_textBox.Name = "NameOfDuetTrainer1_textBox";
-            this.NameOfDuetTrainer1_textBox.Size = new System.Drawing.Size(117, 26);
+            this.NameOfDuetTrainer1_textBox.Size = new System.Drawing.Size(89, 23);
             this.NameOfDuetTrainer1_textBox.TabIndex = 24;
             // 
             // OldTrainer_groupBox
@@ -349,9 +378,11 @@
             this.OldTrainer_groupBox.Controls.Add(this.Label_NameOfOldTrainer);
             this.OldTrainer_groupBox.Controls.Add(this.NameOfOldTrainer_textBox);
             this.OldTrainer_groupBox.Controls.Add(this.SurnameOfOldTrainer_textBox);
-            this.OldTrainer_groupBox.Location = new System.Drawing.Point(15, 67);
+            this.OldTrainer_groupBox.Location = new System.Drawing.Point(9, 54);
+            this.OldTrainer_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.OldTrainer_groupBox.Name = "OldTrainer_groupBox";
-            this.OldTrainer_groupBox.Size = new System.Drawing.Size(273, 220);
+            this.OldTrainer_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.OldTrainer_groupBox.Size = new System.Drawing.Size(205, 179);
             this.OldTrainer_groupBox.TabIndex = 25;
             this.OldTrainer_groupBox.TabStop = false;
             this.OldTrainer_groupBox.Text = "Старший тренер";
@@ -360,18 +391,20 @@
             // 
             this.Label_PatronymicOfOldTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_PatronymicOfOldTrainer.AutoSize = true;
-            this.Label_PatronymicOfOldTrainer.Location = new System.Drawing.Point(11, 143);
+            this.Label_PatronymicOfOldTrainer.Location = new System.Drawing.Point(8, 116);
+            this.Label_PatronymicOfOldTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_PatronymicOfOldTrainer.Name = "Label_PatronymicOfOldTrainer";
-            this.Label_PatronymicOfOldTrainer.Size = new System.Drawing.Size(91, 20);
+            this.Label_PatronymicOfOldTrainer.Size = new System.Drawing.Size(71, 17);
             this.Label_PatronymicOfOldTrainer.TabIndex = 16;
             this.Label_PatronymicOfOldTrainer.Text = "Отчество";
             // 
             // PatronymicOfOldTrainer_textBox
             // 
             this.PatronymicOfOldTrainer_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.PatronymicOfOldTrainer_textBox.Location = new System.Drawing.Point(129, 141);
+            this.PatronymicOfOldTrainer_textBox.Location = new System.Drawing.Point(97, 115);
+            this.PatronymicOfOldTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.PatronymicOfOldTrainer_textBox.Name = "PatronymicOfOldTrainer_textBox";
-            this.PatronymicOfOldTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.PatronymicOfOldTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.PatronymicOfOldTrainer_textBox.TabIndex = 22;
             this.PatronymicOfOldTrainer_textBox.Text = "Семенович";
             // 
@@ -379,9 +412,10 @@
             // 
             this.Label_SurameOfOldTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_SurameOfOldTrainer.AutoSize = true;
-            this.Label_SurameOfOldTrainer.Location = new System.Drawing.Point(11, 50);
+            this.Label_SurameOfOldTrainer.Location = new System.Drawing.Point(8, 41);
+            this.Label_SurameOfOldTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SurameOfOldTrainer.Name = "Label_SurameOfOldTrainer";
-            this.Label_SurameOfOldTrainer.Size = new System.Drawing.Size(87, 20);
+            this.Label_SurameOfOldTrainer.Size = new System.Drawing.Size(70, 17);
             this.Label_SurameOfOldTrainer.TabIndex = 14;
             this.Label_SurameOfOldTrainer.Text = "Фамилия";
             // 
@@ -389,27 +423,30 @@
             // 
             this.Label_NameOfOldTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_NameOfOldTrainer.AutoSize = true;
-            this.Label_NameOfOldTrainer.Location = new System.Drawing.Point(11, 96);
+            this.Label_NameOfOldTrainer.Location = new System.Drawing.Point(8, 78);
+            this.Label_NameOfOldTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_NameOfOldTrainer.Name = "Label_NameOfOldTrainer";
-            this.Label_NameOfOldTrainer.Size = new System.Drawing.Size(42, 20);
+            this.Label_NameOfOldTrainer.Size = new System.Drawing.Size(35, 17);
             this.Label_NameOfOldTrainer.TabIndex = 13;
             this.Label_NameOfOldTrainer.Text = "Имя";
             // 
             // NameOfOldTrainer_textBox
             // 
             this.NameOfOldTrainer_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.NameOfOldTrainer_textBox.Location = new System.Drawing.Point(129, 94);
+            this.NameOfOldTrainer_textBox.Location = new System.Drawing.Point(97, 76);
+            this.NameOfOldTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.NameOfOldTrainer_textBox.Name = "NameOfOldTrainer_textBox";
-            this.NameOfOldTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.NameOfOldTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.NameOfOldTrainer_textBox.TabIndex = 21;
             this.NameOfOldTrainer_textBox.Text = "Василий";
             // 
             // SurnameOfOldTrainer_textBox
             // 
             this.SurnameOfOldTrainer_textBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.SurnameOfOldTrainer_textBox.Location = new System.Drawing.Point(129, 48);
+            this.SurnameOfOldTrainer_textBox.Location = new System.Drawing.Point(97, 39);
+            this.SurnameOfOldTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.SurnameOfOldTrainer_textBox.Name = "SurnameOfOldTrainer_textBox";
-            this.SurnameOfOldTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.SurnameOfOldTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.SurnameOfOldTrainer_textBox.TabIndex = 20;
             this.SurnameOfOldTrainer_textBox.Text = "Мармокин";
             // 
@@ -433,9 +470,11 @@
             this.FirstSportsman_groupBox.Controls.Add(this.Surname1textBox);
             this.FirstSportsman_groupBox.Controls.Add(this.Name1textBox);
             this.FirstSportsman_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FirstSportsman_groupBox.Location = new System.Drawing.Point(12, 144);
+            this.FirstSportsman_groupBox.Location = new System.Drawing.Point(9, 117);
+            this.FirstSportsman_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.FirstSportsman_groupBox.Name = "FirstSportsman_groupBox";
-            this.FirstSportsman_groupBox.Size = new System.Drawing.Size(558, 256);
+            this.FirstSportsman_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.FirstSportsman_groupBox.Size = new System.Drawing.Size(354, 208);
             this.FirstSportsman_groupBox.TabIndex = 24;
             this.FirstSportsman_groupBox.TabStop = false;
             this.FirstSportsman_groupBox.Text = "Первый танцор";
@@ -443,9 +482,10 @@
             // Label_Patronymic1
             // 
             this.Label_Patronymic1.AutoSize = true;
-            this.Label_Patronymic1.Location = new System.Drawing.Point(13, 92);
+            this.Label_Patronymic1.Location = new System.Drawing.Point(10, 75);
+            this.Label_Patronymic1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Patronymic1.Name = "Label_Patronymic1";
-            this.Label_Patronymic1.Size = new System.Drawing.Size(91, 20);
+            this.Label_Patronymic1.Size = new System.Drawing.Size(71, 17);
             this.Label_Patronymic1.TabIndex = 34;
             this.Label_Patronymic1.Text = "Отчество";
             // 
@@ -453,9 +493,10 @@
             // 
             this.Patronymic1textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Patronymic1textBox.Location = new System.Drawing.Point(127, 95);
+            this.Patronymic1textBox.Location = new System.Drawing.Point(95, 77);
+            this.Patronymic1textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Patronymic1textBox.Name = "Patronymic1textBox";
-            this.Patronymic1textBox.Size = new System.Drawing.Size(405, 26);
+            this.Patronymic1textBox.Size = new System.Drawing.Size(214, 23);
             this.Patronymic1textBox.TabIndex = 4;
             this.Patronymic1textBox.Text = "William";
             // 
@@ -463,9 +504,10 @@
             // 
             this.Label_SportCategory_1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Label_SportCategory_1.AutoSize = true;
-            this.Label_SportCategory_1.Location = new System.Drawing.Point(17, 191);
+            this.Label_SportCategory_1.Location = new System.Drawing.Point(13, 155);
+            this.Label_SportCategory_1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SportCategory_1.Name = "Label_SportCategory_1";
-            this.Label_SportCategory_1.Size = new System.Drawing.Size(71, 20);
+            this.Label_SportCategory_1.Size = new System.Drawing.Size(56, 17);
             this.Label_SportCategory_1.TabIndex = 32;
             this.Label_SportCategory_1.Text = "Разряд";
             // 
@@ -484,9 +526,10 @@
             "МС",
             "МСМК",
             "-"});
-            this.SportCategory1_comboBox.Location = new System.Drawing.Point(94, 188);
+            this.SportCategory1_comboBox.Location = new System.Drawing.Point(70, 153);
+            this.SportCategory1_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SportCategory1_comboBox.Name = "SportCategory1_comboBox";
-            this.SportCategory1_comboBox.Size = new System.Drawing.Size(65, 28);
+            this.SportCategory1_comboBox.Size = new System.Drawing.Size(50, 24);
             this.SportCategory1_comboBox.TabIndex = 8;
             // 
             // SportClass1_comboBox
@@ -504,9 +547,10 @@
             "S",
             "М",
             "-"});
-            this.SportClass1_comboBox.Location = new System.Drawing.Point(307, 188);
+            this.SportClass1_comboBox.Location = new System.Drawing.Point(230, 153);
+            this.SportClass1_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SportClass1_comboBox.Name = "SportClass1_comboBox";
-            this.SportClass1_comboBox.Size = new System.Drawing.Size(209, 28);
+            this.SportClass1_comboBox.Size = new System.Drawing.Size(67, 24);
             this.SportClass1_comboBox.TabIndex = 9;
             // 
             // Label_SportClass_1
@@ -514,9 +558,10 @@
             this.Label_SportClass_1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_SportClass_1.AutoSize = true;
-            this.Label_SportClass_1.Location = new System.Drawing.Point(243, 191);
+            this.Label_SportClass_1.Location = new System.Drawing.Point(182, 155);
+            this.Label_SportClass_1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SportClass_1.Name = "Label_SportClass_1";
-            this.Label_SportClass_1.Size = new System.Drawing.Size(58, 20);
+            this.Label_SportClass_1.Size = new System.Drawing.Size(47, 17);
             this.Label_SportClass_1.TabIndex = 18;
             this.Label_SportClass_1.Text = "Класс";
             // 
@@ -565,9 +610,10 @@
             "1982",
             "1981",
             "1980"});
-            this.YearOfBirth1_comboBox.Location = new System.Drawing.Point(344, 127);
+            this.YearOfBirth1_comboBox.Location = new System.Drawing.Point(258, 103);
+            this.YearOfBirth1_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.YearOfBirth1_comboBox.Name = "YearOfBirth1_comboBox";
-            this.YearOfBirth1_comboBox.Size = new System.Drawing.Size(81, 28);
+            this.YearOfBirth1_comboBox.Size = new System.Drawing.Size(62, 24);
             this.YearOfBirth1_comboBox.TabIndex = 7;
             this.YearOfBirth1_comboBox.Text = "год";
             this.YearOfBirth1_comboBox.SelectedIndexChanged += new System.EventHandler(this.YearOfBirth1_comboBox_SelectedIndexChanged);
@@ -588,9 +634,10 @@
             "октябрь",
             "ноябрь",
             "декабрь"});
-            this.MounthOfBirth1_comboBox.Location = new System.Drawing.Point(242, 127);
+            this.MounthOfBirth1_comboBox.Location = new System.Drawing.Point(182, 103);
+            this.MounthOfBirth1_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.MounthOfBirth1_comboBox.Name = "MounthOfBirth1_comboBox";
-            this.MounthOfBirth1_comboBox.Size = new System.Drawing.Size(96, 28);
+            this.MounthOfBirth1_comboBox.Size = new System.Drawing.Size(73, 24);
             this.MounthOfBirth1_comboBox.TabIndex = 6;
             this.MounthOfBirth1_comboBox.Text = "месяц";
             this.MounthOfBirth1_comboBox.SelectedIndexChanged += new System.EventHandler(this.MounthOfBirth1_comboBox_SelectedIndexChanged);
@@ -630,9 +677,10 @@
             "29",
             "30",
             "31"});
-            this.DayOfBirth1_comboBox.Location = new System.Drawing.Point(158, 128);
+            this.DayOfBirth1_comboBox.Location = new System.Drawing.Point(118, 104);
+            this.DayOfBirth1_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.DayOfBirth1_comboBox.Name = "DayOfBirth1_comboBox";
-            this.DayOfBirth1_comboBox.Size = new System.Drawing.Size(78, 28);
+            this.DayOfBirth1_comboBox.Size = new System.Drawing.Size(60, 24);
             this.DayOfBirth1_comboBox.TabIndex = 5;
             this.DayOfBirth1_comboBox.Text = "день";
             this.DayOfBirth1_comboBox.SelectedIndexChanged += new System.EventHandler(this.DayOfBirth1_comboBox_SelectedIndexChanged);
@@ -640,27 +688,30 @@
             // Label_BurthDate1
             // 
             this.Label_BurthDate1.AutoSize = true;
-            this.Label_BurthDate1.Location = new System.Drawing.Point(11, 128);
+            this.Label_BurthDate1.Location = new System.Drawing.Point(8, 104);
+            this.Label_BurthDate1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_BurthDate1.Name = "Label_BurthDate1";
-            this.Label_BurthDate1.Size = new System.Drawing.Size(141, 20);
+            this.Label_BurthDate1.Size = new System.Drawing.Size(111, 17);
             this.Label_BurthDate1.TabIndex = 12;
             this.Label_BurthDate1.Text = "Дата рождения";
             // 
             // Label_Surname1
             // 
             this.Label_Surname1.AutoSize = true;
-            this.Label_Surname1.Location = new System.Drawing.Point(13, 35);
+            this.Label_Surname1.Location = new System.Drawing.Point(10, 28);
+            this.Label_Surname1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Surname1.Name = "Label_Surname1";
-            this.Label_Surname1.Size = new System.Drawing.Size(87, 20);
+            this.Label_Surname1.Size = new System.Drawing.Size(70, 17);
             this.Label_Surname1.TabIndex = 11;
             this.Label_Surname1.Text = "Фамилия";
             // 
             // Label_Name1
             // 
             this.Label_Name1.AutoSize = true;
-            this.Label_Name1.Location = new System.Drawing.Point(13, 64);
+            this.Label_Name1.Location = new System.Drawing.Point(10, 52);
+            this.Label_Name1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Name1.Name = "Label_Name1";
-            this.Label_Name1.Size = new System.Drawing.Size(42, 20);
+            this.Label_Name1.Size = new System.Drawing.Size(35, 17);
             this.Label_Name1.TabIndex = 10;
             this.Label_Name1.Text = "Имя";
             // 
@@ -668,9 +719,10 @@
             // 
             this.Surname1textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Surname1textBox.Location = new System.Drawing.Point(127, 38);
+            this.Surname1textBox.Location = new System.Drawing.Point(95, 31);
+            this.Surname1textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Surname1textBox.Name = "Surname1textBox";
-            this.Surname1textBox.Size = new System.Drawing.Size(405, 26);
+            this.Surname1textBox.Size = new System.Drawing.Size(214, 23);
             this.Surname1textBox.TabIndex = 2;
             this.Surname1textBox.Text = "James";
             // 
@@ -678,9 +730,10 @@
             // 
             this.Name1textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Name1textBox.Location = new System.Drawing.Point(127, 67);
+            this.Name1textBox.Location = new System.Drawing.Point(95, 54);
+            this.Name1textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Name1textBox.Name = "Name1textBox";
-            this.Name1textBox.Size = new System.Drawing.Size(405, 26);
+            this.Name1textBox.Size = new System.Drawing.Size(214, 23);
             this.Name1textBox.TabIndex = 3;
             this.Name1textBox.Text = "Brown";
             // 
@@ -690,9 +743,10 @@
             this.registrationButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.registrationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registrationButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.registrationButton.Location = new System.Drawing.Point(1030, 17);
+            this.registrationButton.Location = new System.Drawing.Point(708, 14);
+            this.registrationButton.Margin = new System.Windows.Forms.Padding(2);
             this.registrationButton.Name = "registrationButton";
-            this.registrationButton.Size = new System.Drawing.Size(226, 47);
+            this.registrationButton.Size = new System.Drawing.Size(170, 38);
             this.registrationButton.TabIndex = 23;
             this.registrationButton.Text = "Зарегистрировать";
             this.registrationButton.UseVisualStyleBackColor = false;
@@ -717,9 +771,11 @@
             this.SecondSportsman_groupBox.Controls.Add(this.DayOfBirth2_comboBox);
             this.SecondSportsman_groupBox.Controls.Add(this.Label_BurthDate2);
             this.SecondSportsman_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SecondSportsman_groupBox.Location = new System.Drawing.Point(576, 144);
+            this.SecondSportsman_groupBox.Location = new System.Drawing.Point(368, 117);
+            this.SecondSportsman_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.SecondSportsman_groupBox.Name = "SecondSportsman_groupBox";
-            this.SecondSportsman_groupBox.Size = new System.Drawing.Size(448, 256);
+            this.SecondSportsman_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.SecondSportsman_groupBox.Size = new System.Drawing.Size(336, 208);
             this.SecondSportsman_groupBox.TabIndex = 25;
             this.SecondSportsman_groupBox.TabStop = false;
             this.SecondSportsman_groupBox.Text = "Второй танцор";
@@ -727,9 +783,10 @@
             // Label_Patronymic2
             // 
             this.Label_Patronymic2.AutoSize = true;
-            this.Label_Patronymic2.Location = new System.Drawing.Point(13, 94);
+            this.Label_Patronymic2.Location = new System.Drawing.Point(10, 76);
+            this.Label_Patronymic2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Patronymic2.Name = "Label_Patronymic2";
-            this.Label_Patronymic2.Size = new System.Drawing.Size(91, 20);
+            this.Label_Patronymic2.Size = new System.Drawing.Size(71, 17);
             this.Label_Patronymic2.TabIndex = 36;
             this.Label_Patronymic2.Text = "Отчество";
             // 
@@ -737,9 +794,10 @@
             // 
             this.Label_SportCategory_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Label_SportCategory_2.AutoSize = true;
-            this.Label_SportCategory_2.Location = new System.Drawing.Point(15, 191);
+            this.Label_SportCategory_2.Location = new System.Drawing.Point(11, 155);
+            this.Label_SportCategory_2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SportCategory_2.Name = "Label_SportCategory_2";
-            this.Label_SportCategory_2.Size = new System.Drawing.Size(71, 20);
+            this.Label_SportCategory_2.Size = new System.Drawing.Size(56, 17);
             this.Label_SportCategory_2.TabIndex = 31;
             this.Label_SportCategory_2.Text = "Разряд";
             // 
@@ -747,9 +805,10 @@
             // 
             this.Patronymic2textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Patronymic2textBox.Location = new System.Drawing.Point(126, 94);
+            this.Patronymic2textBox.Location = new System.Drawing.Point(94, 76);
+            this.Patronymic2textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Patronymic2textBox.Name = "Patronymic2textBox";
-            this.Patronymic2textBox.Size = new System.Drawing.Size(286, 26);
+            this.Patronymic2textBox.Size = new System.Drawing.Size(216, 23);
             this.Patronymic2textBox.TabIndex = 12;
             this.Patronymic2textBox.Text = "Lawson";
             // 
@@ -768,9 +827,10 @@
             "МС",
             "МСМК",
             "-"});
-            this.SportCategory2_comboBox.Location = new System.Drawing.Point(91, 188);
+            this.SportCategory2_comboBox.Location = new System.Drawing.Point(68, 153);
+            this.SportCategory2_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SportCategory2_comboBox.Name = "SportCategory2_comboBox";
-            this.SportCategory2_comboBox.Size = new System.Drawing.Size(65, 28);
+            this.SportCategory2_comboBox.Size = new System.Drawing.Size(50, 24);
             this.SportCategory2_comboBox.TabIndex = 16;
             // 
             // SportClass2_comboBox
@@ -788,9 +848,10 @@
             "S",
             "М",
             "-"});
-            this.SportClass2_comboBox.Location = new System.Drawing.Point(306, 188);
+            this.SportClass2_comboBox.Location = new System.Drawing.Point(230, 153);
+            this.SportClass2_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SportClass2_comboBox.Name = "SportClass2_comboBox";
-            this.SportClass2_comboBox.Size = new System.Drawing.Size(90, 28);
+            this.SportClass2_comboBox.Size = new System.Drawing.Size(68, 24);
             this.SportClass2_comboBox.TabIndex = 17;
             // 
             // Label_SportClass_2
@@ -798,9 +859,10 @@
             this.Label_SportClass_2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Label_SportClass_2.AutoSize = true;
-            this.Label_SportClass_2.Location = new System.Drawing.Point(242, 191);
+            this.Label_SportClass_2.Location = new System.Drawing.Point(182, 155);
+            this.Label_SportClass_2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SportClass_2.Name = "Label_SportClass_2";
-            this.Label_SportClass_2.Size = new System.Drawing.Size(58, 20);
+            this.Label_SportClass_2.Size = new System.Drawing.Size(47, 17);
             this.Label_SportClass_2.TabIndex = 18;
             this.Label_SportClass_2.Text = "Класс";
             // 
@@ -808,9 +870,10 @@
             // 
             this.Surname2textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Surname2textBox.Location = new System.Drawing.Point(126, 38);
+            this.Surname2textBox.Location = new System.Drawing.Point(94, 31);
+            this.Surname2textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Surname2textBox.Name = "Surname2textBox";
-            this.Surname2textBox.Size = new System.Drawing.Size(286, 26);
+            this.Surname2textBox.Size = new System.Drawing.Size(216, 23);
             this.Surname2textBox.TabIndex = 10;
             this.Surname2textBox.Text = "Jack";
             // 
@@ -818,18 +881,20 @@
             // 
             this.Name2textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Name2textBox.Location = new System.Drawing.Point(126, 66);
+            this.Name2textBox.Location = new System.Drawing.Point(94, 54);
+            this.Name2textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Name2textBox.Name = "Name2textBox";
-            this.Name2textBox.Size = new System.Drawing.Size(286, 26);
+            this.Name2textBox.Size = new System.Drawing.Size(216, 23);
             this.Name2textBox.TabIndex = 11;
             this.Name2textBox.Text = "Daniels";
             // 
             // Label_Name2
             // 
             this.Label_Name2.AutoSize = true;
-            this.Label_Name2.Location = new System.Drawing.Point(13, 66);
+            this.Label_Name2.Location = new System.Drawing.Point(10, 54);
+            this.Label_Name2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Name2.Name = "Label_Name2";
-            this.Label_Name2.Size = new System.Drawing.Size(42, 20);
+            this.Label_Name2.Size = new System.Drawing.Size(35, 17);
             this.Label_Name2.TabIndex = 10;
             this.Label_Name2.Text = "Имя";
             // 
@@ -878,9 +943,10 @@
             "1982",
             "1981",
             "1980"});
-            this.YearOfBirth2_comboBox.Location = new System.Drawing.Point(348, 128);
+            this.YearOfBirth2_comboBox.Location = new System.Drawing.Point(261, 104);
+            this.YearOfBirth2_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.YearOfBirth2_comboBox.Name = "YearOfBirth2_comboBox";
-            this.YearOfBirth2_comboBox.Size = new System.Drawing.Size(84, 28);
+            this.YearOfBirth2_comboBox.Size = new System.Drawing.Size(64, 24);
             this.YearOfBirth2_comboBox.TabIndex = 15;
             this.YearOfBirth2_comboBox.Text = "год";
             this.YearOfBirth2_comboBox.SelectedIndexChanged += new System.EventHandler(this.YearOfBirth2_comboBox_SelectedIndexChanged);
@@ -888,9 +954,10 @@
             // Label_Surname2
             // 
             this.Label_Surname2.AutoSize = true;
-            this.Label_Surname2.Location = new System.Drawing.Point(13, 38);
+            this.Label_Surname2.Location = new System.Drawing.Point(10, 31);
+            this.Label_Surname2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Surname2.Name = "Label_Surname2";
-            this.Label_Surname2.Size = new System.Drawing.Size(87, 20);
+            this.Label_Surname2.Size = new System.Drawing.Size(70, 17);
             this.Label_Surname2.TabIndex = 11;
             this.Label_Surname2.Text = "Фамилия";
             // 
@@ -910,9 +977,10 @@
             "октябрь",
             "ноябрь",
             "декабрь"});
-            this.MounthOfBirth2_comboBox.Location = new System.Drawing.Point(246, 128);
+            this.MounthOfBirth2_comboBox.Location = new System.Drawing.Point(184, 104);
+            this.MounthOfBirth2_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.MounthOfBirth2_comboBox.Name = "MounthOfBirth2_comboBox";
-            this.MounthOfBirth2_comboBox.Size = new System.Drawing.Size(96, 28);
+            this.MounthOfBirth2_comboBox.Size = new System.Drawing.Size(73, 24);
             this.MounthOfBirth2_comboBox.TabIndex = 14;
             this.MounthOfBirth2_comboBox.Text = "месяц";
             this.MounthOfBirth2_comboBox.SelectedIndexChanged += new System.EventHandler(this.MounthOfBirth2_comboBox_SelectedIndexChanged);
@@ -952,9 +1020,10 @@
             "29",
             "30",
             "31"});
-            this.DayOfBirth2_comboBox.Location = new System.Drawing.Point(163, 128);
+            this.DayOfBirth2_comboBox.Location = new System.Drawing.Point(122, 104);
+            this.DayOfBirth2_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.DayOfBirth2_comboBox.Name = "DayOfBirth2_comboBox";
-            this.DayOfBirth2_comboBox.Size = new System.Drawing.Size(77, 28);
+            this.DayOfBirth2_comboBox.Size = new System.Drawing.Size(59, 24);
             this.DayOfBirth2_comboBox.TabIndex = 13;
             this.DayOfBirth2_comboBox.Text = "день";
             this.DayOfBirth2_comboBox.SelectedIndexChanged += new System.EventHandler(this.DayOfBirth2_comboBox_SelectedIndexChanged);
@@ -962,9 +1031,10 @@
             // Label_BurthDate2
             // 
             this.Label_BurthDate2.AutoSize = true;
-            this.Label_BurthDate2.Location = new System.Drawing.Point(15, 131);
+            this.Label_BurthDate2.Location = new System.Drawing.Point(11, 106);
+            this.Label_BurthDate2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_BurthDate2.Name = "Label_BurthDate2";
-            this.Label_BurthDate2.Size = new System.Drawing.Size(141, 20);
+            this.Label_BurthDate2.Size = new System.Drawing.Size(111, 17);
             this.Label_BurthDate2.TabIndex = 12;
             this.Label_BurthDate2.Text = "Дата рождения";
             // 
@@ -973,9 +1043,10 @@
             this.Browse_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Browse_button.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Browse_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Browse_button.Location = new System.Drawing.Point(951, 710);
+            this.Browse_button.Location = new System.Drawing.Point(649, 577);
+            this.Browse_button.Margin = new System.Windows.Forms.Padding(2);
             this.Browse_button.Name = "Browse_button";
-            this.Browse_button.Size = new System.Drawing.Size(109, 32);
+            this.Browse_button.Size = new System.Drawing.Size(82, 26);
             this.Browse_button.TabIndex = 31;
             this.Browse_button.Text = "Browse";
             this.Browse_button.UseVisualStyleBackColor = false;
@@ -985,9 +1056,10 @@
             // 
             this.Path_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Path_textBox.Location = new System.Drawing.Point(12, 714);
+            this.Path_textBox.Location = new System.Drawing.Point(9, 580);
+            this.Path_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Path_textBox.Name = "Path_textBox";
-            this.Path_textBox.Size = new System.Drawing.Size(933, 22);
+            this.Path_textBox.Size = new System.Drawing.Size(637, 20);
             this.Path_textBox.TabIndex = 30;
             this.Path_textBox.TextChanged += new System.EventHandler(this.Path_textBox_TextChanged);
             // 
@@ -999,9 +1071,10 @@
             // 
             this.Label_GroupName.AutoSize = true;
             this.Label_GroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_GroupName.Location = new System.Drawing.Point(221, 12);
+            this.Label_GroupName.Location = new System.Drawing.Point(166, 10);
+            this.Label_GroupName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_GroupName.Name = "Label_GroupName";
-            this.Label_GroupName.Size = new System.Drawing.Size(154, 20);
+            this.Label_GroupName.Size = new System.Drawing.Size(122, 17);
             this.Label_GroupName.TabIndex = 40;
             this.Label_GroupName.Text = "Название группы";
             // 
@@ -1011,11 +1084,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupName_textBox.Enabled = false;
             this.groupName_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupName_textBox.Location = new System.Drawing.Point(225, 39);
+            this.groupName_textBox.Location = new System.Drawing.Point(169, 32);
+            this.groupName_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.groupName_textBox.Multiline = true;
             this.groupName_textBox.Name = "groupName_textBox";
             this.groupName_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.groupName_textBox.Size = new System.Drawing.Size(760, 61);
+            this.groupName_textBox.Size = new System.Drawing.Size(515, 50);
             this.groupName_textBox.TabIndex = 1;
             // 
             // Group_n_Number_groupBox
@@ -1028,9 +1102,11 @@
             this.Group_n_Number_groupBox.Controls.Add(this.Label_GroupNumber);
             this.Group_n_Number_groupBox.Controls.Add(this.groupNumber_comboBox);
             this.Group_n_Number_groupBox.Controls.Add(this.groupName_textBox);
-            this.Group_n_Number_groupBox.Location = new System.Drawing.Point(12, 2);
+            this.Group_n_Number_groupBox.Location = new System.Drawing.Point(9, 2);
+            this.Group_n_Number_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.Group_n_Number_groupBox.Name = "Group_n_Number_groupBox";
-            this.Group_n_Number_groupBox.Size = new System.Drawing.Size(1012, 136);
+            this.Group_n_Number_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.Group_n_Number_groupBox.Size = new System.Drawing.Size(695, 110);
             this.Group_n_Number_groupBox.TabIndex = 41;
             this.Group_n_Number_groupBox.TabStop = false;
             // 
@@ -1038,18 +1114,20 @@
             // 
             this.duetNumber_textBox.Enabled = false;
             this.duetNumber_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.duetNumber_textBox.Location = new System.Drawing.Point(118, 77);
+            this.duetNumber_textBox.Location = new System.Drawing.Point(88, 63);
+            this.duetNumber_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.duetNumber_textBox.Name = "duetNumber_textBox";
-            this.duetNumber_textBox.Size = new System.Drawing.Size(85, 26);
+            this.duetNumber_textBox.Size = new System.Drawing.Size(65, 23);
             this.duetNumber_textBox.TabIndex = 37;
             // 
             // Label_DuetNumber
             // 
             this.Label_DuetNumber.AutoSize = true;
             this.Label_DuetNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_DuetNumber.Location = new System.Drawing.Point(28, 80);
+            this.Label_DuetNumber.Location = new System.Drawing.Point(21, 65);
+            this.Label_DuetNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_DuetNumber.Name = "Label_DuetNumber";
-            this.Label_DuetNumber.Size = new System.Drawing.Size(64, 20);
+            this.Label_DuetNumber.Size = new System.Drawing.Size(51, 17);
             this.Label_DuetNumber.TabIndex = 36;
             this.Label_DuetNumber.Text = "Номер";
             // 
@@ -1057,9 +1135,10 @@
             // 
             this.Label_GroupNumber.AutoSize = true;
             this.Label_GroupNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_GroupNumber.Location = new System.Drawing.Point(28, 44);
+            this.Label_GroupNumber.Location = new System.Drawing.Point(21, 36);
+            this.Label_GroupNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_GroupNumber.Name = "Label_GroupNumber";
-            this.Label_GroupNumber.Size = new System.Drawing.Size(67, 20);
+            this.Label_GroupNumber.Size = new System.Drawing.Size(55, 17);
             this.Label_GroupNumber.TabIndex = 26;
             this.Label_GroupNumber.Text = "Группа";
             // 
@@ -1067,18 +1146,66 @@
             // 
             this.groupNumber_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupNumber_comboBox.FormattingEnabled = true;
-            this.groupNumber_comboBox.Location = new System.Drawing.Point(118, 39);
+            this.groupNumber_comboBox.Location = new System.Drawing.Point(88, 32);
+            this.groupNumber_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.groupNumber_comboBox.Name = "groupNumber_comboBox";
-            this.groupNumber_comboBox.Size = new System.Drawing.Size(85, 28);
+            this.groupNumber_comboBox.Size = new System.Drawing.Size(65, 24);
             this.groupNumber_comboBox.TabIndex = 36;
             this.groupNumber_comboBox.SelectedIndexChanged += new System.EventHandler(this.groupNumber_comboBox_SelectedIndexChanged_1);
             // 
+            // printNumberGroupBox
+            // 
+            this.printNumberGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.printNumberGroupBox.Controls.Add(this.advTextBox);
+            this.printNumberGroupBox.Controls.Add(this.advCheckBox);
+            this.printNumberGroupBox.Location = new System.Drawing.Point(709, 145);
+            this.printNumberGroupBox.Name = "printNumberGroupBox";
+            this.printNumberGroupBox.Size = new System.Drawing.Size(169, 180);
+            this.printNumberGroupBox.TabIndex = 42;
+            this.printNumberGroupBox.TabStop = false;
+            // 
+            // checkBoxPrintNumber
+            // 
+            this.checkBoxPrintNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPrintNumber.Checked = true;
+            this.checkBoxPrintNumber.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPrintNumber.Location = new System.Drawing.Point(709, 125);
+            this.checkBoxPrintNumber.Name = "checkBoxPrintNumber";
+            this.checkBoxPrintNumber.Size = new System.Drawing.Size(120, 17);
+            this.checkBoxPrintNumber.TabIndex = 44;
+            this.checkBoxPrintNumber.Text = "Напечатать номер";
+            this.checkBoxPrintNumber.UseVisualStyleBackColor = true;
+            this.checkBoxPrintNumber.CheckedChanged += new System.EventHandler(this.checkBoxPrintNumber_CheckedChanged);
+            // 
+            // advCheckBox
+            // 
+            this.advCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.advCheckBox.AutoSize = true;
+            this.advCheckBox.Location = new System.Drawing.Point(6, 19);
+            this.advCheckBox.Name = "advCheckBox";
+            this.advCheckBox.Size = new System.Drawing.Size(103, 17);
+            this.advCheckBox.TabIndex = 45;
+            this.advCheckBox.Text = "Advertising Area";
+            this.advCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // advTextBox
+            // 
+            this.advTextBox.Location = new System.Drawing.Point(6, 42);
+            this.advTextBox.Multiline = true;
+            this.advTextBox.Name = "advTextBox";
+            this.advTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.advTextBox.Size = new System.Drawing.Size(154, 51);
+            this.advTextBox.TabIndex = 46;
+            this.advTextBox.Text = "Adv Text";
+            // 
             // registrFormDuet
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1260, 746);
+            this.ClientSize = new System.Drawing.Size(881, 606);
+            this.Controls.Add(this.checkBoxPrintNumber);
+            this.Controls.Add(this.printNumberGroupBox);
             this.Controls.Add(this.Group_n_Number_groupBox);
             this.Controls.Add(this.Browse_button);
             this.Controls.Add(this.Path_textBox);
@@ -1088,6 +1215,7 @@
             this.Controls.Add(this.CommonProperties_groupBox);
             this.Controls.Add(this.FirstSportsman_groupBox);
             this.Controls.Add(this.registrationButton);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "registrFormDuet";
             this.Text = "registrFormDuet";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.registrFormDuet_FormClosing);
@@ -1107,6 +1235,8 @@
             this.SecondSportsman_groupBox.PerformLayout();
             this.Group_n_Number_groupBox.ResumeLayout(false);
             this.Group_n_Number_groupBox.PerformLayout();
+            this.printNumberGroupBox.ResumeLayout(false);
+            this.printNumberGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1183,5 +1313,9 @@
         private System.Windows.Forms.Label Label_GroupNumber;
         private System.Windows.Forms.ComboBox groupNumber_comboBox;
         private System.Windows.Forms.CheckBox DuetTrainer2_checkBox;
+        private System.Windows.Forms.GroupBox printNumberGroupBox;
+        private System.Windows.Forms.CheckBox checkBoxPrintNumber;
+        private System.Windows.Forms.TextBox advTextBox;
+        private System.Windows.Forms.CheckBox advCheckBox;
     }
 }

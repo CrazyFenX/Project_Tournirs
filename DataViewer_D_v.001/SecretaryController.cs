@@ -10,7 +10,7 @@ using System.Collections;
 
 //using iTextSharp;
 //using iTextSharp.text;
-//using System.IO;
+using System.IO;
 //using iTextSharp.text.pdf;
 //using System.Drawing;
 
@@ -49,6 +49,93 @@ namespace DataViewer_D_v._001
                 MessageBox.Show($"Упс, что-то пошло не так...\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             myConnection.Close();
+        }
+
+        public static void createTournirFolderNDataBase(string folderName, CreatingTournirDBForm previousForm)
+        {
+            string dbName = previousForm.Name_textBox.Text;
+            try
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(folderName + '\\' + dbName);
+                if (!dirInfo.Exists)
+                {
+                    dirInfo.Create();
+                }
+                dirInfo.CreateSubdirectory("Results");
+                dirInfo.CreateSubdirectory("Diploms");
+                dirInfo.CreateSubdirectory("MarkBlanks");
+                dirInfo.CreateSubdirectory("DuetNumbers");
+                folderName += '\\' + dbName + '\\' + dbName;
+
+                ADOX.Catalog BD = new ADOX.Catalog();
+                BD.Create($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}.mdb;Jet OLEDB:Engine Type=5");
+
+                OleDbConnection cn = new OleDbConnection($"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}.mdb");
+                cn.Open();
+                OleDbCommand com = new OleDbCommand();
+
+                //Создание Таблицы Турнира
+                com = new OleDbCommand("CREATE TABLE tournir(ID COUNTER, Название CHAR(50), Дата_Проведения CHAR(10),  Время_Проведения CHAR(5),  Место_Проведения CHAR(150), Организация CHAR(100), ФИО_Секретаря CHAR(100), ФИО_Регистратора CHAR(100), Порядок CHAR(100) DEFAULT '0;', CONSTRAINT tournir_pk PRIMARY KEY (Название))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Групп
+                com = new OleDbCommand("CREATE TABLE groups(Номер_Группы COUNTER, Название_Турнира CHAR(100), Время CHAR(5), Категория CHAR(100), Категории CHAR(50), Танцы CHAR(100), Судьи CHAR(100), CONSTRAINT groups_pk PRIMARY KEY (Номер_Группы), CONSTRAINT fk_groups FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Категорий
+                com = new OleDbCommand("CREATE TABLE categories(Номер INT DEFAULT 0, Номер_Группы INT, Категория CHAR(6), CONSTRAINT fk_categories FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Танцев
+                com = new OleDbCommand("CREATE TABLE dances(Номер INT DEFAULT 0, Номер_Группы INT, Танец CHAR(100), CONSTRAINT fk_dances FOREIGN KEY (Номер_Группы) REFERENCES groups(Номер_Группы))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Судей
+                com = new OleDbCommand("CREATE TABLE judges(Номер COUNTER DEFAULT 0, Название_Турнира CHAR(50), ФИО CHAR(100), Категория_Судейства CHAR(20), Должность CHAR(5), Город CHAR(50), CONSTRAINT judges_pk PRIMARY KEY (Номер), CONSTRAINT fk_judges FOREIGN KEY (Название_Турнира) REFERENCES tournir(Название))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Должностей
+                com = new OleDbCommand("CREATE TABLE positions(Номер COUNTER DEFAULT 0, ФИО CHAR(100), Должность CHAR(5), Город CHAR(50), CONSTRAINT pos_pk PRIMARY KEY (Номер))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Судей
+                com = new OleDbCommand("CREATE TABLE trainers(Номер COUNTER DEFAULT 0, Номер_Пары INT DEFAULT 0, ФИО CHAR(100), Категория CHAR(20))", cn);
+                com.ExecuteNonQuery();
+
+                //Создание Таблицы Участников
+                com = new OleDbCommand("CREATE TABLE participants(Номер INT DEFAULT 0, Номер_Пары INT DEFAULT 0, Фамилия CHAR(50), Имя CHAR(50), Отчество CHAR(50), Категория CHAR(5), Номер_Группы INT, Счет INT DEFAULT 0)", cn);
+                com.ExecuteNonQuery();
+
+                com = new OleDbCommand("CREATE TABLE duets(Номер INT DEFAULT 0, Номер_В_Группе INT DEFAULT 0, Номер_Группы INT DEFAULT 0, Номер_Захода INT, ФИО1 CHAR(100), ФИО2 CHAR(100), Тип CHAR(4), Счет FLOAT DEFAULT 0, Оценки CHAR(255))", cn);
+                com.ExecuteNonQuery();
+
+                TournirClass NewTournir = new TournirClass();
+
+                NewTournir.name = previousForm.Name_textBox.Text;
+                NewTournir.date = new MyDate(previousForm.DayOfTournir_comboBox.SelectedIndex + 1, previousForm.MounthOfTournir_comboBox.SelectedIndex + 1, Convert.ToInt32(previousForm.YearOfTournir_textBox.Text));
+                NewTournir.time = new TimeClass(previousForm.HourTournirStart_comboBox.SelectedIndex, previousForm.MinutesTournirStart_comboBox.SelectedIndex * 5);
+                //MessageBox.Show(NewTournir.time.ToString());
+                NewTournir.place = previousForm.CityOfTournir_textBox.Text;
+                NewTournir.organisation = previousForm.OrganisationOfTournir_textBox.Text;
+                NewTournir.registrator = "SNP_registrator";
+                NewTournir.secretary = "SNP_secretary";
+
+                com = new OleDbCommand("INSERT INTO tournir(Название, Дата_Проведения,  Время_Проведения,  Место_Проведения, Организация, ФИО_Секретаря, ФИО_Регистратора)" + "VALUES (@name,@date,@time,@plase,@organisation,@secretary,@registrator)", cn);
+                com.Parameters.AddWithValue("name", NewTournir.name);
+                com.Parameters.AddWithValue("date", NewTournir.date.ToString());
+                com.Parameters.AddWithValue("time", NewTournir.time.ToString());
+                com.Parameters.AddWithValue("place", NewTournir.place);
+                com.Parameters.AddWithValue("organisation", NewTournir.organisation);
+                com.Parameters.AddWithValue("secretary", NewTournir.secretary);
+                com.Parameters.AddWithValue("registrator", NewTournir.registrator);
+
+                com.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public static void insertInParticipants(Sportsman sportsman, string path)
@@ -244,7 +331,7 @@ namespace DataViewer_D_v._001
             myConnection.Close();
         }
 
-        public static void insertTrainer(Trainer trainer, int Number)
+        public static void insertTrainer(Trainer trainer, int Number) //potncial DELETING
         {
             OleDbCommand commandTrain = new OleDbCommand("", myConnection);
 
@@ -267,7 +354,7 @@ namespace DataViewer_D_v._001
             }
         }
 
-        public static Sportsman SearchByBookNumber(int BookNumber)
+        public static Sportsman SearchByBookNumber(int BookNumber) //potncial DELETING
         {
             Sportsman sportsman = new Sportsman();
 
@@ -452,24 +539,25 @@ namespace DataViewer_D_v._001
             int i;
             try
             {
-                RetTournir.name = command1.ExecuteScalar().ToString();
-                RetTournir.date.ToInt(command2.ExecuteScalar().ToString());
-                RetTournir.time.ToInt(command3.ExecuteScalar().ToString());
-                RetTournir.place = command4.ExecuteScalar().ToString();
-                RetTournir.organisation = command5.ExecuteScalar().ToString();
-                RetTournir.secretary = command6.ExecuteScalar().ToString();
-                RetTournir.registrator = command7.ExecuteScalar().ToString();
+                RetTournir.path = cn;
+                RetTournir.name = command1.ExecuteScalar().ToString().Replace(" ", "");
+                RetTournir.date.ToInt(command2.ExecuteScalar().ToString().Replace(" ", ""));
+                RetTournir.time.ToInt(command3.ExecuteScalar().ToString().Replace(" ", ""));
+                RetTournir.place = command4.ExecuteScalar().ToString().Replace(" ", "");
+                RetTournir.organisation = command5.ExecuteScalar().ToString().Replace(" ", "");
+                RetTournir.secretary = command6.ExecuteScalar().ToString().Replace(" ", "");
+                RetTournir.registrator = command7.ExecuteScalar().ToString().Replace(" ", "");
                 string[] tmpOrder = command8.ExecuteScalar().ToString().Replace(" ", "").Split(new char[] { ';' });
                 
                 string retstr = "";
-                MessageBox.Show("Len: " + tmpOrder.Length.ToString() + " " + tmpOrder[1]);
+                //MessageBox.Show("Len: " + tmpOrder.Length.ToString() + " " + tmpOrder[1]);
                 RetTournir.groupsOrder = new ushort[tmpOrder.Length - 1];
                 for (i = 0; i < tmpOrder.Length - 1; i++)
                 {
                     RetTournir.groupsOrder[i] = (ushort)Convert.ToInt32(tmpOrder[i]);
                     retstr += RetTournir.groupsOrder[i].ToString() + " ";
                 }
-                MessageBox.Show("Len: " + tmpOrder.Length.ToString() + " " + retstr);
+                //MessageBox.Show("Len: " + tmpOrder.Length.ToString() + " " + retstr);
                 //MessageBox.Show($"Турнир: {RetTournir.name}\nДата: {RetTournir.date}\nВремя: {RetTournir.time}\nМесто: {RetTournir.place}\nОрганизация: {RetTournir.organisation}\nСекретарь: {RetTournir.secretary}\nРегистратор: {RetTournir.registrator}");
                 //myConnection.Close();
             }
@@ -497,7 +585,7 @@ namespace DataViewer_D_v._001
                     command = new OleDbCommand("", myConnection);
                     command.CommandText = "SELECT Категория FROM groups WHERE Номер_Группы = @id";
                     command.Parameters.AddWithValue("id", i);
-                    name = Convert.ToString(command.ExecuteScalar());
+                    name = Convert.ToString(command.ExecuteScalar()).Replace(" ", "");
                     RetTournir.groups.Add(new GroupClass(i, RetTournir.name, name));
 
                     command = new OleDbCommand("", myConnection);
@@ -767,8 +855,8 @@ namespace DataViewer_D_v._001
             myConnection.Open();
 
             List<Duet> DuetList_New = new List<Duet>();
-            //try
-            //{
+            try
+            {
                 int max = 0;
 
                 command = new OleDbCommand("", myConnection);
@@ -887,13 +975,13 @@ namespace DataViewer_D_v._001
                     //MessageBox.Show(set_new.ToString());
                     DuetList_New.Add(set_new); //ДОРАБОТКА
                 }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Упс, что-то пошло не так при определении списка пар\nError: " + ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Упс, что-то пошло не так при определении списка пар\nError: " + ex.Message);
+            }
 
-            myConnection.Close();
+    myConnection.Close();
             return DuetList_New;
         }
 
@@ -1298,6 +1386,38 @@ namespace DataViewer_D_v._001
             {
                 MessageBox.Show($"Возникло непредвиденное исключение:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 myConnection.Close();
+            }
+        }
+
+        //---------------------------//
+        public static void splitGroupForSets(GroupClass inputGroup, ushort countOfSets)
+        {
+            int countOfDuetsInSet = (int)(inputGroup.duetList.Count / (countOfSets - 1));
+            MessageBox.Show(countOfDuetsInSet.ToString());
+            int counter = 0;
+            SetClass tempSet = new SetClass();
+
+            for (int j = 0; j < countOfSets - 1; j++)
+            {
+                tempSet = new SetClass(inputGroup.number, j + 1);
+                inputGroup.SetList.Add(tempSet);
+                for (int i = 0; i < countOfDuetsInSet; i++)
+                {
+                    inputGroup.SetList[j].DuetList.Add(inputGroup.duetList[counter]);
+                    counter++;
+                }
+            }
+
+            MessageBox.Show((inputGroup.duetList.Count % (countOfSets - 1)).ToString());
+
+            if (inputGroup.duetList.Count % (countOfSets - 1) > 0)
+            {
+                tempSet = new SetClass(inputGroup.number, countOfSets);
+                inputGroup.SetList.Add(tempSet);
+                for (int i = counter; i < inputGroup.duetList.Count; i++)
+                {
+                    inputGroup.SetList[countOfSets - 1].DuetList.Add(inputGroup.duetList[i]);
+                }
             }
         }
     }

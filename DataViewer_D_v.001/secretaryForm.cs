@@ -688,8 +688,6 @@ namespace DataViewer_D_v._001
                 tournir = SecretaryController.TakeTournir(folderName);
                 tournir.path = Path_textBox.Text;
 
-                //for (int i = 0; i < tournir.groups.Count; i++)
-                //    setGroupNumber_comboBox.Items.Add(tournir.groups[i].number);
                 NumberOfGroup_textBox.Text = Convert.ToString(tournir.groups.Count + 1);
             }
             catch (Exception ex)
@@ -774,9 +772,9 @@ namespace DataViewer_D_v._001
                 if (tournir.groups.Count != 0)
                     if (tournir.judges.Count != 0)
                     {
-                        try
-                        {
-                                int N = tournir.judges.Count;
+                        //try
+                        //{
+                            int N = tournir.judges.Count;
                             int M = tournir.groups.Count;
                             CheckBox[] tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
 
@@ -808,11 +806,12 @@ namespace DataViewer_D_v._001
 
                             foreach (GroupClass groupItem in tournir.groups)
                             {
+                                int cutter = 15;
                                 tempJudgeChessCheckList = new CheckBox[tournir.judges.Count];
+                                if (groupItem.name.Length <= 15) cutter = groupItem.name.Length;
                                 judgeChessPanel.Controls.Add(new_label = new Label()
                                 {
-                                    //Text = "Группа" + Convert.ToString(groupItem.number),
-                                    Text = groupItem.name.Substring(0, 15) + "... (" + groupItem.number.ToString() + ")",
+                                    Text = groupItem.name.Substring(0, cutter) + "... (" + groupItem.number.ToString() + ")",
                                     Location = new Point(10, height),
                                     Size = new Size(185, 25),
                                     Font = new Font("", 12)
@@ -822,7 +821,7 @@ namespace DataViewer_D_v._001
                                 string retstr = "Группа " + groupItem.number.ToString() + "\n";
 
                                 int j = 0;
-                                for (int i = 0; i < this.tournir.judges.Count - 1; i++)
+                                for (int i = 0; i < this.tournir.judges.Count; i++)
                                 {
                                     judgeChessPanel.Controls.Add(checkBoxOfJudge = new CheckBox()
                                     {
@@ -844,11 +843,11 @@ namespace DataViewer_D_v._001
                             judgeAllowButton.Visible = true;
                             judgeChessPanel.Visible = true;
                             judgeChessButton.Visible = false;
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MessageBox.Show(ex.Message);
+                        //}
                     }
                     else
                         MessageBox.Show("Не зарегистрировано ниодного судьи!");

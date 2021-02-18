@@ -382,7 +382,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button Browse_button;
         private System.Windows.Forms.TextBox Path_textBox;
-        private System.Windows.Forms.TextBox Name_textBox;
+        public System.Windows.Forms.TextBox Name_textBox;
         private System.Windows.Forms.Label Label_name;
         private System.Windows.Forms.Label Label_path;
         private System.Windows.Forms.Button Create_button;
@@ -390,14 +390,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox CityOfTournir_textBox;
-        private System.Windows.Forms.ComboBox MounthOfTournir_comboBox;
-        private System.Windows.Forms.ComboBox DayOfTournir_comboBox;
-        private System.Windows.Forms.ComboBox MinutesTournirStart_comboBox;
-        private System.Windows.Forms.ComboBox HourTournirStart_comboBox;
+        public System.Windows.Forms.TextBox CityOfTournir_textBox;
+        public System.Windows.Forms.ComboBox MounthOfTournir_comboBox;
+        public System.Windows.Forms.ComboBox DayOfTournir_comboBox;
+        public System.Windows.Forms.ComboBox MinutesTournirStart_comboBox;
+        public System.Windows.Forms.ComboBox HourTournirStart_comboBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox OrganisationOfTournir_textBox;
-        private System.Windows.Forms.TextBox YearOfTournir_textBox;
+        public System.Windows.Forms.TextBox OrganisationOfTournir_textBox;
+        public System.Windows.Forms.TextBox YearOfTournir_textBox;
     }
 }

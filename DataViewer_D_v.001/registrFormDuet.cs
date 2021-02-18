@@ -174,6 +174,12 @@ namespace DataViewer_D_v._001
 
                 SecretaryController.insertParticipantsInDuet(Convert.ToInt32(duetNumber_textBox.Text), sportsman_first, sportsman_second, Convert.ToInt32(groupNumber_comboBox.Text), Path_textBox.Text);
 
+                //printing number
+                if (checkBoxPrintNumber.Checked)
+                    if (advCheckBox.Checked)
+                        pdf_controller.getNumberCard_largeWithAdv(Path_textBox.Text, sportsman_first, sportsman_second, Convert.ToInt32(duetNumber_textBox.Text), advTextBox.Text);
+                    else
+                        pdf_controller.getNumberCard_largeWithAdv(Path_textBox.Text, sportsman_first, sportsman_second, Convert.ToInt32(duetNumber_textBox.Text), tournir.name);
                 duetNumber_textBox.Text = (Convert.ToInt32(duetNumber_textBox.Text) + 1).ToString();
                 clearAllBoxes();
             }
@@ -717,9 +723,9 @@ namespace DataViewer_D_v._001
             }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void checkBoxPrintNumber_CheckedChanged(object sender, EventArgs e)
         {
-
+            printNumberGroupBox.Visible = checkBoxPrintNumber.Checked;
         }
     }
 }

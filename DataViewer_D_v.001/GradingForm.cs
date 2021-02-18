@@ -182,8 +182,15 @@ namespace DataViewer_D_v._001
 
         private void GradingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (currentGroup > -1)
-                pdf_controller.getResultsPDF(tournir, tournir.groups[currentGroup]);
+            try
+            {
+                if (currentGroup > -1)
+                    pdf_controller.getResultsPDF(tournir, tournir.groups[currentGroup]);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             previousForm.Enabled = true;
         }
 

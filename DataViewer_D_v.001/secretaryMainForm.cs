@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -36,19 +37,26 @@ namespace DataViewer_D_v._001
             setCountTextBox.Visible = false;
             setCountLabel.Visible = false;
 
-            duetCountTextBox.Visible = false;
-            duetCountLabel.Visible = false;
-            startToutnamentButton.Visible = false;
-            formSetsButton.Visible = false;
+            //duetCountTextBox.Visible = false;
+            //duetCountLabel.Visible = false;
+            //startToutnamentButton.Visible = false;
+            //formSetsButton.Visible = false;
+            getSets_groupBox.Visible = false;
 
             printButton.Visible = false;
             resultsButton.Visible = false;
-            printDiplomsButton.Visible = false;
+
+            label_printerName.Visible = false;
+            printerName_TextBox.Visible = false;
+
+            printDiplomsButton.Visible = true;
+            printDiplButton.Visible = false;
+            printTestButton.Visible = false;
         }
 
         private void secretaryMainForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void tournirPreparingButton_Click(object sender, EventArgs e)
@@ -120,206 +128,22 @@ namespace DataViewer_D_v._001
 
         private void formingSets_button_Click(object sender, EventArgs e)
         {
-            if (this.tournir.name != "" && Path_textBox.Text != "" && duetCountTextBox.Text != "")
-            {
-                //Constants
-                //int setCountInGroup = Convert.ToInt32(setCountTextBox.Text);
-                int duetCountInSet = Convert.ToInt32(duetCountTextBox.Text);
-
-                //задать количество участников в каждом заходе
-                connectString = $"Provider=Microsoft.Jet.OLEDB.4.0;Data Source={folderName}";
-                OleDbConnection con = new OleDbConnection(connectString);
-                con.Open();
-
-                List<Duet> DuetList_New = new List<Duet>();
-                List<Duet> SoloList_New = new List<Duet>();
-                //Sportsman sportsman1 = new Sportsman();
-                //Sportsman sportsman2 = new Sportsman();
-
-                int countOfElements = 0;
-                Random rnd = new Random();
-
-                Controller.myConnection.Open();
-
-                for (int i = 0; i < tournir.groups.Count; i++)
+            //try
+            //{
+                if (Path_textBox.Text != "" && setCountTextBox.Text != "" && groupComboBox.SelectedIndex > -1)
                 {
-                    DuetList_New.Clear();
-                    SoloList_New.Clear();
-                    int index = 0;
-                    OleDbCommand command = new OleDbCommand("SELECT COUNT(Номер_Книжки1) From duets WHERE Номер_Группы = @id", con);
-
-                    command.Parameters.AddWithValue("id", i + 1);
-                    countOfElements = Convert.ToInt32(command.ExecuteScalar().ToString());
-                    //MessageBox.Show(Convert.ToString(countOfElements));
-
-                    //List<Duet> newDuetList = new List<Duet>();
-                    //List<int> newBookNumDuetList = new List<int>();
-                    //List<int> newBookNumSoloList = new List<int>();
-
-                    string outStr = "Пары группы номер" + (i + 1).ToString() + "\n";
-                    string outStr1 = "Солисты группы номер" + (i + 1).ToString() + "\n";
-
-                    OleDbCommand command1 = new OleDbCommand("SELECT Номер, Номер_Книжки1, Номер_Книжки2 From duets WHERE Номер_Группы = @id", con);
-
-                    command1.Parameters.AddWithValue("id", i + 1);
-                    OleDbDataReader reader = command1.ExecuteReader();
-                    int j = 0;
-                    int j1 = 0;
-
-                    int Num1 = 0, Num2 = 0;
-
-                    while (reader.Read())
-                    {
-                        if (reader["Номер_Книжки2"].ToString() != "")
-                        {
-                            Sportsman sportsman1 = new Sportsman();
-                            Sportsman sportsman2 = new Sportsman();
-                            outStr += " ";
-                            Num1 = (Convert.ToInt32(reader["Номер_Книжки1"]));
-                            Num2 = (Convert.ToInt32(reader["Номер_Книжки2"]));
-
-                            sportsman1 = Controller.SearchByBookNumberShort(Num1);
-                            sportsman1.BookNumber = Num1;
-                            sportsman1.GroupNumber = i + 1;
-                            sportsman2 = Controller.SearchByBookNumberShort(Num2);
-                            sportsman2.BookNumber = Num2;
-                            sportsman2.GroupNumber = i + 1;
-                            DuetList_New.Add(new Duet(Convert.ToInt32(reader["Номер"]) - 1, i, sportsman1, sportsman2));
-                            
-                            outStr += DuetList_New[j1].ToString() + "\n";
-                            j1++;
-                        }
-                        else
-                        {
-                            Sportsman sportsman1 = new Sportsman();
-                            //newBookNumSoloList.Add(Convert.ToInt32(reader["Номер_Книжки1"]));
-                            Num1 = (Convert.ToInt32(reader["Номер_Книжки1"]));
-
-                            sportsman1 = Controller.SearchByBookNumberShort(Num1);
-                            sportsman1.BookNumber = Num1;
-                            sportsman1.GroupNumber = i + 1;
-                            SoloList_New.Add(new Duet(Convert.ToInt32(reader["Номер"]) - 1, i, sportsman1));
-
-                            outStr1 += SoloList_New[j].ToString() + "\n";
-                            j++;
-                        }
-                        outStr += "\n";
-                        outStr1 += "\n";
-                    }
-                    //MessageBox.Show(outStr);
-                    outStr = "(Пара)Сортировка\n";
-                    //DuetList_New.OrderBy(x => rnd.Next());
-                    randomSort(DuetList_New);
-                    foreach (Duet duetItem in DuetList_New)
-                    {
-                        outStr += duetItem.ToString();
-                    }
-                    //MessageBox.Show(outStr);
-
-                    //MessageBox.Show(outStr1);
-                    outStr1 = "(Соло)Сортировка\n";
-                    //SoloList_New.OrderBy(x => rnd.Next());
-                    randomSort(SoloList_New);
-                    foreach (Duet soloItem in SoloList_New)
-                    {
-                        outStr1 += soloItem.ToString();
-                    }
-                    //MessageBox.Show(outStr1);
-
-                    outStr = "";
-                    tournir.groups[i].SetList.Clear();
-
-                    //Заходы для пар
-                    int setCountInGroup = DuetList_New.Count / duetCountInSet;
-                    int remainder = DuetList_New.Count % duetCountInSet;
-                    int h = 0;
-
-                    outStr += "Группа " + (i + 1).ToString() + "\n";
-                    for (h = 0; h < setCountInGroup; h++)
-                    {
-                        tournir.groups[i].SetList.Add(new SetClass(i, h + 1/*Добавить категорию*/));
-                        outStr += "Заход " + (tournir.groups[i].SetList.Count).ToString() + "\n";
-                        for (int h1 = 0; h1 < duetCountInSet; h1++)
-                        {
-                            if (index <= DuetList_New.Count - 1)
-                            {
-                                tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Add(DuetList_New[index]);
-                                outStr += "Пара " + (tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Count).ToString() + "\n";
-                                outStr += DuetList_New[index].ToString() + "\n";
-                                index++;
-                            }
-                            else
-                                break;
-                        }
-                    }
-
-                    tournir.groups[i].SetList.Add(new SetClass(i, h + 1/*Добавить категорию*/));
-                    outStr += "Заход " + (tournir.groups[i].SetList.Count).ToString() + "\n";
-                    for (int h1 = 0; h1 < remainder; h1++)
-                    {
-                        if (index <= DuetList_New.Count - 1)
-                        {
-                            tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Add(DuetList_New[index]);
-                            outStr += "Пара " + (tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Count).ToString() + "\n";
-                            outStr += DuetList_New[index].ToString() + "\n";
-                            index++;
-                        }
-                        else
-                            break;
-                    }
-
-                    ////Заходы для солистов
-                    //setCountInGroup = DuetList_New.Count / duetCountInSet;
-                    //remainder = DuetList_New.Count % duetCountInSet;
-                    //int g = h;
-                    
-                    //outStr += "Группа " + (i + 1).ToString() + "\n";
-                    //for (h = 0; h < setCountInGroup; h++)
-                    //{
-                    //    tournir.groups[i].SetList.Add(new SetClass(i, g + h/*Добавить категорию*/));
-                    //    outStr += "Заход " + (tournir.groups[i].SetList.Count).ToString() + "\n";
-                    //    for (int h1 = 0; h1 < duetCountInSet; h1++)
-                    //    {
-                    //        if (index <= SoloList_New.Count - 1)
-                    //        {
-                    //            tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Add(SoloList_New[index]);
-                    //            outStr += "Пара " + (tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Count).ToString() + "\n";
-                    //            outStr += SoloList_New[index].ToString() + "\n";
-                    //            index++;
-                    //        }
-                    //        else
-                    //            break;
-                    //    }
-                    //}
-
-                    //tournir.groups[i].SetList.Add(new SetClass(i, g + h + 1/*Добавить категорию*/));
-                    //outStr += "Заход " + (tournir.groups[i].SetList.Count).ToString() + "\n";
-                    //for (int h1 = 0; h1 < remainder; h1++)
-                    //{
-                    //    if (index <= DuetList_New.Count - 1)
-                    //    {
-                    //        tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Add(SoloList_New[index]);
-                    //        outStr += "Пара " + (tournir.groups[i].SetList[tournir.groups[i].SetList.Count - 1].DuetList.Count).ToString() + "\n";
-                    //        outStr += SoloList_New[index].ToString() + "\n";
-                    //        index++;
-                    //    }
-                    //    else
-                    //        break;
-                    //}
-
-                    MessageBox.Show(outStr);
-                    //for (int i1 = 0; i1 < DuetList_New.Count; i1++)
-                    //{
-                    //    if(index % duetCountInSet)
-                    //    tournir.groups[i].SetList[index];
-                    //    if ()
-                    //}
+                    ushort setCount = (ushort)Convert.ToInt32(setCountTextBox.Text);
+                    SecretaryController.splitGroupForSets(tournir.groups[groupComboBox.SelectedIndex], setCount);
+                    pdf_controller.getBlankForJudgePDF(tournir, tournir.groups[groupComboBox.SelectedIndex]);
+                    MessageBox.Show("Заходы успешно сформированы!");
                 }
-                con.Close();
-                Controller.myConnection.Close();
-            }
-            else
-                MessageBox.Show("Не все поля заполнены!");
+                else
+                    MessageBox.Show("Не все поля заполнены!");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void randomSort(List<Duet> tempList)
@@ -337,18 +161,27 @@ namespace DataViewer_D_v._001
         private void Path_textBox_TextChanged(object sender, EventArgs e)
         {
             folderName = Path_textBox.Text;
-            //try
-            //{
+            try
+            {
                 tournir = SecretaryController.TakeTournir(folderName);
-            //}
-            //catch (Exception ex)
-            //{
-                //MessageBox.Show("Ошибка при работе с базой турнира!\n" + ex.Message);
-            //}
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при работе с базой турнира!\n" + ex.Message);
+            }
         }
 
         private void Browse_button_Click(object sender, EventArgs e)
         {
+            string path = Application.StartupPath + @"\Tournirs\"; // this is the path that you are checking.
+            if (Directory.Exists(path))
+            {
+                openFileDialog1.InitialDirectory = path;
+            }
+            else
+            {
+                openFileDialog1.InitialDirectory = @"C:\";
+            }
             DialogResult result = openFileDialog1.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -370,13 +203,12 @@ namespace DataViewer_D_v._001
 
         private void stage1_button_Click(object sender, EventArgs e)
         {
-            //reglament_Button.Visible = false;
-            //stage1_button.Visible = true;
-            //stage2_button.Visible = true;
+            getSets_groupBox.Visible = true;
+            setCountTextBox.Visible = true;
+            setCountLabel.Visible = true;
 
-            //formationReglament formRegform = new formationReglament(this);
-            //this.Enabled = false;
-            //formRegform.Show();
+            for (int j = 0; j < tournir.groups.Count; j++)
+                groupComboBox.Items.Add((j + 1).ToString() + ")  " + tournir.groups[j].name);
         }
 
         private void stage2_button_Click(object sender, EventArgs e)
@@ -435,20 +267,17 @@ namespace DataViewer_D_v._001
             {
                 foreach (GroupClass groupItem in tournir.groups)
                 {
-                    //string retstr = "";
-                    //foreach (Duet duetItem in groupItem.duetList)
-                    //    retstr += duetItem.ToString();
-                    //MessageBox.Show(retstr);
-
-                    //groupItem.sortDuetList = sortController.QuickSort(groupItem.duetList);
-
-                    //retstr = "";
-                    //foreach (Duet duetItem in groupItem.sortDuetList)
-                    //    retstr += duetItem.ToString();
-                    //MessageBox.Show(retstr);
-
-                    pdf_controller.getResultsPDF(tournir, groupItem);
-                    printButton.Visible = true;
+                    try
+                    {
+                        pdf_controller.getResultsPDF(tournir, groupItem);
+                        printButton.Visible = true;
+                        label_printerName.Visible = true;
+                        printerName_TextBox.Visible = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
             else
@@ -457,7 +286,62 @@ namespace DataViewer_D_v._001
 
         private void printDiplomsButton_Click(object sender, EventArgs e)
         {
-            pdf_controller.getDiplomsPDF();
+            printDiplomsButton.Visible = false;
+            printDiplButton.Visible = true;
+            printTestButton.Visible = true;
+        }
+
+        private void printButton_Click(object sender, EventArgs e)
+        {
+            if (printerName_TextBox.Text != "")
+                foreach (GroupClass groupitem in this.tournir.groups)
+                {
+                    string folderName = tournir.path.Remove(tournir.path.LastIndexOf('\\'), tournir.path.Length - tournir.path.LastIndexOf('\\'));
+
+                    string filePath = folderName + $@"\Results\{"Group " + groupitem.number.ToString() + " " + groupitem.tournir_name.Replace(" ", "")}.pdf";
+                    printing_controller.PrintPDF(printerName_TextBox.Text, filePath, filePath);
+                }
+            else MessageBox.Show("Укажите название принтера!");
+        }
+
+        private void closePart1Button_Click(object sender, EventArgs e)
+        {
+            getSets_groupBox.Visible = false;
+        }
+
+        private void printTestButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //string patternPath = Application.StartupPath + @"\Tournirs\"; // this is the path that you are checking.
+                //if (Directory.Exists(patternPath))
+                //{
+                //    getDiplomPatternOpenFileDialog.InitialDirectory = patternPath;
+                //}
+                //else
+                //{
+                    getDiplomPatternOpenFileDialog.InitialDirectory = @"C:\";
+                //}
+                string patternPath = "";
+                DialogResult result = getDiplomPatternOpenFileDialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    patternPath = getDiplomPatternOpenFileDialog.FileName;
+                    Word_Controller.OpenAndAddTextToWordDocument(patternPath, tournir);
+                }
+
+                //pdf_controller.getDiplomsPDF();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void printDiplButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

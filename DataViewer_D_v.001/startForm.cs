@@ -70,7 +70,7 @@ namespace DataViewer_D_v._001
             registrFormSolo regFsolo = new registrFormSolo();
             this.Hide();
             regFsolo.Show();
-            Controller.myConnection.Open();//////////////
+            //Controller.myConnection.Open();//////////////
         }
 
         private void duetButton_Click(object sender, EventArgs e)
@@ -78,7 +78,7 @@ namespace DataViewer_D_v._001
             registrFormDuet regFduet = new registrFormDuet();
             this.Hide();
             regFduet.Show();
-            Controller.myConnection.Open();//////////////
+            //Controller.myConnection.Open();//////////////
         }
 
         private void Exit_button_Click(object sender, EventArgs e)

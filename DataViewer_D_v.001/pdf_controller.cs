@@ -19,8 +19,10 @@ namespace DataViewer_D_v._001
 
         public static void getResultsPDF(TournirClass inputTournir, GroupClass inputGroup)
         {
+            string folderName = inputTournir.path.Remove(inputTournir.path.LastIndexOf('\\'), inputTournir.path.Length - inputTournir.path.LastIndexOf('\\'));
+
             var doc = new Document();
-            PdfWriter.GetInstance(doc, new FileStream(Application.StartupPath + $@"\{"Group " + inputGroup.number.ToString() + " " + inputGroup.tournir_name.Replace(" ", "")}.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream(folderName + $@"\Results\{"Group " + inputGroup.number.ToString() + " " + inputGroup.tournir_name.Replace(" ", "")}.pdf", FileMode.Create));
             string FradmTTF = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "Fradm.TTF");
             Phrase new_prase = new Phrase();
 
@@ -49,7 +51,8 @@ namespace DataViewer_D_v._001
             addCell(table, "Ср.\nбалл", fgFont, 1, BaseColor.LIGHT_GRAY);
             addCell(table, "Место", fgFont, 1, BaseColor.LIGHT_GRAY);
 
-            foreach (Duet duetItem in inputGroup.duetList)
+            //foreach (Duet duetItem in inputGroup.duetList)
+            foreach (Duet duetItem in inputGroup.sortDuetList)
             {
                 addCell(table, $"{duetItem.number}", fgFont, 1, BaseColor.WHITE);
                 addCell(table, $"{duetItem.sportsman1.Surname + " " + duetItem.sportsman1.Name + "\n" + duetItem.sportsman1.Patronymic + "\n" + duetItem.sportsman2.Surname + " " + duetItem.sportsman2.Name + "\n" + duetItem.sportsman2.Patronymic}", fgFontSmall, 1, BaseColor.WHITE);
@@ -138,6 +141,132 @@ namespace DataViewer_D_v._001
             doc.Close();
         }
 
+        public static void getBlankForJudgePDF(TournirClass inputTournir, GroupClass inputGroup)
+        {
+            string folderName = inputTournir.path.Remove(inputTournir.path.LastIndexOf('\\'), inputTournir.path.Length - inputTournir.path.LastIndexOf('\\'));
+
+            string FradmTTF = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "Fradm.TTF");
+            Phrase new_prase = new Phrase();
+
+            BaseFont fgBaseFont = BaseFont.CreateFont(FradmTTF, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
+            iTextSharp.text.Font fgFontHuge = new iTextSharp.text.Font(fgBaseFont, 10, iTextSharp.text.Font.ITALIC, BaseColor.BLACK);
+            iTextSharp.text.Font fgFont = new iTextSharp.text.Font(fgBaseFont, 8, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+            iTextSharp.text.Font fgFontSmall = new iTextSharp.text.Font(fgBaseFont, 6, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+
+            foreach (string danceItem in inputGroup.DancesList)
+            {
+                var doc = new Document();
+                PdfWriter.GetInstance(doc, new FileStream(folderName + $@"\MarkBlanks\{"Group " + inputGroup.number.ToString() + " " + danceItem + " " + inputGroup.tournir_name.Replace(" ", "")}.pdf", FileMode.Create));
+
+                doc.Open();
+
+                doc.Add(new_prase = new Phrase($"{inputTournir.date.ToString() + " " + inputTournir.name}", fgFontHuge) { });
+
+                doc.Add(new Phrase($"\n{inputTournir.name}", fgFontHuge));
+                doc.Add(new Phrase($"\n{inputGroup.name}", fgFontHuge));
+                doc.Add(new Phrase($"\nТанец: {danceItem}", fgFontHuge));
+
+                //далее в foreach перебираем заходы
+                ////////////////////////////////////////////////////////////////////
+                foreach (SetClass setItem in inputGroup.SetList)
+                {
+                    int countOfCells = setItem.DuetList.Count + 1;
+                    PdfPTable table = new PdfPTable(countOfCells);
+                    //table.TotalWidth = 560;
+                    //table.LockedWidth = true;
+                    //int[] tableCellWidth = new int[countOfCells];
+                    //for (int i = 0; i < countOfCells; i++)
+                    //    tableCellWidth[i] = 35;
+                    //table.SetWidths(tableCellWidth);
+                    addCell(table, "Заход " + setItem.number.ToString(), fgFont, 1, BaseColor.LIGHT_GRAY);
+                    foreach (Duet duetItem in setItem.DuetList)
+                        addCell(table, duetItem.number.ToString(), fgFont, 1, BaseColor.WHITE);
+                    //PdfPTable nested = new PdfPTable(countOfCells);
+                    for (int g = 0; g < countOfCells; g++)
+                        //addCell(table, "", fgFont, 1, BaseColor.WHITE);
+                        table.AddCell(" ");
+
+                    doc.Add(table);
+                    doc.Add(new Phrase($"\n", fgFontHuge));
+                }
+                doc.Close();
+            }
+        }
+
+        public static string getNumberCard_largeWithAdv(string folderName, Sportsman sportsman1, Sportsman sportsman2, int number, string advText = "")
+        {
+            var doc = new Document();
+            doc.SetPageSize(PageSize.A4.Rotate());
+
+            folderName = folderName.Remove(folderName.LastIndexOf('\\'), folderName.Length - folderName.LastIndexOf('\\'));
+            //MessageBox.Show(folderName);
+
+            PdfWriter.GetInstance(doc, new FileStream(folderName += $@"\DuetNumbers\{"Duet " + number.ToString()}.pdf", FileMode.Create));
+            string ARIALNTTF = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "ARIALN.TTF");
+            Phrase new_prase = new Phrase();
+
+            BaseFont ARIALNTTFFont = BaseFont.CreateFont(ARIALNTTF, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
+            iTextSharp.text.Font ArialFontAdv = new iTextSharp.text.Font(ARIALNTTFFont, 75, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font ArialFontHuge = new iTextSharp.text.Font(ARIALNTTFFont, 380, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            iTextSharp.text.Font ArialFontSmall = new iTextSharp.text.Font(ARIALNTTFFont, 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+            doc.Open();
+
+            PdfPTable table = new PdfPTable(1);
+            table.TotalWidth = 560;
+            table.LockedWidth = true;
+            int[] tableCellWidth = new int[] { 800 };
+
+            table.SetWidths(tableCellWidth);
+
+            addCell(table, advText, ArialFontAdv, 1, BaseColor.WHITE, 1, 0);
+            addCell(table, number.ToString(), ArialFontHuge, 1, BaseColor.WHITE, 1, 0);
+            addCell(table, "\n" + sportsman1.ToString(), ArialFontSmall, 1, BaseColor.WHITE, 0, 0);
+            addCell(table, sportsman2.ToString(), ArialFontSmall, 1, BaseColor.WHITE, 0, 0);
+            doc.Add(table);
+
+            doc.Close();
+            return folderName;
+        }
+
+        public static void getDiplomsPDF()
+        {
+            var doc = new Document();
+            PdfWriter.GetInstance(doc, new FileStream(Application.StartupPath + @"\NewDiplom.pdf", FileMode.Create));
+
+            iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance("Diplom.jpg");
+
+
+            // Page site and margin left, right, top, bottom is defined
+            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+            pdfDoc.Open();
+            pdfDoc.NewPage();
+
+            //Resize image depend upon your need
+            //For give the size to image
+            jpg.ScaleToFit(3000, 770);
+
+            //If you want to choose image as background then,
+
+            jpg.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+            //If you want to give absolute/specified fix position to image.
+            //jpg.SetAbsolutePosition(7, 69);
+            Paragraph paragraph = new Paragraph("this is the testing text for demonstrate the image is in background \n\n\n this is the testing text for demonstrate the image is in background");
+
+            //pdfDoc.Add(jpg);
+
+            pdfDoc.Add(paragraph);
+
+            pdfDoc.Close();
+            //Response.Write(pdfDoc);
+
+
+
+            //Response.End();
+        }
+
         private static void addCell(PdfPTable table, string text, iTextSharp.text.Font font, int rowspan, BaseColor color)
         {
             //BaseFont bfTimes = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1252, false);
@@ -189,78 +318,6 @@ namespace DataViewer_D_v._001
             cell.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
             cell.BackgroundColor = color;
             table.AddCell(cell);
-        }
-
-        public static void getDiplomsPDF()
-        {
-            var doc = new Document();
-            PdfWriter.GetInstance(doc, new FileStream(Application.StartupPath + @"\NewDiplom.pdf", FileMode.Create));
-
-            iTextSharp.text.Image jpg = iTextSharp.text.Image.GetInstance("Diplom.jpg");
-
-
-            // Page site and margin left, right, top, bottom is defined
-            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-            pdfDoc.Open();
-            pdfDoc.NewPage();
-
-            //Resize image depend upon your need
-            //For give the size to image
-            jpg.ScaleToFit(3000, 770);
-
-            //If you want to choose image as background then,
-
-            jpg.Alignment = iTextSharp.text.Image.UNDERLYING;
-
-            //If you want to give absolute/specified fix position to image.
-            //jpg.SetAbsolutePosition(7, 69);
-            Paragraph paragraph = new Paragraph("this is the testing text for demonstrate the image is in background \n\n\n this is the testing text for demonstrate the image is in background");
-
-            //pdfDoc.Add(jpg);
-
-            pdfDoc.Add(paragraph);
-
-            pdfDoc.Close();
-            //Response.Write(pdfDoc);
-
-
-
-            //Response.End();
-        }
-
-        public static void printPDF(string pdfFileName)
-        {
-            RegistryKey adobe = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\App Paths\AcroRd32.exe");
-
-            if (adobe != null)
-            {
-                string path = adobe.GetValue("").ToString();
-
-                //GenerateDocuments();
-
-                Process proc = new Process();
-
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                proc.StartInfo.Verb = "print";
-
-                //string pdfFileName = fileName;
-
-                proc.StartInfo.FileName = path;
-                proc.StartInfo.Arguments = @"/p /h " + pdfFileName;
-                proc.StartInfo.UseShellExecute = false;
-                proc.StartInfo.CreateNoWindow = true;
-
-                proc.Start();
-                proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                if (proc.HasExited == false)
-                {
-                    if (!proc.WaitForExit(5000))
-                        proc.Kill();
-                }
-
-                proc.EnableRaisingEvents = true;
-                proc.Close();
-            }
         }
     }
 }

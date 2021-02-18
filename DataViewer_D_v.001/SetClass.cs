@@ -23,20 +23,20 @@ namespace DataViewer_D_v._001
             this.SoloList = new List<Sportsman>();
         }
 
-        public SetClass(int Group_Number, int Number, string Category)
+        public SetClass(int Group_Number, int Number, string Category):this(Group_Number, Number)
         {
-            this.numberOfGroup = Group_Number;
-            this.number = Number;
+            //this.numberOfGroup = Group_Number;
+            //this.number = Number;
             this.category = Category;
         }
 
-        public SetClass(int Group_Number, int Number)
+        public SetClass(int Group_Number, int Number):this()
         {
             this.numberOfGroup = Group_Number;
             this.number = Number;
-            this.category = "";
-            this.DuetList = new List<Duet>();
-            this.SoloList = new List<Sportsman>();
+            //this.category = "";
+            //this.DuetList = new List<Duet>();
+            //this.SoloList = new List<Sportsman>();
         }
 
         public override string ToString()

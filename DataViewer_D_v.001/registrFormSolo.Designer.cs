@@ -84,11 +84,18 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Path_textBox = new System.Windows.Forms.TextBox();
             this.Browse_button = new System.Windows.Forms.Button();
+            this.checkBoxPrintNumber = new System.Windows.Forms.CheckBox();
+            this.printNumberGroupBox = new System.Windows.Forms.GroupBox();
+            this.advTextBox = new System.Windows.Forms.TextBox();
+            this.advCheckBox = new System.Windows.Forms.CheckBox();
+            this.label_printerName = new System.Windows.Forms.Label();
+            this.printerName_TextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.bD1DataSetBindingSource)).BeginInit();
             this.Sportsman_groupBox.SuspendLayout();
             this.OldTrainer_groupBox.SuspendLayout();
             this.FirstTrainer_groupBox.SuspendLayout();
             this.SecondTrainer_groupBox.SuspendLayout();
+            this.printNumberGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // registrationButton
@@ -97,9 +104,10 @@
             this.registrationButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.registrationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.registrationButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.registrationButton.Location = new System.Drawing.Point(984, 17);
+            this.registrationButton.Location = new System.Drawing.Point(738, 14);
+            this.registrationButton.Margin = new System.Windows.Forms.Padding(2);
             this.registrationButton.Name = "registrationButton";
-            this.registrationButton.Size = new System.Drawing.Size(219, 56);
+            this.registrationButton.Size = new System.Drawing.Size(164, 46);
             this.registrationButton.TabIndex = 56;
             this.registrationButton.Text = "Зарегистрировать";
             this.registrationButton.UseVisualStyleBackColor = false;
@@ -110,9 +118,10 @@
             this.Name_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Name_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Name_textBox.Location = new System.Drawing.Point(143, 162);
+            this.Name_textBox.Location = new System.Drawing.Point(107, 132);
+            this.Name_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Name_textBox.Name = "Name_textBox";
-            this.Name_textBox.Size = new System.Drawing.Size(479, 26);
+            this.Name_textBox.Size = new System.Drawing.Size(360, 23);
             this.Name_textBox.TabIndex = 4;
             this.Name_textBox.Text = "Иван";
             // 
@@ -121,25 +130,28 @@
             this.Surname_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Surname_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Surname_textBox.Location = new System.Drawing.Point(143, 134);
+            this.Surname_textBox.Location = new System.Drawing.Point(107, 109);
+            this.Surname_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Surname_textBox.Name = "Surname_textBox";
-            this.Surname_textBox.Size = new System.Drawing.Size(479, 26);
+            this.Surname_textBox.Size = new System.Drawing.Size(360, 23);
             this.Surname_textBox.TabIndex = 3;
             this.Surname_textBox.Text = "Иванов";
             // 
             // NameOfOldTrainer_textBox
             // 
-            this.NameOfOldTrainer_textBox.Location = new System.Drawing.Point(116, 55);
+            this.NameOfOldTrainer_textBox.Location = new System.Drawing.Point(87, 45);
+            this.NameOfOldTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.NameOfOldTrainer_textBox.Name = "NameOfOldTrainer_textBox";
-            this.NameOfOldTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.NameOfOldTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.NameOfOldTrainer_textBox.TabIndex = 14;
             this.NameOfOldTrainer_textBox.Text = "Федор";
             // 
             // SurnameOfOldTrainer_textBox
             // 
-            this.SurnameOfOldTrainer_textBox.Location = new System.Drawing.Point(116, 27);
+            this.SurnameOfOldTrainer_textBox.Location = new System.Drawing.Point(87, 22);
+            this.SurnameOfOldTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.SurnameOfOldTrainer_textBox.Name = "SurnameOfOldTrainer_textBox";
-            this.SurnameOfOldTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.SurnameOfOldTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.SurnameOfOldTrainer_textBox.TabIndex = 13;
             this.SurnameOfOldTrainer_textBox.Text = "Емельянов";
             // 
@@ -147,9 +159,10 @@
             // 
             this.Label_Name.AutoSize = true;
             this.Label_Name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_Name.Location = new System.Drawing.Point(15, 162);
+            this.Label_Name.Location = new System.Drawing.Point(11, 132);
+            this.Label_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Name.Name = "Label_Name";
-            this.Label_Name.Size = new System.Drawing.Size(42, 20);
+            this.Label_Name.Size = new System.Drawing.Size(35, 17);
             this.Label_Name.TabIndex = 38;
             this.Label_Name.Text = "Имя";
             // 
@@ -157,27 +170,30 @@
             // 
             this.Label_Surname.AutoSize = true;
             this.Label_Surname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_Surname.Location = new System.Drawing.Point(15, 134);
+            this.Label_Surname.Location = new System.Drawing.Point(11, 109);
+            this.Label_Surname.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Surname.Name = "Label_Surname";
-            this.Label_Surname.Size = new System.Drawing.Size(87, 20);
+            this.Label_Surname.Size = new System.Drawing.Size(70, 17);
             this.Label_Surname.TabIndex = 37;
             this.Label_Surname.Text = "Фамилия";
             // 
             // Label_SurnameOfOldTrainer
             // 
             this.Label_SurnameOfOldTrainer.AutoSize = true;
-            this.Label_SurnameOfOldTrainer.Location = new System.Drawing.Point(11, 30);
+            this.Label_SurnameOfOldTrainer.Location = new System.Drawing.Point(8, 24);
+            this.Label_SurnameOfOldTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SurnameOfOldTrainer.Name = "Label_SurnameOfOldTrainer";
-            this.Label_SurnameOfOldTrainer.Size = new System.Drawing.Size(87, 20);
+            this.Label_SurnameOfOldTrainer.Size = new System.Drawing.Size(70, 17);
             this.Label_SurnameOfOldTrainer.TabIndex = 42;
             this.Label_SurnameOfOldTrainer.Text = "Фамилия";
             // 
             // Label_NameOfOldTrainer
             // 
             this.Label_NameOfOldTrainer.AutoSize = true;
-            this.Label_NameOfOldTrainer.Location = new System.Drawing.Point(11, 58);
+            this.Label_NameOfOldTrainer.Location = new System.Drawing.Point(8, 47);
+            this.Label_NameOfOldTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_NameOfOldTrainer.Name = "Label_NameOfOldTrainer";
-            this.Label_NameOfOldTrainer.Size = new System.Drawing.Size(42, 20);
+            this.Label_NameOfOldTrainer.Size = new System.Drawing.Size(35, 17);
             this.Label_NameOfOldTrainer.TabIndex = 43;
             this.Label_NameOfOldTrainer.Text = "Имя";
             // 
@@ -210,9 +226,11 @@
             this.Sportsman_groupBox.Controls.Add(this.Label_Name);
             this.Sportsman_groupBox.Controls.Add(this.Surname_textBox);
             this.Sportsman_groupBox.Controls.Add(this.Name_textBox);
-            this.Sportsman_groupBox.Location = new System.Drawing.Point(12, 5);
+            this.Sportsman_groupBox.Location = new System.Drawing.Point(9, 4);
+            this.Sportsman_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.Sportsman_groupBox.Name = "Sportsman_groupBox";
-            this.Sportsman_groupBox.Size = new System.Drawing.Size(641, 482);
+            this.Sportsman_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.Sportsman_groupBox.Size = new System.Drawing.Size(481, 392);
             this.Sportsman_groupBox.TabIndex = 16;
             this.Sportsman_groupBox.TabStop = false;
             this.Sportsman_groupBox.Text = "Танцор";
@@ -222,18 +240,20 @@
             // 
             this.duetNumber_textBox.Enabled = false;
             this.duetNumber_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.duetNumber_textBox.Location = new System.Drawing.Point(160, 88);
+            this.duetNumber_textBox.Location = new System.Drawing.Point(120, 72);
+            this.duetNumber_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.duetNumber_textBox.Name = "duetNumber_textBox";
-            this.duetNumber_textBox.Size = new System.Drawing.Size(53, 26);
+            this.duetNumber_textBox.Size = new System.Drawing.Size(41, 23);
             this.duetNumber_textBox.TabIndex = 37;
             // 
             // Label_GroupName
             // 
             this.Label_GroupName.AutoSize = true;
             this.Label_GroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_GroupName.Location = new System.Drawing.Point(223, 29);
+            this.Label_GroupName.Location = new System.Drawing.Point(167, 24);
+            this.Label_GroupName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_GroupName.Name = "Label_GroupName";
-            this.Label_GroupName.Size = new System.Drawing.Size(154, 20);
+            this.Label_GroupName.Size = new System.Drawing.Size(122, 17);
             this.Label_GroupName.TabIndex = 38;
             this.Label_GroupName.Text = "Название группы";
             // 
@@ -241,9 +261,10 @@
             // 
             this.Label_DuetNumber.AutoSize = true;
             this.Label_DuetNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_DuetNumber.Location = new System.Drawing.Point(15, 88);
+            this.Label_DuetNumber.Location = new System.Drawing.Point(11, 72);
+            this.Label_DuetNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_DuetNumber.Name = "Label_DuetNumber";
-            this.Label_DuetNumber.Size = new System.Drawing.Size(139, 20);
+            this.Label_DuetNumber.Size = new System.Drawing.Size(110, 17);
             this.Label_DuetNumber.TabIndex = 36;
             this.Label_DuetNumber.Text = "Номер танцора";
             // 
@@ -253,11 +274,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupName_textBox.Enabled = false;
             this.groupName_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupName_textBox.Location = new System.Drawing.Point(227, 56);
+            this.groupName_textBox.Location = new System.Drawing.Point(170, 46);
+            this.groupName_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.groupName_textBox.Multiline = true;
             this.groupName_textBox.Name = "groupName_textBox";
             this.groupName_textBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.groupName_textBox.Size = new System.Drawing.Size(381, 58);
+            this.groupName_textBox.Size = new System.Drawing.Size(287, 48);
             this.groupName_textBox.TabIndex = 2;
             // 
             // Label_ClubName
@@ -265,9 +287,10 @@
             this.Label_ClubName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Label_ClubName.AutoSize = true;
             this.Label_ClubName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_ClubName.Location = new System.Drawing.Point(17, 383);
+            this.Label_ClubName.Location = new System.Drawing.Point(13, 311);
+            this.Label_ClubName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_ClubName.Name = "Label_ClubName";
-            this.Label_ClubName.Size = new System.Drawing.Size(145, 20);
+            this.Label_ClubName.Size = new System.Drawing.Size(116, 17);
             this.Label_ClubName.TabIndex = 61;
             this.Label_ClubName.Text = "Название Клуба";
             // 
@@ -275,9 +298,10 @@
             // 
             this.Label_Patronymic.AutoSize = true;
             this.Label_Patronymic.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_Patronymic.Location = new System.Drawing.Point(15, 190);
+            this.Label_Patronymic.Location = new System.Drawing.Point(11, 154);
+            this.Label_Patronymic.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_Patronymic.Name = "Label_Patronymic";
-            this.Label_Patronymic.Size = new System.Drawing.Size(91, 20);
+            this.Label_Patronymic.Size = new System.Drawing.Size(71, 17);
             this.Label_Patronymic.TabIndex = 64;
             this.Label_Patronymic.Text = "Отчество";
             // 
@@ -285,9 +309,10 @@
             // 
             this.Label_GroupNumber.AutoSize = true;
             this.Label_GroupNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_GroupNumber.Location = new System.Drawing.Point(15, 60);
+            this.Label_GroupNumber.Location = new System.Drawing.Point(11, 49);
+            this.Label_GroupNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_GroupNumber.Name = "Label_GroupNumber";
-            this.Label_GroupNumber.Size = new System.Drawing.Size(127, 20);
+            this.Label_GroupNumber.Size = new System.Drawing.Size(101, 17);
             this.Label_GroupNumber.TabIndex = 55;
             this.Label_GroupNumber.Text = "Номер группы";
             // 
@@ -295,9 +320,10 @@
             // 
             this.groupNumber_comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupNumber_comboBox.FormattingEnabled = true;
-            this.groupNumber_comboBox.Location = new System.Drawing.Point(160, 56);
+            this.groupNumber_comboBox.Location = new System.Drawing.Point(120, 46);
+            this.groupNumber_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.groupNumber_comboBox.Name = "groupNumber_comboBox";
-            this.groupNumber_comboBox.Size = new System.Drawing.Size(53, 28);
+            this.groupNumber_comboBox.Size = new System.Drawing.Size(41, 24);
             this.groupNumber_comboBox.TabIndex = 1;
             this.groupNumber_comboBox.SelectedIndexChanged += new System.EventHandler(this.groupNumber_comboBox_SelectedIndexChanged);
             // 
@@ -306,9 +332,10 @@
             this.ClubName_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ClubName_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClubName_textBox.Location = new System.Drawing.Point(173, 380);
+            this.ClubName_textBox.Location = new System.Drawing.Point(130, 309);
+            this.ClubName_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.ClubName_textBox.Name = "ClubName_textBox";
-            this.ClubName_textBox.Size = new System.Drawing.Size(117, 26);
+            this.ClubName_textBox.Size = new System.Drawing.Size(89, 23);
             this.ClubName_textBox.TabIndex = 11;
             this.ClubName_textBox.Text = "ИндиГо";
             // 
@@ -317,9 +344,10 @@
             this.Patronymic_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Patronymic_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Patronymic_textBox.Location = new System.Drawing.Point(143, 190);
+            this.Patronymic_textBox.Location = new System.Drawing.Point(107, 154);
+            this.Patronymic_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Patronymic_textBox.Name = "Patronymic_textBox";
-            this.Patronymic_textBox.Size = new System.Drawing.Size(479, 26);
+            this.Patronymic_textBox.Size = new System.Drawing.Size(360, 23);
             this.Patronymic_textBox.TabIndex = 5;
             this.Patronymic_textBox.Text = "Иванович";
             // 
@@ -328,9 +356,10 @@
             this.City_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.City_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.City_textBox.Location = new System.Drawing.Point(95, 418);
+            this.City_textBox.Location = new System.Drawing.Point(71, 340);
+            this.City_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.City_textBox.Name = "City_textBox";
-            this.City_textBox.Size = new System.Drawing.Size(195, 26);
+            this.City_textBox.Size = new System.Drawing.Size(147, 23);
             this.City_textBox.TabIndex = 12;
             this.City_textBox.Text = "Бийск";
             // 
@@ -339,9 +368,10 @@
             this.Label_City.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Label_City.AutoSize = true;
             this.Label_City.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_City.Location = new System.Drawing.Point(17, 421);
+            this.Label_City.Location = new System.Drawing.Point(13, 342);
+            this.Label_City.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_City.Name = "Label_City";
-            this.Label_City.Size = new System.Drawing.Size(61, 20);
+            this.Label_City.Size = new System.Drawing.Size(48, 17);
             this.Label_City.TabIndex = 60;
             this.Label_City.Text = "Город";
             // 
@@ -350,9 +380,10 @@
             this.Label_SportCategory.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_SportCategory.AutoSize = true;
             this.Label_SportCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_SportCategory.Location = new System.Drawing.Point(17, 298);
+            this.Label_SportCategory.Location = new System.Drawing.Point(13, 242);
+            this.Label_SportCategory.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SportCategory.Name = "Label_SportCategory";
-            this.Label_SportCategory.Size = new System.Drawing.Size(71, 20);
+            this.Label_SportCategory.Size = new System.Drawing.Size(56, 17);
             this.Label_SportCategory.TabIndex = 63;
             this.Label_SportCategory.Text = "Разряд";
             // 
@@ -372,9 +403,10 @@
             "МС",
             "МСМК",
             "-"});
-            this.SportCategory_comboBox.Location = new System.Drawing.Point(98, 298);
+            this.SportCategory_comboBox.Location = new System.Drawing.Point(74, 242);
+            this.SportCategory_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SportCategory_comboBox.Name = "SportCategory_comboBox";
-            this.SportCategory_comboBox.Size = new System.Drawing.Size(80, 28);
+            this.SportCategory_comboBox.Size = new System.Drawing.Size(61, 24);
             this.SportCategory_comboBox.TabIndex = 9;
             // 
             // SportClass_comboBox
@@ -392,9 +424,10 @@
             "S",
             "М",
             "-"});
-            this.SportClass_comboBox.Location = new System.Drawing.Point(285, 298);
+            this.SportClass_comboBox.Location = new System.Drawing.Point(214, 242);
+            this.SportClass_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.SportClass_comboBox.Name = "SportClass_comboBox";
-            this.SportClass_comboBox.Size = new System.Drawing.Size(75, 28);
+            this.SportClass_comboBox.Size = new System.Drawing.Size(57, 24);
             this.SportClass_comboBox.TabIndex = 10;
             // 
             // Label_SportClass
@@ -402,9 +435,10 @@
             this.Label_SportClass.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.Label_SportClass.AutoSize = true;
             this.Label_SportClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_SportClass.Location = new System.Drawing.Point(211, 302);
+            this.Label_SportClass.Location = new System.Drawing.Point(158, 245);
+            this.Label_SportClass.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SportClass.Name = "Label_SportClass";
-            this.Label_SportClass.Size = new System.Drawing.Size(58, 20);
+            this.Label_SportClass.Size = new System.Drawing.Size(47, 17);
             this.Label_SportClass.TabIndex = 40;
             this.Label_SportClass.Text = "Класс";
             // 
@@ -454,9 +488,10 @@
             "1982",
             "1981",
             "1980"});
-            this.YearOfBirth_comboBox.Location = new System.Drawing.Point(367, 234);
+            this.YearOfBirth_comboBox.Location = new System.Drawing.Point(275, 190);
+            this.YearOfBirth_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.YearOfBirth_comboBox.Name = "YearOfBirth_comboBox";
-            this.YearOfBirth_comboBox.Size = new System.Drawing.Size(86, 28);
+            this.YearOfBirth_comboBox.Size = new System.Drawing.Size(66, 24);
             this.YearOfBirth_comboBox.TabIndex = 8;
             this.YearOfBirth_comboBox.Text = "год";
             this.YearOfBirth_comboBox.SelectedIndexChanged += new System.EventHandler(this.YearOfBirth_comboBox_SelectedIndexChanged);
@@ -478,9 +513,10 @@
             "октябрь",
             "ноябрь",
             "декабрь"});
-            this.MounthOfBirth_comboBox.Location = new System.Drawing.Point(260, 234);
+            this.MounthOfBirth_comboBox.Location = new System.Drawing.Point(195, 190);
+            this.MounthOfBirth_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.MounthOfBirth_comboBox.Name = "MounthOfBirth_comboBox";
-            this.MounthOfBirth_comboBox.Size = new System.Drawing.Size(101, 28);
+            this.MounthOfBirth_comboBox.Size = new System.Drawing.Size(77, 24);
             this.MounthOfBirth_comboBox.TabIndex = 7;
             this.MounthOfBirth_comboBox.Text = "месяц";
             this.MounthOfBirth_comboBox.SelectedIndexChanged += new System.EventHandler(this.MounthOfBirth_comboBox_SelectedIndexChanged);
@@ -521,9 +557,10 @@
             "29",
             "30",
             "31"});
-            this.DayOfBirth_comboBox.Location = new System.Drawing.Point(173, 234);
+            this.DayOfBirth_comboBox.Location = new System.Drawing.Point(130, 190);
+            this.DayOfBirth_comboBox.Margin = new System.Windows.Forms.Padding(2);
             this.DayOfBirth_comboBox.Name = "DayOfBirth_comboBox";
-            this.DayOfBirth_comboBox.Size = new System.Drawing.Size(81, 28);
+            this.DayOfBirth_comboBox.Size = new System.Drawing.Size(62, 24);
             this.DayOfBirth_comboBox.TabIndex = 6;
             this.DayOfBirth_comboBox.Text = "день";
             this.DayOfBirth_comboBox.SelectedIndexChanged += new System.EventHandler(this.DayOfBirth_comboBox_SelectedIndexChanged);
@@ -532,9 +569,10 @@
             // 
             this.Label_BurthDate.AutoSize = true;
             this.Label_BurthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Label_BurthDate.Location = new System.Drawing.Point(15, 234);
+            this.Label_BurthDate.Location = new System.Drawing.Point(11, 190);
+            this.Label_BurthDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_BurthDate.Name = "Label_BurthDate";
-            this.Label_BurthDate.Size = new System.Drawing.Size(141, 20);
+            this.Label_BurthDate.Size = new System.Drawing.Size(111, 17);
             this.Label_BurthDate.TabIndex = 39;
             this.Label_BurthDate.Text = "Дата рождения";
             // 
@@ -548,9 +586,11 @@
             this.OldTrainer_groupBox.Controls.Add(this.SurnameOfOldTrainer_textBox);
             this.OldTrainer_groupBox.Controls.Add(this.NameOfOldTrainer_textBox);
             this.OldTrainer_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.OldTrainer_groupBox.Location = new System.Drawing.Point(659, 7);
+            this.OldTrainer_groupBox.Location = new System.Drawing.Point(494, 6);
+            this.OldTrainer_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.OldTrainer_groupBox.Name = "OldTrainer_groupBox";
-            this.OldTrainer_groupBox.Size = new System.Drawing.Size(319, 123);
+            this.OldTrainer_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.OldTrainer_groupBox.Size = new System.Drawing.Size(239, 100);
             this.OldTrainer_groupBox.TabIndex = 17;
             this.OldTrainer_groupBox.TabStop = false;
             this.OldTrainer_groupBox.Text = "Старший тренер";
@@ -558,17 +598,19 @@
             // Label_PatronymicOfOldTrainer
             // 
             this.Label_PatronymicOfOldTrainer.AutoSize = true;
-            this.Label_PatronymicOfOldTrainer.Location = new System.Drawing.Point(11, 86);
+            this.Label_PatronymicOfOldTrainer.Location = new System.Drawing.Point(8, 70);
+            this.Label_PatronymicOfOldTrainer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_PatronymicOfOldTrainer.Name = "Label_PatronymicOfOldTrainer";
-            this.Label_PatronymicOfOldTrainer.Size = new System.Drawing.Size(91, 20);
+            this.Label_PatronymicOfOldTrainer.Size = new System.Drawing.Size(71, 17);
             this.Label_PatronymicOfOldTrainer.TabIndex = 44;
             this.Label_PatronymicOfOldTrainer.Text = "Отчество";
             // 
             // PatronymicOfOldTrainer_textBox
             // 
-            this.PatronymicOfOldTrainer_textBox.Location = new System.Drawing.Point(116, 83);
+            this.PatronymicOfOldTrainer_textBox.Location = new System.Drawing.Point(87, 67);
+            this.PatronymicOfOldTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.PatronymicOfOldTrainer_textBox.Name = "PatronymicOfOldTrainer_textBox";
-            this.PatronymicOfOldTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.PatronymicOfOldTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.PatronymicOfOldTrainer_textBox.TabIndex = 15;
             this.PatronymicOfOldTrainer_textBox.Text = "Семенович";
             // 
@@ -578,9 +620,10 @@
             this.backButton.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.backButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.backButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.backButton.Location = new System.Drawing.Point(984, 474);
+            this.backButton.Location = new System.Drawing.Point(738, 385);
+            this.backButton.Margin = new System.Windows.Forms.Padding(2);
             this.backButton.Name = "backButton";
-            this.backButton.Size = new System.Drawing.Size(219, 47);
+            this.backButton.Size = new System.Drawing.Size(164, 38);
             this.backButton.TabIndex = 58;
             this.backButton.Text = "Назад";
             this.backButton.UseVisualStyleBackColor = false;
@@ -593,9 +636,10 @@
             this.openDataBasaButton.Enabled = false;
             this.openDataBasaButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.openDataBasaButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.openDataBasaButton.Location = new System.Drawing.Point(984, 79);
+            this.openDataBasaButton.Location = new System.Drawing.Point(738, 64);
+            this.openDataBasaButton.Margin = new System.Windows.Forms.Padding(2);
             this.openDataBasaButton.Name = "openDataBasaButton";
-            this.openDataBasaButton.Size = new System.Drawing.Size(219, 53);
+            this.openDataBasaButton.Size = new System.Drawing.Size(164, 43);
             this.openDataBasaButton.TabIndex = 57;
             this.openDataBasaButton.Text = "Открыть базу";
             this.openDataBasaButton.UseVisualStyleBackColor = false;
@@ -613,9 +657,11 @@
             this.FirstTrainer_groupBox.Controls.Add(this.NameFirstTrainer_textBox);
             this.FirstTrainer_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FirstTrainer_groupBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.FirstTrainer_groupBox.Location = new System.Drawing.Point(659, 131);
+            this.FirstTrainer_groupBox.Location = new System.Drawing.Point(494, 106);
+            this.FirstTrainer_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.FirstTrainer_groupBox.Name = "FirstTrainer_groupBox";
-            this.FirstTrainer_groupBox.Size = new System.Drawing.Size(319, 147);
+            this.FirstTrainer_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.FirstTrainer_groupBox.Size = new System.Drawing.Size(239, 119);
             this.FirstTrainer_groupBox.TabIndex = 18;
             this.FirstTrainer_groupBox.TabStop = false;
             this.FirstTrainer_groupBox.Text = "Тренер 1";
@@ -623,26 +669,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 92);
+            this.label1.Location = new System.Drawing.Point(8, 75);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.Size = new System.Drawing.Size(71, 17);
             this.label1.TabIndex = 47;
             this.label1.Text = "Отчество";
             // 
             // PatronymicFirstTrainer_textBox
             // 
-            this.PatronymicFirstTrainer_textBox.Location = new System.Drawing.Point(116, 92);
+            this.PatronymicFirstTrainer_textBox.Location = new System.Drawing.Point(87, 75);
+            this.PatronymicFirstTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.PatronymicFirstTrainer_textBox.Name = "PatronymicFirstTrainer_textBox";
-            this.PatronymicFirstTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.PatronymicFirstTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.PatronymicFirstTrainer_textBox.TabIndex = 18;
             this.PatronymicFirstTrainer_textBox.Text = "Семенович";
             // 
             // FirstTrainer_checkBox
             // 
             this.FirstTrainer_checkBox.AutoSize = true;
-            this.FirstTrainer_checkBox.Location = new System.Drawing.Point(253, 25);
+            this.FirstTrainer_checkBox.Location = new System.Drawing.Point(190, 20);
+            this.FirstTrainer_checkBox.Margin = new System.Windows.Forms.Padding(2);
             this.FirstTrainer_checkBox.Name = "FirstTrainer_checkBox";
-            this.FirstTrainer_checkBox.Size = new System.Drawing.Size(18, 17);
+            this.FirstTrainer_checkBox.Size = new System.Drawing.Size(15, 14);
             this.FirstTrainer_checkBox.TabIndex = 15;
             this.FirstTrainer_checkBox.UseVisualStyleBackColor = true;
             this.FirstTrainer_checkBox.CheckedChanged += new System.EventHandler(this.FirstTrainer_checkBox_CheckedChanged);
@@ -650,66 +699,74 @@
             // Label_SurnameOfOtherTrainer_1
             // 
             this.Label_SurnameOfOtherTrainer_1.AutoSize = true;
-            this.Label_SurnameOfOtherTrainer_1.Location = new System.Drawing.Point(11, 36);
+            this.Label_SurnameOfOtherTrainer_1.Location = new System.Drawing.Point(8, 29);
+            this.Label_SurnameOfOtherTrainer_1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SurnameOfOtherTrainer_1.Name = "Label_SurnameOfOtherTrainer_1";
-            this.Label_SurnameOfOtherTrainer_1.Size = new System.Drawing.Size(87, 20);
+            this.Label_SurnameOfOtherTrainer_1.Size = new System.Drawing.Size(70, 17);
             this.Label_SurnameOfOtherTrainer_1.TabIndex = 45;
             this.Label_SurnameOfOtherTrainer_1.Text = "Фамилия";
             // 
             // Label_NameOfOtherTrainer_1
             // 
             this.Label_NameOfOtherTrainer_1.AutoSize = true;
-            this.Label_NameOfOtherTrainer_1.Location = new System.Drawing.Point(11, 64);
+            this.Label_NameOfOtherTrainer_1.Location = new System.Drawing.Point(8, 52);
+            this.Label_NameOfOtherTrainer_1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_NameOfOtherTrainer_1.Name = "Label_NameOfOtherTrainer_1";
-            this.Label_NameOfOtherTrainer_1.Size = new System.Drawing.Size(42, 20);
+            this.Label_NameOfOtherTrainer_1.Size = new System.Drawing.Size(35, 17);
             this.Label_NameOfOtherTrainer_1.TabIndex = 46;
             this.Label_NameOfOtherTrainer_1.Text = "Имя";
             // 
             // SurnameFirstTrainer_textBox
             // 
-            this.SurnameFirstTrainer_textBox.Location = new System.Drawing.Point(116, 36);
+            this.SurnameFirstTrainer_textBox.Location = new System.Drawing.Point(87, 29);
+            this.SurnameFirstTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.SurnameFirstTrainer_textBox.Name = "SurnameFirstTrainer_textBox";
-            this.SurnameFirstTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.SurnameFirstTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.SurnameFirstTrainer_textBox.TabIndex = 16;
             // 
             // NameFirstTrainer_textBox
             // 
-            this.NameFirstTrainer_textBox.Location = new System.Drawing.Point(116, 64);
+            this.NameFirstTrainer_textBox.Location = new System.Drawing.Point(87, 52);
+            this.NameFirstTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.NameFirstTrainer_textBox.Name = "NameFirstTrainer_textBox";
-            this.NameFirstTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.NameFirstTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.NameFirstTrainer_textBox.TabIndex = 17;
             // 
             // Label_SurnameOfOtherTrainer_2
             // 
             this.Label_SurnameOfOtherTrainer_2.AutoSize = true;
-            this.Label_SurnameOfOtherTrainer_2.Location = new System.Drawing.Point(11, 41);
+            this.Label_SurnameOfOtherTrainer_2.Location = new System.Drawing.Point(8, 33);
+            this.Label_SurnameOfOtherTrainer_2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_SurnameOfOtherTrainer_2.Name = "Label_SurnameOfOtherTrainer_2";
-            this.Label_SurnameOfOtherTrainer_2.Size = new System.Drawing.Size(87, 20);
+            this.Label_SurnameOfOtherTrainer_2.Size = new System.Drawing.Size(70, 17);
             this.Label_SurnameOfOtherTrainer_2.TabIndex = 48;
             this.Label_SurnameOfOtherTrainer_2.Text = "Фамилия";
             // 
             // Label_NameOfOtherTrainer_2
             // 
             this.Label_NameOfOtherTrainer_2.AutoSize = true;
-            this.Label_NameOfOtherTrainer_2.Location = new System.Drawing.Point(11, 69);
+            this.Label_NameOfOtherTrainer_2.Location = new System.Drawing.Point(8, 56);
+            this.Label_NameOfOtherTrainer_2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label_NameOfOtherTrainer_2.Name = "Label_NameOfOtherTrainer_2";
-            this.Label_NameOfOtherTrainer_2.Size = new System.Drawing.Size(42, 20);
+            this.Label_NameOfOtherTrainer_2.Size = new System.Drawing.Size(35, 17);
             this.Label_NameOfOtherTrainer_2.TabIndex = 49;
             this.Label_NameOfOtherTrainer_2.Text = "Имя";
             // 
             // SurnameSecondTrainer_textBox
             // 
-            this.SurnameSecondTrainer_textBox.Location = new System.Drawing.Point(116, 41);
+            this.SurnameSecondTrainer_textBox.Location = new System.Drawing.Point(87, 33);
+            this.SurnameSecondTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.SurnameSecondTrainer_textBox.Name = "SurnameSecondTrainer_textBox";
-            this.SurnameSecondTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.SurnameSecondTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.SurnameSecondTrainer_textBox.TabIndex = 19;
             this.SurnameSecondTrainer_textBox.Text = "(не обязательно)";
             // 
             // NameSecondTrainer_textBox
             // 
-            this.NameSecondTrainer_textBox.Location = new System.Drawing.Point(116, 69);
+            this.NameSecondTrainer_textBox.Location = new System.Drawing.Point(87, 56);
+            this.NameSecondTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.NameSecondTrainer_textBox.Name = "NameSecondTrainer_textBox";
-            this.NameSecondTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.NameSecondTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.NameSecondTrainer_textBox.TabIndex = 20;
             this.NameSecondTrainer_textBox.Text = "(не обязательно)";
             // 
@@ -724,9 +781,11 @@
             this.SecondTrainer_groupBox.Controls.Add(this.Label_NameOfOtherTrainer_2);
             this.SecondTrainer_groupBox.Controls.Add(this.SurnameSecondTrainer_textBox);
             this.SecondTrainer_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SecondTrainer_groupBox.Location = new System.Drawing.Point(659, 284);
+            this.SecondTrainer_groupBox.Location = new System.Drawing.Point(494, 231);
+            this.SecondTrainer_groupBox.Margin = new System.Windows.Forms.Padding(2);
             this.SecondTrainer_groupBox.Name = "SecondTrainer_groupBox";
-            this.SecondTrainer_groupBox.Size = new System.Drawing.Size(319, 154);
+            this.SecondTrainer_groupBox.Padding = new System.Windows.Forms.Padding(2);
+            this.SecondTrainer_groupBox.Size = new System.Drawing.Size(239, 125);
             this.SecondTrainer_groupBox.TabIndex = 22;
             this.SecondTrainer_groupBox.TabStop = false;
             this.SecondTrainer_groupBox.Text = "Тренер 2";
@@ -734,26 +793,29 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 97);
+            this.label2.Location = new System.Drawing.Point(8, 79);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 20);
+            this.label2.Size = new System.Drawing.Size(71, 17);
             this.label2.TabIndex = 51;
             this.label2.Text = "Отчество";
             // 
             // PatronymicSecondTrainer_textBox
             // 
-            this.PatronymicSecondTrainer_textBox.Location = new System.Drawing.Point(116, 97);
+            this.PatronymicSecondTrainer_textBox.Location = new System.Drawing.Point(87, 79);
+            this.PatronymicSecondTrainer_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.PatronymicSecondTrainer_textBox.Name = "PatronymicSecondTrainer_textBox";
-            this.PatronymicSecondTrainer_textBox.Size = new System.Drawing.Size(117, 26);
+            this.PatronymicSecondTrainer_textBox.Size = new System.Drawing.Size(89, 23);
             this.PatronymicSecondTrainer_textBox.TabIndex = 21;
             this.PatronymicSecondTrainer_textBox.Text = "Семенович";
             // 
             // SecondTrainer_checkBox
             // 
             this.SecondTrainer_checkBox.AutoSize = true;
-            this.SecondTrainer_checkBox.Location = new System.Drawing.Point(253, 21);
+            this.SecondTrainer_checkBox.Location = new System.Drawing.Point(190, 17);
+            this.SecondTrainer_checkBox.Margin = new System.Windows.Forms.Padding(2);
             this.SecondTrainer_checkBox.Name = "SecondTrainer_checkBox";
-            this.SecondTrainer_checkBox.Size = new System.Drawing.Size(18, 17);
+            this.SecondTrainer_checkBox.Size = new System.Drawing.Size(15, 14);
             this.SecondTrainer_checkBox.TabIndex = 16;
             this.SecondTrainer_checkBox.UseVisualStyleBackColor = true;
             this.SecondTrainer_checkBox.CheckedChanged += new System.EventHandler(this.SecondTrainer_checkBox_CheckedChanged);
@@ -768,9 +830,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Path_textBox.Enabled = false;
             this.Path_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Path_textBox.Location = new System.Drawing.Point(12, 493);
+            this.Path_textBox.Location = new System.Drawing.Point(9, 401);
+            this.Path_textBox.Margin = new System.Windows.Forms.Padding(2);
             this.Path_textBox.Name = "Path_textBox";
-            this.Path_textBox.Size = new System.Drawing.Size(851, 23);
+            this.Path_textBox.Size = new System.Drawing.Size(639, 20);
             this.Path_textBox.TabIndex = 23;
             this.Path_textBox.TextChanged += new System.EventHandler(this.Path_textBox_TextChanged);
             // 
@@ -779,20 +842,88 @@
             this.Browse_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Browse_button.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Browse_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Browse_button.Location = new System.Drawing.Point(869, 488);
+            this.Browse_button.Location = new System.Drawing.Point(652, 396);
+            this.Browse_button.Margin = new System.Windows.Forms.Padding(2);
             this.Browse_button.Name = "Browse_button";
-            this.Browse_button.Size = new System.Drawing.Size(109, 32);
+            this.Browse_button.Size = new System.Drawing.Size(82, 26);
             this.Browse_button.TabIndex = 59;
             this.Browse_button.Text = "Browse";
             this.Browse_button.UseVisualStyleBackColor = false;
             this.Browse_button.Click += new System.EventHandler(this.Browse_button_Click);
             // 
+            // checkBoxPrintNumber
+            // 
+            this.checkBoxPrintNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBoxPrintNumber.Checked = true;
+            this.checkBoxPrintNumber.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPrintNumber.Location = new System.Drawing.Point(744, 139);
+            this.checkBoxPrintNumber.Name = "checkBoxPrintNumber";
+            this.checkBoxPrintNumber.Size = new System.Drawing.Size(130, 17);
+            this.checkBoxPrintNumber.TabIndex = 61;
+            this.checkBoxPrintNumber.Text = "Напечатать номер";
+            this.checkBoxPrintNumber.UseVisualStyleBackColor = true;
+            // 
+            // printNumberGroupBox
+            // 
+            this.printNumberGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.printNumberGroupBox.Controls.Add(this.label_printerName);
+            this.printNumberGroupBox.Controls.Add(this.printerName_TextBox);
+            this.printNumberGroupBox.Controls.Add(this.advTextBox);
+            this.printNumberGroupBox.Controls.Add(this.advCheckBox);
+            this.printNumberGroupBox.Location = new System.Drawing.Point(738, 158);
+            this.printNumberGroupBox.Name = "printNumberGroupBox";
+            this.printNumberGroupBox.Size = new System.Drawing.Size(164, 178);
+            this.printNumberGroupBox.TabIndex = 60;
+            this.printNumberGroupBox.TabStop = false;
+            // 
+            // advTextBox
+            // 
+            this.advTextBox.Location = new System.Drawing.Point(6, 39);
+            this.advTextBox.Multiline = true;
+            this.advTextBox.Name = "advTextBox";
+            this.advTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.advTextBox.Size = new System.Drawing.Size(148, 51);
+            this.advTextBox.TabIndex = 46;
+            this.advTextBox.Text = "Adv Text";
+            // 
+            // advCheckBox
+            // 
+            this.advCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.advCheckBox.AutoSize = true;
+            this.advCheckBox.Location = new System.Drawing.Point(6, 19);
+            this.advCheckBox.Name = "advCheckBox";
+            this.advCheckBox.Size = new System.Drawing.Size(103, 17);
+            this.advCheckBox.TabIndex = 45;
+            this.advCheckBox.Text = "Advertising Area";
+            this.advCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // label_printerName
+            // 
+            this.label_printerName.AutoSize = true;
+            this.label_printerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_printerName.Location = new System.Drawing.Point(6, 112);
+            this.label_printerName.Name = "label_printerName";
+            this.label_printerName.Size = new System.Drawing.Size(139, 17);
+            this.label_printerName.TabIndex = 57;
+            this.label_printerName.Text = "Название принтера";
+            // 
+            // printerName_TextBox
+            // 
+            this.printerName_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.printerName_TextBox.Location = new System.Drawing.Point(6, 132);
+            this.printerName_TextBox.Name = "printerName_TextBox";
+            this.printerName_TextBox.Size = new System.Drawing.Size(152, 23);
+            this.printerName_TextBox.TabIndex = 56;
+            this.printerName_TextBox.Text = "Epson Stylus Photo T50";
+            // 
             // registrFormSolo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1205, 525);
+            this.ClientSize = new System.Drawing.Size(904, 427);
+            this.Controls.Add(this.checkBoxPrintNumber);
+            this.Controls.Add(this.printNumberGroupBox);
             this.Controls.Add(this.Browse_button);
             this.Controls.Add(this.Path_textBox);
             this.Controls.Add(this.SecondTrainer_groupBox);
@@ -802,6 +933,7 @@
             this.Controls.Add(this.OldTrainer_groupBox);
             this.Controls.Add(this.Sportsman_groupBox);
             this.Controls.Add(this.registrationButton);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "registrFormSolo";
             this.Text = "registrFormSolo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.registrForm_FormClosing);
@@ -816,6 +948,8 @@
             this.FirstTrainer_groupBox.PerformLayout();
             this.SecondTrainer_groupBox.ResumeLayout(false);
             this.SecondTrainer_groupBox.PerformLayout();
+            this.printNumberGroupBox.ResumeLayout(false);
+            this.printNumberGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -878,5 +1012,11 @@
         private System.Windows.Forms.Label Label_DuetNumber;
         private System.Windows.Forms.Label Label_GroupName;
         private System.Windows.Forms.TextBox groupName_textBox;
+        private System.Windows.Forms.CheckBox checkBoxPrintNumber;
+        private System.Windows.Forms.GroupBox printNumberGroupBox;
+        private System.Windows.Forms.TextBox advTextBox;
+        private System.Windows.Forms.CheckBox advCheckBox;
+        private System.Windows.Forms.Label label_printerName;
+        private System.Windows.Forms.TextBox printerName_TextBox;
     }
 }

@@ -170,6 +170,16 @@ namespace DataViewer_D_v._001
                 //if (setNumber_comboBox.SelectedIndex != -1)
                 SecretaryController.insertParticipantsInDuet(Convert.ToInt32(duetNumber_textBox.Text), sportsman, Convert.ToInt32(groupNumber_comboBox.Text), Path_textBox.Text);
 
+                //printing number
+                string retFolderName = "";
+                if (checkBoxPrintNumber.Checked)
+                    if (advCheckBox.Checked)
+                        retFolderName = pdf_controller.getNumberCard_largeWithAdv(Path_textBox.Text, sportsman, new Sportsman(), Convert.ToInt32(duetNumber_textBox.Text), advTextBox.Text);
+                    else
+                        retFolderName = pdf_controller.getNumberCard_largeWithAdv(Path_textBox.Text, sportsman, new Sportsman(), Convert.ToInt32(duetNumber_textBox.Text), tournir.name);
+
+                printing_controller.PrintPDF(printerName_TextBox.Text, retFolderName, retFolderName);
+
                 duetNumber_textBox.Text = (Convert.ToInt32(duetNumber_textBox.Text) + 1).ToString();
                 clearAllBoxes();
             }

@@ -63,6 +63,9 @@
     <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="NLipsum.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=593e1df460e1bda0, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLipsum.1.1.0\lib\net20\NLipsum.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -78,127 +81,135 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgeCategoryClass.cs" />
-    <Compile Include="ComboBoxForEndingTour.cs" />
-    <Compile Include="Controller.cs" />
-    <Compile Include="CreatingGroup.cs">
+    <Compile Include="Classes\AgeCategoryClass.cs" />
+    <Compile Include="Classes\Branch.cs" />
+    <Compile Include="Classes\DuetInFinal.cs" />
+    <Compile Include="Classes\FinalGrading.cs" />
+    <Compile Include="Classes\Tour.cs" />
+    <Compile Include="Controllers\Controller.cs" />
+    <Compile Include="DancerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DancerControl.Designer.cs">
+      <DependentUpon>DancerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CreatingTournirDBForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatingGroup.Designer.cs">
-      <DependentUpon>CreatingGroup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreatingTournirDBForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreatingTournirDBForm.Designer.cs">
+    <Compile Include="Forms\CreatingTournirDBForm.Designer.cs">
       <DependentUpon>CreatingTournirDBForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="danceClass.cs" />
-    <Compile Include="DataBasaViewer.cs">
+    <Compile Include="Classes\danceClass.cs" />
+    <Compile Include="Forms\DataViewerSecretary.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataBasaViewer.Designer.cs">
-      <DependentUpon>DataBasaViewer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataViewerSecretary.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DataViewerSecretary.Designer.cs">
+    <Compile Include="Forms\DataViewerSecretary.Designer.cs">
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
     </Compile>
-    <Compile Include="DiplomClass.cs" />
-    <Compile Include="Duet.cs" />
-    <Compile Include="DuetInTour.cs" />
-    <Compile Include="duetInTourComparer.cs" />
-    <Compile Include="formationReglament.cs">
+    <Compile Include="Classes\DiplomClass.cs" />
+    <Compile Include="Classes\Duet.cs" />
+    <Compile Include="Classes\DuetInTour.cs" />
+    <Compile Include="Classes\duetInTourComparer.cs" />
+    <Compile Include="Forms\formationReglament.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formationReglament.Designer.cs">
+    <Compile Include="Forms\formationReglament.designer.cs">
       <DependentUpon>formationReglament.cs</DependentUpon>
     </Compile>
-    <Compile Include="GradingForm.cs">
+    <Compile Include="Forms\GradingForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GradingForm.Designer.cs">
+    <Compile Include="Forms\GradingForm.Designer.cs">
       <DependentUpon>GradingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GroupClass.cs" />
-    <Compile Include="GroupInTour.cs" />
-    <Compile Include="HoldingMarker.cs" />
-    <Compile Include="Judge.cs" />
-    <Compile Include="MyDate.cs" />
-    <Compile Include="pdf_controller.cs" />
-    <Compile Include="printing_controller.cs" />
-    <Compile Include="registrFormDuet.cs">
+    <Compile Include="Classes\GroupClass.cs" />
+    <Compile Include="Classes\Judge.cs" />
+    <Compile Include="Classes\MyDate.cs" />
+    <Compile Include="Controllers\pdf_controller.cs" />
+    <Compile Include="Controllers\printing_controller.cs" />
+    <Compile Include="Forms\ParticipantsData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="registrFormDuet.Designer.cs">
+    <Compile Include="Forms\ParticipantsData.Designer.cs">
+      <DependentUpon>ParticipantsData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\registrFormAnsambl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\registrFormAnsambl.Designer.cs">
+      <DependentUpon>registrFormAnsambl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\registrFormDuet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\registrFormDuet.Designer.cs">
       <DependentUpon>registrFormDuet.cs</DependentUpon>
     </Compile>
-    <Compile Include="SecretaryController.cs" />
-    <Compile Include="secretaryForm.cs">
+    <Compile Include="Controllers\SecretaryController.cs" />
+    <Compile Include="Forms\secretaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="secretaryForm.Designer.cs">
+    <Compile Include="Forms\secretaryForm.Designer.cs">
       <DependentUpon>secretaryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="secretaryMainForm.cs">
+    <Compile Include="Forms\secretaryMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="secretaryMainForm.Designer.cs">
+    <Compile Include="Forms\secretaryMainForm.Designer.cs">
       <DependentUpon>secretaryMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SetClass.cs" />
-    <Compile Include="SetInTour.cs" />
-    <Compile Include="sortController.cs" />
-    <Compile Include="Sportsman.cs" />
-    <Compile Include="startForm.cs">
+    <Compile Include="Classes\SetClass.cs" />
+    <Compile Include="Controllers\sortController.cs" />
+    <Compile Include="Classes\Sportsman.cs" />
+    <Compile Include="Forms\startForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="startForm.Designer.cs">
+    <Compile Include="Forms\startForm.Designer.cs">
       <DependentUpon>startForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="registrFormSolo.cs">
+    <Compile Include="Forms\registrFormSolo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="registrFormSolo.Designer.cs">
+    <Compile Include="Forms\registrFormSolo.Designer.cs">
       <DependentUpon>registrFormSolo.cs</DependentUpon>
     </Compile>
-    <Compile Include="TimeClass.cs" />
-    <Compile Include="TournirClass.cs" />
-    <Compile Include="tournirResultComboBox.cs" />
-    <Compile Include="Trainer.cs" />
-    <Compile Include="Word_Controller.cs" />
-    <EmbeddedResource Include="CreatingGroup.resx">
-      <DependentUpon>CreatingGroup.cs</DependentUpon>
+    <Compile Include="Classes\TimeClass.cs" />
+    <Compile Include="Classes\TournirClass.cs" />
+    <Compile Include="Classes\Trainer.cs" />
+    <Compile Include="Controllers\Word_Controller.cs" />
+    <EmbeddedResource Include="DancerControl.resx">
+      <DependentUpon>DancerControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatingTournirDBForm.resx">
+    <EmbeddedResource Include="Forms\CreatingTournirDBForm.resx">
       <DependentUpon>CreatingTournirDBForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DataBasaViewer.resx">
-      <DependentUpon>DataBasaViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataViewerSecretary.resx">
+    <EmbeddedResource Include="Forms\DataViewerSecretary.resx">
       <DependentUpon>DataViewerSecretary.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formationReglament.resx">
+    <EmbeddedResource Include="Forms\formationReglament.resx">
       <DependentUpon>formationReglament.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GradingForm.resx">
+    <EmbeddedResource Include="Forms\GradingForm.resx">
       <DependentUpon>GradingForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="registrFormDuet.resx">
+    <EmbeddedResource Include="Forms\ParticipantsData.resx">
+      <DependentUpon>ParticipantsData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\registrFormAnsambl.resx">
+      <DependentUpon>registrFormAnsambl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\registrFormDuet.resx">
       <DependentUpon>registrFormDuet.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="secretaryForm.resx">
+    <EmbeddedResource Include="Forms\secretaryForm.resx">
       <DependentUpon>secretaryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="secretaryMainForm.resx">
+    <EmbeddedResource Include="Forms\secretaryMainForm.resx">
       <DependentUpon>secretaryMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="startForm.resx">
+    <EmbeddedResource Include="Forms\startForm.resx">
       <DependentUpon>startForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -211,7 +222,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="registrFormSolo.resx">
+    <EmbeddedResource Include="Forms\registrFormSolo.resx">
       <DependentUpon>registrFormSolo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -236,6 +247,12 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer_little.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer_little1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
